@@ -31,7 +31,7 @@ if (elgg_get_config('allow_registration')) {
 		//check for valid email domain
 		if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			$domain = array_pop(explode('@',$email));
-			error_log($domain);
+
 			if(!in_array($domain, $approvedDomains)) {
 				throw new RegistrationException(elgg_echo('register:emailRules'));
 			}

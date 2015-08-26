@@ -8,23 +8,9 @@ function userManagementInit()
 	//register actions
 	elgg_register_action('login', $pluginPath.'actions/login.php', 'public');
 	elgg_register_action('activate', $pluginPath.'actions/activate.php', 'public');
+	elgg_register_action('users/import', $pluginPath."actions/import.php", 'admin');
 	//register page handler for routes
 	elgg_register_page_handler('usermgmt', 'userManagementPageHandler');
-}
-
-function userManagementAuthHandler($credentials)
-{
-	if (is_array($credentials) && ($credentials['username']))
-    {
-        $username = $credentials['username'];
-        $user = get_user_by_username($username);
-	    
-	    if($user->deactivated){
-	    	forward('usermgmt/reactivate');
-	    }
-    }
-
-
 }
 
 function userManagementPageHandler($page)
@@ -61,6 +47,25 @@ function userManagementPageHandler($page)
 				system_message(elgg_echo('activate:success'));
 				forward(REFERER);
 			}
+		break;
+
+		case 'import':
+			admin_gatekeeper();
+			elgg_admin_add_plugin_settings_menu();
+			elgg_set_context('admin');
+
+			elgg_unregister_css('elgg');
+			elgg_load_js('elgg.admin');
+			elgg_load_js('jquery.jeditable');
+
+			$vars = array('page' => $page);
+			$view = 'usermanagement/' . implode('/',$page);
+			$title = "Import Users";
+
+			$content = elgg_view($view);
+
+			$body = elgg_view_layout('admin', array('content' => $content, 'title' => $title));
+			echo elgg_view_page($title, $body, 'admin');
 		break;
 
 		case 'registerEmails':
