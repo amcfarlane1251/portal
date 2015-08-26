@@ -18,12 +18,23 @@ $invitecode = get_input('invitecode');
 
 if (elgg_get_config('allow_registration')) {
 	try {
+		$approvedDomains = array('forces.gc.ca');
+
 		if (trim($password) == "" || trim($password2) == "") {
 			throw new RegistrationException(elgg_echo('RegistrationException:EmptyPassword'));
 		}
 
 		if (strcmp($password, $password2) != 0) {
 			throw new RegistrationException(elgg_echo('RegistrationException:PasswordMismatch'));
+		}
+
+		//check for valid email domain
+		if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$domain = array_pop(explode('@',$email));
+			error_log($domain);
+			if(!in_array($domain, $approvedDomains)) {
+				throw new RegistrationException(elgg_echo('register:emailRules'));
+			}
 		}
 
 		//check for bad password
