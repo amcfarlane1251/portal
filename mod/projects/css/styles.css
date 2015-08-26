@@ -1,0 +1,33 @@
+#wb-main-in .elgg-main h2 {
+  margin: 12px 0;
+  font-weight: 300; }
+#wb-main-in .elgg-main .elgg-head {
+  padding: 0;
+  margin: 0; }
+#wb-main-in .elgg-form-requests-add div label, #wb-main-in .elgg-form-projects-edit div label {
+  margin: 12px 0; }
+#wb-main-in .elgg-form-requests-add div .add-opi, #wb-main-in .elgg-form-projects-edit div .add-opi {
+  float: left;
+  margin: 0 0 12px; }
+#wb-main-in .elgg-form-requests-add div .add-opi + select, #wb-main-in .elgg-form-projects-edit div .add-opi + select {
+  clear: left;
+  display: block; }
+#wb-main-in .elgg-form-requests-add div div, #wb-main-in .elgg-form-projects-edit div div {
+  clear: left; }
+#wb-main-in .project-stats .label {
+  font-weight: bold; }
+#wb-main-in .add-opi, #wb-main-in .remove-opi {
+  color: #fff !important;
+  background: #335075;
+  padding: .3em .6em;
+  border: 1px solid #243850;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 3px 0px 0px #283F5B;
+  -moz-box-shadow: 0px 3px 0px 0px #283F5B;
+  box-shadow: 0px 3px 0px 0px #283F5B; }
+  #wb-main-in .add-opi:hover, #wb-main-in .remove-opi:hover {
+    text-decoration: none; }
+#wb-main-in .remove-opi {
+  margin-left: 12px; }
+
+/*# sourceMappingURL=styles.css.map */

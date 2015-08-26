@@ -1,0 +1,9 @@
+#Ignore files that will need to be changed locally
+php_errors.log
+.DS_Store
+.htaccess
+/nbproject/
+robots.txt
+web_sitemap_*
+compass_app_log.txt
+.sass-cache

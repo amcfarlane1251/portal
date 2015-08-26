@@ -1,0 +1,8 @@
+/* CSS for TinyMCE content iframe */
+body, td, pre {
+	color: #333;
+	font: 16px/1.4 "Lucida Grande",Verdana,sans-serif;
+}
+p{
+	font-size:16px;
+}

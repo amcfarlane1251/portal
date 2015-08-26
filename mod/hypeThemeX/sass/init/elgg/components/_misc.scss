@@ -1,0 +1,257 @@
+/* ***************************************
+	MISC
+*************************************** */
+#login-dropdown {
+	position: absolute;
+	top:10px;
+	right:0;
+	z-index: 100;
+	margin: 10px;
+	.elgg-button {
+		background-color: darken($primary-color, 20%);
+	}
+}
+
+#login-dropdown-box {
+	width: emCalc(400px);
+}
+
+/* ***************************************
+	AVATAR UPLOADING & CROPPING
+*************************************** */
+
+#current-user-avatar {
+	border: 1px solid $border-color;
+	border-bottom: 0;
+	margin: 0;
+	padding: $elgg-value-large;
+	& + a {
+		width: 100%;
+		margin: 0;
+	}
+}
+
+#avatar-croppingtool {
+
+	display: none;
+
+	@media #{$medium} {
+		display: block
+	}
+
+	.elgg-form-avatar-crop {
+		position: relative;
+		fieldset {
+			padding: 0 0 0 140px;
+			.elgg-foot {
+				padding: $elgg-value-large 0;
+			}
+		}
+	}
+
+
+	#user-avatar-cropper {
+		display: block;
+		max-width: 99999px;
+	}
+
+	#user-avatar-preview-title {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 120px;
+		border: 10px solid $border-color;
+		background: $border-color;
+		font-weight: bold;
+	}
+
+	#user-avatar-preview {
+		position: absolute;
+		background: white;
+		top: 30px;
+		left: 0;
+		border: 1px solid;
+		overflow: hidden;
+		width: 120px;
+		height: 120px;
+		border: 10px solid $border-color;
+		img {
+			max-width: 9999px;
+			display: block;
+		}
+	}
+
+}
+
+
+
+/* ***************************************
+	FRIENDS COLLECTIONS
+*************************************** */
+
+
+#friends_collections_accordian li {
+
+	h2 {
+
+		@include radius;
+		background: $secondary-color;
+		color: white;
+		cursor: pointer;
+		margin: $elgg-value-small;
+		padding: $elgg-value-medium/2 $elgg-value-medium;
+		font-size: emCalc(18px);
+		line-height: emCalc(18px);
+
+		&:hover {
+			background: lighten($secondary-color, 5%);
+			@include single-transition;
+		}
+
+		.friends_collections_controls {
+			float: right;
+		}
+		.elgg-icon {
+			font-size: emCalc(18px);
+			color: white;
+		}
+	}
+
+	.elgg-tabs {
+		@include elgg-tabs;
+	}
+
+	.friends-picker-main-wrapper {
+		display: none;
+		height: 550px;
+		& > * {
+			position: relative;
+			margin: $elgg-value-medium;
+			@include clearfix;
+		}
+	}
+}
+
+
+/* ***************************************
+	FRIENDS PICKER
+*************************************** */
+.friends-picker-main-wrapper {
+
+	position: relative;
+	height: $elgg-friendspicker-panel-height + 100px;
+	max-width: $elgg-friendspicker-panel-width;
+
+	.friends-picker-wrapper {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		@include box-sizing(border-box);
+	}
+
+	.friends-picker-navigation {
+		br {
+			display: none;
+		}
+		ul {
+			padding: $elgg-value-small;
+			padding-right: 100px; // offset nav
+			margin-bottom: $elgg-value-small;
+			border-top: 1px solid $border-color;
+			border-bottom: 1px solid $border-color;
+			li {
+				display: inline-block;
+				a {
+					@include radius;
+					margin-right: 2px;
+					font-weight: bold;
+					color: $secondary-color;
+					padding: 2px 4px;
+					&.current, &:hover {
+						color: white;
+						background: $secondary-color;
+					}
+				}
+
+			}
+		}
+	}
+
+	.friends-picker {
+		overflow: auto;
+		@media #{$small} {
+			overflow: hidden;
+		}
+		@include clearfix;
+
+		.friends-picker-container {
+			position: relative;
+			left: 0;
+			top: 0;
+			width: 100%;
+			list-style-type: none;
+			.panel {
+				padding: 0;
+				margin: 0;
+				float: left;
+				height: 100%;
+				position: relative;
+				width: $elgg-friendspicker-panel-width;
+
+				.wrapper {
+					padding: 10px;
+					height: $elgg-friendspicker-panel-height;
+					overflow-y: auto;
+				}
+
+				h3 {
+					color: #999;
+					font-size: emCalc(30px);
+					@include text-shadow(1px 1px 0 #FFF);
+					width: 100%;
+				}
+
+			}
+		}
+	}
+
+	.friends-picker-navigation-l {
+		position: absolute;
+		top: 0;
+		right: 48px;
+		text-indent: -9000em;
+		background: image-url("../../../_graphics/friendspicker.png") no-repeat left top;
+		&:hover {
+			background: image-url("../../../_graphics/friendspicker.png") no-repeat left -44px;
+		}
+		a {
+			display: block;
+			height: 40px;
+			width: 40px;
+		}
+
+	}
+
+	.friends-picker-navigation-r {
+		position: absolute;
+		top: 0;
+		right: 0;
+		text-indent: -9000em;
+		background: image-url("../../../_graphics/friendspicker.png") no-repeat -60px top;
+		&:hover {
+			background: image-url("../../../_graphics/friendspicker.png") no-repeat -60px -44px;
+		}
+		a {
+			display: block;
+			height: 40px;
+			width: 40px;
+		}
+
+	}
+
+	.friendspicker-savebuttons {
+		margin: $elgg-value-medium 0;
+	}
+}

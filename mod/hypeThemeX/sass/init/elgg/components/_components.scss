@@ -1,0 +1,170 @@
+
+
+/* ***************************************
+	Image Block
+*************************************** */
+.elgg-image-block {
+	@include elgg-image-block;
+}
+
+/* ***************************************
+	List
+*************************************** */
+.elgg-list {
+	@include elgg-list;
+}
+
+/* ***************************************
+	Gallery
+*************************************** */
+.elgg-gallery {
+	@include elgg-gallery;
+}
+
+/* ***************************************
+	Tables
+*************************************** */
+// Foundation table styling
+
+
+/* ***************************************
+	Owner Block
+*************************************** */
+.elgg-owner-block {
+	margin-bottom: 20px;
+}
+
+/* ***************************************
+	Messages
+*************************************** */
+.elgg-message {
+	color: white;
+	font-weight: bold;
+	display: block;
+	padding: $elgg-value-small/2 $elgg-value-small;
+	cursor: pointer;
+	opacity: 0.9;
+
+	@include box-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
+	@include radius;
+}
+.elgg-state-success {
+	background-color: $success-color;
+}
+.elgg-state-error {
+	background-color: $alert-color;
+}
+.elgg-state-notice {
+	background-color: $primary-color;
+}
+
+/* ***************************************
+	River
+*************************************** */
+.elgg-list-river {
+	@include elgg-list($item-selector: '.elgg-river-item');
+}
+.elgg-river-attachments,
+.elgg-river-message,
+.elgg-river-content {
+	@include clearfix;
+	border-left: $hr-border-width $hr-border-style $border-color;
+	font-size: emCalc(14px);
+	line-height: emCalc(18px);
+	margin: $elgg-value-small 0;
+	padding: 0 $elgg-value-small;
+	display: inline-block;
+	width: 100%;
+	position: relative;
+}
+.elgg-river-responses {
+	position: relative;
+}
+.elgg-river-attachments .elgg-avatar,
+.elgg-river-attachments .elgg-icon {
+	float: left;
+}
+.elgg-river-layout .elgg-input-dropdown {
+	margin: 10px 0;
+	width: 100%;
+	@include box-sizing(border-box);
+}
+
+.elgg-river-comments-tab {
+	display: block;
+	margin: $elgg-value-small 0 0 $elgg-value-small;
+	padding: $elgg-value-small/2 $elgg-value-medium;
+	background: lighten($border-color, 8%);
+	color: lighten($body-font-color, 15%);
+	height: 25px;
+	position: absolute;
+	margin-top: -25px;
+	right:0;
+	font-size: emCalc(13px);
+	@include radius($global-radius $global-radius 0 0);
+}
+
+.elgg-river-comments {
+	margin: 25px 0 0;
+	background: $elgg-river-comments-bg;
+	font-size: 90%;
+	@include radius($global-radius 0 $global-radius $global-radius);
+	& > li.elgg-item {
+		border-color: white;
+	}
+}
+
+.elgg-river-more {
+	@include elgg-button;
+}
+
+.elgg-river-item form {
+	@include grid-row;
+	margin-top: -$elgg-value-small;
+	background-color: $elgg-river-comments-bg;
+	@include radius(0 0 $global-radius $global-radius);
+}
+.elgg-river-item input[type=text] {
+	@include grid-column(10);
+}
+.elgg-river-item input[type=submit] {
+	@include grid-column(2);
+}
+
+
+/* **************************************
+	Comments (from elgg_view_comments)
+************************************** */
+.elgg-comments {
+	margin-top: 25px;
+}
+.elgg-comments > form {
+	margin-top: 15px;
+}
+
+/* ***************************************
+	Image-related
+*************************************** */
+.elgg-photo {
+	@include thumb;
+}
+
+/* ***************************************
+	Tags
+*************************************** */
+.elgg-tags {
+	font-size: emCalc(14px);
+}
+.elgg-tags > li {
+	float: left;
+	margin-right: 5px;
+}
+.elgg-tags li.elgg-tag:after {
+	content: ",";
+}
+.elgg-tags li.elgg-tag:last-child:after {
+	content: "";
+}
+.elgg-tagcloud {
+	text-align: justify;
+}

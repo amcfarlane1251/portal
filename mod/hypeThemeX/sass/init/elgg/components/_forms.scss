@@ -1,0 +1,21 @@
+form, .elgg-form {
+	margin: 0;
+	@include clearfix;
+
+	& > fieldset {
+		border: none;
+		margin: 0;
+	}
+
+	label {
+		color: darken($body-font-color, 5%);
+		& + br {
+			display: none;
+		}
+	}
+
+	.mceEditor {
+		margin-bottom: 20px;
+		display: block;
+	}
+}

@@ -1,0 +1,17 @@
+.custom-index {
+	padding: 20px 0;
+	.elgg-inner.prl,
+	.elgg-inner.pvm {
+		padding: 0;
+	}
+	.elgg-module {
+		margin-bottom: 20px;
+		& > .elgg-body {
+			padding: 0;
+		}
+	}
+	h2 {
+		margin: 0;
+		padding: 10px;
+	}
+}

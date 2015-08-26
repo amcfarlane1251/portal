@@ -1,0 +1,45 @@
+.elgg-search {
+	margin: 0;
+	padding: 4px;
+	background: $elgg-toolbar-search-bg-color;
+	overflow: hidden;
+	height: $elgg-toolbar-height;
+	fieldset {
+		border: 0;
+		padding: 0;
+		margin: 0;
+		position: relative;
+		input[type="text"].search-input {
+			font-family: $elgg-menu-font-family;
+			@include box-shadow(none);
+			background: none;
+			border: none;
+			color: white;
+			border: none;
+			text-indent: 30px;
+			font-size: $elgg-toolbar-font-size;
+			line-height: $elgg-toolbar-height - 16px;
+			height: auto;
+			padding: 4px 10px;
+			margin: 0;
+			&:focus {
+				@include box-shadow(none);
+				background: none;
+				border: none;
+			}
+		}
+		.elgg-icon-search {
+			position: absolute;
+			left: 0;
+			top: 0;
+			font-size: $elgg-toolbar-font-size + emCalc(8px);
+			margin: 0 10px;
+			color: white;
+			line-height: $elgg-toolbar-height - 8px;
+		}
+		input[type="submit"].search-submit-button {
+			display: none;
+		}
+	}
+
+}

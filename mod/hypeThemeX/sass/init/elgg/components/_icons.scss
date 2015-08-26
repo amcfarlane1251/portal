@@ -1,0 +1,401 @@
+/* ***************************************
+	ICONS
+*************************************** */
+
+// Replicated from FontAwesome scss
+
+[class^="elgg-icon-"],
+[class*=" elgg-icon-"] {
+	@include icon-FontAwesome();
+}
+
+[class^="elgg-icon-"]:before,
+[class*=" elgg-icon-"]:before {
+	text-decoration: inherit;
+	display: inline-block;
+	speak: none;
+}
+
+/* makes the font 33% larger relative to the elgg-icon container */
+.elgg-icon-large:before {
+	vertical-align: -10%;
+	font-size: (4em/3);
+}
+
+/* makes sure elgg-icons active on rollover in links */
+a {
+	[class^="elgg-icon-"],
+	[class*=" elgg-icon-"] {
+		display: inline;
+	}
+}
+
+/* increased font size for elgg-icon-large */
+[class^="elgg-icon-"],
+[class*=" elgg-icon-"] {
+	&.elgg-icon-fixed-width {
+		display: inline-block;
+		width: (16em/14);
+		text-align: right;
+		padding-right: (4em/14);
+		&.elgg-icon-large {
+			width: (20em/14);
+		}
+	}
+}
+
+.elgg-icons-ul {
+	margin-left: $icons-li-width;
+	list-style-type: none;
+
+	> li { position: relative; }
+
+	.elgg-icon-li {
+		position: absolute;
+		left: -$icons-li-width;
+		width: $icons-li-width;
+		text-align: center;
+		line-height: inherit;
+	}
+}
+
+// allows usage of the hide class directly on font awesome elgg-icons
+[class^="elgg-icon-"],
+[class*=" elgg-icon-"] {
+	&.hide {
+		display: none;
+	}
+}
+
+.elgg-icon-muted { color: $iconMuted; }
+.elgg-icon-light { color: $iconLight; }
+.elgg-icon-dark { color: $iconDark; }
+
+// elgg-icon Borders
+// -------------------------
+
+.elgg-icon-border {
+	border: solid 1px $borderColor;
+	padding: .2em .25em .15em;
+	@include border-radius(3px);
+}
+
+// elgg-icon Sizes
+// -------------------------
+
+.elgg-icon-2x {
+	font-size: 2em;
+	&.elgg-icon-border {
+		border-width: 2px;
+		@include border-radius(4px);
+	}
+}
+.elgg-icon-3x {
+	font-size: 3em;
+	&.elgg-icon-border {
+		border-width: 3px;
+		@include border-radius(5px);
+	}
+}
+.elgg-icon-4x {
+	font-size: 4em;
+	&.elgg-icon-border {
+		border-width: 4px;
+		@include border-radius(6px);
+	}
+}
+
+.elgg-icon-5x {
+	font-size: 5em;
+	&.elgg-icon-border {
+		border-width: 5px;
+		@include border-radius(7px);
+	}
+}
+
+
+// Floats & Margins
+// -------------------------
+
+[class^="elgg-icon-"],
+[class*=" elgg-icon-"] {
+	&.pull-left {
+		margin-right: .3em;
+	}
+	&.pull-right {
+		margin-left: .3em;
+	}
+}
+
+.elgg-icon {
+	@include icon-FontAwesome;
+	&:hover {
+		color: $border-color;
+	}
+	& + * {
+		padding-left: 8px;
+	}
+}
+
+.elgg-icon-arrow-left:before  {
+	content: $arrow-left;
+}
+.elgg-icon-arrow-right:before  {
+	content: $arrow-right;
+}
+.elgg-icon-arrow-two-head:before  {
+	content: $resize-horizontal;
+}
+.elgg-icon-attention:before  {
+	content: $warning-sign;
+}
+.elgg-icon-calendar:before  {
+	content: $calendar;
+}
+.elgg-icon-cell-phone:before  {
+	content: $phone;
+}
+.elgg-icon-checkmark:before  {
+	content: $check;
+}
+.elgg-icon-clip:before  {
+	content: $paper-clip;
+}
+.elgg-icon-cursor-drag-arrow:before  {
+	content: $move;
+}
+.elgg-icon-delete-alt:before  {
+	content: $remove-sign;
+}
+.elgg-icon-delete:before  {
+	content: $remove;
+}
+.elgg-icon-download:before  {
+	content: $download;
+}
+.elgg-icon-eye:before  {
+	content: $eye-open;
+}
+.elgg-icon-facebook:before  {
+	content: $facebook-sign;
+}
+.elgg-icon-grid:before  {
+	content: $th;
+}
+.elgg-icon-home:before  {
+	content: $home;
+}
+.elgg-icon-info:before  {
+	content: $info-sign;
+}
+.elgg-icon-link:before  {
+	content: $link;
+}
+.elgg-icon-list:before  {
+	content: $th-list;
+}
+.elgg-icon-lock-closed:before  {
+	content: $lock;
+}
+.elgg-icon-lock-open:before  {
+	content: $unlock;
+}
+.elgg-icon-mail-alt:before  {
+	content: $envelope-alt;
+}
+.elgg-icon-mail:before  {
+	content: $envelope;
+}
+.elgg-icon-photo:before  {
+	content: $picture;
+}
+.elgg-icon-print-alt:before  {
+	content: $print;
+}
+.elgg-icon-print:before  {
+	content: $print;
+}
+.elgg-icon-push-pin-alt:before  {
+	content: $pushpin;
+}
+.elgg-icon-push-pin:before  {
+	content: $pushpin;
+}
+.elgg-icon-redo:before  {
+	content: $repeat;
+}
+.elgg-icon-refresh:before  {
+	content: $refresh;
+}
+.elgg-icon-round-arrow-left:before  {
+	content: $circle-arrow-left;
+}
+.elgg-icon-round-arrow-right:before  {
+	content: $circle-arrow-right;
+}
+.elgg-icon-round-checkmark:before  {
+	content: $check-sign;
+}
+.elgg-icon-round-minus:before  {
+	content: $minus-sign;
+}
+.elgg-icon-round-plus:before  {
+	content: $plus-sign;
+}
+.elgg-icon-rss:before  {
+	content: $rss;
+}
+.elgg-icon-search-focus:before  {
+	content: $search;
+}
+.elgg-icon-search:before  {
+	content: $search;
+}
+.elgg-icon-settings-alt:before  {
+	content: $cog;
+}
+.elgg-icon-settings:before  {
+	content: $cogs;
+}
+.elgg-icon-share:before  {
+	content: $share-alt;
+}
+.elgg-icon-shop-cart:before  {
+	content: $shopping-cart;
+}
+.elgg-icon-speech-bubble-alt:before  {
+	content: $comments;
+}
+.elgg-icon-speech-bubble:before  {
+	content: $comment;
+}
+.elgg-icon-star-alt:before  {
+	content: $star;
+}
+.elgg-icon-star-empty:before  {
+	content: $star-empty;
+}
+.elgg-icon-star:before  {
+	content: $star;
+}
+.elgg-icon-tag:before  {
+	content: $tag;
+}
+.elgg-icon-thumbs-down-alt:before  {
+	content: $thumbs-down-alt;
+}
+.elgg-icon-thumbs-down:before  {
+	content: $thumbs-down;
+}
+
+.elgg-icon-thumbs-up-alt:before  {
+	content: $thumbs-up-alt;
+}
+.elgg-icon-thumbs-up:before  {
+	content: $thumbs-up;
+}
+.elgg-icon-trash:before  {
+	content: $trash;
+}
+.elgg-icon-twitter:before  {
+	content: $twitter;
+}
+.elgg-icon-undo:before  {
+	content: $undo;
+}
+.elgg-icon-user:before  {
+	content: $user;
+}
+.elgg-icon-users:before  {
+	content: $group;
+}
+.elgg-icon-video:before  {
+	content: $film;
+}
+
+.elgg-ajax-loader {
+	background: white image-url("ajax_loader_bw.gif") no-repeat center center;
+	min-height: 31px;
+	min-width: 31px;
+	margin: emCalc(30px) auto;
+	height: 100%;
+	width: 100%;
+}
+
+@mixin elgg-avatar($size: $elgg-avatar-medium, $hover-icon-size: emCalc(16px), $radius: $elgg-avatar-medium-radius, $border: none) {
+
+	position: relative;
+	display: inline-block;
+	width: $size;
+	height: auto;
+	max-width: 100%;
+	display: block;
+	border: $border;
+	a > img {
+		width: 100%;
+		height: 100%;
+		@include radius($radius);
+		@include background-clip(border);
+		@include background-size(contain);
+		z-index: 1;
+	}
+
+	& > .elgg-icon-hover-menu {
+		display: block;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		margin: 0;
+		cursor: pointer;
+		width: $hover-icon-size;
+		height: $hover-icon-size;
+		z-index: 2;
+		& + * {
+			padding: 0;
+		}
+		&:before  {
+			content: "";
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 0px;
+			height: 0px;
+			border-style: solid;
+			border-width: 0 0 $hover-icon-size + emCalc(3px) $hover-icon-size + emCalc(3px);
+			border-color: transparent transparent white transparent;
+			z-index: 3;
+		}
+		&:after  {
+			content: "";
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			margin: 0;
+			width: 0px;
+			height: 0px;
+			border-style: solid;
+			border-width: 0 0 $hover-icon-size $hover-icon-size;
+			border-color: transparent transparent darken($primary-color, 10%) transparent;
+			z-index: 4;
+		}
+		@media #{$small} {
+			display: none;
+		}
+	}
+}
+
+/* ***************************************
+	AVATAR ICONS
+*************************************** */
+.elgg-avatar-tiny {
+	@include elgg-avatar($size: $elgg-avatar-tiny, $hover-icon-size: emCalc(10px), $radius: $elgg-avatar-tiny-radius, $border: none);
+}
+.elgg-avatar-small {
+	@include elgg-avatar($size: $elgg-avatar-small, $hover-icon-size: emCalc(12px), $radius: $elgg-avatar-small-radius, $border: none);
+}
+.elgg-avatar-medium {
+	@include elgg-avatar($size: $elgg-avatar-medium, $hover-icon-size: emCalc(15px), $radius: $elgg-avatar-tiny-radius, $border: none);
+}
+.elgg-avatar-large {
+	@include elgg-avatar($size: $elgg-avatar-large, $hover-icon-size: emCalc(15px), $radius: $elgg-avatar-large-radius, $border: none);
+}

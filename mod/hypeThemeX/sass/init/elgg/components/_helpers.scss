@@ -1,0 +1,121 @@
+.elgg-state-selected {
+	@extend .active;
+	@extend .selected;
+}
+
+.elgg-state-disabled {
+	@extend .disabled;
+}
+
+.hidden {
+	display: none;
+}
+
+.centered {
+	margin: 0 auto;
+}
+
+.center {
+	text-align: center;
+}
+
+.float {
+	@include float(left, 0px);
+}
+
+.float-alt {
+	@include float(right, 0px)
+}
+
+.link {
+	cursor: pointer;
+}
+
+.elgg-discover .elgg-discoverable {
+	display: none;
+}
+
+.elgg-discover:hover .elgg-discoverable {
+	display: block;
+}
+
+.elgg-transition:hover {
+	opacity: .7;
+}
+
+***************************************
+*	BORDERS AND SEPARATORS
+***************************************
+.elgg-border-plain {
+	border: 1px solid lighten($border-color, 2%);
+}
+.elgg-border-transition {
+	border: 1px solid lighten($border-color, 2%);
+}
+.elgg-divide-top {
+	@include elgg-divide($top: 1px);
+}
+.elgg-divide-bottom {
+	@include elgg-divide($bottom: 1px);
+}
+.elgg-divide-left {
+	@include elgg-divide($left: 1px);
+}
+.elgg-divide-right {
+	@include elgg-divide($right: 1px);
+}
+
+***************************************
+*	PADDING
+***************************************
+.pan {padding:$elgg-value-none}
+.prn, .phn{padding-right:$elgg-value-none}
+.pln, .phn{padding-left:$elgg-value-none}
+.ptn, .pvn{padding-top:$elgg-value-none}
+.pbn, .pvn{padding-bottom:$elgg-value-none}
+
+.pas {padding:$elgg-value-small}
+.prs, .phs{padding-right:$elgg-value-small}
+.pls, .phs{padding-left:$elgg-value-small}
+.pts, .pvs{padding-top:$elgg-value-small}
+.pbs, .pvs{padding-bottom:$elgg-value-small}
+
+.pam {padding:$elgg-value-medium}
+.prm, .phm{padding-right:$elgg-value-medium}
+.plm, .phm{padding-left:$elgg-value-medium}
+.ptm, .pvm{padding-top:$elgg-value-medium}
+.pbm, .pvm{padding-bottom:$elgg-value-medium}
+
+.pal {padding:$elgg-value-large}
+.prl, .phl{padding-right:$elgg-value-large}
+.pll, .phl{padding-left:$elgg-value-large}
+.ptl, .pvl{padding-top:$elgg-value-large}
+.pbl, .pvl{padding-bottom:$elgg-value-large}
+
+
+***************************************
+*	MARGINS
+***************************************
+.man { margin:$elgg-value-none}
+.mrn, .mhn{margin-right:$elgg-value-none}
+.mln, .mhn{margin-left:$elgg-value-none}
+.mtn, .mvn{margin-top:$elgg-value-none}
+.mbn, .mvn{margin-bottom:$elgg-value-none}
+
+.mas{margin:$elgg-value-small}
+.mrs, .mhs{margin-right:$elgg-value-small}
+.mls, .mhs{margin-left:$elgg-value-small}
+.mts, .mvs{margin-top:$elgg-value-small}
+.mbs, .mvs{margin-bottom:$elgg-value-small}
+
+.mam{margin:$elgg-value-medium}
+.mrm, .mhm{margin-right:$elgg-value-medium}
+.mlm, .mhm{margin-left:$elgg-value-medium}
+.mtm, .mvm{margin-top:$elgg-value-medium}
+.mbm, .mvm{margin-bottom:$elgg-value-medium}
+
+.mal{ margin:$elgg-value-large}
+.mrl, .mhl{margin-right:$elgg-value-large}
+.mll, .mhl{margin-left:$elgg-value-large}
+.mtl, .mvl{margin-top:$elgg-value-large}
+.mbl, .mvl{margin-bottom:$elgg-value-large}

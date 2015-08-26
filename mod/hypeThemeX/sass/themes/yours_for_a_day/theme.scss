@@ -1,0 +1,46 @@
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+@import "variables";
+@import "init/elgg";
+
+.elgg-page-toolbar {
+	@include border-radius($global-radius $global-radius 0 0);
+
+	.elgg-search {
+		height: 38px;
+		padding: 0;
+		margin: 4px;
+		@include border-radius($global-radius);
+	}
+
+	.elgg-menu-site > li {
+		height: 38px;
+		margin: 4px;
+		@include border-radius($global-radius);
+		a {
+			line-height: 38px;
+		}
+		&.elgg-more {
+			@include border-radius($global-radius $global-radius 0 0);
+		}
+
+		.elgg-menu-site-more {
+			@include border-radius(0 $global-radius $global-radius $global-radius);
+			padding: 4px;
+			top: 38px;
+			li {
+				margin: 4px;
+			}
+		}
+	}
+}
+
+.elgg-module {
+	@include border-radius($global-radius);
+	padding: 4px;
+	& > .elgg-head {
+		padding: 4px;
+		@include border-radius($global-radius $global-radius 0 0);
+	}
+}

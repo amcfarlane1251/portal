@@ -1,0 +1,32 @@
+/* **************************
+	BUTTONS
+************************** */
+
+.elgg-button {
+	
+	@include elgg-button;
+
+	&.elgg-button-large  { @include button-size($padding: $button-lrg); }
+	&.elgg-button-small  { @include button-size($padding: $button-sml); }
+	&.elgg-button-tiny   { @include button-size($padding: $button-tny); }
+
+	&.elgg-button-submit {
+		@include button-style($bg: $elgg-button-bg-submit);
+	}
+	&.elgg-button-action {
+		@include button-style($bg: $elgg-button-bg-action);
+	}
+	&.elgg-button-cancel {
+		@include button-style($bg: $elgg-button-bg-cancel);
+	}
+	&.elgg-button-delete {
+		@include button-style($bg: $elgg-button-bg-delete);
+	}
+	&.elgg-button-dropdown {
+		@include elgg-button;
+		@include dropdown-button;
+	}
+	&.elgg-state-disabled {
+		@include button-style($disabled: true, $bg: $elgg-button-bg-disabled);
+	}
+}

@@ -1,0 +1,86 @@
+/* ***************************************
+	GRID
+*************************************** */
+.elgg-col {
+	@include elgg-col(12);
+	& > .elgg-inner {
+		@include clearfix;
+	}
+}
+
+.elgg-col-1of1 {
+	@include elgg-col(12);
+}
+.elgg-col-1of2,
+.elgg-col-2of4,
+.elgg-col-3of6 {
+	@include elgg-col(12);
+	@media #{$small} {
+		@include elgg-col(6);
+	}
+}
+
+.elgg-col-1of3,
+.elgg-col-2of6 {
+	@include elgg-col(12);
+	@media #{$small} {
+		@include elgg-col(4);
+	}
+}
+
+.elgg-col-2of3,
+.elgg-col-4of6 {
+	@include elgg-col(12);
+	@media #{$small} {
+		@include elgg-col(8);
+	}
+}
+
+.elgg-col-1of4 {
+	@include elgg-col(12);
+	@media #{$small} {
+		@include elgg-col(3);
+	}
+}
+.elgg-col-3of4 {
+	@include elgg-col(12);
+	@media #{$small} {
+		@include elgg-col(9);
+	}
+}
+.elgg-col-1of5 {
+	@include elgg-col($columns: 10, $total-columns: 10);
+	@media #{$small} {
+		@include elgg-col($columns: 2, $total-columns: 10);
+	}
+}
+.elgg-col-2of5 {
+	@include elgg-col($columns: 10, $total-columns: 10);
+	@media #{$small} {
+		@include elgg-col($columns: 4, $total-columns: 10);
+	}
+}
+.elgg-col-3of5 {
+	@include elgg-col($columns: 10, $total-columns: 10);
+	@media #{$small} {
+		@include elgg-col($columns: 6, $total-columns: 10);
+	}
+}
+.elgg-col-4of5 {
+	@include elgg-col($columns: 10, $total-columns: 10);
+	@media #{$small} {
+		@include elgg-col($columns: 8, $total-columns: 10);
+	}
+}
+.elgg-col-1of6 {
+	@include elgg-col(12);
+	@media #{$small} {
+		@include elgg-col(2);
+	}
+}
+.elgg-col-5of6 {
+	@include elgg-col(12);
+	@media #{$small} {
+		@include elgg-col(10);
+	}
+}

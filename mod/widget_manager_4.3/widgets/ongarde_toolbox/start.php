@@ -1,0 +1,1 @@
+<?phpfunction widget_ongarde_toolbox_init(){	elgg_extend_view("css/elgg", "widgets/ongarde_toolbox/css");	elgg_register_widget_type("ongarde_toolbox", elgg_echo("Ongarde Toolbox"), elgg_echo("Ongarde Toolbox"), "groups,index,dashboard,profile", true);}elgg_register_event_handler("widgets_init", "widget_manager", "widget_ongarde_toolbox_init");

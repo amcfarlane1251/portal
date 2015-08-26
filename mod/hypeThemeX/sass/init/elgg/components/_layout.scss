@@ -1,0 +1,161 @@
+/* ***************************************
+	TOPBAR
+**************************************** */
+.elgg-page-topbar {
+	nav {
+		@extend .top-bar;
+		section {
+			@extend .top-bar-section;
+		}
+	}
+}
+
+/* ***************************************
+	HEADER
+**************************************** */
+.elgg-page-header {
+	@include clearfix;
+	background: $layout-header-bg-color;
+	position: relative;
+	margin: 0;
+	& > .elgg-inner {
+		@include grid-row;
+		position: relative;
+		h1 {
+			display: inline-block;
+			margin: 0;
+		}
+	}
+
+	.elgg-page-toolbar {
+		z-index: 2;
+	}
+	.orbit-container {
+		z-index: 1;
+	}
+}
+
+/* ***************************************
+	TOOLSBAR (SITE MENU WRAPPER)
+**************************************** */
+.elgg-page-toolbar {
+	@include grid-row;
+	background: $elgg-toolbar-primary-color;
+	//@include box-shadow(0 -2px 8px $elgg-toolbar-primary-color);
+	position: relative;
+	& .elgg-col {
+		padding: 0;
+	}
+	min-height: $elgg-toolbar-height;
+}
+
+/* ***************************************
+	PAGE BODY
+**************************************** */
+.elgg-page-body {
+	@include clearfix;
+	margin: 0 auto;
+	& > .elgg-inner {
+		@include grid-row;
+		margin-top: -1px;
+		background: $layout-body-inner-bg-color;
+		border: 1px solid $layout-body-border-color;
+		border-top: none;
+		.elgg-layout > * {
+			padding-top: 30px;
+		}
+	}
+}
+
+/* ***************************************
+	FOOTER
+**************************************** */
+.elgg-page-footer {
+	@include clearfix;
+	background: $layout-footer-bg-color;
+	& > .elgg-inner {
+		@include grid-row;
+		background: $layout-footer-inner-bg-color;
+		border: 1px solid $layout-footer-border-color;
+		border-top: 0;
+		padding: $elgg-value-large * 2;
+		margin-bottom: $column-gutter;
+	}
+}
+
+.elgg-system-messages {
+	position: fixed;
+	bottom: 24px;
+	left: 20px;
+	max-width: $small-screen;
+	z-index: 2000;
+}
+.elgg-system-messages li {
+	margin-top: 10px;
+}
+.elgg-system-messages li p {
+	margin: 0;
+}
+
+.elgg-layout {
+	@include grid-row;
+	min-height: $small-screen;
+}
+
+.elgg-layout-one-sidebar {
+	@include grid-row;
+
+	.elgg-main {
+		@include grid-column(12);
+	}
+	.elgg-sidebar {
+		min-height: $elgg-value-small;
+		@include grid-column(12);
+	}
+
+
+	@media #{$small} {
+		.elgg-main {
+			@include grid-column($columns:9, $pull:3);
+		}
+		.elgg-sidebar {
+			@include grid-column($columns:3, $push:9, $last-column: true);
+		}
+	}
+
+}
+
+.elgg-layout-two-sidebar {
+	@include grid-row;
+
+	.elgg-main {
+		@include grid-column($columns : 12, $pull : 12);
+	}
+	.elgg-sidebar {
+		min-height: $elgg-value-small;
+		@include grid-column($columns : 12, $pull : 12);
+	}
+	.elgg-sidebar-alt {
+		min-height: $elgg-value-small;
+		@include grid-column($columns : 12, $push : 12);
+	}
+
+	@media #{$small} {
+		& .elgg-main {
+			@include grid-column($columns:7,$pull:3);
+		}
+		& .elgg-sidebar {
+			@include grid-column($columns:3,$push:9,$last-column:true);
+		}
+		& .elgg-sidebar-alt {
+			@include grid-column($columns:2,$pull:10);
+		}
+
+	}
+}
+
+.elgg-layout-error {
+	& > * {
+		@include grid-column($columns: 8, $center: true);
+	}
+}

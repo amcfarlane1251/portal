@@ -1,0 +1,60 @@
+	h1,h2,h3,h4,h5,h6 { line-height: $header-line-height; margin-top: 0; font-weight: normal;}
+	h1 { font-size: $h1-font-size; }
+	h2 { font-size: $h2-font-size; }
+	h3 { font-size: $h3-font-size; }
+	h4 { font-size: $h4-font-size; }
+
+	acronym {
+		text-transform: none;
+	}
+
+	ol, ul {
+		list-style: none;
+	}
+
+	.elgg-heading-site, .elgg-heading-site:hover {
+		@include grid-column(12);
+		color: $elgg-header-site-color;
+		font-weight: bold;
+		@include text-shadow(1px 1px 0 #000);
+		font-size: emCalc(20px);
+		padding: emCalc(10px);
+		@media #{$small} {
+			font-size: emCalc(25px);
+		}
+	}
+	.elgg-heading-main, .elgg-heading-main:hover {
+		@include grid-column(8);
+		color: $elgg-header-main-color;
+	}
+
+	.elgg-heading-basic {
+		color: $header-font-color;
+		font-size: emCalc(18px);
+	}
+
+	.elgg-subtext {
+		color: lighten($body-font-color, 5%);
+		font-size: emCalc(14px);
+		line-height: 1.2em;
+		font-style: italic;
+	}
+
+	.elgg-text-help {
+		display: block;
+		font-size: 85%;
+		font-style: italic;
+	}
+
+	.elgg-quiet {
+		color: lighten($body-font-color, 10%);
+	}
+
+	.elgg-loud {
+		color: darken($body-font-color, 10%);
+		font-weight: bold;
+	}
+
+	.elgg-output {
+		margin: emCalc(10px) 0;
+	}

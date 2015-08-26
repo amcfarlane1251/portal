@@ -1,0 +1,75 @@
+$headings-weight: 300;
+$primBlue: #335075;
+$darkBlue: #243850;
+$white: #fff;
+
+$boxShadow: 0px 3px 0px 0px #283F5B;
+
+#wb-main-in{
+
+	.elgg-main{
+
+		h2{
+			margin:12px 0;
+			font-weight:$headings-weight;
+		}
+
+		.elgg-head{
+			padding:0;
+			margin:0;
+		}
+	}
+
+	.elgg-form-requests-add, .elgg-form-projects-edit{
+
+		div{
+
+			label{
+				margin:12px 0;
+			}
+
+			.add-opi{
+				float:left;
+				margin:0 0 12px;
+			}
+
+			.add-opi + select{
+				clear:left;
+				display:block;
+			}
+			div{
+				clear:left;
+			}
+
+		}
+
+
+	}
+
+	.project-stats{
+
+		.label{
+			font-weight:bold;
+		}
+
+	}
+
+	.add-opi, .remove-opi{
+		color:$white !important;
+		background:$primBlue;
+		padding:.3em .6em;
+		border:1px solid $darkBlue;
+		border-radius:2px;
+		-webkit-box-shadow: $boxShadow;
+		-moz-box-shadow: $boxShadow;
+		box-shadow: $boxShadow;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+
+	.remove-opi{
+		margin-left: 12px;
+	}
+
+}
