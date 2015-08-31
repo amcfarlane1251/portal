@@ -115,6 +115,106 @@ function phpmailer_extract_from_email($from) {
  * @param array  $params     Additional parameters
  * @return bool
  */
+function phpmailer_send_html($from, $from_name, $to, $to_name, $subject, $body, $headers) {
+	static $phpmailer;
+
+	// Ensure phpmailer object exists
+	if (!is_object($phpmailer) || !is_a($phpmailer, 'PHPMailer')) {
+		require_once elgg_get_plugins_path() . '/phpmailer/vendors/class.phpmailer.php';
+		require_once elgg_get_plugins_path() . '/phpmailer/vendors/class.smtp.php';
+		$phpmailer = new PHPMailer();
+	}
+
+	if (!$from) {
+		throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'from'));
+	}
+
+	if (!$to && !$bcc) {
+		throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'to'));
+	}
+
+	if (!$subject) {
+		throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'subject'));
+	}
+
+	// set line ending if admin selected \n (if admin did not change setting, null is returned)
+	if (elgg_get_plugin_setting('nonstd_mta', 'phpmailer')) {
+		$phpmailer->LE = "\n";
+	} else {
+		$phpmailer->LE = "\r\n";
+	}
+
+	////////////////////////////////////
+	// Format message
+
+	$phpmailer->ClearAllRecipients();
+	$phpmailer->ClearAttachments();
+
+	// Set the from name and email
+	$phpmailer->From = $from;
+	$phpmailer->FromName = $from_name;
+
+	// Set destination address
+	if (isset($to)) {
+		$phpmailer->AddAddress($to, $to_name);
+	}
+
+	// set bccs if exists
+	if ($bcc && is_array($bcc)) {
+		foreach ($bcc as $address)
+			$phpmailer->AddBCC($address);
+	}
+
+	$phpmailer->Subject = $subject;
+
+	$mail->CharSet = 'UTF-8';
+	$phpmailer->IsHTML(true);
+
+	$phpmailer->Body = $body;
+
+	if ($files && is_array($files)) {
+		foreach ($files as $file) {
+			if (isset($file['path'])) {
+				$phpmailer->AddAttachment($file['path'], $file['name']);
+			}
+		}
+	}
+
+	$is_smtp   = elgg_get_plugin_setting('phpmailer_smtp', 'phpmailer');
+	$smtp_host = elgg_get_plugin_setting('phpmailer_host', 'phpmailer');
+	$smtp_auth = elgg_get_plugin_setting('phpmailer_smtp_auth', 'phpmailer');
+
+	$is_ssl    = elgg_get_plugin_setting('ep_phpmailer_ssl', 'phpmailer');
+	$ssl_port  = elgg_get_plugin_setting('ep_phpmailer_port', 'phpmailer');
+
+	if ($is_smtp && isset($smtp_host)) {
+		$phpmailer->IsSMTP();
+		$phpmailer->Host = $smtp_host;
+		$phpmailer->SMTPAuth = false;
+		if ($smtp_auth) {
+			$phpmailer->SMTPAuth = true;
+			$phpmailer->Username = elgg_get_plugin_setting('phpmailer_username', 'phpmailer');
+			$phpmailer->Password = elgg_get_plugin_setting('phpmailer_password', 'phpmailer');
+
+			if ($is_ssl) {
+				$phpmailer->SMTPSecure = "ssl";
+				$phpmailer->Port = $ssl_port;
+			}
+		}
+	}
+	else {
+		// use php's mail
+		$phpmailer->IsMail();
+	}
+
+	$phpmailer->addCustomHeader($headers);
+	$return = $phpmailer->Send();
+	if (!$return ) {
+		elgg_log('PHPMailer error: ' . $phpmailer->ErrorInfo, 'WARNING');
+	}
+	return $return;
+}
+
 function phpmailer_send($from, $from_name, $to, $to_name, $subject, $body, array $bcc = NULL, $html = false, array $files = NULL, array $params = NULL) {
 	static $phpmailer;
 
@@ -222,7 +322,7 @@ function phpmailer_send($from, $from_name, $to, $to_name, $subject, $body, array
 		// use php's mail
 		$phpmailer->IsMail();
 	}
-
+	$phpmailer->isHTML(true);
 	$return = $phpmailer->Send();
 	if (!$return ) {
 		elgg_log('PHPMailer error: ' . $phpmailer->ErrorInfo, 'WARNING');

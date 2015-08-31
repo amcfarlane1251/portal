@@ -308,7 +308,7 @@
 				"plaintext_message" => $plaintext_message
 			);
 
-			if(html_email_handler_send_email($options)){
+			if(html_email_handler_send_email($options, $user->email)){
 				if(empty($digest_mail_send)){
 					$digest_mail_send = 1;
 				} else {
@@ -1518,7 +1518,7 @@
 	 * 
 	 * @return BOOL true|false
 	 */
-	function html_email_handler_send_email(array $options = null){
+	function html_email_handler_send_email(array $options = null, $toEmail){
 		$result = false;
 		
 		$site = elgg_get_site_entity();
@@ -1629,7 +1629,9 @@
 
 			// convert to to correct format
 			$to = implode(", ", $options["to"]);
-			$result = mail($to, $options["subject"], $message, $headers, $sendmail_options);
+			$site = elgg_get_site_entity();
+			$return = phpmailer_send_html($site->email, $site->name, $toEmail, '', $options["subject"], $message, $headers);
+			//$result = mail($to, $options["subject"], $message, $headers, $sendmail_options);
 		}
 
 		return $result;
