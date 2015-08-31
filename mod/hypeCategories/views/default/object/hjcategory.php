@@ -57,12 +57,14 @@ if (!$full) {
 			'pagination' => true,
 			'types' => $types,
 			'subtypes' => $subtypes,
-			'limit' => get_input('limit', 20),
+			'limit' => get_input('limit', 30),
 			'relationship' => HYPECATEGORIES_RELATIONSHIP,
 			'relationship_guid' => $entity->guid,
 			'inverse_relationship' => true,
 			'count' => true,
 			'size' => $size,
+			'joins' => array("JOIN " . elgg_get_config('dbprefix') . "objects_entity oe ON e.guid = oe.guid"),
+			'order_by' => 'oe.title ASC',
 		);
 
 		$count = elgg_get_entities_from_relationship($options);
