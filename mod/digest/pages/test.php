@@ -5,8 +5,6 @@
 	// remove some view extensions
 	digest_prepare_run();
 	
-	//overide view
-	set_view_location('river/elements/summary', elgg_get_plugins_path()."digest/views/custom/");
 	$digest = "site";
 	$interval = DIGEST_INTERVAL_MONTHLY;
 	$header_text = elgg_get_plugin_setting("custom_text_site_header", "digest");
@@ -57,8 +55,7 @@
 		"ts_lower" => $ts_lower,
 		"ts_upper" => $ts_upper,
 		"interval" => $interval,
-		"group" => $group,
-		"email" => true
+		"group" => $group
 	);
 		
 	$content = "";
@@ -79,8 +76,7 @@
 		"footer" => elgg_view("digest/elements/footer", $vars),
 		"digest_header" => elgg_view("digest/elements/header", $vars),
 		"digest_online" => elgg_view("digest/elements/online", $vars),
-		"digest_unsubscribe" => elgg_view("digest/elements/unsubscribe", $vars),
-		"email" => true
+		"digest_unsubscribe" => elgg_view("digest/elements/unsubscribe", $vars)
 	);
 	
 	$msgbody = elgg_view_layout("digest", $params);
@@ -92,8 +88,5 @@
 		if(digest_send_mail($user, "Test message from Digest", $msgbody, digest_get_online_url($vars), true)){
 			echo "mail send<br />";
 		}
-		/*if(digest_site($user, $interval) === true){
-			echo "mail send";
-		}*/
 	}
 	

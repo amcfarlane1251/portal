@@ -139,7 +139,7 @@
 	 * @return array
 	 */
 	function digest_walled_garden_hook($hook, $type, $return_value, $params){
-		$return_value[] = "digest/unsubscribe";
+		$return_value = "digest/unsubscribe";
 		
 		return $return_value;
 	}

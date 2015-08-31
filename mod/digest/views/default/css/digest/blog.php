@@ -4,10 +4,6 @@
 	*/
 ?>
 
-.blog h4{
-	margin:0;
-}
-
 .digest-blog {
 	padding: 10px 0px;
 	display: inline-block;

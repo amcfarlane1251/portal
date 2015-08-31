@@ -16,11 +16,6 @@
 	vertical-align: top;
 }
 
-.digest-groups td img{
-	width:95%;
-	padding:0 5%;
-}
-
 .digest-groups tr {
 	border-bottom: 1px dotted #dbdbdb;
 }

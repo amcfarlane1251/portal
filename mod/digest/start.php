@@ -46,6 +46,9 @@
 		
 		elgg_register_action("digest/update/usersettings", dirname(__FILE__) . "/actions/update/usersettings.php");
 		elgg_register_action("digest/update/groupsettings", dirname(__FILE__) . "/actions/update/groupsettings.php");
+
+		// register html converter library
+		elgg_register_library("emogrifier", dirname(__FILE__) . "/vendors/emogrifier/emogrifier.php");
 		
 	}
 	

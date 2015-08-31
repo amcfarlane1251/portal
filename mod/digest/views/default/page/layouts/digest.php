@@ -23,35 +23,21 @@
 		<div id="digest_online">
 			<?php echo $vars["digest_online"]; ?>
 		</div>
-		<?php if(!$vars['email']){?>
 		<div id="digest_container">
-		<?}?>
 			<div>
-				<?php if($vars['email']){
-					echo "<div id='digest-header-email'>";
-				}
-				else{?>
 				<div id="digest_header">
-				<? } ?>
 					<?php echo $vars["digest_header"]; ?>
 				</div>
 				<div id="digest_content">
 					<?php echo $vars["content"]; ?>
 				</div>
 			</div>
-			<?php if($vars['email']){
-				echo "<div id='digest-footer-email'>";
-			}
-			else{?>
 			<div id="digest_footer">
-			<? } ?>
 				<?php echo $vars["footer"]; ?>
 			</div>
 			<div id="digest_unsubscribe">
 				<?php echo $vars["digest_unsubscribe"]; ?>
 			</div>
-		<?php if(!$vars['email']){?>
 		</div>
-		<?}?>
 	</body>
 </html>

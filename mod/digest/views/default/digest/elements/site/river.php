@@ -15,30 +15,11 @@
 		"limit" => 5,
 		"posted_time_lower" => $ts_lower,
 		"posted_time_upper" => $ts_upper,
-		"pagination" => false,
-		"href" => 'none'
+		"pagination" => false
 	);
 
-	if($vars['email']){
-		if($river_items = elgg_get_river($river_options)){
-			$title = "<h2 class='email'>" . elgg_echo("river:friends") . "</h2>";
-			$title .= "<h5 class='email'>To view your colleagues activity visit ".elgg_get_site_url()."activity/friends/".$user->username."</h5>";
-			echo $title;
-			$summary = "<div class='email-section'>";
-			foreach($river_items as $item){
-				$summary .= "<p>".get_river_item_summary($item)."</p>";
-			}
-			$summary .= "</div>";
-
-			echo $summary;
-		}
-	}
-
-	else{
-		if($river_items = elgg_list_river($river_options)){
-			$title = elgg_view("output/url", array("text" => elgg_echo("river:friends")));
-			$title .= "<h5>To view your colleagues activity visit ".elgg_get_site_url()."activity/friends/".$user->username."</h5>";
-
-			echo elgg_view_module("digest", $title, $river_items);
-		}
+	if($river_items = elgg_list_river($river_options)){
+		$title = elgg_view("output/url", array("text" => elgg_echo("river:friends"), "href" => "activity/friends/" . $user->username));
+		
+		echo elgg_view_module("digest", $title, $river_items);
 	}

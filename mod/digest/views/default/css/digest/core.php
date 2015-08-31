@@ -254,39 +254,3 @@ h4 {
 	zoom: 1;
 	*overflow: visible;
 }
-
-/* Email Styles */
-body{
-	font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-.email-section{
-	padding-bottom:24px;
-	border-bottom:1px solid grey;	
-}
-
-.blog, .group{
-	margin:18px 0;	
-}
-
-h2.email, h4.email, h5.email{
-	color:#111;
-}
-
-h2.email{
-	text-transform:uppercase;
-	margin:24px 0 12px;
-}
-
-h4.email{
-	font-size:1.2em;
-}
-
-h5.email{
-	font-size:1em;
-	margin:12px 0 24px;
-}
-
-p{
-	margin:0 0 12px;
-}

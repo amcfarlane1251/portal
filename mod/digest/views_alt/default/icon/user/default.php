@@ -90,14 +90,14 @@ $icon = elgg_view('output/img', array(
 if ($use_link) {
 	$class = elgg_extract('link_class', $vars, '');
 	$url = elgg_extract('href', $vars, $user->getURL());
-	echo elgg_view('output/img', array(
-		'src' => $user->getIconURL(),
-		'alt' => $name,
-		'title' => $name,
-		'class' => $img_class,
+	echo elgg_view('output/url', array(
+		'href' => $url,
+		'text' => $icon,
+		'is_trusted' => true,
+		'class' => $class,
 	));
 } else {
-	echo "";
+	echo "<a>$icon</a>";
 }
 ?>
 </div>

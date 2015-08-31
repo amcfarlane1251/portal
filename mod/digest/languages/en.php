@@ -90,8 +90,8 @@
 		
 		// layout
 		'digest:elements:unsubscribe:info' => "This mail is brought to you by %s because you are signed up for these digests.",
-		'digest:elements:unsubscribe:settings' => "Change your delivery settings here %s.",	
-		'digest:elements:unsubscribe:unsubscribe' => "To directly unsubscribe from this digest, visit %s.",	
+		'digest:elements:unsubscribe:settings' => "Change your %sdelivery settings%s.",	
+		'digest:elements:unsubscribe:unsubscribe' => "To directly unsubscribe from this digest, %sclick here%s.",	
 	
 		// show a digest online
 		'digest:show:error:input' => "Incorrect input to view the digest",
@@ -101,7 +101,7 @@
 		'digest:message:title:site' => "%s: %s digest",
 		'digest:message:title:group' => "%s - %s: %s digest",
 	
-		'digest:elements:online' => "If you can't read the mail, view this digest at %s",
+		'digest:elements:online' => "If you can't read the mail, view this digest %sonline%s",
 		
 		// admin stats
 		'digest:admin:stats:site:title' => "Site digest statistics",
