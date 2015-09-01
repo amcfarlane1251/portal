@@ -18,8 +18,10 @@ $delay_time = $delay_time*1000;
 elgg.provide('elgg.custom_notification');
 
 elgg.custom_notification.init = function() {
-	$('.elgg-system-messages li').stop().animate({opacity: <? echo $delay_opacity; ?>}, <? echo $delay_time; ?>).fadeOut("slow");
-	$('.elgg-system-messages li.elgg-state-success').stop().animate({opacity: <? echo $delay_opacity; ?>}, <? echo $delay_time; ?>).fadeOut("slow");
+	$('.elgg-system-messages li').stop();
+	/*$('.elgg-system-messages li.elgg-state-success').stop().fadeOut("slow", function(){
+	console.log('here');
+});*/
 	$('.elgg-system-messages li').click(function(){
 		$(this).stop().fadeOut('fast');
 	});

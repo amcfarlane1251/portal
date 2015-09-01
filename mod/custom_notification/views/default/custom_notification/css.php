@@ -27,7 +27,7 @@ $delay_opacity = elgg_get_plugin_setting('delay_opacity',  'custom_notification'
 
 	position: fixed;
 	text-align: center;
-  	top: 50%;
+  	top: 20%;
   	left: 50%;
   	transform: translate(-50%, -50%);
   	-ms-transform: translate(-50%, -50%);
@@ -36,9 +36,9 @@ $delay_opacity = elgg_get_plugin_setting('delay_opacity',  'custom_notification'
 #wb-main-in li.elgg-message {
 	font-weight: bold;
 	display: block;
-	padding: 9px;
+	padding: 1.5rem;
 	cursor: pointer;
-	opacity: <? echo $delay_opacity; ?>;
+	opacity: .8;
 	
 	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
 	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
@@ -50,15 +50,16 @@ $delay_opacity = elgg_get_plugin_setting('delay_opacity',  'custom_notification'
 	margin: 10px auto;
 	top: 80px;
 	width: 70%;
-	border-radius: 8px;
+	border-top:8px solid rgba(51,80,117,1);
+	border-radius: 0;
 	
 	text-align:center;
 	z-index: 2000;
 	font-size: 16px;
 }
 #wb-main-in .elgg-state-success {
-	color: <? echo $success_text; ?>;
-	background-color: <? echo $success_background; ?>;
+	color: #111;
+	background-color: #f5f5f5;
 }
 #wb-main-in .elgg-state-error {
 	color: <? echo $error_text; ?>;
