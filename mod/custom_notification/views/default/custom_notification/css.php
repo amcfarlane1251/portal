@@ -24,11 +24,14 @@ $delay_opacity = elgg_get_plugin_setting('delay_opacity',  'custom_notification'
 ********************************/
 #wb-main-in ul.elgg-system-messages {
 	display: block;
-	margin: 0 auto;
+
 	position: fixed;
 	text-align: center;
-	left: 0;
-	right: 0;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	-ms-transform: translate(-50%, -50%);
+  	-webkit-transform: translate(-50%, -50%);
 }
 #wb-main-in li.elgg-message {
 	font-weight: bold;

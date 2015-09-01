@@ -11,7 +11,7 @@ $body = $vars['body'];
 $is_sticky_register = elgg_is_sticky_form('register');
 $wg_body_class = 'elgg-body-walledgarden';
 if ($is_sticky_register) {
-	$wg_body_class .= ' hidden';
+    $wg_body_class .= ' hidden';
 }
 
 $wettoolkit_url = elgg_get_site_url()."mod/wettoolkit";
@@ -59,7 +59,7 @@ $wettoolkit_url = elgg_get_site_url()."mod/wettoolkit";
 </head>
 <body>
 <div id="wb-body">
-	<div id="wb-head"><div id="wb-head-in"><header>
+    <div id="wb-head"><div id="wb-head-in"><header>
 <!-- HeaderStart -->
 <nav role="navigation"><div id="gcwu-gcnb"><h2><?=elgg_echo('login:govNavBar')?></h2><div id="gcwu-gcnb-in"><div id="gcwu-gcnb-fip">
 <div id="gcwu-sig"><div id="gcwu-sig-in"><object data="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/sig-eng.svg';?>" role="img" tabindex="-1" aria-label="Government of Canada" type="image/svg+xml"><img src="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/sig-eng.png';?>" alt="Government of Canada" /></object></div></div>
@@ -77,11 +77,11 @@ $wettoolkit_url = elgg_get_site_url()."mod/wettoolkit";
 
 <?php
 if(strtolower(get_current_language())=="en"){
-	$nextLangID="fr";
-	$nextLang = "Français";
+    $nextLangID="fr";
+    $nextLang = "Français";
 } else {
-	$nextLangID="en";
-	$nextLang = "English";
+    $nextLangID="en";
+    $nextLang = "English";
 }
 
 
@@ -90,13 +90,13 @@ $token = generate_action_token($ts);
 $url = "action/adl_lang_switcher/switch?__elgg_ts=$ts&&__elgg_token=$token";
 
 if(elgg_is_logged_in() && 1==5){
-	?>
-	<a href="<?=$url?>"><?=$nextLang?></a>
-	<?php //BOOM
+    ?>
+    <a href="<?=$url?>"><?=$nextLang?></a>
+    <?php //BOOM
 } else {
-	?>
-	<a href="./?lang=<?=$nextLangID?>" lang="<?=$nextLangID?>"><?=$nextLang?></a>
-	<?php //BOOM 2
+    ?>
+    <a href="./?lang=<?=$nextLangID?>" lang="<?=$nextLangID?>"><?=$nextLang?></a>
+    <?php //BOOM 2
 }
 ?>
 
@@ -108,20 +108,20 @@ if(elgg_is_logged_in() && 1==5){
 </ul>
 </div></div></div></nav>
 <div id="menu-container">
-	<a class="menu" href="#">
-	</a>
+    <a class="menu" href="#">
+    </a>
 </div>
 <div id="gcwu-bnr" role="banner"><div id="gcwu-bnr-in">
 <div id="gcwu-wmms"><div id="gcwu-wmms-in"><object data="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/wmms.svg';?>" role="img" tabindex="-1" aria-label="Symbol of the Government of Canada" type="image/svg+xml"><img src="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/wmms.png';?>" alt="Symbol of the Government of Canada" /></object></div></div>
 <div id="gcwu-title"><p id="gcwu-title-in"><a href="<?php echo elgg_get_site_url();?>"/><?=elgg_echo('login:siteTitle')?></a></p>
 <p id="language"><?php if(elgg_is_logged_in() && 1==5){
-	?>
-	<a href="<?=$url?>"><?=$nextLang?></a>
-	<?php //BOOM
+    ?>
+    <a href="<?=$url?>"><?=$nextLang?></a>
+    <?php //BOOM
 } else {
-	?>
-	<a href="./?lang=<?=$nextLangID?>" lang="<?=$nextLangID?>"><?=$nextLang?></a>
-	<?php //BOOM 2
+    ?>
+    <a href="./?lang=<?=$nextLangID?>" lang="<?=$nextLangID?>"><?=$nextLang?></a>
+    <?php //BOOM 2
 }
 ?></p></div>
 </div></div>
@@ -152,18 +152,18 @@ if(elgg_is_logged_in() && 1==5){
 <!-- MainContentStart -->
 <?php echo $header;?> 
 <div class="elgg-page elgg-page-default">
-	<div class="elgg-page-messages">
-		<?php echo elgg_view('page/elements/messages', array('object' => $vars['sysmessages'])); ?>
-	</div>
-	<div class="elgg-page-body">
-			<?php echo $body; ?>
-	</div>
+    <div class="elgg-page-messages">
+        <?php echo elgg_view('page/elements/messages', array('object' => $vars['sysmessages'])); ?>
+    </div>
+    <div class="elgg-page-body">
+            <?php echo $body; ?>
+    </div>
 </div>
 
 <?php if ($is_sticky_register): ?>
 <script type="text/javascript">
 elgg.register_hook_handler('init', 'system', function() {
-	$('.registration_link').trigger('click');
+    $('.registration_link').trigger('click');
 });
 </script>
 <?php endif; ?>
@@ -171,7 +171,9 @@ elgg.register_hook_handler('init', 'system', function() {
 <!-- MainContentEnd -->
 </div></div>
 </div></div>
-<div id="wb-foot"><div id="wb-foot-in"><footer><h2 id="wb-nav"><?=elgg_echo('login:footer')?></h2>
+<div id="wb-foot"><div id="wb-foot-in"><footer>
+<div><img src="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/banner.png' ?>" style="width:30%;display:block;margin: 0 auto"/></div>
+<h2 id="wb-nav"><?=elgg_echo('login:footer')?></h2>
 <!-- FooterStart -->
 <nav role="navigation"><div id="gcwu-sft"><h3><?=elgg_echo('login:siteFooter')?></h3><div id="gcwu-sft-in">
 <div id="gcwu-tctr">
