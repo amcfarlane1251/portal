@@ -45,8 +45,5 @@
 		<li><a class="forgotten_password_link" href="<?php echo elgg_get_site_url(); ?>forgotpassword">
 			<?php echo elgg_echo('user:password:lost'); ?>
 		</a></li>
-		<li><a class="forgot" href="mailto:cda-adllab@forces.gc.ca?subject=Request Account/Demander un compte">
-			Request Account/Demander un compte
-		</a></li>
 	</ul>
 </div>

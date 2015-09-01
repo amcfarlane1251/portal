@@ -4,9 +4,9 @@
  */
 
 $title = elgg_get_site_entity()->name;
-$welcome = utf8_encode(elgg_echo('wet:welcome'));
+$welcome = elgg_echo('wet:welcome');
 $warning = elgg_echo('wet:warning');
-$warning_text = utf8_encode(elgg_echo('wet:warning_text'));
+$warning_text = elgg_echo('wet:warning_text');
 
 $menu = elgg_view_menu('walled_garden', array(
 	'sort_by' => 'priority',

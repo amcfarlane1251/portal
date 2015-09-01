@@ -16,13 +16,14 @@ if ($is_sticky_register) {
 
 $wettoolkit_url = elgg_get_site_url()."mod/wettoolkit";
 
-
+header("Content-type: text/html; charset=UTF-8");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <link rel="shortcut icon" href="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/favicon.ico';?>" />
 <meta name="description" content="English description / Description en anglais" />
 <meta name="dcterms.creator" content="English name of the content author / Nom en anglais de l'auteur du contenu" />
