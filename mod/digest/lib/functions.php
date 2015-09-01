@@ -1614,7 +1614,7 @@
 
 				$message .= chunk_split(base64_encode($options["plaintext_message"])) . PHP_EOL . PHP_EOL;
 			}
-
+			/*
 			// HTML part of message
 			if(!empty($options["html_message"])){
 				$message .= "--" . $boundary . PHP_EOL;
@@ -1626,11 +1626,12 @@
 
 			// Final boundry
 			$message .= "--" . $boundary . "--" . PHP_EOL;
-
+			*/
+	
 			// convert to to correct format
 			$to = implode(", ", $options["to"]);
 			$site = elgg_get_site_entity();
-			$return = phpmailer_send_html($site->email, $site->name, $toEmail, '', $options["subject"], $message, $headers);
+			$return = phpmailer_send_html($site->email, $site->name, $toEmail, '', $options["subject"], $options['html_message']);
 			//$result = mail($to, $options["subject"], $message, $headers, $sendmail_options);
 		}
 

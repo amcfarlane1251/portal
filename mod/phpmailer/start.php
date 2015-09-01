@@ -115,7 +115,7 @@ function phpmailer_extract_from_email($from) {
  * @param array  $params     Additional parameters
  * @return bool
  */
-function phpmailer_send_html($from, $from_name, $to, $to_name, $subject, $body, $headers) {
+function phpmailer_send_html($from, $from_name, $to, $to_name, $subject, $body, $headers = null) {
 	static $phpmailer;
 
 	// Ensure phpmailer object exists
@@ -167,7 +167,6 @@ function phpmailer_send_html($from, $from_name, $to, $to_name, $subject, $body, 
 
 	$phpmailer->Subject = $subject;
 
-	$mail->CharSet = 'UTF-8';
 	$phpmailer->IsHTML(true);
 
 	$phpmailer->Body = $body;
