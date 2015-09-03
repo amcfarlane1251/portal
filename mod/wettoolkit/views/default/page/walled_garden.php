@@ -173,7 +173,7 @@ elgg.register_hook_handler('init', 'system', function() {
 </div></div>
 </div></div>
 <div id="wb-foot"><div id="wb-foot-in"><footer>
-<div><img src="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/banner.png' ?>" style="width:30%;display:block;margin: 0 auto"/></div>
+<div><img src="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/banner.jpg' ?>" style="width:25%;display:block;margin: 0 auto"/></div>
 <h2 id="wb-nav"><?=elgg_echo('login:footer')?></h2>
 <!-- FooterStart -->
 <nav role="navigation"><div id="gcwu-sft"><h3><?=elgg_echo('login:siteFooter')?></h3><div id="gcwu-sft-in">
