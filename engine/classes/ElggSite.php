@@ -445,7 +445,10 @@ class ElggSite extends ElggEntity {
 			'cache/js/.*',
 			'cron/.*',
 			'services/.*',
-			'users/registered/.*'
+			'users/registered/.*',
+			'usermgmt/deactivate',
+			'usermgmt/activate',
+			'action/activate',
 		);
 
 		// include a hook for plugin authors to include public pages
