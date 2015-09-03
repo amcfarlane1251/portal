@@ -104,18 +104,21 @@ class UserManagement extends ElggObject
 		fclose($csvFile);
 	}
 	
-	public function sendEmail($action, $email)
+	public function sendEmail($action, $email, $guid)
 	{
 		switch($action){
 			case 'activate':
 				$email = sanitise_string($email);
-				$user = $this->getUserByEmail($email);
-
+				$user = get_entity($guid);
 				if(!$user)
 				{
 					return false;
 				}
 				if(!$user->deactivated)
+				{
+					return false;
+				}
+				if(!$this->validateEmail($user, $email))
 				{
 					return false;
 				}
@@ -147,6 +150,19 @@ class UserManagement extends ElggObject
 	private function generateCode($userGuid, $email, $date)
 	{
 		return md5($userGuid . $email . $date . elgg_get_site_url() . get_site_secret());
+	}
+
+	private function validateEmail($user, $email)
+	{
+		error_log($user->email);
+		error_log($email);
+		if($user->email == $email)
+		{
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 } 
