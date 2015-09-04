@@ -158,8 +158,8 @@ class UserManagement extends ElggObject
 
 	private function validateEmail($user, $email)
 	{
-		$this->validEmail($email);
-		if($user->email == $email)
+		$validEmail = $this->validEmail($email);
+		if($user->email == $email && $validEmail)
 		{
 			return true;
 		}
@@ -171,10 +171,11 @@ class UserManagement extends ElggObject
 	private function validEmail($email)
 	{
 		$domain = array_pop(explode('@', $email));
-		if(in_array($domain, $this->approvedDomains))
+		if(!in_array($domain, $this->approvedDomains))
 		{
-			return true;
+			return false;
 		}
+		return true;
 	}
 
 } 

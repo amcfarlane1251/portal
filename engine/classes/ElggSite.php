@@ -448,6 +448,7 @@ class ElggSite extends ElggEntity {
 			'users/registered/.*',
 			'usermgmt/deactivate',
 			'usermgmt/activate',
+			'usermgmt/activation',
 			'action/activate',
 		);
 

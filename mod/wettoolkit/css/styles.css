@@ -578,6 +578,14 @@
 /*
 ** END Forum Styles
 *****************************************/
+footer {
+  position: relative; }
+  footer .banner {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0; }
+
 /*
 ** TOOLTIP STYLES
 *****************************************/

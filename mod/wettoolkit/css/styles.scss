@@ -843,6 +843,17 @@ $link-color:#335075;
 ** END Forum Styles
 *****************************************/
 
+footer{
+	position:relative;
+	.banner{
+		position:absolute;
+		top:-25px;
+		left:0;
+		right:0;
+	}
+}
+
+
 /*
 ** TOOLTIP STYLES
 *****************************************/
