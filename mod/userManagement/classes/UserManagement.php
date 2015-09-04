@@ -13,6 +13,7 @@ class UserManagement extends ElggObject
 		$this->user = '';
 		$this->siteDomain = get_site_domain($CONFIG->site_guid);
 		$this->site = elgg_get_site_entity();
+		$this->approvedDomains = array('forces.gc.ca');
 		
 	}
 
@@ -112,14 +113,17 @@ class UserManagement extends ElggObject
 				$user = get_entity($guid);
 				if(!$user)
 				{
+					error_message(elgg_echo('email:activate:userNotFound'));
 					return false;
 				}
 				if(!$user->deactivated)
 				{
+					error_message(elgg_echo('email:activate:userActivated'));
 					return false;
 				}
 				if(!$this->validateEmail($user, $email))
 				{
+					error_message(elgg_echo('email:activate:invalidEmail'));
 					return false;
 				}
 				//construct the email
@@ -154,14 +158,22 @@ class UserManagement extends ElggObject
 
 	private function validateEmail($user, $email)
 	{
-		error_log($user->email);
-		error_log($email);
+		$this->validEmail($email);
 		if($user->email == $email)
 		{
 			return true;
 		}
 		else{
 			return false;
+		}
+	}
+
+	private function validEmail($email)
+	{
+		$domain = array_pop(explode('@', $email));
+		if(in_array($domain, $this->approvedDomains))
+		{
+			return true;
 		}
 	}
 
