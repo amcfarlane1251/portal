@@ -321,7 +321,7 @@ function phpmailer_send($from, $from_name, $to, $to_name, $subject, $body, array
 		// use php's mail
 		$phpmailer->IsMail();
 	}
-	$phpmailer->isHTML(true);
+
 	$return = $phpmailer->Send();
 	if (!$return ) {
 		elgg_log('PHPMailer error: ' . $phpmailer->ErrorInfo, 'WARNING');

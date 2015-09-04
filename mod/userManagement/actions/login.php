@@ -44,7 +44,7 @@ if (!$user) {
 }
 
 if($user->deactivated){
-   	forward("usermgmt/activate?email={$user->registeredEmail}&guid={$user->guid}");
+   	forward("usermgmt/activate?email={$user->email}&guid={$user->guid}");
 }
 
 try {

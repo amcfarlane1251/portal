@@ -1,6 +1,12 @@
 <?php
 class UserManagement extends ElggObject
 {
+	protected $users = array();
+	protected $user;
+	protected $siteDomain;
+	protected $site;
+	protected $approvedDomains = array();
+
 	public function __construct()
 	{
 		$this->initializeAttributes();
@@ -9,14 +15,15 @@ class UserManagement extends ElggObject
 	protected function initializeAttributes()
 	{
 		parent::initializeAttributes();
-		$this->users = array();
-		$this->user = '';
 		$this->siteDomain = get_site_domain($CONFIG->site_guid);
 		$this->site = elgg_get_site_entity();
-		$this->approvedDomains = array('forces.gc.ca');
-		
+		$this->approvedDomains[] = 'forces.gc.ca';
 	}
-
+	public function setUser($user)
+	{
+		$this->user = $user;
+	}
+	
 	public function getInactiveUsers()
 	{
 		//current date converted to time for math comparison
@@ -27,7 +34,7 @@ class UserManagement extends ElggObject
 				'type' => 'user',
 				'limit' => 0,
 				'joins' => array("join elgg_users_entity u on e.guid = u.guid"),
-				'wheres' => array("u.last_action < {$sixtyDaysAgo}")
+				'wheres' => array("u.last_action > {$sixtyDaysAgo}")
 		));
 
 		$this->users = $users;
@@ -138,7 +145,6 @@ class UserManagement extends ElggObject
 				{
 					return true;
 				}
-
 				break;
 		}
 	}

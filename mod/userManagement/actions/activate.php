@@ -13,6 +13,5 @@ if($userMgmt->sendEmail('activate',$email, $guid)){
 	forward('/');
 }
 else{
-	register_error(elgg_echo('email:activate:invalidEmail'));
 	forward(REFERER);
 }

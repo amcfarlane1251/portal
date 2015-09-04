@@ -33,7 +33,7 @@ function userManagementPageHandler($page)
 			$userGuid = get_input('u');
 			$code = get_input('c');
 			$user = get_entity($userGuid);
-			$userMgmt->user = $user;
+			$userMgmt->setUser($user);
 
 			if($userMgmt->validateCode($code))
 			{
