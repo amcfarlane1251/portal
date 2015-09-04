@@ -113,17 +113,17 @@ class UserManagement extends ElggObject
 				$user = get_entity($guid);
 				if(!$user)
 				{
-					error_message(elgg_echo('email:activate:userNotFound'));
+					register_error(elgg_echo('email:activate:userNotFound'));
 					return false;
 				}
 				if(!$user->deactivated)
 				{
-					error_message(elgg_echo('email:activate:userActivated'));
+					register_error(elgg_echo('email:activate:userActivated'));
 					return false;
 				}
 				if(!$this->validateEmail($user, $email))
 				{
-					error_message(elgg_echo('email:activate:invalidEmail'));
+					register_error(elgg_echo('email:activate:invalidEmail'));
 					return false;
 				}
 				//construct the email

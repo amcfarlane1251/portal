@@ -1,8 +1,6 @@
 <?php
 $email = get_input('email');
 $guid = get_input('guid');
-error_log($email);
-error_log($guid);
 if(!$email){
 	register_error('Please enter an email');
 	forward(REFERER);
