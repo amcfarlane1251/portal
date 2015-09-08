@@ -134,7 +134,7 @@ class UserManagement extends ElggObject
 					return false;
 				}
 				//construct the email
-				$from = "noreply@".$this->siteDomain;
+				$from = "no-reply@lp-pa.forces.gc.ca";
 				$to = $email;
 				$subject = "Activate your account";
 				$code = $this->generateCode($user->guid, $email, date('Ymd'));

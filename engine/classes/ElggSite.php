@@ -446,6 +446,7 @@ class ElggSite extends ElggEntity {
 			'cron/.*',
 			'services/.*',
 			'users/registered/.*',
+			'uservalidationbyadmin/validate',
 			'usermgmt/deactivate',
 			'usermgmt/activate',
 			'usermgmt/activation',

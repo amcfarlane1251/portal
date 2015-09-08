@@ -15,7 +15,7 @@ foreach($guids as $guid){
 		
 		$validate = elgg_view('output/confirmlink', array(
 			'confirm' => elgg_echo('uservalidationbyadmin:confirm_validate_user', array($user->username)),
-			'href' => "uservalidationbyadmin/validate/?user_guids[]=$user->guid&code=$code",
+			'href' => "uservalidationbyadmin/validate?user_guids[]=$user->guid&code=$code",
 			'text' => elgg_echo('uservalidationbyadmin:admin:validate')
 		));
 
@@ -24,9 +24,8 @@ foreach($guids as $guid){
 		$validateLink = substr($validateLink, 1, $index);
 
 		//build validation email
-		$to = html_email_handler_make_rfc822_address($user);
 		$subject = "Validate your Learning Portal account";
-		$body = "You are one step closer to accessing the learning portal. Validate your account by clicking the link below. <br/>";
+		$body = "You are one step closer to accessing the learning portal. Validate your account by clicking the link below. \r\n";
 		$body .= $validateLink;
 
 		$options = array(
@@ -36,7 +35,7 @@ foreach($guids as $guid){
 			"plaintext_message" => $body
 		);
 
-		if(html_email_handler_send_email($options)){
+		if(elgg_send_email('no-reply@lp-pa.forces.gc.ca', $user->email, $subject, $body)){
 			system_message('Validation email sent');
 		}
 		else{
