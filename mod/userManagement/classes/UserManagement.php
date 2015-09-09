@@ -136,7 +136,7 @@ class UserManagement extends ElggObject
 				//construct the email
 				$from = "no-reply@lp-pa.forces.gc.ca";
 				$to = $email;
-				$subject = "Activate your account";
+				$subject = elgg_echo('activate:heading');
 				$code = $this->generateCode($user->guid, $email, date('Ymd'));
 				$link = "{$this->site->url}usermgmt/activation?u={$user->guid}&c=$code";
 				$message = elgg_echo('email:activate:body', array($user->name, $link, $this->site->name, $this->$site->url));
@@ -145,6 +145,8 @@ class UserManagement extends ElggObject
 				{
 					return true;
 				}
+				register_error(elgg_echo('email:activate:error'));
+				return false;
 				break;
 		}
 	}
@@ -153,7 +155,11 @@ class UserManagement extends ElggObject
 	{
 		if($code != $this->generateCode($this->user->guid, $this->user->email, date('Ymd')))
 		{
-
+			return false;
+		}
+		else
+		{
+			return true;
 		}
 	}
 

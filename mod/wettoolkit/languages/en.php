@@ -39,7 +39,7 @@ $language = array (
   'register:emailRules' => 'Please use your forces.gc.ca email',
   'register:pswdInvld' => 'Your password does not meet the requirements',
   'register:confirmationHeading' => '%s, you have successfully registered for an account',
-  'register:confirmationBody' => "An admnistrator needs to verify your account before you can access the Learning Portal. You will
+  'register:confirmationBody' => "An administrator needs to verify your account before you can access the Learning Portal. You will
     receive an email at the address you provided (%s) when your account has been verified.",
   'wet:home' => 'Home',
   'wet:groups' => 'Groups',

@@ -24,8 +24,8 @@ foreach($guids as $guid){
 		$validateLink = substr($validateLink, 1, $index);
 
 		//build validation email
-		$subject = "Validate your Learning Portal account";
-		$body = "You are one step closer to accessing the learning portal. Validate your account by clicking the link below. \r\n";
+		$subject = elgg_echo('uservalidationbyadmin:email:validate:header');
+		$body = elgg_echo('uservalidationbyadmin:email:validate:body');
 		$body .= $validateLink;
 
 		$options = array(
@@ -36,10 +36,10 @@ foreach($guids as $guid){
 		);
 
 		if(elgg_send_email('no-reply@lp-pa.forces.gc.ca', $user->email, $subject, $body)){
-			system_message('Validation email sent');
+			system_message(elgg_echo('uservalidationbyadmin:email:validate:sent'));
 		}
 		else{
-			register_error('Could not send validation email');
+			register_error(elgg_echo('uservalidationbyadmin:email:validate:error'));
 		}
 	}
 }

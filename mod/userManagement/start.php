@@ -22,20 +22,25 @@ function userManagementPageHandler($page)
 			$userMgmt->getInactiveUsers();
 			$userMgmt->deactivateUsers();
 		break;
-
+		//activate account form
 		case 'activate':
 			include(elgg_get_plugins_path().'userManagement/pages/activate.php');
 		break;
-
+		//activate account action
 		case 'activation':
 			$userMgmt = new UserManagement();
 
 			$userGuid = get_input('u');
 			$code = get_input('c');
 			$user = get_entity($userGuid);
+			if(!$user)
+			{
+				register_error(elgg_echo('activate:error'));
+				forward(REFERER);
+			}
 			$userMgmt->setUser($user);
 
-			if($userMgmt->validateCode($code))
+			if(!$userMgmt->validateCode($code))
 			{
 				register_error(elgg_echo('activate:error'));
 				forward(REFERER);

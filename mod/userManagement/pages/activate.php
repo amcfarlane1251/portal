@@ -1,5 +1,5 @@
 <?php
-$title = 'Reactivate Account';
+$title = elgg_echo('activate:heading');
 $content = elgg_view_form('activate');
 
 $body = elgg_view_layout('walled_garden', array(
