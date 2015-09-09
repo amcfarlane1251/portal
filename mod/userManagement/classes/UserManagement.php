@@ -12,6 +12,17 @@ class UserManagement extends ElggObject
 		$this->initializeAttributes();
 	}
 
+	public static function withID($userGuid)
+	{
+
+		$instance = new Self();
+		if($user = get_entity($userGuid))
+		{
+			$instance->setUser($user);
+			return $instance;
+		}
+	}
+
 	protected function initializeAttributes()
 	{
 		parent::initializeAttributes();
@@ -19,11 +30,59 @@ class UserManagement extends ElggObject
 		$this->site = elgg_get_site_entity();
 		$this->approvedDomains[] = 'forces.gc.ca';
 	}
+
 	public function setUser($user)
 	{
 		$this->user = $user;
 	}
-	
+
+	public function setEmail($email)
+	{
+		$this->user->email = $email;
+	}
+
+	public function changeEmail($email)
+	{
+		if($this->validEmail($email))
+		{
+			$this->setEmail($email);
+			
+			if($this->updateUser('email', $email))
+			{
+				return true;
+			}
+			else
+			{
+				register_error(elgg_echo('changeEmail:error'));
+				return false;
+			}
+		}
+		else
+		{
+			register_error(elgg_echo('changeEmail:error'));
+			return false;
+		}
+
+	}
+
+	private function updateUser($field, $value)
+	{
+		$status = elgg_get_ignore_access();
+		elgg_set_ignore_access();
+
+		$user = get_entity($this->user->guid);
+		
+		if($field == 'email' && (!get_user_by_email($value)))
+		{
+			$user->$field = $value;
+			return $user->save();
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	public function getInactiveUsers()
 	{
 		//current date converted to time for math comparison
@@ -128,7 +187,7 @@ class UserManagement extends ElggObject
 					register_error(elgg_echo('email:activate:userActivated'));
 					return false;
 				}
-				if(!$this->validateEmail($user, $email))
+				if(!$this->validateEmail($email))
 				{
 					register_error(elgg_echo('email:activate:invalidEmail'));
 					return false;
@@ -168,10 +227,10 @@ class UserManagement extends ElggObject
 		return md5($userGuid . $email . $date . elgg_get_site_url() . get_site_secret());
 	}
 
-	private function validateEmail($user, $email)
+	private function validateEmail($email)
 	{
 		$validEmail = $this->validEmail($email);
-		if($user->email == $email && $validEmail)
+		if($this->user->email == $email && $validEmail)
 		{
 			return true;
 		}
@@ -180,7 +239,7 @@ class UserManagement extends ElggObject
 		}
 	}
 
-	private function validEmail($email)
+	public function validEmail($email)
 	{
 		$domain = array_pop(explode('@', $email));
 		if(!in_array($domain, $this->approvedDomains))

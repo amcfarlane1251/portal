@@ -451,6 +451,7 @@ class ElggSite extends ElggEntity {
 			'usermgmt/activate',
 			'usermgmt/activation',
 			'action/activate',
+			'action/changeEmail',
 		);
 
 		// include a hook for plugin authors to include public pages

@@ -8,6 +8,7 @@ function userManagementInit()
 	//register actions
 	elgg_register_action('login', $pluginPath.'actions/login.php', 'public');
 	elgg_register_action('activate', $pluginPath.'actions/activate.php', 'public');
+	elgg_register_action('changeEmail', $pluginPath.'actions/changeEmail.php', 'public');
 	elgg_register_action('users/import', $pluginPath."actions/import.php", 'admin');
 	//register page handler for routes
 	elgg_register_page_handler('usermgmt', 'userManagementPageHandler');
@@ -24,7 +25,16 @@ function userManagementPageHandler($page)
 		break;
 		//activate account form
 		case 'activate':
-			include(elgg_get_plugins_path().'userManagement/pages/activate.php');
+			$userMgmt = new UserManagement();
+			//check if user doesnt have forces email send them to different form
+			if($userMgmt->validEmail(get_input('email')))
+			{
+				include(elgg_get_plugins_path().'userManagement/pages/activate.php');
+			}
+			else
+			{
+				include(elgg_get_plugins_path().'userManagement/pages/changeEmail.php');
+			}
 		break;
 		//activate account action
 		case 'activation':

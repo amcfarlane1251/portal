@@ -23,6 +23,11 @@ If you cannot click on the link, copy and paste it into your browser manually.
 	'activate:success' => 'Account has been activated',
 	'activate:error' => 'Unable to activate account',
 
+	'changeEmail:heading' => 'Update Your Email',
+	'changeEmail:subHeading' => 'Please enter your <strong>@forces.gc.ca</strong> email to continue',
+	'changeEmail:success' => 'You have successfully updated your email',
+	'changeEmail:error' => 'Unable to update email for the account',
+
 
 );
 

@@ -1,6 +1,7 @@
 <?php
 $email = get_input('email');
 $guid = get_input('guid');
+
 if(!$email){
 	register_error('Please enter an email');
 	forward(REFERER);
@@ -8,9 +9,10 @@ if(!$email){
 
 $userMgmt = UserManagement::withID($guid);
 
-if($userMgmt->sendEmail('activate',$email, $guid)){
-	system_message(elgg_echo('email:activate:sent'));
-	forward('/');
+if($userMgmt->changeEmail($email))
+{
+	system_message(elgg_echo('changeEmail:success'));
+	forward("usermgmt/activate?email={$email}&guid={$guid}");
 }
 else{
 	forward(REFERER);
