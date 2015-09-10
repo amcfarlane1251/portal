@@ -19,16 +19,13 @@ elgg.provide('elgg.custom_notification');
 
 elgg.custom_notification.init = function() {
 	$('.elgg-system-messages li').stop();
+	$('.elgg-system messages li.elgg-state-success').stop();
 	setTimeout(function(){
-		$('.elgg-system-messages li').fadeOut("slow", function(){
-			console.log('here');
-		});
+		$('.elgg-system-messages li').fadeOut("slow");
 	},4000);
-
 
 	$('.elgg-system-messages li').click(function(){
 		$(this).stop().fadeOut('slow');
-		console.log('click fade out');
 	});
 }
 elgg.register_hook_handler('init', 'system', elgg.custom_notification.init);
