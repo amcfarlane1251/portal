@@ -18,11 +18,8 @@ $delay_time = $delay_time*1000;
 elgg.provide('elgg.custom_notification');
 
 elgg.custom_notification.init = function() {
-	$('.elgg-system-messages li').stop();
-	$('.elgg-system messages li.elgg-state-success').stop();
-	setTimeout(function(){
-		$('.elgg-system-messages li').fadeOut("slow");
-	},4000);
+	$('.elgg-system-messages li').stop(true).animate({opacity: 0.9}, 4000);
+	$('.elgg-system-messages li.elgg-state-success').fadeOut('slow');
 
 	$('.elgg-system-messages li').click(function(){
 		$(this).stop().fadeOut('slow');
