@@ -45,7 +45,7 @@ $wettoolkit_url = elgg_get_site_url()."mod/wettoolkit";
 <meta name="author" content="Canadian Defence Academy" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/grids/css/util-min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/js/css/joyride-2.1.min.css';?>" />
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/css/theme-min.css';?>" />

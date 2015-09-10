@@ -15,7 +15,7 @@ class UserManagement extends ElggObject
 	public static function withID($userGuid)
 	{
 
-		$instance = new Self();
+		$instance = new self();
 		if($user = get_entity($userGuid))
 		{
 			$instance->setUser($user);
