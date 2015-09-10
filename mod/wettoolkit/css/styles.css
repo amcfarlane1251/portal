@@ -127,6 +127,8 @@
     font-size: 2em; }
   #wb-main-in .elgg-menu-entity {
     height: auto; }
+  #wb-main-in .elgg-head {
+    border-bottom: none; }
   #wb-main-in .elgg-module-walledgarden {
     padding: 1rem; }
     #wb-main-in .elgg-module-walledgarden h1, #wb-main-in .elgg-module-walledgarden h2, #wb-main-in .elgg-module-walledgarden h3, #wb-main-in .elgg-module-walledgarden h4 {
@@ -156,6 +158,8 @@
     background: whitesmoke !important; }
     #wb-main-in .elgg-page-body .elgg-body.elgg-main {
       padding: 20px 10px; }
+      #wb-main-in .elgg-page-body .elgg-body.elgg-main .elgg-head {
+        border-bottom: none; }
     #wb-main-in .elgg-page-body h2 {
       padding-bottom: 0; }
   #wb-main-in .elgg-state-success {

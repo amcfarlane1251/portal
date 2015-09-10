@@ -162,6 +162,10 @@ $link-color:#335075;
 		height:auto;
 	}
 
+	.elgg-head{
+		border-bottom:none;
+	}
+
 	/* Login Page Styles
 	*********************/
 	.elgg-module-walledgarden{
@@ -211,6 +215,9 @@ $link-color:#335075;
 		background:$widget-activity-bg !important;
 		.elgg-body.elgg-main{
 			padding:20px 10px;
+			.elgg-head{
+				border-bottom:none;
+			}
 		}
 		h2{
 			padding-bottom:0;
