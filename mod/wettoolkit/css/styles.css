@@ -759,6 +759,12 @@ a.tooltip.bottom:hover:before {
   background-repeat: repeat-x;
   outline: 0; }
 
+/* ACCOUNT INFO STYLES
+****************************/
+#users_email {
+  font-size: 16px;
+  padding: 10px 2px; }
+
 /** MOBILE STYLES **/
 @media screen and (max-width: 1200px) {
   #wb-core-in, #wb-main, #gcwu-psnb-in, #gcwu-psnb .mb-menu {

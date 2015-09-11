@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Elgg email input
@@ -26,6 +25,4 @@ $user = elgg_get_page_owner_entity();
 
 ?>
 
-<input type="text" <?php echo elgg_format_attributes($vars); ?> />
-
-
+<p id="users_email"><?php echo $user->email; ?></p>
