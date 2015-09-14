@@ -11,7 +11,7 @@ $all_link = elgg_view('output/url', array(
 	'is_trusted' => true,
 ));
 
-$subgroups = au_subgroups_get_subgroups($vars['entity'], 10);
+$subgroups = au_subgroups_get_subgroups($vars['entity'], 15);
 $body = '';
 
 if (!$subgroups) {

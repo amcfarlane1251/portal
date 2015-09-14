@@ -152,7 +152,7 @@ function au_subgroups_get_parent_group($group) {
 }
 
 
-function au_subgroups_get_subgroups($group, $limit = 10, $sortbytitle = false) {
+function au_subgroups_get_subgroups($group, $limit = 15, $sortbytitle = false) {
   $options = array(
     'types' => array('group'),
     'relationship' => AU_SUBGROUPS_RELATIONSHIP,
