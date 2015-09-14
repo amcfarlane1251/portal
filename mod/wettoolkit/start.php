@@ -36,7 +36,7 @@ elgg_register_menu_item('site', array (
 elgg_register_menu_item('site', array (
 	'name' => 'MobileApps',
 	'text' => elgg_echo('wet:mobileapp'),
-	'href' => 'http://s3.ongarde.net/portal/pages/view/100/caf-mobile-app-store'
+	'href' => 'http://www.canada.ca/en/mobile/'
 ));
 
 elgg_register_menu_item('site', array (
