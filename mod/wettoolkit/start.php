@@ -51,6 +51,7 @@ elgg_register_menu_item('site', array (
         'text' => elgg_echo('wet:lpr'),
         'href' => 'http://s3.ongarde.net/portal/projects/all'
 ));
+
 if (elgg_is_logged_in()) {
 	$user_guid = elgg_get_logged_in_user_guid();
 	$address = urlencode(current_page_url());
@@ -64,6 +65,10 @@ if (elgg_is_logged_in()) {
 		'id' => 'add-bookmark'
 	));
 }
+
+//register "Configure your tool" and "Account statistics" menu items for admins only
+elgg_register_event_handler('pagesetup', 'system', 'userSettingsSetup');
+
 //overide default river delete action
 elgg_unregister_action('river/delete');
 elgg_register_action('river/delete', elgg_get_plugins_path()."wettoolkit/actions/river/delete.php");
@@ -164,7 +169,29 @@ function users_page_handler($page){
 		break;
 	}
 }
-	
+
+
+function userSettingsSetup()
+{
+	elgg_unregister_menu_item('page', '1_plugins');
+	elgg_unregister_menu_item('page', '1_statistics');
+
+	if(elgg_is_admin_logged_in()){
+		$params = array(
+			'name' => '1_plugins',
+			'text' => elgg_echo('usersettings:plugins:opt:linktext'),
+			'href' => "settings/plugins/{$user->username}",
+		);
+		elgg_register_menu_item('page', $params);
+
+		$params = array(
+			'name' => '1_statistics',
+			'text' => elgg_echo('usersettings:statistics:opt:linktext'),
+			'href' => "settings/statistics/{$user->username}",
+		);
+		elgg_register_menu_item('page', $params);
+	}
+}
 	// Register our initialization function. We put a huge priority number to ensure that it runs last and can clear out all existing CSS
 	register_elgg_event_handler('init','system','wet_theme_init', 9999999999999);
 	
