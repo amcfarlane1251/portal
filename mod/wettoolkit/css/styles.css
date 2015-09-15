@@ -320,8 +320,6 @@
         line-height: 1; }
         #wb-main-in .elgg-widget-content .widget-your-network ul li a {
           font-size: 1rem; }
-      #wb-main-in .elgg-widget-content .widget-your-network ul li:nth-of-type(5) a {
-        margin-right: 9px; }
       #wb-main-in .elgg-widget-content .widget-your-network ul li:hover {
         border-left: 4px solid #2c3e50; }
       #wb-main-in .elgg-widget-content .widget-your-network ul li span {
@@ -911,15 +909,15 @@ a.tooltip.bottom:hover:before {
   #wb-main-in .elgg-col-1of3 {
     width: 33.33%; }
   #wb-main-in #elgg-widget-col-1, #wb-main-in #elgg-widget-col-3 {
-    width: 18%;
+    width: 19%;
     clear: none; }
   #wb-main-in #elgg-widget-col-3 {
     width: 20%; }
   #wb-main-in #elgg-widget-col-2 {
-    width: 62%;
+    width: 61%;
     clear: none; }
   #wb-main-in .index-search-submit {
-    width: 17% !important; }
+    width: 19% !important; }
   #wb-main-in .my-profile .edit-profile a {
     font-size: .875rem !important;
     margin-bottom: 4px !important; } }

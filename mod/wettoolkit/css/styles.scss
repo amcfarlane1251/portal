@@ -490,11 +490,6 @@ $link-color:#335075;
 						font-size:1rem;
 					}
 				}
-				li:nth-of-type(5){
-					a{
-						margin-right:9px;
-					}
-				}
 				li:hover{
 					border-left: 4px solid $midnight-blue;
 				}
@@ -1291,7 +1286,7 @@ a.tooltip.bottom:hover:before { top: 20px; }
 		}
 
 		#elgg-widget-col-1, #elgg-widget-col-3{
-			width:18%;
+			width:19%;
 			clear:none;
 		}
 
@@ -1300,12 +1295,12 @@ a.tooltip.bottom:hover:before { top: 20px; }
 		}
 
 		#elgg-widget-col-2{
-			width:62%;
+			width:61%;
 			clear:none;
 		}
 
 		.index-search-submit{
-			width:17% !important;
+			width:19% !important;
 		}
 		.my-profile{
 			.edit-profile a{
