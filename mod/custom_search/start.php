@@ -3,15 +3,15 @@
  * Elgg search plugin
  *
  */
-elgg_register_event_handler('init','system','search_init');
+elgg_register_event_handler('init','system','custom_search_init');
 /**
  * Initialize search plugin
  */
-function search_init() {
+function custom_search_init() {
 	global $CONFIG;
 	require_once 'search_hooks.php';
 	// page handler for search actions and results
-	elgg_register_page_handler('search', 'search_page_handler');
+	elgg_register_page_handler('search', 'custom_search_page_handler');
 	// register some default search hooks
 	elgg_register_plugin_hook_handler('search', 'object', 'search_objects_hook');
 	elgg_register_plugin_hook_handler('search', 'user', 'search_users_hook');
@@ -47,7 +47,7 @@ function search_init() {
  * @param array $page Page elements from core page handler
  * @return bool
  */
-function search_page_handler($page) {
+function custom_search_page_handler($page) {
 	// if there is no q set, we're being called from a legacy installation
 	// it expects a search by tags.
 	// actually it doesn't, but maybe it should.
@@ -56,7 +56,7 @@ function search_page_handler($page) {
 		set_input('q', $page[0]);
 		//set_input('search_type', 'tags');
 	}
-	$base_dir = elgg_get_plugins_path() . 'search/pages/search';
+	$base_dir = elgg_get_plugins_path() . 'custom_search/pages/search';
 	include_once("$base_dir/index.php");
 	return true;
 }
@@ -358,22 +358,49 @@ function search_get_where_sql($table, $fields, $params, $use_fulltext = TRUE) {
 		$advanced_search = (isset($params['advanced_search']) && $params['advanced_search']);
 		$quotes_used = (elgg_substr_count($query, '"') >= 2); 
 		
-		if (!$use_fulltext || $booleans_used || $advanced_search || $quotes_used) {
-			$options = 'IN BOOLEAN MODE';
-		} else {
-			// natural language mode is default and this keyword isn't supported in < 5.1
-			//$options = 'IN NATURAL LANGUAGE MODE';
-			$options = '';
+		//stores an array of the words searched
+		$wordArray = str_word_count($query,1);
+		$useLike = FALSE;
+
+		//checks wheather or not a 'LIKE' query should be
+		//made instead of a 'MATCH - AGAINST'
+		foreach($wordArray as $word) {
+			$wordLength = strlen($word);
+			$indexCount = count($word);
+			$count = 0;
+			if($wordLength < 4) {
+				$count++;
+				//check if all words in search are under 4 chars
+				//and that theres more than 1 word($indexCount)
+				if(($count == $indexCount) && $indexCount > 0) {
+					$useLike = TRUE;
+					break;
+				}
+			} 
 		}
+
+		//use 'LIKE' query instead of 'MATCH - AGAINST'
+		if($useLike == TRUE) {
+			$query = sanitise_string($query);
+			//checks if more than 1 word,
+			//dont want 'OR' appended if only 1 column selected
+			if(count($fields) > 0) {
+				$fields_str = implode(' OR ', $fields);
+			}
+			$where = "$fields_str LIKE '%$query%'";
+		} else {
+			if (!$use_fulltext || $booleans_used || $advanced_search || $quotes_used) {
+				$options = 'IN BOOLEAN MODE';
+			} 
+
+			else {
+				$options = '';
+			}
 		
-		// if short query, use query expansion.
-		// @todo doesn't seem to be working well.
-//		if (elgg_strlen($query) < 5) {
-//			$options .= ' WITH QUERY EXPANSION';
-//		}
-		$query = sanitise_string($query);
-		$fields_str = implode(',', $fields);
-		$where = "(MATCH ($fields_str) AGAINST ('$query' $options))";
+			$query = sanitise_string($query);
+			$fields_str = implode(',', $fields);
+			$where = "(MATCH ($fields_str) AGAINST ('$query' $options))";
+		}
 	}
 	return $where;
 }
