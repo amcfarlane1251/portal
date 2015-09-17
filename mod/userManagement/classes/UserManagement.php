@@ -41,47 +41,6 @@ class UserManagement extends ElggObject
 		$this->user->email = $email;
 	}
 
-	public function changeEmail($email)
-	{
-		if($this->validEmail($email))
-		{
-			$this->setEmail($email);
-			
-			if($this->updateUser('email', $email))
-			{
-				return true;
-			}
-			else
-			{
-				register_error(elgg_echo('changeEmail:error'));
-				return false;
-			}
-		}
-		else
-		{
-			register_error(elgg_echo('changeEmail:error'));
-			return false;
-		}
-
-	}
-
-	private function updateUser($field, $value)
-	{
-		$status = elgg_get_ignore_access();
-		elgg_set_ignore_access();
-
-		$user = get_entity($this->user->guid);
-		
-		if($field == 'email' && (!get_user_by_email($value)))
-		{
-			$user->$field = $value;
-			return $user->save();
-		}
-		else
-		{
-			return false;
-		}
-	}
 
 	public function getInactiveUsers()
 	{
@@ -239,6 +198,29 @@ class UserManagement extends ElggObject
 		}
 	}
 
+	public function changeEmail($email)
+	{
+		if($this->validEmail($email))
+		{
+			$this->setEmail($email);
+			
+			if($this->updateUser('email', $email))
+			{
+				return true;
+			}
+			else
+			{
+				register_error(elgg_echo('changeEmail:error'));
+				return false;
+			}
+		}
+		else
+		{
+			register_error(elgg_echo('changeEmail:error:domain'));
+			return false;
+		}
+	}
+
 	public function validEmail($email)
 	{
 		$domain = array_pop(explode('@', $email));
@@ -247,6 +229,24 @@ class UserManagement extends ElggObject
 			return false;
 		}
 		return true;
+	}
+
+	private function updateUser($field, $value)
+	{
+		$status = elgg_get_ignore_access();
+		elgg_set_ignore_access();
+
+		$user = get_entity($this->user->guid);
+		
+		if($field == 'email' && (!get_user_by_email($value)))
+		{
+			$user->$field = $value;
+			return $user->save();
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 } 

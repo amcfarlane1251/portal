@@ -43,7 +43,16 @@ if (!$user) {
 	forward(REFERER);
 }
 
-if($user->deactivated){
+$userMgmt = new UserManagement();
+$encryptedPswd = md5("changeme".$user->salt);
+
+if($user->password == $encryptedPswd) {
+	//forward to change password form
+	$_SESSION['userId'] = $user->guid;
+	forward("usermgmt/resetPassword");
+}
+
+if($user->deactivated || !$userMgmt->validEmail($user->email)){
    	forward("usermgmt/activate?email={$user->email}&guid={$user->guid}");
 }
 

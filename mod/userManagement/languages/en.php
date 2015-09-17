@@ -27,6 +27,12 @@ If you cannot click on the link, copy and paste it into your browser manually.
 	'changeEmail:subHeading' => 'Please enter your <strong>@forces.gc.ca</strong> email to continue',
 	'changeEmail:success' => 'You have successfully updated your email',
 	'changeEmail:error' => 'Unable to update email for the account',
+	'changeEmail:error:domain' => 'Please enter your @forces.gc.ca email',
+
+	'resetPassword:heading' => 'Reset Password',
+	'resetPassword:subHeading' => 'Please enter your new password below',
+	'resetPassword:submit' => 'Reset Password',
+	'resetPassword:error:passwordMismatch' => 'Both passwords must match'
 
 
 );

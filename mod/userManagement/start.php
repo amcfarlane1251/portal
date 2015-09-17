@@ -9,6 +9,7 @@ function userManagementInit()
 	elgg_register_action('login', $pluginPath.'actions/login.php', 'public');
 	elgg_register_action('activate', $pluginPath.'actions/activate.php', 'public');
 	elgg_register_action('changeEmail', $pluginPath.'actions/changeEmail.php', 'public');
+	elgg_register_action('resetPassword', $pluginPath.'actions/resetPassword.php', 'public');
 	elgg_register_action('users/import', $pluginPath."actions/import.php", 'admin');
 	//register page handler for routes
 	elgg_register_page_handler('usermgmt', 'userManagementPageHandler');
@@ -83,6 +84,10 @@ function userManagementPageHandler($page)
 			echo elgg_view_page($title, $body, 'admin');
 		break;
 
+		case 'resetPassword':
+			set_input('guid',$_SESSION['userId']);
+			include(elgg_get_plugins_path()."userManagement/pages/resetPassword.php");
+			break;
 		case 'registerEmails':
 			include(elgg_get_plugins_path()."userManagement/pages/registerEmails.php");
 			break;
