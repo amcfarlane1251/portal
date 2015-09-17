@@ -22,7 +22,7 @@ function users_settings_save() {
 	elgg_set_user_password();
 	elgg_set_user_default_access();
 	elgg_set_user_name();
-	elgg_set_user_email();
+	//elgg_set_user_email();
 }
 
 /**
@@ -184,46 +184,46 @@ function elgg_set_user_language() {
  * @since 1.8.0
  * @access private
  */
-function elgg_set_user_email() {
-	$email = get_input('email');
-	$user_id = get_input('guid');
+// function elgg_set_user_email() {
+// 	$email = get_input('email');
+// 	$user_id = get_input('guid');
 
-	if (!$user_id) {
-		$user = elgg_get_logged_in_user_entity();
-	} else {
-		$user = get_entity($user_id);
-	}
+// 	if (!$user_id) {
+// 		$user = elgg_get_logged_in_user_entity();
+// 	} else {
+// 		$user = get_entity($user_id);
+// 	}
 
-	if (!is_email_address($email)) {
-		register_error(elgg_echo('email:save:fail'));
-		return false;
-	}
+// 	if (!is_email_address($email)) {
+// 		register_error(elgg_echo('email:save:fail'));
+// 		return false;
+// 	}
 
-	if ($user) {
-		if (strcmp($email, $user->email) != 0) {
-			if (!get_user_by_email($email)) {
-				if ($user->email != $email) {
+// 	if ($user) {
+// 		if (strcmp($email, $user->email) != 0) {
+// 			if (!get_user_by_email($email)) {
+// 				if ($user->email != $email) {
 
-					$user->email = $email;
-					if ($user->save()) {
-						system_message(elgg_echo('email:save:success'));
-						return true;
-					} else {
-						register_error(elgg_echo('email:save:fail'));
-					}
-				}
-			} else {
-				register_error(elgg_echo('registration:dupeemail'));
-			}
-		} else {
-			// no change
-			return null;
-		}
-	} else {
-		register_error(elgg_echo('email:save:fail'));
-	}
-	return false;
-}
+// 					$user->email = $email;
+// 					if ($user->save()) {
+// 						system_message(elgg_echo('email:save:success'));
+// 						return true;
+// 					} else {
+// 						register_error(elgg_echo('email:save:fail'));
+// 					}
+// 				}
+// 			} else {
+// 				register_error(elgg_echo('registration:dupeemail'));
+// 			}
+// 		} else {
+// 			// no change
+// 			return null;
+// 		}
+// 	} else {
+// 		register_error(elgg_echo('email:save:fail'));
+// 	}
+// 	return false;
+// }
 
 /**
  * Set a user's default access level
