@@ -176,6 +176,7 @@ function userSettingsSetup()
 	elgg_unregister_menu_item('page', '1_plugins');
 	elgg_unregister_menu_item('page', '1_statistics');
 
+	/*
 	if(elgg_is_admin_logged_in()){
 		$params = array(
 			'name' => '1_plugins',
@@ -191,6 +192,7 @@ function userSettingsSetup()
 		);
 		elgg_register_menu_item('page', $params);
 	}
+	*/
 }
 	// Register our initialization function. We put a huge priority number to ensure that it runs last and can clear out all existing CSS
 	register_elgg_event_handler('init','system','wet_theme_init', 9999999999999);
