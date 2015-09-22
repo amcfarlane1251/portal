@@ -44,7 +44,7 @@ if (!$user) {
 }
 
 $userMgmt = new UserManagement();
-$encryptedPswd = md5("changeme".$user->salt);
+$encryptedPswd = md5("changeme2015".$user->salt);
 
 if($user->password == $encryptedPswd) {
 	//forward to change password form

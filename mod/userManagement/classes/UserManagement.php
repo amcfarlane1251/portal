@@ -231,6 +231,36 @@ class UserManagement extends ElggObject
 		return true;
 	}
 
+	public function changePswd($password, $passwordAgain)
+	{	
+		if($password != $passwordAgain) {
+			$error = elgg_echo('RegistrationException:PasswordMismatch');
+		}
+		if(!$this->validPswd($password)) {
+			$error = elgg_echo('resetPassword:error:requirements');
+		}
+		if(!$this->updateUser('password', $password)) {
+			$error = elgg_echo('resetPassword:error:general');
+		}
+
+		if($error) {
+			register_error($error);
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+
+	public function validPswd($password)
+	{
+		//check for bad password
+		if(strlen($password) < 8 || preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d,.;:]).+$/', $password) == 0){
+			return false;
+		}
+		return true;
+	}
+
 	private function updateUser($field, $value)
 	{
 		$status = elgg_get_ignore_access();
@@ -238,14 +268,19 @@ class UserManagement extends ElggObject
 
 		$user = get_entity($this->user->guid);
 		
-		if($field == 'email' && (!get_user_by_email($value)))
-		{
-			$user->$field = $value;
-			return $user->save();
+		if($field == 'email') {
+			if (!get_user_by_email($value)) {
+				$user->$field = $value;
+				return $user->save();
+			}
+			else {
+				return false;
+			}
 		}
-		else
-		{
-			return false;
+
+		if($field == 'password') {
+			$user->$field = md5($value.$this->user->salt);
+			return $user->save();
 		}
 	}
 

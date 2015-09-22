@@ -1,15 +1,18 @@
 <?php
 $guid = get_input('guid');
 $password = get_input('password');
-$passwordAgain = get_input('passwordAgain');
+$passwordAgain = get_input('password-again');
 
-if($guid != $_SESSION['guid']) {
+if($guid != $_SESSION['userId']) {
 	forward('');
 }
 
-$userMgmt = new UserManagement($guid);
+$userMgmt = UserManagement::withID($guid);
 
-if($password != $passwordAgain) {
-	register_error(elgg_echo('resetPassword:error:passwordMismatch'));
+if($userMgmt->changePswd($password, $passwordAgain)) {
+	system_message(elgg_echo('resetPassword:success'));
+	forward('');
+}
+else{
 	forward(REFERER);
 }

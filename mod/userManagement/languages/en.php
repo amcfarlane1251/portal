@@ -32,8 +32,11 @@ If you cannot click on the link, copy and paste it into your browser manually.
 	'resetPassword:heading' => 'Reset Password',
 	'resetPassword:subHeading' => 'Please enter your new password below',
 	'resetPassword:submit' => 'Reset Password',
-	'resetPassword:error:passwordMismatch' => 'Both passwords must match'
-
+	'resetPassword:hint' => 'Enter the same password as above',
+	'resetPassword:error:passwordMismatch' => 'Both passwords must match',
+	'resetPassword:error:requirements' => 'Your password does not meet the requirements',
+	'resetPassword:error:general' => 'Unable to update your password',
+	'resetPassword:success' => 'Your password has been updated. Please login with your new password.',
 
 );
 

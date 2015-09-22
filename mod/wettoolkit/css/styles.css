@@ -546,6 +546,38 @@
     width: 65%;
     vertical-align: top; }
 
+.responsive-form label {
+  width: 150px;
+  margin-top: 3px;
+  display: inline-block;
+  float: left;
+  padding: 3px; }
+.responsive-form input:not([type='submit']) {
+  width: 220px;
+  padding: 5px 8px; }
+.responsive-form .form_hint {
+  position: absolute;
+  /* allows proper formatting if hint is two lines */
+  display: none;
+  z-index: 999;
+  /* hints stay above all other elements */
+  max-width: 20%;
+  background: #d45252;
+  margin-left: 16px;
+  padding: .296rem .444rem;
+  font-size: .667rem;
+  color: white; }
+.responsive-form .form_hint:before {
+  content: "\25C0";
+  /* left point triangle in escaped unicode */
+  font-size: 1.5rem;
+  color: #d45252;
+  position: absolute;
+  top: 3px;
+  left: -16px; }
+.responsive-form input:focus + .form_hint {
+  display: inline; }
+
 #filter-dropdown {
   margin: 25px 0 25px 0; }
   #filter-dropdown > a, #filter-dropdown span {
