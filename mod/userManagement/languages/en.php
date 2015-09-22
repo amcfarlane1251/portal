@@ -38,6 +38,8 @@ If you cannot click on the link, copy and paste it into your browser manually.
 	'resetPassword:error:general' => 'Unable to update your password',
 	'resetPassword:success' => 'Your password has been updated. Please login with your new password.',
 
+	'usermgmt:update' => 'Update'
+
 );
 
 add_translation("en", $language);

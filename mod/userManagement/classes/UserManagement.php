@@ -2,7 +2,7 @@
 class UserManagement extends ElggObject
 {
 	protected $users = array();
-	protected $user;
+	public $user;
 	protected $siteDomain;
 	protected $site;
 	protected $approvedDomains = array();

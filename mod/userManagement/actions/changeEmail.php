@@ -8,19 +8,19 @@ if(!$email){
 }
 
 $userMgmt = UserManagement::withID($guid);
-
-if($userMgmt->changeEmail($email))
-{
+error_log($userMgmt->user->deactivated);
+if($userMgmt->changeEmail($email)) {
 	if($userMgmt->user->deactivated)
 	{
 		system_message(elgg_echo('changeEmail:success'));
 		forward("usermgmt/activate?email={$email}&guid={$guid}");
 	}
-	else{
-		system_message(elgg_echo('changeEmail:success'));
-		forward('');
-	}
+
+	system_message(elgg_echo('changeEmail:success'));
+	unset($_SESSION['guid']);
+	login(get_entity($guid));
+	forward();
 }
-else{
+else {
 	forward(REFERER);
 }

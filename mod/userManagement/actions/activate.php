@@ -10,8 +10,10 @@ $userMgmt = UserManagement::withID($guid);
 
 if($userMgmt->sendEmail('activate',$email, $guid)){
 	system_message(elgg_echo('email:activate:sent'));
+	unset($_SESSION['guid']);
 	forward('/');
 }
 else{
+	unset($_SESSION['guid']);
 	forward(REFERER);
 }
