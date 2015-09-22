@@ -8,7 +8,7 @@ if(!$email){
 }
 
 $userMgmt = UserManagement::withID($guid);
-error_log($userMgmt->user->deactivated);
+
 if($userMgmt->changeEmail($email)) {
 	if($userMgmt->user->deactivated)
 	{
