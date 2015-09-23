@@ -1,5 +1,15 @@
 /* MISC Styles
 ******************/
+.friends-picker {
+  height: 500px !important;
+  overflow-y: scroll !important; }
+
+.friends-picker-navigation-l {
+  right: 58px !important; }
+
+.friends-picker-navigation-r {
+  right: 10px !important; }
+
 .col-3, .col-4 {
   float: left;
   margin: 0;

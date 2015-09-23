@@ -25,11 +25,11 @@ if (elgg_is_admin_logged_in()) {
 		
 		$user_guids = $site->getMembers($options);
 	}
-	
-	// add users directly?
-	if (get_input("submit") == elgg_echo("group_tools:add_users")) {
-		$adding = true;
-	}
+}
+
+// add users directly?
+if (get_input("submit") == elgg_echo("group_tools:add_users")) {
+	$adding = true;
 }
 
 $group_guid = (int) get_input("group_guid");

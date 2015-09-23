@@ -15,12 +15,12 @@ $forward_url = $group->getURL();
 
 $tabs = false;
 
-$friends = elgg_get_logged_in_user_entity()->getFriends("", false);
+$friends = elgg_get_entities(array(
+		'type' => 'user',
+		'limit' => false,
+	));
+
 if (!empty($friends)) {
-	$toggle_content = "<span>" . elgg_echo("group_tools:group:invite:friends:select_all") . "</span>";
-	$toggle_content .= "<span class='hidden'>" . elgg_echo("group_tools:group:invite:friends:deselect_all") . "</span>";
-	
-	$friendspicker = elgg_view("output/url", array("text" => $toggle_content, "href" => "javascript:void(0);", "onclick" => "group_tools_toggle_all_friends();", "id" => "friends_toggle", "class" => "float-alt elgg-button elgg-button-action"));
 	$friendspicker .= elgg_view('input/friendspicker', array('entities' => $friends, 'name' => 'user_guid', 'highlight' => 'all'));
 } else {
 	$friendspicker = elgg_echo('groups:nofriendsatall');
@@ -30,7 +30,7 @@ if (!empty($friends)) {
 if (in_array("yes", array($invite_site_members, $invite_email, $invite_csv))) {
 	$tabs = array(
 		"friends" => array(
-			"text" => elgg_echo("friends"),
+			"text" => elgg_echo("all"),
 			"href" => "#",
 			"rel" => "friends",
 			"priority" => 200,
@@ -137,9 +137,8 @@ echo '<div class="elgg-foot">';
 echo elgg_view('input/hidden', array('name' => 'forward_url', 'value' => $forward_url));
 echo elgg_view('input/hidden', array('name' => 'group_guid', 'value' => $group->guid));
 echo elgg_view('input/submit', array('name' => 'submit', 'value' => elgg_echo('invite')));
-if (elgg_is_admin_logged_in()) {
-	echo elgg_view("input/submit", array('name' => 'submit', "value" => elgg_echo("group_tools:add_users"), "onclick" => "return confirm(\"" . elgg_echo("group_tools:group:invite:add:confirm") . "\");"));
-}
+echo elgg_view("input/submit", array('name' => 'submit', "value" => elgg_echo("group_tools:add_users"), "onclick" => "return confirm(\"" . elgg_echo("group_tools:group:invite:add:confirm") . "\");"));
+
 echo '</div>';
 	
 ?>
