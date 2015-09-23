@@ -19,6 +19,9 @@ function userManagementInit()
 function userManagementPageHandler($page)
 {
 	switch($page[0]){
+		case 'users':
+			include(elgg_get_plugins_path().'userManagement/pages/users.php');
+			break;
 		case 'deactivate':
 			$userMgmt = new UserManagement();
 

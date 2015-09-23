@@ -9,7 +9,7 @@ elgg_load_js('elgg.admin');
 elgg_load_js('jquery.jeditable');
 
 $vars = array('page' => $page);
-$content = elgg_view_form('admin/activate');
+$content = elgg_view_form('admin/activate', array('class' => 'responsive-form'));
 
 
 $body = elgg_view_layout('admin', array('content' => $content, 'title' => $title));
