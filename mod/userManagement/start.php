@@ -11,6 +11,7 @@ function userManagementInit()
 	elgg_register_action('changeEmail', $pluginPath.'actions/changeEmail.php', 'public');
 	elgg_register_action('resetPassword', $pluginPath.'actions/resetPassword.php', 'public');
 	elgg_register_action('users/import', $pluginPath."actions/import.php", 'admin');
+	elgg_register_action('admin/activate', $pluginPath."actions/admin/activate.php", 'admin');
 	//register page handler for routes
 	elgg_register_page_handler('usermgmt', 'userManagementPageHandler');
 }
@@ -91,7 +92,11 @@ function userManagementPageHandler($page)
 		case 'registerEmails':
 			include(elgg_get_plugins_path()."userManagement/pages/registerEmails.php");
 			break;
-
+		case 'admin':
+			if($page[1] == activate) {
+				include(elgg_get_plugins_path()."userManagement/pages/admin/activate.php");
+			}
+			break;
 		default:
 			return false;
 	}
