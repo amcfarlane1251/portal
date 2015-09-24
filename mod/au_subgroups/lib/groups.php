@@ -310,6 +310,8 @@ function groups_handle_members_page($guid) {
 		'inverse_relationship' => true,
 		'types' => 'user',
 		'limit' => 20,
+		'joins' => array("JOIN " . elgg_get_config("dbprefix") . "users_entity ue ON e.guid = ue.guid"),
+		'order_by' => 'ue.name'
 	));
 
 	$params = array(
