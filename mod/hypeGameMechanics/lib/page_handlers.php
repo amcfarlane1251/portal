@@ -103,6 +103,7 @@ function page_handler($page, $handler) {
 			break;
 		case 'clearSesh':
 			//clear session badges
+			$_SESSION['badges_check'] = 1;
 			unset($_SESSION['badges']);
 			break;
 		case 'award' :
