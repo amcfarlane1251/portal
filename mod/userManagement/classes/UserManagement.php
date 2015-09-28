@@ -23,6 +23,17 @@ class UserManagement extends ElggObject
 		}
 	}
 
+	public static function withFilter($userGuid)
+	{
+
+		$instance = new self();
+		if($user = get_entity($userGuid))
+		{
+			$instance->setUser($user);
+			return $instance;
+		}
+	}
+
 	protected function initializeAttributes()
 	{
 		parent::initializeAttributes();
@@ -41,7 +52,22 @@ class UserManagement extends ElggObject
 		$this->user->email = $email;
 	}
 
-
+	public function getUsers($queryString = null)
+	{
+		if($queryString) {
+			if($queryString == true){$queryString=1;}
+			
+			return elgg_get_entities_from_metadata(array(
+				'type' => 'user',
+				'limit' => false,
+				'metadata_name_value_pairs' => array(
+					'name' => 'deactivated',
+					'value' => $queryString,
+				)
+			)
+			);
+		}
+	}
 	public function getInactiveUsers()
 	{
 		//current date converted to time for math comparison
@@ -186,11 +212,23 @@ class UserManagement extends ElggObject
 		return md5($userGuid . $email . $date . elgg_get_site_url() . get_site_secret());
 	}
 
+	public function validEmail($email)
+	{
+		$domain = array_pop(explode('@', $email));
+		if(!in_array($domain, $this->approvedDomains))
+		{
+			return false;
+		}
+		return true;
+	}
+
 	private function validateEmail($email)
 	{
-		$validEmail = $this->validEmail($email);
-		if($this->user->email == $email && $validEmail)
-		{
+		if($this->validEmail($email)) {
+			if($this->user->email != $email) {
+				$this->updateUser('email',$email);
+				return true;
+			}
 			return true;
 		}
 		else{
@@ -210,7 +248,7 @@ class UserManagement extends ElggObject
 			}
 			else
 			{
-				register_error(elgg_echo('changeEmail:error'));
+				register_error(elgg_echo('changeEmail:error:exists'));
 				return false;
 			}
 		}
@@ -219,16 +257,6 @@ class UserManagement extends ElggObject
 			register_error(elgg_echo('changeEmail:error:domain'));
 			return false;
 		}
-	}
-
-	public function validEmail($email)
-	{
-		$domain = array_pop(explode('@', $email));
-		if(!in_array($domain, $this->approvedDomains))
-		{
-			return false;
-		}
-		return true;
 	}
 
 	public function changePswd($password, $passwordAgain)
