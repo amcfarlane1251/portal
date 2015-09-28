@@ -59,7 +59,7 @@ $delay_opacity = elgg_get_plugin_setting('delay_opacity',  'custom_notification'
 }
 #wb-main-in .elgg-state-success {
 	color: #111;
-	background-color: #f5f5f5;
+	background-color: #33FF25;
 }
 #wb-main-in .elgg-state-error {
 	color: <? echo $error_text; ?>;
