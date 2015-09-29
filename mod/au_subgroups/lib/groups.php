@@ -463,11 +463,16 @@ function groups_register_profile_buttons($group) {
 
 	if ($actions) {
 		foreach ($actions as $url => $text) {
+			$confirm = '';
+			if($text == 'groups:leave') {
+				$confirm = elgg_echo('groups:leave:warning');
+			}
 			elgg_register_menu_item('title', array(
 				'name' => $text,
 				'href' => $url,
 				'text' => elgg_echo($text),
 				'link_class' => 'elgg-button elgg-button-action',
+				'confirm' => $confirm
 			));
 		}
 	}

@@ -66,6 +66,7 @@ $english = array(
 	'groups:joinrequest' => 'Request membership',
 	'groups:join' => 'Join group',
 	'groups:leave' => 'Leave group',
+	'groups:leave:warning' => 'Are you sure you want to leave this group?',
 	'groups:invite' => 'Invite friends',
 	'groups:invite:title' => 'Invite friends to this group',
 	'groups:inviteto' => "Invite friends to '%s'",
