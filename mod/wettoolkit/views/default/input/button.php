@@ -9,9 +9,6 @@
  * @uses $vars['class'] Additional CSS class
  */
 
- elgg_register_js('button_press', 'mod/wettoolkit/views/default/js/button_press.js');
- elgg_load_js('button_press');
-
 if (isset($vars['class'])) {
 	$vars['class'] = "elgg-button {$vars['class']}";
 } else {
@@ -42,4 +39,4 @@ if (isset($vars['src']) && strpos($vars['src'], elgg_get_site_url()) === false) 
 
 ?>
 
-<input id="formInput" <?php echo elgg_format_attributes($vars); ?> />
+<input id="formButton" <?php echo elgg_format_attributes($vars); ?> />

@@ -765,6 +765,30 @@ a.tooltip.bottom:hover:before {
   font-size: 16px;
   padding: 10px 2px; }
 
+/* FILE UPLOAD PROGRESS STYLES
+******************************/
+#progressbox {
+  padding: 1px;
+  position: relative;
+  width: 300px;
+  border-radius: 3px;
+  display: none;
+  text-align: left;
+  background-color: #ffffff; }
+
+#progressbar {
+  height: 20px;
+  border-radius: 3px;
+  background-color: #335075;
+  width: 1%; }
+
+#statustxt {
+  top: 3px;
+  left: 50%;
+  position: absolute;
+  display: inline-block;
+  color: #000000; }
+
 /** MOBILE STYLES **/
 @media screen and (max-width: 1200px) {
   #wb-core-in, #wb-main, #gcwu-psnb-in, #gcwu-psnb .mb-menu {

@@ -14,6 +14,9 @@
  * @uses $vars['class'] Additional class for the form
  */
 
+ elgg_register_js('button_press', 'mod/wettoolkit/views/default/js/button_press.js');
+ elgg_load_js('button_press');
+
 $defaults = array(
 	'method' => "post",
 	'disable_security' => FALSE,
@@ -30,11 +33,10 @@ if (isset($vars['class'])) {
 $vars['action'] = elgg_normalize_url($vars['action']);
 $vars['method'] = strtolower($vars['method']);
 
-echo $vars['action'];
-
 $body = $vars['body'];
 unset($vars['body']);
 
+echo $vars['disable_security'];
 // Generate a security header
 if (!$vars['disable_security']) {
 	$body = elgg_view('input/securitytoken') . $body;
@@ -43,4 +45,9 @@ unset($vars['disable_security']);
 
 $attributes = elgg_format_attributes($vars);
 
-echo "<form $attributes><fieldset>$body</fieldset></form>";
+echo "<form id='portalForm' $attributes><fieldset>$body</fieldset></form>";
+
+//creates the file upload progress box, only displayed on submit with forms with form that have file input
+echo '<div id="progressbox"><div id="progressbar"></div><div id="statustxt">0%</div></div>';
+echo '<div id="output"></div>';
+

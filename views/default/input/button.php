@@ -37,4 +37,5 @@ if (isset($vars['src']) && strpos($vars['src'], elgg_get_site_url()) === false) 
 	$vars['src'] = "";
 }
 ?>
+
 <input <?php echo elgg_format_attributes($vars); ?> />

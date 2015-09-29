@@ -37,6 +37,8 @@
 	$links['FORUM']['internet']['fr']="<a href='http://www.ongarde.net/forum'>Discussion Forum</a>";
     $links['SUPPORT']['internet']['en']="<a href='http://s3.ongarde.net/portal/pages/view/1138/support-help'>Support (Help)</a>";
 	$links['SUPPORT']['internet']['fr']="<a href='http://s3.ongarde.net/portal/pages/view/1138/support-help'>Support (Aide)</a>";
+	$links['TED TALKS']['internet']['en']="<a href='https://www.ted.com/talks'>TED Talks</a>";
+	$links['TED TALKS']['internet']['fr']="<a href='https://www.ted.com/talks'>TED Talks</a>";
 	$links['TE']['internet']['en']="<a href='http://s3.ongarde.net/portal/groups/profile/1154/training-and-education-job-aid-repository'>T&E Job Aid Repository</a>";
 	$links['TE']['internet']['fr']="<a href='http://s3.ongarde.net/portal/groups/profile/1154/training-and-education-job-aid-repository'>T&E Aide</a>";    
 	$links['TERM']['internet']['en']="<a href='http://www.btb.termiumplus.gc.ca/'>Termium</a>";
@@ -54,10 +56,10 @@
 
 
 	$trainingmgr=array($links['DNDLearn'], $links['TE'], $links['Conferencing'], $links['ISAT'], $links['TERM'], $links['CAFCOD'], $links['SUPPORT']);
-	$instructor=array($links['Allies'], $links['AKE'], $links['ISAT'], $links['DNDLearn'], $links['Conferencing'], $links['KMS'], $links['TE'], $links['TERM'],   $links['SUPPORT']);
-	$developer=array($links['Repository'], $links['ISAT'], $links['DNDLearn'], $links['AKE'], $links['CodeL'], $links['KMS'], $links['TE'], $links['TERM'],  $links['SUPPORT']);
-	$learner=array($links['Allies'], $links['DNDLearn'], $links['EILP'], $links['CFC'], $links['LCCS'], $links['AKE'], $links['TE'], $links['CMR'], $links['KA'], $links['LANGDOC'],$links['Conferencing'], $links['TERM'],   $links['SUPPORT']);
-	$all=array($links['Repository'], $links['Allies'], $links['AKE'], $links['AppStore'], $links['CAFCOD'], $links['CFC'], $links['CodeL'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LANGDOC'], $links['LCCS'], $links['LPR'], $links['SOMNIA'], $links['CMR'], $links['SUPPORT'], $links['TERM'], $links['TE']);
+	$instructor=array($links['Allies'], $links['AKE'], $links['ISAT'], $links['DNDLearn'], $links['Conferencing'], $links['KMS'], $links['TE'], $links['TERM'],   $links['SUPPORT'], $links['TED TALKS']);
+	$developer=array($links['Repository'], $links['ISAT'], $links['DNDLearn'], $links['AKE'], $links['CodeL'], $links['KMS'], $links['TE'], $links['TERM'],  $links['SUPPORT'], $links['TED TALKS']);
+	$learner=array($links['Allies'], $links['DNDLearn'], $links['EILP'], $links['CFC'], $links['LCCS'], $links['AKE'], $links['TE'], $links['CMR'], $links['KA'], $links['LANGDOC'],$links['Conferencing'], $links['TERM'],   $links['SUPPORT'], $links['TED TALKS']);
+	$all=array($links['Repository'], $links['Allies'], $links['AKE'], $links['AppStore'], $links['CAFCOD'], $links['CFC'], $links['CodeL'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LANGDOC'], $links['LCCS'], $links['LPR'], $links['SOMNIA'], $links['CMR'], $links['SUPPORT'], $links['TED TALKS'], $links['TERM'], $links['TE']);
 	
 	$user=elgg_get_logged_in_user_entity();
 	if($user){
