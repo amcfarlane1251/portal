@@ -167,7 +167,7 @@ echo '</div>';
 */
 echo '</div>';
 
-echo '<div class="basic-profile-social-media-wrapper">'; // container for css styling, used to group profile content and display them seperately from other fields
+echo '<div class="basic-profile-social-media-wrapper hidden">'; // container for css styling, used to group profile content and display them seperately from other fields
 
 // pre-populate the social media fields and their prepended link for user profiles
 $fields = array('Facebook' => "http://www.facebook.com/",

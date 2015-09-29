@@ -13,7 +13,7 @@ elgg_load_js('gcconnex-profile'); // js file for handling the edit/save/cancel t
 elgg_load_css('gcconnex-css'); // main css styling sheet
 elgg_load_css('bootstrap-css');
 elgg_load_css('font-awesome'); // font-awesome icons for social media and some of the basic profile fields
-elgg_load_js('lightbox'); // overlay for editing the basic profile fields
+elgg_load_js('fancybox'); // overlay for editing the basic profile fields
 elgg_load_css('lightbox'); // css for it..
 elgg_load_js('basic-profile'); // load js file to init the lightbox overlay (sets the width)
 elgg_load_js('bootstrap');

@@ -214,10 +214,13 @@ $link-color:#335075;
 		padding:0;
 		background:$widget-activity-bg !important;
 		.elgg-body.elgg-main{
-			padding:20px 10px;
+			padding:2.25rem 10px;
 			.elgg-head{
 				border-bottom:none;
 			}
+		}
+		.elgg-sidebar{
+			padding:2.25rem 10px;
 		}
 		h2{
 			padding-bottom:0;

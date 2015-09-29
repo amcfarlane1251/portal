@@ -43,10 +43,6 @@ ul.elgg-menu.elgg-menu-site.elgg-menu-site-default.clearfix {
 }
 
 /*---------- Hides default Elgg text in h1 --------- */
-h1 {
-	text-indent: -999em;
-}
-
 h3 {
 	width: 100% !important;
 }
@@ -252,10 +248,6 @@ a.elgg-menu-closed.elgg-menu-parent {
 
 
 /*----------*/
-
-h1 {
-height: 0px !important;
-}
 
 #wb-main-in a:visited, #wb-main-in a.ui-link:visited {
 color: black;
