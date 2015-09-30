@@ -7,19 +7,6 @@
  */
 
 if (elgg_is_xhr()) {  //This is an Ajax call!
-    // allow the user to edit the access settings for languages entries
-    echo elgg_echo('gcconnex_profile:languages:access');
-
-    $access_id = $user->languages_access;
-    //echo 'Access: ';
-    //var_dump($access_id);
-    $params = array(
-        'name' => "accesslevel['languages']",
-        'value' => $access_id,
-        'class' => 'gcconnex-languages-access'
-    );
-
-    echo elgg_view('input/access', $params);
     //$user_guid = $_GET["user"];
     $user_guid = $_GET["guid"];
     $user = get_user($user_guid);

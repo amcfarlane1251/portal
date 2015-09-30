@@ -102,6 +102,7 @@ if (elgg_is_xhr()) {  //This is an Ajax call!
             }
 
             $user->education_access = $access;
+            error_log('edu: '.$user->education_access);
             $user->save();
 
             break;
@@ -110,7 +111,7 @@ if (elgg_is_xhr()) {  //This is an Ajax call!
             $work_experience = get_input('work');
             $edit = $work_experience['edit'];
             $delete = $work_experience['delete'];
-
+            $access = get_input('access');
             $experience_list = $user->work;
 
             if (!(is_array($delete))) { $delete = array($delete); }
@@ -189,7 +190,7 @@ if (elgg_is_xhr()) {  //This is an Ajax call!
         case 'skills':
             $skillsToAdd = get_input('skillsadded', 'ERROR: Ask your admin to grep: 5FH13GAHHHS0021.');
             $skillsToRemove = get_input('skillsremoved', 'ERROR: Ask your admin to grep: 5FH13GAHHHS0022.');
-            $access = ACCESS_LOGGED_IN;
+            $access = 1;
 
             $skill_guids = array();
 
@@ -248,7 +249,7 @@ if (elgg_is_xhr()) {  //This is an Ajax call!
             $english = get_input('english', 'ERROR: Ask your admin to grep: SDFANLVNVNVNVNVNAA31566.');
             $languagesToAdd = get_input('langadded', 'ERROR: Ask your admin to grep: 5FH13FFSSGAHHHS0021.');
             $languagesToRemove = get_input('langremoved', 'ERROR: Ask your admin to grep: 5AAAAGGFH13GAH0022.');
-            $access = ACCESS_LOGGED_IN;
+            $access = get_input('access');
 
             $user->english = $english;
             $user->french = $french;

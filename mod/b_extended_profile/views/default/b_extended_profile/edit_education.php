@@ -9,10 +9,11 @@
 if (elgg_is_xhr()) {  //This is an Ajax call!
     // allow the user to edit the access settings for education entries
     echo elgg_echo('gcconnex_profile:education:access');
+    $user_guid = $_GET["guid"];
+    $user = get_user($user_guid);
 
     $access_id = $user->education_access;
-    //echo 'Access: ';
-    //var_dump($access_id);
+
     $params = array(
         'name' => "accesslevel['education']",
         'value' => $access_id,
@@ -20,9 +21,6 @@ if (elgg_is_xhr()) {  //This is an Ajax call!
     );
 
     echo elgg_view('input/access', $params);
-    //$user_guid = $_GET["user"];
-    $user_guid = $_GET["guid"];
-    $user = get_user($user_guid);
 
     //get the array of user education entities
     $education_guid = $user->education;

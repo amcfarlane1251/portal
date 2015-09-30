@@ -573,13 +573,14 @@ function saveProfile(event) {
                     work_experience.edit.push(experience);
                 }
             });
-
+            
             // save the information the user just edited
             elgg.action('b_extended_profile/edit_profile', {
                 data: {
                     guid: elgg.get_logged_in_user_guid(),
                     work: work_experience,
-                    section: 'work-experience'
+                    section: 'work-experience',
+                    access: $('.gcconnex-work-experience-access').val()
                 },
                 success: function() {
                     $.get(elgg.normalize_url('ajax/view/b_extended_profile/work-experience'),
@@ -646,21 +647,24 @@ function saveProfile(event) {
 
             var english = [];
             var french = [];
-
             $official_langs = $('.gcconnex-profile-language-official-languages');
+            var engExp = ($official_langs.find('#english_expiry').val() ? $official_langs.find('#english_expiry').val() : 'N/A');
+            var freExp = ($official_langs.find('#french_expiry').val() ? $official_langs.find('#french_expiry').val() : 'N/A');
 
             english = {
                 'writtencomp': $official_langs.find('.gcconnex-languages-english-writtencomp').val(),
                 'writtenexp': $official_langs.find('.gcconnex-languages-english-writtenexp').val(),
                 'oral': $official_langs.find('.gcconnex-languages-english-oral').val(),
-                'expiry': $official_langs.find('#english_expiry').val()
+                'expiry': engExp,
+                'access': 1
             };
 
             french = {
                 'writtencomp': $official_langs.find('.gcconnex-languages-french-writtencomp').val(),
                 'writtenexp': $official_langs.find('.gcconnex-languages-french-writtenexp').val(),
                 'oral': $official_langs.find('.gcconnex-languages-french-oral').val(),
-                'expiry': $official_langs.find('#french_expiry').val()
+                'expiry': freExp,
+                'access': 1
             };
 
             // save the information the user just edited
@@ -669,7 +673,8 @@ function saveProfile(event) {
                     guid: elgg.get_logged_in_user_guid(),
                     section: 'languages',
                     english: english,
-                    french: french
+                    french: french,
+                    access: $('.gcconnex-languages-access').val()
                 },
                 success: function() {
                     $.get(elgg.normalize_url('ajax/view/b_extended_profile/languages'),
