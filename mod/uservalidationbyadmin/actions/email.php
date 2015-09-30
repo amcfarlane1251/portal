@@ -26,7 +26,7 @@ foreach($guids as $guid){
 		//build validation email
 		$subject = elgg_echo('uservalidationbyadmin:email:validate:header');
 		$body = elgg_echo('uservalidationbyadmin:email:validate:body');
-		$body .= $validateLink;
+		$body .= "\r\n".$validateLink;
 
 		$options = array(
 			"to" => $to,

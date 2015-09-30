@@ -83,7 +83,7 @@ Password: the one you provided during registration
 	'uservalidationbyadmin:settings:info' => 'Enter the email ids to be notified when a new user registers. If you have multiple ids seperate them with a comma.',
 
 	'uservalidationbyadmin:email:validate:header' => 'Validate your Learning Portal account',
-	'uservalidationbyadmin:email:validate:body' => 'You are one step closer to accessing the learning portal. Validate your account by clicking the link below:',
+	'uservalidationbyadmin:email:validate:body' => 'You are one step closer to accessing the learning portal. Validate your account by clicking the link below: ',
 	'uservalidationbyadmin:email:validate:sent' => 'Validation email sent',
 	'uservalidationbyadmin:email:validate:error' => 'Could not send validation email',
 );
