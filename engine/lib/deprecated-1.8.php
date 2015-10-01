@@ -4377,7 +4377,7 @@ function add_widget($entity_guid, $handler, $context, $order = 0, $column = 1, $
  */
 function add_widget_type($handler, $name, $description, $context = "all",
 $multiple = false, $positions = "side,main") {
-	elgg_deprecated_notice("add_widget_type deprecated for elgg_register_widget_type", 1.8);
+	elgg_deprecated_notice("elgg_register_widget_type deprecated for elgg_register_widget_type", 1.8);
 
 	return elgg_register_widget_type($handler, $name, $description, $context, $multiple);
 }

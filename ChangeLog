@@ -10624,7 +10624,7 @@
   	* mod/blog/start.php, mod/bookmarks/start.php, mod/file/start.php,
   mod/friends/start.php, mod/groups/start.php, mod/messageboard/start.php,
   mod/pages/start.php, mod/tagcloud/start.php, mod/thewire/start.php,
-  mod/twitter/start.php: replacing calls to add_widget_type() with
+  mod/twitter/start.php: replacing calls to elgg_register_widget_type() with
   elgg_register_widget_type() (from hellekin) 
 
   	* engine/lib/access.php, engine/lib/users.php,

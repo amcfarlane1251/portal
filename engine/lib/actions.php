@@ -224,6 +224,11 @@ function _elgg_validate_token_timestamp($ts) {
  * @access private
  */
 function validate_action_token($visibleerrors = TRUE, $token = NULL, $ts = NULL) {
+
+	$tokenArr = [];
+	$check = true;
+	echo $tokenArr;
+
 	if (!$token) {
 		$token = get_input('__elgg_token');
 	}
@@ -241,7 +246,14 @@ function validate_action_token($visibleerrors = TRUE, $token = NULL, $ts = NULL)
 		// Validate token
 		if ($token == $required_token) {
 			
-			if (_elgg_validate_token_timestamp($ts)) {
+			foreach($tokenArr as $array) {
+				if($token = $array) {
+					$check = false;
+					break;
+				}
+			}
+
+			if (_elgg_validate_token_timestamp($ts) && $check == true) {
 				// We have already got this far, so unless anything
 				// else says something to the contrary we assume we're ok
 				$returnval = true;
@@ -252,6 +264,7 @@ function validate_action_token($visibleerrors = TRUE, $token = NULL, $ts = NULL)
 				), $returnval);
 
 				if ($returnval) {
+					$tokenArr[] = $token;
 					return true;
 				} else if ($visibleerrors) {
 					register_error(elgg_echo('actiongatekeeper:pluginprevents'));
