@@ -5,6 +5,9 @@
 	<label class="normal">User: </label>
 	<input type="text" name="user" id="name" class="text-input"/>
 </div>
+<div id="names">
+
+</div>
 <input type="submit" name="submit" class="elgg-button elgg-button-submit" value="Activate"/>
 
 <script>
@@ -40,16 +43,23 @@
                 return results;
               }
             }));
+
           }
         });
       },
       minLength: 1,
       focus: function( event, ui ) {
-        $( "#name" ).val( ui.item.name );
+        //do nothing
         return false;
       },
       select: function( event, ui ) {
-        $( "#name" ).val( ui.item.name );
+        var userString = "<div>";
+        userString += "<p>"+ui.item.label+"</p>";
+        userString += "<input type='hidden' name='user-guids[]' value='"+ui.item.guid+"'/>";
+        userString += "</div>";
+        $("#names").append(userString);
+
+        this.value = '';
         return false;
       }
     })

@@ -232,6 +232,9 @@
       margin-bottom: 10px; }
     #wb-main-in .elgg-module-widget .elgg-head {
       height: auto; }
+    #wb-main-in .elgg-module-widget > .elgg-head h3 {
+      background-color: #0a3e88;
+      color: antiquewhite; }
     #wb-main-in .elgg-module-widget > .elgg-body {
       overflow: visible;
       -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

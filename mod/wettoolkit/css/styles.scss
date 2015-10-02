@@ -355,6 +355,13 @@ $link-color:#335075;
 		.elgg-head {
 			height:auto;
 		}
+		> .elgg-head{
+			h3{
+				background-color: rgb(10, 62, 136);
+    			color: antiquewhite;
+			}
+		}
+
 		> .elgg-body{
 			overflow:visible;
 			//border:1px solid $widget-border !important;
