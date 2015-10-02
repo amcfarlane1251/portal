@@ -7,11 +7,13 @@ $(document).ready(function() {
         .css("cursor", "default")
         .fadeTo(125,0.4);
 
-        //display the loading spinner if there
-        //is a file being uploaded
+        //display the loading spinner if there is a file to upload
         if(fileInput.val()) {
              this.ajaxLoader = elgg.normalize_url("/_graphics/ajax_loader.gif");
-            $(this).append("<div class='ajax-spinner'><img src='"+this.ajaxLoader+"' alt='Loading Content...' style='position: fixed; top: 50%; left: 50%;'/></div>").fadeIn(100);
+            //$(this).append("<div class='ajax-spinner'><img id='file-upload-spinner' src='"+this.ajaxLoader+"' alt='Loading Content...'/></div>").fadeIn(100);
+            var spinner = "<div class='ajax-spinner'>" + "<img id='file-upload-spinner' src='"+this.ajaxLoader+"' alt='Loading Content...' + />" + "</div>" + 
+                "<div id='upload-text'>" + "<h4>Uploading File...</h4>" + "</div>";
+            $(this).append(spinner).fadeIn(100);
         }
     });
 }); 

@@ -241,7 +241,6 @@ function validate_action_token($visibleerrors = TRUE, $token = NULL, $ts = NULL)
 
 		// Validate token
 		if ($token == $required_token) {
-			
 
 			if (_elgg_validate_token_timestamp($ts)) {
 				// We have already got this far, so unless anything

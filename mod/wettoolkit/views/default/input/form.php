@@ -45,8 +45,3 @@ unset($vars['disable_security']);
 
 $attributes = elgg_format_attributes($vars);
 echo "<form id='portalForm' $attributes><fieldset>$body</fieldset></form>";
-
-//creates the file upload progress box, only displayed on submit with forms with form that have file input
-echo '<div id="progressbox"><div id="progressbar"></div><div id="statustxt">0%</div></div>';
-echo '<div id="output"></div>';
-
