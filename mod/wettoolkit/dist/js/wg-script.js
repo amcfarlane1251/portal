@@ -42,7 +42,7 @@ $(function(){
 	});
 
 
-	$('.elgg-body.elgg-main').wetMessages();
+	$('.elgg-page-body').wetMessages();
 
 	/*********************************
 	** WelcomeWidget CLASS

@@ -49,6 +49,7 @@ header("Content-type: text/html; charset=UTF-8");
 <!--[if gt IE 8]><!-->
 
 <!--<script src="<?php echo $wettoolkit_url.'/dist/js/jquery.min.js';?>"></script>-->
+<link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/base.min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/styles.min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/grids/css/util-min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/js/css/pe-ap-min.css';?>" />
@@ -219,7 +220,8 @@ elgg.register_hook_handler('init', 'system', function() {
 <!--[if gt IE 8]><!-->
 <script src="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/js/theme-min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/jquery.validate.min.js';?>"></script>
-<script src="<?php echo $wettoolkit_url.'/dist/js/script.js';?>"></script>
+<script src="<?php echo $wettoolkit_url.'/dist/js/wetMessages.min.js';?>"></script>
+<script src="<?php echo $wettoolkit_url.'/dist/js/wg-script.min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/validation-script.js';?>"></script>
 <!--<script src="<?php echo $wettoolkit_url.'/dist/js/jquerymobile/jquery.mobile.min.js';?>"></script>-->
 <!--<![endif]-->
