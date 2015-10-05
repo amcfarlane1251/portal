@@ -40,6 +40,16 @@ You can now login to the site with:
 Username: %s
 Password: the one you provided during registration
 
+Bonjour %s,
+
+La présente est pour vous informer que votre compte a été activé à %s.
+
+Vous pouvez maintenant ouvrir une session en utilisant :
+
+Nom de l’utilisateur : %s
+Mot de passe : celui que vous avez choisi à l’inscription
+
+
 %s
 %s
 ",
@@ -83,7 +93,7 @@ Password: the one you provided during registration
 	'uservalidationbyadmin:settings:info' => 'Enter the email ids to be notified when a new user registers. If you have multiple ids seperate them with a comma.',
 
 	'uservalidationbyadmin:email:validate:header' => 'Validate your Learning Portal account',
-	'uservalidationbyadmin:email:validate:body' => 'You are one step closer to accessing the learning portal. Validate your account by clicking the link below: ',
+	'uservalidationbyadmin:email:validate:body' => 'You are one step closer to accessing the learning portal. Validate your account by clicking the link below / Vous êtes sur le point de pouvoir accéder au portail d’apprentissage. Validez votre compte en cliquant l’hyperlien plus bas ',
 	'uservalidationbyadmin:email:validate:sent' => 'Validation email sent',
 	'uservalidationbyadmin:email:validate:error' => 'Could not send validation email',
 );
