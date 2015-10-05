@@ -143,7 +143,7 @@
       padding: 1rem;
       cursor: pointer;
       font-size: 1rem; }
-  #wb-main-in .alert {
+  #wb-main-in .elgg-layout-one-column .alert {
     margin: 0 30px 1rem; }
   #wb-main-in .elgg-module-walledgarden {
     padding: 1rem; }
