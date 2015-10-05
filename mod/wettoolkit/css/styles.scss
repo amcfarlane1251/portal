@@ -178,7 +178,7 @@ $link-color:#335075;
 
 		li.elgg-message{
 			top:0;
-			margin:0 30px;
+			margin:.5rem;
 			opacity:1 !important;
 			padding:1rem;
 			cursor:pointer;
@@ -187,7 +187,7 @@ $link-color:#335075;
 	}
 
 	.elgg-layout-one-column .alert{
-		margin:0 30px 1rem;
+		margin:0 .5rem 1rem;
 	}
 
 	/* Login Page Styles
@@ -220,6 +220,7 @@ $link-color:#335075;
 				
 			}
 		}
+
 		h1.elgg-heading-walledgarden{
 			border:none !important;
 			text-indent:0;
@@ -1123,28 +1124,31 @@ a.tooltip.bottom:hover:before { top: 20px; }
 		margin:0 0 1.25rem;
 		}
 	}
-#wb-main-in .elgg-widget-content{
-	#widget-welcome{
-		.index-search{
-			input[type='text']{
-				width:100%;
-				float:none;
-				box-shadow:2px 2px 1px 0px #666 inset, -2px 2px 1px 0px #666 inset;
+	#wb-main-in .elgg-widget-content{
+		#widget-welcome{
+			.index-search{
+				input[type='text']{
+					width:100%;
+					float:none;
+					box-shadow:2px 2px 1px 0px #666 inset, -2px 2px 1px 0px #666 inset;
+				}
+			}
+			.index-search-submit{
+				float:right;
+				margin-bottom:1rem !important;
+			}
+			#search-options{
+				clear:both;
 			}
 		}
-		.index-search-submit{
-			float:right;
-			margin-bottom:1rem !important;
-		}
-		#search-options{
-			clear:both;
-		}
 	}
-}
 }
 @media screen and (max-width: 768px){
 
 	#wb-main-in{
+		input[type="text"], input[type="password"]{
+			width:80%;
+		}
 		.elgg-menu-owner-block, .elgg-menu-page{
 			li{
 				margin: 12px;

@@ -138,13 +138,13 @@
     transform: none !important; }
     #wb-main-in ul.elgg-system-messages li.elgg-message {
       top: 0;
-      margin: 0 30px;
+      margin: .5rem;
       opacity: 1 !important;
       padding: 1rem;
       cursor: pointer;
       font-size: 1rem; }
   #wb-main-in .elgg-layout-one-column .alert {
-    margin: 0 30px 1rem; }
+    margin: 0 .5rem 1rem; }
   #wb-main-in .elgg-module-walledgarden {
     padding: 1rem; }
     #wb-main-in .elgg-module-walledgarden h1, #wb-main-in .elgg-module-walledgarden h2, #wb-main-in .elgg-module-walledgarden h3, #wb-main-in .elgg-module-walledgarden h4 {
@@ -853,6 +853,8 @@ a.tooltip.bottom:hover:before {
   #wb-main-in .elgg-widget-content #widget-welcome #search-options {
     clear: both; } }
 @media screen and (max-width: 768px) {
+  #wb-main-in input[type="text"], #wb-main-in input[type="password"] {
+    width: 80%; }
   #wb-main-in .elgg-menu-owner-block li, #wb-main-in .elgg-menu-page li {
     margin: 12px; }
   #wb-main-in .elgg-page-default {
