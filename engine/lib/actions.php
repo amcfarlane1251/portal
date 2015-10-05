@@ -251,7 +251,6 @@ function validate_action_token($visibleerrors = TRUE, $token = NULL, $ts = NULL)
 					'token' => $token,
 					'time' => $ts
 				), $returnval);
-
 				if ($returnval) {
 					return true;
 				} else if ($visibleerrors) {

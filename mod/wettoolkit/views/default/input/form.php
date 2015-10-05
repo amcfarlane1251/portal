@@ -45,3 +45,5 @@ unset($vars['disable_security']);
 
 $attributes = elgg_format_attributes($vars);
 echo "<form id='portalForm' $attributes><fieldset>$body</fieldset></form>";
+
+echo "<div id='progressNumber'></div>";
