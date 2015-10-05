@@ -82,7 +82,11 @@
 			'num_columns' => $num_columns,
 			'exact_match' => true
 	);
-	$content = elgg_view_layout('widgets', $params);
+
+	$notice = elgg_echo('wet:notice');
+	
+	$content = "<div class='alert alert-warning'>{$notice}</div>";
+	$content .= elgg_view_layout('widgets', $params);
 
 	//feeature tour via Jquery joyride plugin
 	$content .= "<ol id='joyRideTipContent'>
