@@ -60,6 +60,10 @@ $link-color:#335075;
 	}
 }
 
+.alert{
+	padding:1rem;
+	font-size:1rem;
+}
 .elgg-system-messages{
 	z-index: 100000 !important;
 }
@@ -1305,6 +1309,9 @@ a.tooltip.bottom:hover:before { top: 20px; }
 	.elgg-module-walledgarden{
 		.elgg-col-1of2{
 			width:48%;
+		}
+		.elgg-col-2of2{
+			width:96%;
 		}
 	}
 

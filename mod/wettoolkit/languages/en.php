@@ -49,7 +49,7 @@ $language = array (
 	'wet:welcome' => 'Welcome to The Learning Portal',
 	'wet:warning' => 'Warning!',
 	'wet:warning_text' => 'You are about to access a Department of National Defence computer network that is intended for authorized users only. You should have no expectation of privacy in your use of this network. Use of this network constitutes consent to monitoring, retrieval, and disclosure of any information stored within the network for any purpose including criminal prosecution.',
-
+  'wet:notice' => '<strong>Note: </strong>The Learning Portal will be offline for maintenance on 5 Oct 2015 from 16:00 - 20:00.'
 );
 
 add_translation("en", $language);
