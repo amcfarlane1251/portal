@@ -17,11 +17,11 @@ $menu = elgg_view_menu('walled_garden', array(
 $login_box = elgg_view('core/account/login_box', array('module' => 'walledgarden-login'));
 
 echo <<<HTML
-<div class="elgg-col elgg-col-2of2">
+<!-- <div class="elgg-col elgg-col-2of2">
 	<div class="elgg-inner">
 		<div class="alert alert-warning">$notice</div>
 	</div>
-</div>
+</div> -->
 <div class="elgg-col elgg-col-1of2">
 	<div class="elgg-inner">
 		<h1 class="elgg-heading-walledgarden">

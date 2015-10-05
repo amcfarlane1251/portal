@@ -85,8 +85,8 @@
 
 	$notice = elgg_echo('wet:notice');
 	
-	$content = "<div class='alert alert-warning'>{$notice}</div>";
-	$content .= elgg_view_layout('widgets', $params);
+	//$content = "<div class='alert alert-warning'>{$notice}</div>";
+	$content = elgg_view_layout('widgets', $params);
 
 	//feeature tour via Jquery joyride plugin
 	$content .= "<ol id='joyRideTipContent'>
