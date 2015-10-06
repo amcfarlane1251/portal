@@ -114,6 +114,7 @@ if(elgg_is_logged_in() && 1==5){
 <div id="gcwu-bnr" role="banner"><div id="gcwu-bnr-in">
 <div id="gcwu-wmms"><div id="gcwu-wmms-in"><object data="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/wmms.svg';?>" role="img" tabindex="-1" aria-label="Symbol of the Government of Canada" type="image/svg+xml"><img src="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/wmms.png';?>" alt="Symbol of the Government of Canada" /></object></div></div>
 <div id="gcwu-title"><p id="gcwu-title-in"><a href="<?php echo elgg_get_site_url();?>"/><?=elgg_echo('login:siteTitle')?></a></p>
+<div id="gcwu-credits"><p id="gcwu-credits-in"><?=elgg_echo('login:siteCredits')?></p></div>
 <p id="language"><?php if(elgg_is_logged_in() && 1==5){
 	?>
 	<a href="<?=$url?>"><?=$nextLang?></a>

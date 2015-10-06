@@ -780,6 +780,24 @@ a.tooltip.bottom:hover:before {
   #upload-text p {
     color: #145788 !important; }
 
+#progressBar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 25px;
+  margin-top: -12.5px;
+  margin-left: -125px;
+  display: none; }
+
+#gcwu-credits p {
+  font-size: .55em;
+  margin-left: 10px;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 25%; }
+
 /** MOBILE STYLES **/
 @media screen and (max-width: 1200px) {
   #wb-core-in, #wb-main, #gcwu-psnb-in, #gcwu-psnb .mb-menu {

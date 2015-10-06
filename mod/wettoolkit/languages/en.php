@@ -12,6 +12,7 @@ $language = array (
   'ongarde:groups' => 'Groups',
   'ongarde:photos' => 'Photos',
   'login:siteTitle' => 'Learning Portal',
+  'login:siteCredits' => 'Created by Military Personnel Generation for the Canadian Armed Forces',
   'login:services' => 'Services',
   'login:departments' => 'Departments',
   'login:breadcrumbs' => 'Breadcrumb trail',
