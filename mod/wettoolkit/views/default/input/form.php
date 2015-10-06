@@ -44,5 +44,6 @@ if (!$vars['disable_security']) {
 unset($vars['disable_security']);
 
 $attributes = elgg_format_attributes($vars);
+echo "<h4 id='progressLabel'></h4>";
 echo "<form id='portalForm' $attributes><fieldset>$body</fieldset></form>";
-echo "<progress id='progressBar' value='0' max='100' label='uploading'><p>Uploading</p>%</progress>";
+echo "<progress id='progressBar' value='0' max='100'</progress>";

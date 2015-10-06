@@ -780,6 +780,18 @@ a.tooltip.bottom:hover:before {
   #upload-text p {
     color: #145788 !important; }
 
+/*FILE UPLOAD STYLES FOR NEW BROWSERS
+***********************************/
+#progressLabel {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin-top: -10px;
+  margin-left: -10px;
+  font-size: small;
+  display: none;
+  z-index: 1; }
+
 #progressBar {
   position: fixed;
   top: 50%;
@@ -790,6 +802,8 @@ a.tooltip.bottom:hover:before {
   margin-left: -125px;
   display: none; }
 
+/*CREDITS STYLES
+************************************/
 #gcwu-credits p {
   font-size: .55em;
   margin-left: 10px;
