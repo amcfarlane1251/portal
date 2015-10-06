@@ -18,60 +18,63 @@ if (elgg_is_sticky_form('register')) {
 
 ?>
 <div class="mtm">
-	<div class="label-container">
-		<label><?php echo elgg_echo('name'); ?></label>
-	</div>
+	<label><?php echo elgg_echo('name'); ?></label>
 	<?php
 	echo elgg_view('input/text', array(
 		'name' => 'name',
 		'value' => $name,
-		'class' => 'elgg-autofocus',
+		'class' => 'elgg-autofocus text-input',
 	));
 	?>
 </div>
-<div>
-	<div class="label-container">
-		<label><?php echo elgg_echo('email'); ?></label>
-		<p><?php echo elgg_echo('register:emailRules') ?></p>
-	</div>
+<div class="clearfix">
+	<label><?php echo elgg_echo('email'); ?></label>
 	<?php
 	echo elgg_view('input/text', array(
 		'name' => 'email',
 		'value' => $email,
+		'class' => "text-input"
+	));
+	?>
+	<span class="form_hint"><?php echo elgg_echo('register:emailRules'); ?></span>
+</div>
+<div>
+	<label><?php echo elgg_echo('register:emailAgain'); ?></label>
+	<?php
+	echo elgg_view('input/text', array(
+		'name' => 'email2',
+		'value' => $email2,
+		'class' => "text-input"
 	));
 	?>
 </div>
 <div>
-	<div class="label-container">
-		<label><?php echo elgg_echo('username'); ?></label>
-	</div>
+	<label><?php echo elgg_echo('username'); ?></label>
 	<?php
 	echo elgg_view('input/text', array(
 		'name' => 'username',
 		'value' => $username,
+		'class' => "text-input"
 	));
 	?>
+	<span class="form_hint"><?php echo elgg_echo('register:username:notice'); ?></span>
 </div>
-<div>
-	<div class="label-container">
-		<label><?php echo elgg_echo('password'); ?></label>
-		<p><?php echo elgg_echo('register:pswdRules') ?></p>
-	</div>
+<div class="clearfix">
+	<label><?php echo elgg_echo('password'); ?></label>
 	<?php
 	echo elgg_view('input/password', array(
 		'name' => 'password',
-		'value' => $password,
+		'class' => "text-input"
 	));
 	?>
+	<span class="form_hint"><?php echo elgg_echo('register:pswdRules'); ?></span>
 </div>
 <div>
-	<div class="label-container">
-		<label><?php echo elgg_echo('passwordagain'); ?></label>
-	</div>
+	<label><?php echo elgg_echo('passwordagain'); ?></label>
 	<?php
 	echo elgg_view('input/password', array(
 		'name' => 'password2',
-		'value' => $password2,
+		'class' => "text-input"
 	));
 	?>
 </div>

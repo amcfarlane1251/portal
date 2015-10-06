@@ -104,6 +104,7 @@ elgg_register_plugin_hook_handler('register', 'menu:river', 'custom_river_menu_s
 //register page handler
 elgg_register_page_handler("feature", "feature_page_handler");
 elgg_register_page_handler("users", "users_page_handler");
+elgg_register_page_handler("register", "alternate_register_page_handler");
 
 }
 
@@ -170,6 +171,10 @@ function users_page_handler($page){
 	}
 }
 
+function alternate_register_page_handler($page_elements, $handler) {
+	include(elgg_get_plugins_path()."wettoolkit/pages/account/register.php");
+	return true;
+}
 
 function userSettingsSetup()
 {

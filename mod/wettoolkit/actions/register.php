@@ -12,6 +12,7 @@ $username = get_input('username');
 $password = get_input('password', null, false);
 $password2 = get_input('password2', null, false);
 $email = get_input('email');
+$email2 = get_input('email2');
 $name = get_input('name');
 $friend_guid = (int) get_input('friend_guid', 0);
 $invitecode = get_input('invitecode');
@@ -19,6 +20,10 @@ $invitecode = get_input('invitecode');
 if (elgg_get_config('allow_registration')) {
 	try {
 		$approvedDomains = array('forces.gc.ca');
+
+		if (strcmp($email, $email2) != 0) {
+			throw new RegistrationException(elgg_echo('register:emailMismatch'));
+		}
 
 		if (trim($password) == "" || trim($password2) == "") {
 			throw new RegistrationException(elgg_echo('RegistrationException:EmptyPassword'));

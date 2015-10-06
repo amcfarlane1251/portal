@@ -567,10 +567,16 @@
 
 .responsive-form label {
   width: 150px;
-  margin-top: 3px;
+  margin: 3px 1rem 0 0;
   display: inline-block;
   float: left;
   padding: 3px; }
+  .responsive-form label span:before {
+    content: "\A";
+    white-space: pre; }
+  .responsive-form label span {
+    font-size: .667rem;
+    font-weight: 400; }
 .responsive-form input:not([type='submit']) {
   width: 220px;
   padding: 5px 8px; }
