@@ -54,9 +54,8 @@ echo "<div class='widget-your-network'>
 				<a href='".elgg_get_site_url()."profile/".$userName."'><img src='".$user->getIconURL('large')."' /></a>
 			</div>
 			<div class='edit-profile'>
-				<a href='".elgg_get_site_url()."profile/".$userName."/edit'>".elgg_echo('widget_manager:widgets:your_network:edit')."</a>
+				<a href='".elgg_get_site_url()."profile/".$userName."'>".elgg_echo('widget_manager:widgets:your_network:edit')."</a>
 				<a href='".elgg_get_site_url()."settings/user/".$userName."'>".elgg_echo('widget_manager:widgets:your_network:settings')."</a>
-				<a href='".elgg_get_site_url()."dashboard'>".elgg_echo('widget_manager:widgets:your_network:dashboard')."</a>
 				".$logout."
 			</div>
 		</div>

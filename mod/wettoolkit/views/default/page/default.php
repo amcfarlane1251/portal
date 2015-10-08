@@ -191,24 +191,11 @@ if(elgg_is_logged_in() && 1==5){
 		</div>
 	</div>
 	
-	<!--
-	<div class="elgg-page-footer">
-		<div class="elgg-inner">
-			<?php echo $footer; ?>
-		</div>
-	</div>
-	-->
 </div>
 
 <?php echo elgg_view('page/elements/foot'); ?>
 
-<!--
-<dl id="gcwu-date-mod" role="contentinfo">
-<dt><?=elgg_echo('login:dateModified')?>:</dt><dd><span><time>2013-07-23</time></span></dd>
-</dl>
 
-<div class="clear"></div>
--->
 <!-- MainContentEnd -->
 </div></div>
 </div></div>
@@ -224,11 +211,7 @@ if(elgg_is_logged_in() && 1==5){
 </ul>
 </div>
 <div class="clear"></div>
-<!--<section><div class="span-2"><h4 class="gcwu-col-head"><?=elgg_echo('login:about')?></h4>
-<ul>
-<li><a href="#"><?=elgg_echo('login:aboutONGARDE')?></a></li>
-</ul>
-</div></section>-->
+
 <section><div class="span-2"><h4 class="gcwu-col-head"><?=elgg_echo('login:contactUs')?></h4>
 <ul>
 <li><a href="mailto:cda-adllab@forces.gc.ca"><?=elgg_echo('login:questionsComments')?></a></li>
