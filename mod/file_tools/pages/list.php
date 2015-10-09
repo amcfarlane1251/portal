@@ -47,7 +47,7 @@ $wheres[] = "NOT EXISTS (
 $files_options = array(
 	"type" => "object",
 	"subtype" => "file",
-	"limit" => $limit,
+	"limit" => false,
 	"offset" => $offset,
 	"container_guid" => $page_owner->getGUID()
 );
