@@ -14,8 +14,8 @@
  * @uses $vars['class'] Additional class for the form
  */
 
- elgg_register_js('button_press', 'mod/wettoolkit/views/default/js/button_press.js');
- elgg_load_js('button_press');
+elgg_register_js('button_press', 'mod/wettoolkit/views/default/js/button_press.js');
+elgg_load_js('button_press');
 
 $defaults = array(
 	'method' => "post",

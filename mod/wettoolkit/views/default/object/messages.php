@@ -151,7 +151,7 @@ if (elgg_in_context('inbox-table') || elgg_in_context('inbox-sent')) {
 	<div class="inbox-message-attachments">$attachments_summary</div>
 	<div class="inbox-message-menu">$menu</div>
 __MSG;
-
+	echo elgg_view("input/checkbox", array("name" => "guids[]", "value" => $entity->guid, "default" => false, "class" => "inbox-message-checkbox"));
 } else {
 
 	if (!$entity->readYet) {

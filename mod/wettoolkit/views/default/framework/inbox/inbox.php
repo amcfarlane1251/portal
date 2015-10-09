@@ -98,3 +98,6 @@ echo elgg_view_entity_list($messages, array(
 ));
 elgg_pop_context();
 
+echo "<a href='javascript:void(0);' id='select-all'>Select All</a>";
+echo "<a href='javascript:void(0);' id='delete-selected-messages'>Delete Selected</a>";
+

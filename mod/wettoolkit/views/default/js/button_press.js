@@ -3,6 +3,9 @@ $(document).ready(function() {
     var fileInput = $('#fileInput');
 
     $('#portalForm').submit(function(event) {
+        
+        //disables the button on form submittsion
+        //prevents multiple form submits
         $("#formButton").prop("disabled", true)
         .css("cursor", "default")
         .fadeTo(125,0.4);
@@ -31,7 +34,9 @@ $(document).ready(function() {
     });
 }); 
 
-//creates the progress bar
+/**
+    Creates the progress bar and label for XMLHttpRequest uploads
+*/
 function uploadProgress(evt) {
     var percentComplete = Math.floor((evt.loaded / evt.total) * 100);
     $('#progressLabel').show("fast");
@@ -39,16 +44,3 @@ function uploadProgress(evt) {
     $('#progressBar').show("fast");
     $('#progressBar').attr('value', percentComplete);
 }
-
-function ieVersion() {
-    var ua = window.navigator.userAgent;
-    var msie = ua.indexOf ( "MSIE " );
-
-    if ( msie > 0 ) { 
-        return parseInt (ua.substring (msie+5, ua.indexOf (".", msie )));
-    }
-    else {      
-        return 0;
-    }
-}
-

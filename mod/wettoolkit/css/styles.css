@@ -812,6 +812,19 @@ a.tooltip.bottom:hover:before {
   left: 0;
   bottom: 25%; }
 
+/*STYLES FOR MSG/NOTIF BULK DELETE
+***********************************/
+#select-all {
+  float: right;
+  text-decoration: none; }
+
+#delete-selected-messages {
+  float: left;
+  text-decoration: none; }
+
+.inbox-message-checkbox {
+  float: right; }
+
 /** MOBILE STYLES **/
 @media screen and (max-width: 1200px) {
   #wb-core-in, #wb-main, #gcwu-psnb-in, #gcwu-psnb .mb-menu {
@@ -835,7 +848,13 @@ a.tooltip.bottom:hover:before {
   div#activity-feed {
     width: 70%;
     display: block;
-    float: left; } }
+    float: left; }
+
+  #gcwu-credits p {
+    position: relative;
+    font-size: .35em;
+    color: #fff;
+    margin-left: 15px; } }
 @media screen and (max-width: 768px) {
   #wb-main-in .elgg-widget-content #widget-welcome > h2 {
     margin-bottom: .41rem; }
