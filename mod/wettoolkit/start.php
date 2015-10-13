@@ -39,7 +39,7 @@ elgg_register_menu_item('site', array (
 	'href' => 'http://www.canada.ca/en/mobile/'
 ));
 
-elgg_register_menu_item('site', array (
+/*elgg_register_menu_item('site', array (
 	'name' => 'HowToVideos',
 	'text' => elgg_echo('wet:howtovideos'),
 	'href' => 'http://s3.ongarde.net/portal/groups/profile/1705/learning-portal-how-to-videos'
@@ -50,7 +50,7 @@ elgg_register_menu_item('site', array (
         'name' => 'LPR',
         'text' => elgg_echo('wet:lpr'),
         'href' => 'http://s3.ongarde.net/portal/projects/all'
-));
+));*/
 
 if (elgg_is_logged_in()) {
 	$user_guid = elgg_get_logged_in_user_guid();
