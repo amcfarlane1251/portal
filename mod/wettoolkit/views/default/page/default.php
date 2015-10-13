@@ -206,7 +206,7 @@ if(elgg_is_logged_in() && 1==5){
 <nav role="navigation"><div id="gcwu-sft"><h3><?=elgg_echo('login:siteFooter')?></h3><div id="gcwu-sft-in">
 <div id="gcwu-tctr">
 <ul>
-<li class="gcwu-tc"><a href="http://s3.ongarde.net/portal/pages/view/2909/guidelines-for-the-use-of-the-learning-portal-lignes-directrices-pour-lutilisation-du-portail-dapprentissage-des-fac" rel="license"><?=elgg_echo('login:termsConditions')?></a></li>
+<li class="gcwu-tc"><a href="https://lp-pa.forces.gc.ca/portal/pages/view/2909/guidelines-for-the-use-of-the-learning-portal-lignes-directrices-pour-lutilisation-du-portail-dapprentissage-des-fac" rel="license"><?=elgg_echo('login:termsConditions')?></a></li>
 <li class="gcwu-tr"><a href="http://www.tbs-sct.gc.ca/pd-dp/index-eng.asp"><?=elgg_echo('login:transparency')?></a></li>
 </ul>
 </div>

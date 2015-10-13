@@ -57,7 +57,7 @@
 	$instructor=array($links['Allies'], $links['AKE'], $links['ISAT'], $links['DNDLearn'], $links['Conferencing'], $links['KMS'], $links['TE'], $links['TERM'],   $links['SUPPORT']);
 	$developer=array($links['Repository'], $links['ISAT'], $links['DNDLearn'], $links['AKE'], $links['CodeL'], $links['KMS'], $links['TE'], $links['TERM'],  $links['SUPPORT']);
 	$learner=array($links['Allies'], $links['DNDLearn'], $links['EILP'], $links['CFC'], $links['LCCS'], $links['AKE'], $links['TE'], $links['CMR'], $links['KA'], $links['LANGDOC'],$links['Conferencing'], $links['TERM'],   $links['SUPPORT']);
-	$all=array($links['Repository'], $links['Allies'], $links['AKE'], $links['AppStore'], $links['CAFCOD'], $links['CFC'], $links['CodeL'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LANGDOC'], $links['LCCS'], $links['LPR'], $links['SOMNIA'], $links['CMR'], $links['SUPPORT'], $links['TERM'], $links['TE']);
+	$all=array($links['Repository'], $links['Allies'], $links['AKE'], $links['CAFCOD'], $links['CFC'], $links['CodeL'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LANGDOC'], $links['LCCS'], $links['LPR'], $links['SOMNIA'], $links['CMR'], $links['SUPPORT'], $links['TERM'], $links['TE']);
 	
 	$user=elgg_get_logged_in_user_entity();
 	if($user){
