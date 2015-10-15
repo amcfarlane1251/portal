@@ -146,8 +146,8 @@
   #wb-main-in .elgg-layout-one-column .alert {
     margin: 0 .5rem 1rem; }
   #wb-main-in .elgg-module-walledgarden {
-    padding: 1rem; }
-    #wb-main-in .elgg-module-walledgarden h1, #wb-main-in .elgg-module-walledgarden h2, #wb-main-in .elgg-module-walledgarden h3, #wb-main-in .elgg-module-walledgarden h4 {
+    padding: 2.25rem; }
+    #wb-main-in .elgg-module-walledgarden h1, #wb-main-in .elgg-module-walledgarden h2, #wb-main-in .elgg-module-walledgarden h3, #wb-main-in .elgg-module-walledgarden h4, #wb-main-in .elgg-module-walledgarden label {
       font-family: 'Open Sans', sans-serif;
       font-weight: 500; }
     #wb-main-in .elgg-module-walledgarden div h2, #wb-main-in .elgg-module-walledgarden div h3 {

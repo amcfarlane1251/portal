@@ -38,7 +38,7 @@
 /*-- Stretch menu bar 100% of body and align on page --*/
 ul.elgg-menu.elgg-menu-site.elgg-menu-site-default.clearfix {
 	width: 100%;
-	position: absolute;
+	position: relative;
 	top: 0px;
 }
 
@@ -329,7 +329,6 @@ a.elgg-button.elgg-button-delete {
 */
 
 .elgg-page-body{
-	margin-top:35px;
 	padding:10px;
 }
 
@@ -409,6 +408,7 @@ ul.elgg-menu-site{
 #wb-main-in ul.elgg-menu-site > li{
 	top:0;
 	padding-bottom:0;
+	max-height: 55px;
 }
 
 #wb-main-in ul.elgg-menu-site > li.elgg-state-selected{
