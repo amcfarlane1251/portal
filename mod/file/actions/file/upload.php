@@ -103,7 +103,7 @@ if (isset($_FILES['upload']['name']) && !empty($_FILES['upload']['name'])) {
 		$mime_type = 'application/vnd.ms-powerpoint';
 	}
 	else{
-		$mime_type = ElggFile::detectMimeType($_FILES['upload']['tmp_name'], $_FILES['upload']['type']);
+		$mime_type = ElggFile::detectMimeType($_FILES['upload']['tmp_name'], $_FILES['upload']['type'], $_FILES['upload']['name']);
 	}
 
 	// hack for Microsoft zipped formats
