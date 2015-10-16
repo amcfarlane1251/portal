@@ -4,11 +4,11 @@
  * content.php
  *
 */
-	$links['AKE']['internet']['en']="<a href='http://s7.ongarde.net/alsc/'>AKE</a>";
-	$links['AKE']['internet']['fr']="<a href='http://s7.ongarde.net/alsc/'>ECA</a>";
-	$links['ISAT']['internet']['en']="<a href='http://s3.ongarde.net/isat/portal/index.php'>ISAT</a>";
-	$links['ISAT']['internet']['fr']="<a href='http://s3.ongarde.net/isat/portal/index.php'>ASIF</a>";
-	$links['DNDLearn']['internet']['en']="<a href='https://lp-pa.forces.gc.ca/portal/pages/view/138983/dln-rad'>DLN/LMS</a>";
+	$links['AKE']['internet']['en']="<a href='http://s7.ongarde.net/alsc/'>AKE (VPN)</a>";
+	$links['AKE']['internet']['fr']="<a href='http://s7.ongarde.net/alsc/'>ECA (VPN)</a>";
+	$links['ISAT']['internet']['en']="<a href='http://s3.ongarde.net/isat/portal/index.php'>ISAT (VPN)</a>";
+	$links['ISAT']['internet']['fr']="<a href='http://s3.ongarde.net/isat/portal/index.php'>ASIF (VPN)</a>";
+	$links['DNDLearn']['internet']['en']="<a href='https://lp-pa.forces.gc.ca/portal/pages/view/138983/dln-rad'>DLN LMS</a>";
 	$links['DNDLearn']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/pages/view/138983/dln-rad'>RAD</a>";
 	$links['DFIT']['internet']['en']="<a href='http://dfit.ca/'>DFIT</a>";
 	$links['DFIT']['internet']['fr']="<a href='http://www.cphysd.ca'>CPHYSD</a>";
@@ -49,15 +49,18 @@
 	$links['CMR']['internet']['fr']="<a href='http://s3.ongarde.net/courses/cmr_fr/Methodologie/player.html'>réussite des étudiants</a>";
 	$links['SOMNIA']['internet']['en']="<a href='http://www.cfc.forces.gc.ca/254-eng.html'>SOMNIA</a>";
 	$links['SOMNIA']['internet']['fr']="<a href='http://www.cfc.forces.gc.ca/254-fra.html'>SOMNIA</a>";
+	$links['TED']['internet']['en']="<a href='https://www.ted.com/talks'>TED Talks</a>";
+	$links['TED']['internet']['fr']="<a href='https://www.ted.com/talks'>TED Talks</a>";
 
 
 
 
-	$trainingmgr=array($links['DNDLearn'], $links['TE'], $links['Conferencing'], $links['ISAT'], $links['TERM'], $links['CAFCOD'], $links['SUPPORT']);
-	$instructor=array($links['Allies'], $links['AKE'], $links['ISAT'], $links['DNDLearn'], $links['Conferencing'], $links['KMS'], $links['TE'], $links['TERM'],   $links['SUPPORT']);
-	$developer=array($links['Repository'], $links['ISAT'], $links['DNDLearn'], $links['AKE'], $links['CodeL'], $links['KMS'], $links['TE'], $links['TERM'],  $links['SUPPORT']);
-	$learner=array($links['Allies'], $links['DNDLearn'], $links['EILP'], $links['CFC'], $links['LCCS'], $links['AKE'], $links['TE'], $links['CMR'], $links['KA'], $links['LANGDOC'],$links['Conferencing'], $links['TERM'],   $links['SUPPORT']);
-	$all=array($links['Repository'], $links['Allies'], $links['AKE'], $links['CAFCOD'], $links['CFC'], $links['CodeL'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LANGDOC'], $links['LCCS'], $links['LPR'], $links['SOMNIA'], $links['CMR'], $links['SUPPORT'], $links['TERM'], $links['TE']);
+
+	$trainingmgr=array($links['DNDLearn'], $links['Conferencing'], $links['ISAT'], $links['TERM'], $links['CAFCOD'], $links['SUPPORT']);
+	$instructor=array($links['Allies'], $links['AKE'], $links['ISAT'], $links['DNDLearn'], $links['Conferencing'], $links['KMS'], $links['TERM'],   $links['SUPPORT']);
+	$developer=array($links['ISAT'], $links['DNDLearn'], $links['AKE'], $links['KMS'], $links['TERM'],  $links['SUPPORT']);
+	$learner=array($links['Allies'], $links['DNDLearn'], $links['EILP'], $links['CFC'], $links['LCCS'], $links['AKE'], $links['KA'], $links['Conferencing'], $links['TERM'],   $links['SUPPORT']);
+	$all=array($links['Allies'], $links['AKE'], $links['CAFCOD'], $links['CFC'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LCCS'], $links['SOMNIA'], $links['SUPPORT'], $links['TED'], $links['TERM']);
 	
 	$user=elgg_get_logged_in_user_entity();
 	if($user){
