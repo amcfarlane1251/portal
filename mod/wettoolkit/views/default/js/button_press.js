@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     var fileInput = $('#fileInput');
 
-    $('#portalForm').submit(function(event) {
+    $("form").submit(function(event) {
         
         //disables the button on form submittsion
         //prevents multiple form submits
@@ -14,7 +14,7 @@ $(document).ready(function() {
         if(fileInput.val()) {
             //check for XMLHttpRequest support
             if(XMLHttpRequest) {
-                var form = document.getElementById("portalForm");
+                var form = document.getElementsByTagName("form");
                 var fd = new FormData(form);
 
                 fd.append('SelectedFile', document.getElementById('fileInput').files[0]);

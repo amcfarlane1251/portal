@@ -152,15 +152,12 @@
 		$('#delete-selected-messages').live('click', function(e) {
 			e.preventDefault();
 			var data = $('.inbox-message-checkbox:checked');
-
 			if(data.length) {
 				if(confirm(elgg.echo("deleteconfirm"))) {
 					var postData = data.serializeJSON();
-
 					elgg.action('messages/delete', {
 						data: postData,
 						success: function(res){
-							console.log(postData);
 							$('.inbox-message-checkbox:checked').each(function(key, value) {
 								$('#elgg-object-' + $(value).val()).fadeOut().remove();
 							})

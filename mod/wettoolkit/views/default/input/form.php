@@ -36,7 +36,6 @@ $vars['method'] = strtolower($vars['method']);
 $body = $vars['body'];
 unset($vars['body']);
 
-echo $vars['disable_security'];
 // Generate a security header
 if (!$vars['disable_security']) {
 	$body = elgg_view('input/securitytoken') . $body;
@@ -44,6 +43,7 @@ if (!$vars['disable_security']) {
 unset($vars['disable_security']);
 
 $attributes = elgg_format_attributes($vars);
+
+echo "<form $attributes><fieldset>$body</fieldset></form>";
 echo "<h4 id='progressLabel'></h4>";
-echo "<form id='portalForm' $attributes><fieldset>$body</fieldset></form>";
 echo "<progress id='progressBar' value='0' max='100'</progress>";
