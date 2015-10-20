@@ -6,6 +6,7 @@
 	$inheritMembers = $_POST['inheritMembers'];
 	$inheritFiles = $_POST['inheritFiles'];
 	$inheritForums = $_POST['inheritForums'];
+	$inheritSubgroups = $_POST['inheritSubgroups'];
 
 	//get group
 	$oldGroup = get_entity($guid);
@@ -363,7 +364,23 @@
 	));
 
 	foreach($oldParentGroup as $oldPGroup){
-		add_entity_relationship($newGroup->getGUID(), "au_subgroup_of", $oldPGroup->getGUID());
+		add_entity_relationship($newGroup->getGUID(),"au_subgroup_of", $oldPGroup->getGUID());
+	}
+
+	if($inheritSubgroups) {
+		$oldParentGroup = elgg_get_entities_from_relationship(array(
+			"relationship" => "au_subgroup_of",
+	   		"relationship_guid" => $oldGroup->getGUID(),
+	   		"inverse_relationship" => true
+		));
+	
+		foreach($oldParentGroup as $oldPGroup) {
+			$newSubgroup = clone $oldPGroup;
+			$newSubgroup->container_guid = $newGroup->getGUID();
+			$newSubgroup->access_id = $newGroup->group_acl;
+			$newSubgroup->save();
+			add_entity_relationship($newSubgroup->getGUID(),"au_subgroup_of",$newGroup->getGUID());
+		}
 	}
 	
 	add_to_river('river/group/create', 'create', $user->guid, $newGroup->guid, $newGroup->access_id);

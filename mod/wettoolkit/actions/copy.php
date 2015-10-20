@@ -111,4 +111,21 @@
 			}
 		}
 	}
+
+	//get parent-group from old group (if it was a subgroup)
+	$oldParentGroup = elgg_get_entities_from_relationship(array(
+		"relationship" => "au_subgroup_of",
+   		"relationship_guid" => $oldGroup->getGUID(),
+   		"inverse_relationship" => true
+	));
+	
+	foreach($oldParentGroup as $oldPGroup){
+		$newSubgroup = clone $oldPGroup;
+		$newSubgroup->container_guid = $newGroup->guid;
+		$newSubgroup->access_id = $newGroup->group_acl;
+		$newSubgroup->parent_guid = $newGroup->guid;
+		$newSubgroup->save();
+		add_entity_relationship($oldPGroup->getGUID(), "au_subgroup_of",$newGroup->getGUID());
+	}
+
 	forward($newGroup->getURL());

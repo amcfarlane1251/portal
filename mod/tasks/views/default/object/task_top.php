@@ -100,8 +100,6 @@ if ($full) {
 	));
 
 } else {
-	// brief view
-
 	$excerpt = elgg_get_excerpt($task->description);
 
 	$params = array(

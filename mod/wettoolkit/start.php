@@ -68,6 +68,10 @@ if (elgg_is_logged_in()) {
 elgg_unregister_action('river/delete');
 elgg_register_action('river/delete', elgg_get_plugins_path()."wettoolkit/actions/river/delete.php");
 
+//overide default groups/copy action
+elgg_unregister_action('groups/copy');
+elgg_register_action('groups/copy', elgg_get_plugins_path()."wettoolkit/actions/groups/copy.php");
+
 //overide default add comments action
 elgg_unregister_action('comments/add');
 elgg_register_action('comments/add', elgg_get_plugins_path()."wettoolkit/actions/comments/add.php");

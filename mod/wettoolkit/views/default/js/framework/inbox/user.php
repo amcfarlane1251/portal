@@ -57,6 +57,7 @@
 			var $thread = $('.inbox-messages-thread');
 
 			var data = $thread.data();
+
 			data.notin = $thread.find('article[data-guid]').map(function() {
 				return $(this).data('guid')
 			}).get().join();
@@ -160,6 +161,7 @@
 						success: function(res){
 							$('.inbox-message-checkbox:checked').each(function(key, value) {
 								$('#elgg-object-' + $(value).val()).fadeOut().remove();
+								$('#delete-selected-messages').trigger(e, framework.inbox.user);
 							})
 						}
 					})

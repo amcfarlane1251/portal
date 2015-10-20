@@ -1,5 +1,6 @@
 <?php
 $group = $vars['entity'];
+
 ?>
 <div>
 <label><?php echo elgg_echo("groups:name"); ?></label>
@@ -24,15 +25,22 @@ $group = $vars['entity'];
 	<input type="checkbox" class="inline checkbox" name="inheritForums" checked />
 </div>
 
+<div>
+	<label class="inline" for="inheritSubgroups"><?php echo elgg_echo("groups:inherit_sub_groups"); ?></label>
+	<input type="checkbox" class="inline checkbox" name="inheritSubgroups" />
+</div>
+
 <?php
 echo elgg_view('input/hidden', array(
 	'name' => 'group_guid',
 	'value' => $group->guid,
 ));
+
 echo elgg_view('input/hidden', array(
 	'name' => 'access_id',
 	'value' => $group->access_id,
 ));
+
 echo elgg_view('input/hidden', array(
 	'name' => 'membership',
 	'value' => $group->guid,

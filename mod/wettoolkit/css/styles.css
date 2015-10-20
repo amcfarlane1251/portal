@@ -825,6 +825,48 @@ a.tooltip.bottom:hover:before {
 .inbox-message-checkbox {
   float: right; }
 
+/*STYLES FOR STATUS REPORT PLUGIN
+**************************************/
+#percent-complete {
+  vertical-align: middle;
+  text-align: center;
+  font-size: 3em; }
+
+.report-table-headings {
+  background-color: #335075;
+  color: white;
+  font-size: 1em; }
+
+.report-status-heading {
+  vertical-align: middle;
+  position: relative;
+  top: 50%; }
+
+.report-add-heading {
+  background-color: #335075;
+  color: white;
+  font-size: 1.25em; }
+
+.report-grades {
+  text-align: center; }
+
+#summary-td span {
+  word-break: break-word; }
+
+#report-title-summary {
+  font-size: 1.25em;
+  vertical-align: middle; }
+
+#percent-complete-summary {
+  font-size: 1.5em;
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+  background-color: #335075; }
+
+#milestone-add-button {
+  float: right; }
+
 /** MOBILE STYLES **/
 @media screen and (max-width: 1200px) {
   #wb-core-in, #wb-main, #gcwu-psnb-in, #gcwu-psnb .mb-menu {

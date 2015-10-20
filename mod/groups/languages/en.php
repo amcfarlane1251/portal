@@ -27,6 +27,7 @@ $english = array(
 	'groups:inherit_members' => 'Copy Group Members?',
 	'groups:inherit_files' => 'Copy Group Files?',
 	'groups:inherit_forums' => 'Copy Group Forums?',
+	'groups:inherit_sub_groups' => 'Copy Subgroups?',
 
 	'groups:icon' => 'Group icon (leave blank to leave unchanged)',
 	'groups:name' => 'Group name',
