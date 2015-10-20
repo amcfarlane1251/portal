@@ -306,6 +306,7 @@ function phpmailer_send($from, $from_name, $to, $to_name, $subject, $body, array
 		$phpmailer->IsSMTP();
 		$phpmailer->Host = $smtp_host;
 		$phpmailer->SMTPAuth = false;
+		$phpmailer->SMTPKeepAlive = true;
 		if ($smtp_auth) {
 			$phpmailer->SMTPAuth = true;
 			$phpmailer->Username = elgg_get_plugin_setting('phpmailer_username', 'phpmailer');
@@ -324,6 +325,8 @@ function phpmailer_send($from, $from_name, $to, $to_name, $subject, $body, array
 
 	$return = $phpmailer->Send();
 	if (!$return ) {
+		error_log('email: '.$to);
+		error_log('PHPMailer error: ' . $phpmailer->ErrorInfo);
 		elgg_log('PHPMailer error: ' . $phpmailer->ErrorInfo, 'WARNING');
 	}
 	return $return;
