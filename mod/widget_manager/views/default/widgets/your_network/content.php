@@ -29,7 +29,7 @@ $filesLink = elgg_get_site_url()."file/owner/".$network->userName;
 
 //get number of groups
 $numOfGroups = $network->numOfEntitiesFromRelationship('group', 'member', $network->userGuid);
-$groupsLink = elgg_get_site_url()."groups/member/".$network->userName;
+$groupsLink = elgg_get_site_url()."groups/all?filter=yours";
 
 //get number of active group invites
 $numOfGroupInvs = $network->numOfEntitiesFromRelationship('group', 'invited', $network->userGuid, TRUE);
