@@ -37,7 +37,7 @@ $(function(){
 	});
 
 	//disable form submit once form has been submit
-	$('form.elgg-form-groups-copy, form.elgg-form-au-subgroups-delete').submit(function(){
+	$('form').submit(function(){
 		$(this).find('input[type=submit]').attr('disabled', 'disabled');
 	});
 

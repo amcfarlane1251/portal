@@ -28,19 +28,6 @@ $profile_fields = elgg_get_config('profile_fields');
 // display the username, title, phone, mobile, email, website
 // fa classes are the font-awesome icons
 echo '<div id="profile-details" class="elgg-body pll">';
-echo '<div class="gcconnex-profile-name">';
-echo '<h2><span>' . $user->name . '</span></h2>';
-
-if ($user->canEdit()) {
-
-    $content = elgg_view('output/url', array(
-        'href' => 'ajax/view/b_extended_profile/edit_basic',
-        'class' => 'elgg-lightbox gcconnex-basic-profile-edit elgg-button',
-        'text' => elgg_echo('gcconnex_profile:edit_profile')
-    ));
-
-    echo $content;
-}
 if (elgg_get_page_owner_guid() != elgg_get_logged_in_user_guid()) {
     $menu = elgg_trigger_plugin_hook('register', "menu:user_hover", array('entity' => $user), array());
     $builder = new ElggMenuBuilder($menu);
@@ -55,6 +42,19 @@ if (elgg_get_page_owner_guid() != elgg_get_logged_in_user_guid()) {
         }
     }
     echo $profile_actions;
+}
+echo '<div class="gcconnex-profile-name">';
+echo '<h2><span>' . $user->name . '</span></h2>';
+
+if ($user->canEdit()) {
+
+    $content = elgg_view('output/url', array(
+        'href' => 'ajax/view/b_extended_profile/edit_basic',
+        'class' => 'elgg-lightbox gcconnex-basic-profile-edit elgg-button',
+        'text' => elgg_echo('gcconnex_profile:edit_profile')
+    ));
+
+    echo $content;
 }
 
 echo '</div>'; // close div class="gcconnex-profile-name"

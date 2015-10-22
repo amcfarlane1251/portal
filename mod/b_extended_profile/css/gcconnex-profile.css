@@ -22,7 +22,11 @@
 .gcconnex-basic-profile-edit {
     top: 5px;
     position: relative;
-    margin-left: 10px;
+    margin:0 0 10px 10px;
+}
+.gcconnex-basic-profile-actions:nth-of-type(1),
+.gcconnex-basic-profile-edit {
+    margin-left:0px;
 }
 
 .gcconnex-profile-social-media-links {
