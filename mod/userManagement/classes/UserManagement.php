@@ -39,7 +39,7 @@ class UserManagement extends ElggObject
 		parent::initializeAttributes();
 		$this->siteDomain = get_site_domain($CONFIG->site_guid);
 		$this->site = elgg_get_site_entity();
-		$this->approvedDomains[] = 'forces.gc.ca';
+		$this->approvedDomains = ['forces.gc.ca', 'test.gc.ca'];
 	}
 
 	public function setUser($user)

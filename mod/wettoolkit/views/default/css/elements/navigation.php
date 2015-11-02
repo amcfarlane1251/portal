@@ -91,6 +91,7 @@
 	BREADCRUMBS
 *************************************** */
 .elgg-breadcrumbs {
+	margin-bottom:1rem;
 	font-size: 80%;
 	font-weight: bold;
 	line-height: 1.2em;
@@ -98,15 +99,19 @@
 }
 .elgg-breadcrumbs > li {
 	display: inline-block;
+	margin:4px 0;
 }
 .elgg-breadcrumbs > li:after {
-	content: "\003E";
+	color:#444;
+	font-family: "Glyphicons Halflings";
+	content: "\e080";
 	padding: 0 4px;
 	font-weight: normal;
 }
 .elgg-breadcrumbs > li > a {
 	display: inline-block;
 	color: #999;
+	text-decoration:underline;
 }
 .elgg-breadcrumbs > li > a:hover {
 	color: #0054a7;

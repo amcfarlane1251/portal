@@ -19,7 +19,7 @@ $invitecode = get_input('invitecode');
 
 if (elgg_get_config('allow_registration')) {
 	try {
-		$approvedDomains = array('forces.gc.ca');
+		$approvedDomains = array('forces.gc.ca', 'test.gc.ca');
 
 		if (strcmp($email, $email2) != 0) {
 			throw new RegistrationException(elgg_echo('register:emailMismatch'));

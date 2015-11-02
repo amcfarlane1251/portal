@@ -116,11 +116,11 @@ elgg_load_js('bootstrap');
 
             echo '<div role="tabpanel" class="tab-pane active" id="profile-display">';
 
-        if ( has_content($user, 'description') ) {
-            init_ajax_block(elgg_echo('gcconnex_profile:about_me'), 'about-me', $user);
-            echo elgg_view('b_extended_profile/about-me');
-            finit_ajax_block('about-me');
-        }
+
+        init_ajax_block(elgg_echo('gcconnex_profile:about_me'), 'about-me', $user);
+        echo elgg_view('b_extended_profile/about-me');
+        finit_ajax_block('about-me');
+        
 
         if ( has_content($user, 'education') ) {
             init_ajax_block(elgg_echo('gcconnex_profile:education'), 'education', $user);

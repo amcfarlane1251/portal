@@ -25,6 +25,11 @@ $group = $vars['entity'];
 	<input type="checkbox" class="inline checkbox" name="inheritForums" checked />
 </div>
 
+<div>
+	<label class="inline" for ="subGroups"><?php echo elgg_echo("groups:copy_subGroups"); ?></label>
+	<input type="checkbox" class="inline checkbox" name="subGroups" checked />
+</div>
+
 <?php
 echo elgg_view('input/hidden', array(
 	'name' => 'group_guid',
