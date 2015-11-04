@@ -60,7 +60,7 @@
 	$instructor=array($links['Allies'], $links['AKE'], $links['ISAT'], $links['DNDLearn'], $links['Conferencing'], $links['KMS'], $links['TERM'],   $links['SUPPORT']);
 	$developer=array($links['ISAT'], $links['DNDLearn'], $links['AKE'], $links['KMS'], $links['TERM'],  $links['SUPPORT']);
 	$learner=array($links['Allies'], $links['DNDLearn'], $links['EILP'], $links['CFC'], $links['LCCS'], $links['AKE'], $links['KA'], $links['Conferencing'], $links['TERM'],   $links['SUPPORT']);
-	$all=array($links['Allies'], $links['AKE'], $links['CAFCOD'], $links['CFC'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LCCS'], $links['SOMNIA'], $links['SUPPORT'], $links['TED'], $links['TERM']);
+	$all=array($links['AKE'], $links['Allies'], $links['CAFCOD'], $links['CFC'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LCCS'], $links['SOMNIA'], $links['SUPPORT'], $links['TED'], $links['TERM']);
 	
 	$user=elgg_get_logged_in_user_entity();
 	if($user){

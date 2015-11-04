@@ -51,6 +51,7 @@ header("Content-type: text/html; charset=UTF-8");
 <!--<script src="<?php echo $wettoolkit_url.'/dist/js/jquery.min.js';?>"></script>-->
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/base.min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/styles.min.css';?>"/>
+<link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/theme.min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/grids/css/util-min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/js/css/pe-ap-min.css';?>" />
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/css/theme-min.css';?>" />
