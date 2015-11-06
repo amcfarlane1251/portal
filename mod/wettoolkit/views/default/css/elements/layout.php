@@ -396,14 +396,22 @@ a.elgg-button.elgg-button-delete {
 
 #gcwu-psnb .mb-menu, #gcwu-psnb .mb-menu li{
 	/*background:#101010;*/
-	background-image: linear-gradient(#606060,#333);
+	background: linear-gradient(#606060,#333);
+	background: -ms-linear-gradient(#606060,#333);
+	background: -moz-linear-gradient(#606060,#333);
+	background: -webkit-linear-gradient(#606060,#333);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#606060', endColorstr='#333');/*For IE7-8-9*/ 
 	border:none;
 }
 
 ul.elgg-menu-site{
 	/* background:#335075 !important;*/
 	background-color: #146094 !important;
-	background-image: linear-gradient(#146094,#23447e) !important;
+	background: linear-gradient(#146094,#23447e) !important;
+	background: -ms-linear-gradient(#146094,#23447e) !important;
+	background: -moz-linear-gradient(#146094,#23447e) !important;
+	background: -webkit-linear-gradient(#146094,#23447e) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#146094', endColorstr='#23447e') !important;/*For IE7-8-9*/ 
 	height:55px !important;
 	border-bottom: 4px solid #ccc !important;
 	border-top:4px solid #87aec9 !important;
@@ -977,6 +985,10 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 
  .elgg-module-livesearch > .elgg-head h3 {
   background-image: linear-gradient(#606060,#333);
+  background-image: -ms-linear-gradient(#606060,#333);
+  background-image: -webkit-linear-gradient(#606060,#333);
+  background-image: -moz-linear-gradient(#606060,#333);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#606060', endColorstr='#333');/*For IE7-8-9*/
   border: #333;
 }
 
