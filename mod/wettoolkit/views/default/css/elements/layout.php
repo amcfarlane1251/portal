@@ -205,9 +205,6 @@ a.elgg-menu-closed.elgg-menu-parent {
 	border-bottom: 1px solid #CCCCCC;
 	margin-bottom: 10px;
 }
-.elgg-menu-site-default {
-	background:url(<?php echo elgg_get_site_url(); ?>mod/wettoolkit/graphics/gradient.png) !important;
-}
 
 .elgg-menu-site-default > .elgg-state-selected > a, .elgg-menu-site-default > li:hover > a {
 	background: #EEECE9;
@@ -400,7 +397,6 @@ a.elgg-button.elgg-button-delete {
 	background: -ms-linear-gradient(#606060,#333);
 	background: -moz-linear-gradient(#606060,#333);
 	background: -webkit-linear-gradient(#606060,#333);
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#606060', endColorstr='#333');/*For IE7-8-9*/ 
 	border:none;
 }
 
@@ -411,7 +407,6 @@ ul.elgg-menu-site{
 	background: -ms-linear-gradient(#146094,#23447e) !important;
 	background: -moz-linear-gradient(#146094,#23447e) !important;
 	background: -webkit-linear-gradient(#146094,#23447e) !important;
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#146094', endColorstr='#23447e') !important;/*For IE7-8-9*/ 
 	height:55px !important;
 	border-bottom: 4px solid #ccc !important;
 	border-top:4px solid #87aec9 !important;
@@ -988,7 +983,6 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   background-image: -ms-linear-gradient(#606060,#333);
   background-image: -webkit-linear-gradient(#606060,#333);
   background-image: -moz-linear-gradient(#606060,#333);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#606060', endColorstr='#333');/*For IE7-8-9*/
   border: #333;
 }
 
