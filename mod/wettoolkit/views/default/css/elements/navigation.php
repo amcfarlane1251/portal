@@ -105,8 +105,8 @@
 	color:#444;
 	font-family: "Glyphicons Halflings";
 	content: "\e080";
-	padding: 0 4px;
-	font-weight: normal;
+ 	padding: 0 4px;
+ 	font-weight: normal;
 }
 .elgg-breadcrumbs > li > a {
 	display: inline-block;
@@ -171,6 +171,10 @@
 *************************************** */
 .elgg-menu-site {
 	z-index: 1;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+		font-size: 16px;
+		font-weight:700;
+		text-decoration:none;
 }
 
 .elgg-menu-site > li > a {
@@ -192,7 +196,7 @@
 
 .elgg-menu-site-default > li {
 	float: left;
-	margin-right: 1px;
+	/*margin-right: 1px;*/
 }
 
 .elgg-menu-site-default > li > a {
@@ -240,8 +244,10 @@
 }
 
 .elgg-menu-site-more > li > a {
-	background-color: white;
-	color: #555;
+	background-color: #CCC;
+	color:#000 !important;
+	font-weight: 400 !important;
+
 
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
@@ -255,6 +261,7 @@
 .elgg-menu-site-more > li > a:hover {
 	background: #4690D6;
 	color: white;
+	text-decoration: underline;
 }
 
 .elgg-menu-site-more > li:last-child > a,
@@ -262,6 +269,7 @@
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
+	
 }
 
 .elgg-more > a:before {

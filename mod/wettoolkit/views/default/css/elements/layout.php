@@ -8,7 +8,7 @@
  *
  */
 
-?>
+?>headingdfdf
 
 /* ***************************************
 	PAGE LAYOUT
@@ -395,20 +395,25 @@ a.elgg-button.elgg-button-delete {
 	}
 
 #gcwu-psnb .mb-menu, #gcwu-psnb .mb-menu li{
-	background:#101010;
+	/*background:#101010;*/
+	background-image: linear-gradient(#606060,#333);
 	border:none;
 }
 
 ul.elgg-menu-site{
-	background:#335075 !important;
+	/* background:#335075 !important;*/
+	background-color: #146094 !important;
+	background-image: linear-gradient(#146094,#23447e) !important;
 	height:55px !important;
-
+	border-bottom: 4px solid #ccc !important;
+	border-top:4px solid #87aec9 !important;
 }
 
 #wb-main-in ul.elgg-menu-site > li{
 	top:0;
 	padding-bottom:0;
 	max-height: 55px;
+	border-right:1px solid #CCC !important;
 }
 
 #wb-main-in ul.elgg-menu-site > li.elgg-state-selected{
@@ -416,9 +421,9 @@ ul.elgg-menu-site{
 }
 
 #wb-main-in > ul.elgg-menu-site li > a{
-	font-size:1.333em;
-	letter-spacing:.01em;
-	font-weight:500;
+	font-size:16px;
+	/*letter-spacing:.01em;*/
+	font-weight:700;
 	padding:20px 20px 18px !important;
 	height:17px;
 }
@@ -426,15 +431,15 @@ ul.elgg-menu-site{
 #wb-main-in ul.elgg-menu-site > li.elgg-state-selected > a, #wb-main-in ul.elgg-menu-site > li a:hover{
 	border:none !important;
 	border-radius:0;
-	background:#243850 !important;
+	background:#0f315b !important;
 	color:#FFF !important;
 	box-shadow:none !important;
 }
 
 #wb-main-in ul.elgg-menu-site > li:hover > a{
 	border:none !important;
-	background:#243850 !important;
-	color:#FFF !important;
+	background:#CCC !important;
+	color:#000 !important;
 }
 
 #wb-main-in ul.elgg-menu-site > li > ul{
@@ -463,19 +468,28 @@ ul.elgg-menu-site{
 	}
 
 	.elgg-button-dropdown:hover{
-		background:#243850 !important;
+		background:#CCC !important;
+		color:#000 !important;
 	}
 
 	/******** TYPOGRAPHY ********/
 	#wb-main-in h1, #wb-main-in h2, #wb-main-in h3, #wb-main-in h4, #wb-main-in h5, #wb-main-in h6{
-		font-family: Verdana, Geneva, sans-serif;
+		/*font-family: Verdana, Geneva, sans-serif;*/
+
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-weight:700;
+		font-size: 16px;
 		-webkit-font-smoothing: antialiased;
 	}
 
 	#wb-main-in h2.elgg-heading-main{
-		font-size:2em;
-		font-weight:500;
-		letter-spacing:.25px;
+
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+		font-size: 18px !important; 
+		color: #333 !important;
+		font-weight: 600 !important;
+
+		/*letter-spacing:.25px;*/
 		line-height:150%;
 		margin-bottom:24px;
 		color:black;
@@ -514,12 +528,12 @@ ul.elgg-menu-site{
 	}
 
 	#wb-main-in form.elgg-search-header input.search-input{
-		background: transparent !important;
-		color:#fff;
+		background: white !important;
+		color:#000;
 		font-size:1em;
-		font-weight:500;
-		letter-spacing:1px;
-		border:2px solid #fff !important;
+		font-weight:600;
+		/*letter-spacing:1px;*/
+		border:2px solid #e3e3e3 !important;
 		border-radius:0;
 		margin:0;
 		padding:5px 8px;
@@ -711,8 +725,8 @@ p#language{
 	}
 
 	div#wb-main-in ul.elgg-menu-site-default > li > a:hover, div#wb-main-in ul.elgg-menu-site-default > li.elgg-state-selected > a{
-		background:#243850 !important;
-		color:#fff !important;
+		background:#CCC !important;
+		color:#000 !important;
 		box-shadow:none;
 	}
 	
@@ -802,4 +816,187 @@ p#language{
 		width:90%;
 		float:none;
 	}
+}
+
+/* Styling for WET Buttons */
+#wb-main-in .elgg-button-action, #wb-main-in .elgg-button-submit, input[type=submit], input[type=reset]{
+	background:#2572b4 !important;
+	border-color:#143c5f !important;
+	color: #fff !important;
+	display: inline-block !important;
+	margin-bottom: 0 !important;
+	font-weight:500 !important;
+	touch-action: manipulation;
+	cursor: pointer;
+	border-radius: 4px !important;
+	font-size: 16px !important;
+	box-shadow:none !important;
+}
+
+#wb-main-in .elgg-button-action:hover, #wb-main-in .elgg-button-submit:hover, input[type=submit]:hover, input[type=reset]:hover{
+	color: #ffffff !important;
+	background-color:#0f315b !important;
+
+}
+
+#wb-main-in a.elgg-button-delete {
+	box-shadow: none !important;
+	display: inline-block !important;
+	margin-bottom: 0 !important;
+	font-weight:500 !important;
+	touch-action: manipulation;
+	cursor: pointer;
+	border-radius: 4px !important;
+	font-size: 16px !important;
+
+}
+
+
+/* Styling of Page Body */
+#wb-main-in .elgg-page-body {
+	background-color: #FFF !important;
+}
+
+#wb-main-in {
+    border-left: 1px solid #d4d4d4;
+    border-right: 1px solid #d4d4d4;
+     border-bottom: 1px solid #d4d4d4;
+     padding-bottom:0px;
+
+}
+
+.elgg-module-widget > .elgg-body {
+	/*background-color: #f9f9f9 !important; */
+	background-color: #f5f5f5 !important;
+	border: 1px solid #e3e3e3 !important; 
+	border-radius: 4px !important;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.05) !important;
+	
+}
+
+#widget-welcome > h2 {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	font-size: 18px !important; 
+	color: #333 !important;
+	font-weight: 600 !important;
+	padding-top: 10px;
+}
+
+#gcwu-sft-in {
+	background-position: center top !important;
+}
+
+.elgg-input-text {
+	background-color:white !important;
+}
+
+h3.widget-header {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	font-size: 18px !important; 
+	color: #333 !important;
+	font-weight: 600 !important;
+}
+
+#widget-welcome > ul > li {
+		color:#000 !important;
+	background-color:#d4d6da !important;
+	border-color:#bbbfc5 !important;
+
+	display: inline-block !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    cursor: pointer !important;
+    background-image: none !important;
+    border: 1px solid #bbbfc5 !important;
+}
+
+
+#widget-welcome > ul > li.selected {
+	color: #fff !important;
+    background-color: #2572b4 !important;
+    border-color: #2572b4 !important;
+}
+
+#widget-welcome > ul > li:hover {
+color: #fff !important;
+    background-color: #2572b4 !important;
+    border-color: #2572b4 !important;
+}
+
+#activity-filter > li {
+	color:#000 !important;
+	background-color:#d4d6da !important;
+	border-color:#bbbfc5 !important;
+
+	display: inline-block !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    cursor: pointer !important;
+    background-image: none !important;
+    border: 1px solid #bbbfc5 !important;
+}
+
+#activity-filter > li.active {
+	color: #fff !important;
+    background-color: #2572b4 !important;
+    border-color: #2572b4 !important;
+}
+
+#activity-filter > li:hover {
+	color: #fff !important;
+    background-color: #2572b4 !important;
+    border-color: #2572b4 !important;
+}
+
+.profile.elgg-col-3of3 > .elgg-inner.clearfix {
+	background-color: #eeeeee !important;
+}
+
+.widget-button {
+	color:#000 !important;
+	background-color:#d4d6da !important;
+	border-color:#bbbfc5 !important;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	display: inline-block !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    cursor: pointer !important;
+    background-image: none !important;
+    border: 1px solid #bbbfc5 !important;
+    letter-spacing: -1px !important;
+ }
+
+ .widget-button:hover {
+	color: #fff !important;
+    background-color: #2572b4 !important;
+    border-color: #2572b4 !important;
+ }
+
+ .elgg-module-livesearch > .elgg-head h3 {
+  background-image: linear-gradient(#606060,#333);
+  border: #333;
+}
+
+#ajax-form > h2 {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	font-size: 18px !important; 
+	color: #333 !important;
+	font-weight: 600 !important;
+}
+
+#activity-feed > ul > li:hover {
+	background: none !important;	
+}
+
+.elgg-item:hover {
+	background: none !important;
+}
+
+ul.elgg-menu-filter li.elgg-state-selected, ul.elgg-menu-filter li.elgg-state-selected a {
+	border-color: #143c5f;
+    border-style: solid;
+    background-color: #2572b4;
 }
