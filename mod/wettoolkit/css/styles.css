@@ -491,7 +491,7 @@
         box-shadow: none; }
       #wb-main-in .elgg-widget-content #widget-welcome .index-search .index-search-submit:hover {
         background: whitesmoke;
-        color: #335075 !important; }
+        color: #fff !important; }
       #wb-main-in .elgg-widget-content #widget-welcome .index-search .index-search-submit:active {
         transform: none; }
       #wb-main-in .elgg-widget-content #widget-welcome #search-options {

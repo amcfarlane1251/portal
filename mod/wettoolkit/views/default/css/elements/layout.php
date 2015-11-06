@@ -243,11 +243,6 @@ a.elgg-menu-closed.elgg-menu-parent {
 color: black;
 }
 
-.elgg-menu-site-default {
-height: 30px !important;
-}
-
-
 .elgg-menu-site-default > li > a {
 color: white !important;
 padding-top: 10px !important;
@@ -397,6 +392,7 @@ a.elgg-button.elgg-button-delete {
 	background: -ms-linear-gradient(#606060,#333);
 	background: -moz-linear-gradient(#606060,#333);
 	background: -webkit-linear-gradient(#606060,#333);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#606060', endColorstr='#333');/*For IE7-8-9*/ 
 	border:none;
 }
 
@@ -407,7 +403,7 @@ ul.elgg-menu-site{
 	background: -ms-linear-gradient(#146094,#23447e) !important;
 	background: -moz-linear-gradient(#146094,#23447e) !important;
 	background: -webkit-linear-gradient(#146094,#23447e) !important;
-	height:55px !important;
+	height:38px !important;
 	border-bottom: 4px solid #ccc !important;
 	border-top:4px solid #87aec9 !important;
 }
@@ -415,7 +411,7 @@ ul.elgg-menu-site{
 #wb-main-in ul.elgg-menu-site > li{
 	top:0;
 	padding-bottom:0;
-	max-height: 55px;
+	max-height: 38px;
 	border-right:1px solid #CCC !important;
 }
 
@@ -427,8 +423,8 @@ ul.elgg-menu-site{
 	font-size:16px;
 	/*letter-spacing:.01em;*/
 	font-weight:700;
-	padding:20px 20px 18px !important;
-	height:17px;
+	padding:10px 20px !important;
+	height:18px;
 }
 
 #wb-main-in ul.elgg-menu-site > li.elgg-state-selected > a, #wb-main-in ul.elgg-menu-site > li a:hover{
@@ -983,6 +979,7 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   background-image: -ms-linear-gradient(#606060,#333);
   background-image: -webkit-linear-gradient(#606060,#333);
   background-image: -moz-linear-gradient(#606060,#333);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#606060', endColorstr='#333');/*For IE7-8-9*/ 
   border: #333;
 }
 
