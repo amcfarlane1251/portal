@@ -987,7 +987,7 @@ a.tooltip.bottom:hover:before {
   #start-tour, #bookmark {
     background: url("../graphics/question_mark.png") center center;
     background-size: cover;
-    top: 17px;
+    top: 13px;
     z-index: 999; }
 
   #bookmark {

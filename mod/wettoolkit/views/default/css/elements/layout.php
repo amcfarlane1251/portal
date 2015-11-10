@@ -957,7 +957,7 @@ color: #fff !important;
 	color:#000 !important;
 	background-color:#d4d6da !important;
 	border-color:#bbbfc5 !important;
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 	display: inline-block !important;
     font-weight: 500 !important;
     text-align: center !important;
@@ -1002,4 +1002,106 @@ ul.elgg-menu-filter li.elgg-state-selected, ul.elgg-menu-filter li.elgg-state-se
 	border-color: #143c5f;
     border-style: solid;
     background-color: #2572b4;
+    border-bottom:none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important; 
+}
+
+ul.elgg-menu-filter li:hover {
+	border-color: #143c5f;
+    border-style: solid;
+    background-color: #2572b4;
+       border-bottom:none;
+       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 14px !important; 
+}
+
+ul.elgg-menu-filter li {
+	border-color: #DBDBDB;
+    border-style: solid;
+    background-color: #FFF;
+       border-bottom:none;
+       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 14px !important; 
+}
+
+ul.elgg-menu-filter li:hover, ul.elgg-menu-filter li a:hover {
+	border-color: #143c5f;
+    border-style: solid;
+    border-bottom:none;
+    background-color: #2572b4;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important; 
+}
+
+ul.elgg-tabs li.elgg-state-selected, ul.elgg-menu-filter li.elgg-state-selected{
+	border-color: #143c5f;
+    border-style: solid;
+    border-bottom:none;
+    background-color: #2572b4;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important; 
+}
+
+ul.elgg-tabs li.elgg-state-selected a, ul.elgg-menu-filter li.elgg-state-selected a{
+	border-color: #143c5f;
+    border-style: solid;
+    border-bottom:none;
+    background-color: #2572b4 !important;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important; 
+}
+
+.elgg-tabs a {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important; 
+}
+
+.elgg-tabs a:hover{
+	border-color: #143c5f;
+    border-style: solid;
+    border-bottom:none;
+    background-color: #2572b4 !important;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important; 
+}
+
+.elgg-tabs li:hover{
+	border-color: #143c5f;
+    border-style: solid;
+    border-bottom:none;
+    background-color: #2572b4 !important;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important; 
+}
+
+ul.elgg-tabs li, ul.elgg-menu-filter li {
+		border-color: #DBDBDB;
+    border-style: solid;
+    border-bottom:none;
+    background-color: #FFF;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important; 
+}
+
+ul.elgg-menu.elgg-menu-page.elgg-menu-page-default {
+	 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important;
+}
+
+ul.elgg-menu.elgg-menu-owner-block.elgg-menu-owner-block-default {
+	 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+     font-weight: 600 !important;
+     font-size: 14px !important;
 }

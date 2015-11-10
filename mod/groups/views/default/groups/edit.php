@@ -4,7 +4,7 @@
  *
  * @uses $vars['entity'] ElggGroup object
  */
-
+elgg_load_css('bootstrap-css');
 $entity = elgg_extract('entity', $vars, null);
 
 $form_vars = array(
