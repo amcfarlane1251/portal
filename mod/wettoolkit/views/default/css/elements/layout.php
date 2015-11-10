@@ -1070,8 +1070,8 @@ ul.elgg-tabs li.elgg-state-selected a, ul.elgg-menu-filter li.elgg-state-selecte
     border-bottom:none;
     background-color: #2572b4 !important;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-     font-weight: 600 !important;
-     font-size: 14px !important; 
+    font-weight: 600 !important;
+    font-size: 14px !important; 
 }
 
 .elgg-tabs li:hover{
@@ -1080,8 +1080,8 @@ ul.elgg-tabs li.elgg-state-selected a, ul.elgg-menu-filter li.elgg-state-selecte
     border-bottom:none;
     background-color: #2572b4 !important;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-     font-weight: 600 !important;
-     font-size: 14px !important; 
+    font-weight: 600 !important;
+    font-size: 14px !important; 
 }
 
 ul.elgg-tabs li, ul.elgg-menu-filter li {
@@ -1090,18 +1090,28 @@ ul.elgg-tabs li, ul.elgg-menu-filter li {
     border-bottom:none;
     background-color: #FFF;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-     font-weight: 600 !important;
-     font-size: 14px !important; 
+    font-weight: 600 !important;
+    font-size: 14px !important; 
 }
 
 ul.elgg-menu.elgg-menu-page.elgg-menu-page-default {
-	 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-     font-weight: 600 !important;
-     font-size: 14px !important;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
 }
 
 ul.elgg-menu.elgg-menu-owner-block.elgg-menu-owner-block-default {
-	 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-     font-weight: 600 !important;
-     font-size: 14px !important;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+
+.elgg-river-summary {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 16px !important;
+}
+
+.elgg-river-message {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 14px !important;
 }
