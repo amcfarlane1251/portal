@@ -21,12 +21,18 @@
 		$groupOptions = array('inheritMembers'=>$inheritMembers, 'inheritFiles'=>$inheritFiles, 'inheritForums'=>$inheritForums, 
 							'inheritSubGroups'=>$inheritSubGroups);
 
+		//check if a sub-group when parentGroupGuid is null
+		if(!isset($parentGroupGuid)) {
+			$parentGroup = elgg_get_entities_from_relationship(array(
+				"relationship" => "au_subgroup_of",
+	   			"relationship_guid" => $guid
+			));
+			$parentGroupGuid = $parentGroup[0]->guid;
+		}
 		//get group
 		$oldGroup = get_entity($guid);
-
 		//get user
 		$user = get_user($oldGroup->owner_guid);
-
 		//create new group
 		$newGroup = clone $oldGroup;
 		$newGroup->name = $name;
@@ -422,7 +428,6 @@
 			));
 
 			foreach($subGroups as $subGroup) {
-				error_log(print_R($subGroup,true));
 				copyGroup($subGroup->guid, "Copy of ".$subGroup->name, $newGroup->guid, $groupOptions);
 			}
 		}
