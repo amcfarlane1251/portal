@@ -20,6 +20,9 @@ header("Content-type: text/html; charset=UTF-8");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+	<?php
+if(isset($_SESSION['lang'])) {
+?>
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
@@ -51,7 +54,6 @@ header("Content-type: text/html; charset=UTF-8");
 <!--<script src="<?php echo $wettoolkit_url.'/dist/js/jquery.min.js';?>"></script>-->
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/base.min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/styles.min.css';?>"/>
-<link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/theme.min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/grids/css/util-min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/js/css/pe-ap-min.css';?>" />
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/css/theme-min.css';?>" />
@@ -230,5 +232,50 @@ elgg.register_hook_handler('init', 'system', function() {
 
 <!-- CustomScriptsStart -->
 <!-- CustomScriptsEnd -->
+
 </body>
+<?php 
+}else{
+?>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="shortcut icon" href="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/favicon.ico';?>" />
+
+<link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/theme.min.css';?>"/>
+
+</head>
+	<header role="banner">
+	<div id="wb-bnr" class="container">
+	<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/sig-alt-en.svg'?>" aria-label="Government of Canada"></object>
+	</div>
+	</header>
+	<main role="main" property="mainContentOfPage" class="container">
+	<div class="col-md-12">
+	<h1 class="wb-inv">Language selection - Web Experience Toolkit / <span lang="fr">Sélection de la langue - Boîte à outils de l’expérience Web</span></h1>
+
+	<section class="col-md-6" style="box-sizing: border-box;">
+			<h2 class="h3 text-center">DLN Learning Portal</h2>
+			<ul class="list-unstyled">
+					<li><a class="btn btn-lg btn-primary btn-block" href=".?lang=en" style="width:auto;color:#fff!important;">English</a></li>
+					<li><a class="btn btn-lg btn-default btn-block mrgn-tp-sm" href="http://www.forces.gc.ca/en/terms-conditions.page" rel="license" style="width:auto;">Terms and conditions of use</a></li>
+			</ul>
+	</section>
+
+	<section class="col-md-6" style="box-sizing: border-box;" lang="fr">
+			<h2 class="h3 text-center">Le Portail d'apprentissage RAD</h2>
+			<ul class="list-unstyled">
+					<li><a class="btn btn-lg btn-primary btn-block" href=".?lang=fr" style="width:auto;color:#fff!important;">Français</a></li>
+					<li><a class="btn btn-lg btn-default btn-block mrgn-tp-sm" href="http://www.forces.gc.ca/fr/termes-conditions.page" style="width:auto;">Conditions régissant l'utilisation</a></li>
+			</ul>
+	</section>
+	</div>
+	</main>
+	<footer role="contentinfo" class="container">
+		<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/images/wmms-alt.svg'?>" aria-label="Symbol of the Government of Canada"></object>
+	</footer>
+<?php
+}
+?>
 </html>
