@@ -163,7 +163,6 @@
 	$form_body .= 	elgg_view('input/checkboxes', array('name' => 'show_attendees', 'value' => $fields["show_attendees"], 'options' => array(elgg_echo('event_manager:edit:form:show_attendees')=>'1')));
 	$form_body .= 	elgg_view('input/checkboxes', array('name' => 'hide_owner_block', 'value' => $fields["hide_owner_block"], 'options' => array(elgg_echo('event_manager:edit:form:hide_owner_block')=>'1')));
 	$form_body .= 	elgg_view('input/checkboxes', array('name' => 'waiting_list_enabled', 'value' => $fields["waiting_list_enabled"], 'options' => array(elgg_echo('event_manager:edit:form:waiting_list')=>'1')));
-	$form_body .= 	elgg_view('input/checkboxes', array('name' => 'register_nologin', 'value' => $fields["register_nologin"], 'options' => array(elgg_echo('event_manager:edit:form:register_nologin')=>'1')));
 	
 	$form_body .= "</td></tr>";
 	

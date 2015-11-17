@@ -51,7 +51,6 @@ $wettoolkit_url = elgg_get_site_url()."mod/wettoolkit";
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/css/theme-min.css';?>" />
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/base.min.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/styles.min.css';?>"/>
-<link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/theme.min.css';?>"/>
 
 <?php 
 echo elgg_view('page/elements/head', $vars); 

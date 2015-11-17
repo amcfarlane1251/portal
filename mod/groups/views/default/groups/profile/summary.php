@@ -42,6 +42,7 @@ $owner = $group->getOwnerEntity();
 
 	<div class="groups-profile-fields elgg-body">
 		<?php
+			elgg_load_css('bootstrap-css');
 			echo elgg_view('groups/profile/fields', $vars);
 		?>
 	</div>
