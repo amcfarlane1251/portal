@@ -41,8 +41,8 @@
 	$links['TE']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/1154/training-and-education-job-aid-repository'>T&E Aide</a>";    
 	$links['TERM']['internet']['en']="<a href='http://www.btb.termiumplus.gc.ca/'>Termium</a>";
 	$links['TERM']['internet']['fr']="<a href='http://www.btb.termiumplus.gc.ca/'>Termium</a>";
-	$links['CAFCOD']['internet']['en']="<a href='http://cafcod.accc.ca/en/index'>CAFCOD</a>";  	
-	$links['CAFCOD']['internet']['fr']="<a href='http://cafcod.accc.ca/fr/index'>RPFCFAC</a>";
+	$links['CAFCOD']['internet']['en']="<a href='http://caface-rfacace.forces.gc.ca/'>CAF-ACE</a>";  	
+	$links['CAFCOD']['internet']['fr']="<a href='http://caface-rfacace.forces.gc.ca/'>RFAC-ACE</a>";
 	$links['LANGDOC']['internet']['en']="<a href='#' title='Under Construction' >Language Tools</a>";
 	$links['LANGDOC']['internet']['fr']="<a href='#' title='en cours de construction'>Outils Linguistiques</a>";
  	$links['CMR']['internet']['en']="<a href='http://s3.ongarde.net/courses/cmr_en/Methodology/player.html'>Student Success</a>";
