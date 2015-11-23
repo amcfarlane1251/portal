@@ -27,12 +27,15 @@
 	}
 	
 	$events = event_manager_search_events($event_options);
-	$content = elgg_view_entity_list($events['entities'], array("count" => $events["count"], "offset" => 0, "limit" => $num_display, "pagination" => false, "full_view" => false));	
+	$content = "<h3 class='widget-header'>".elgg_echo('item:object:event')."</h3>";
+	$events_content = elgg_view_entity_list($events['entities'], array("count" => $events["count"], "offset" => 0, "limit" => $num_display, "pagination" => false, "full_view" => false));	
 	
-	if(empty($content)){
-		$content = elgg_echo("notfound");
+	if(empty($events_content)){
+		$content .= elgg_echo("notfound");
 	}
-	
+	else{
+		$content .= $events_content;
+	}
 	if($user = elgg_get_logged_in_user_entity()){
 		if($owner instanceof ElggGroup){
 			$who_create_group_events = elgg_get_plugin_setting('who_create_group_events', 'event_manager'); // group_admin, members
@@ -47,7 +50,9 @@
 		}
 		
 		if($add_link){
-			$content .= "<div>" . elgg_view("output/url", array("text" => elgg_echo("event_manager:menu:new_event"), "href" => $add_link)) . "</div>";
+			$more_link = "/events";
+			$content .= "<div>" . elgg_view("output/url", array("text" => elgg_echo("event_manager:menu:new_event"), "href" => $add_link)) . 
+						" ". elgg_view("output/url", array("text"=> elgg_echo('event_manager:group:more'), "href"=>$more_link, "class"=>"push-right")) ."</div>";
 		}
 	}
 	
