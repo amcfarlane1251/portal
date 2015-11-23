@@ -349,15 +349,12 @@
 			));
 			$i1 = 0;
 			foreach($groupForums as $groupForum){
-				$time = time() + $i1;
 				$newGroupForum = clone $groupForum;
 				$newGroupForum->container_guid = $newGroup->getGUID();
 				$newGroupForum->access_id = $newGroup->group_acl;
 				$newGroupForum->last_action = time();
 				$newGroupForum->save();
-				update_entity_last_action($newGroupForum->guid,$time);
-				$i1++;
-				error_log($newGroupForum->title." - ".$newGroupForum->last_action);
+
 				$subForums = elgg_get_entities(array(
 					'type' => 'object',
 					'subtype' => 'hjforum',
@@ -369,15 +366,12 @@
 				
 				$i2 = 0;
 				foreach($subForums as $subForum){
-					$time = time() + $i2;
 					$newSubForum = clone $subForum;
 					$newSubForum->container_guid = $newGroupForum->getGUID();
 					$newSubForum->access_id = $newGroupForum->access_id;
 					$newSubForum->last_action = time();
 					$newSubForum->save();
-					update_entity_last_action($newSubForum->guid,$time);
-					$i2++;
-					error_log($newSubForum->title." - ".$newSubForum->last_action);
+
 					$subForums2 = elgg_get_entities(array(
 						'type' => 'object',
 						'subtype' => 'hjforum',
@@ -389,16 +383,24 @@
 
 					$i3 = 0;
 					foreach($subForums2 as $subForum2){
-						$time = time() + $i3;
 						$newSubForum2 = clone $subForum2;
 						$newSubForum2->container_guid = $newSubForum->getGUID();
 						$newSubForum2->access_id = $newSubForum->access_id;
 						$newSubForum2->save();
+						
+						$time = time() + $i3;
 						update_entity_last_action($newSubForum2->guid,$time);
 						$i3++;
-						error_log($newSubForum2->title." - ".$newSubForum2->last_action);
 					}
+					
+					$time = time() + $i2;
+					update_entity_last_action($newSubForum->guid,$time);
+					$i2++;
 				}
+				
+				$time = time() + $i1;
+				update_entity_last_action($newGroupForum->guid,$time);
+				$i1++;
 			}
 		}
 		
