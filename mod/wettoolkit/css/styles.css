@@ -486,7 +486,7 @@
         margin: 0;
         border: 2px solid #335075;
         border-radius: 0;
-        font-size: .87rem;
+        font-size: .87rem !important;
         font-weight: 300;
         box-shadow: none; }
       #wb-main-in .elgg-widget-content #widget-welcome .index-search .index-search-submit:hover {

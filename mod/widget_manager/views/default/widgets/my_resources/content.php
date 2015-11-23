@@ -12,6 +12,8 @@
 	$links['DNDLearn']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/pages/view/138983/dln-rad'>RAD</a>";
 	$links['DFIT']['internet']['en']="<a href='http://dfit.ca/'>DFIT</a>";
 	$links['DFIT']['internet']['fr']="<a href='http://www.cphysd.ca'>CPHYSD</a>";
+	$links['CFITES']['internet']['en']="<a href='http://cda.mil.ca/pub/lib-bib/cfites-eng.asp'>CFITES</a>";
+	$links['CFITES']['internet']['fr']="<a href='http://cda.mil.ca/pub/lib-bib/cfites-eng.asp'>SIIEFC</a>";
 	$links['Conferencing']['internet']['en']="<a href='https://lp-pa.forces.gc.ca/portal/pages/view/99/web-conferencing-conference-web'>Conferencing</a>";
 	$links['Conferencing']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/pages/view/99/web-conferencing-conference-web'>conférence</a>";
 	$links['EILP']['internet']['en']="<a href='http://img-dcb-ioutpro.forces.mil.ca:88/ilp'>ILP (DWAN)</a>";
@@ -60,7 +62,7 @@
 	$instructor=array($links['Allies'], $links['AKE'], $links['ISAT'], $links['DNDLearn'], $links['Conferencing'], $links['KMS'], $links['TERM'],   $links['SUPPORT']);
 	$developer=array($links['ISAT'], $links['DNDLearn'], $links['AKE'], $links['KMS'], $links['TERM'],  $links['SUPPORT']);
 	$learner=array($links['Allies'], $links['DNDLearn'], $links['EILP'], $links['CFC'], $links['LCCS'], $links['AKE'], $links['KA'], $links['Conferencing'], $links['TERM'],   $links['SUPPORT']);
-	$all=array($links['AKE'], $links['Allies'], $links['CAFCOD'], $links['CFC'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LCCS'], $links['SOMNIA'], $links['SUPPORT'], $links['TED'], $links['TERM']);
+	$all=array($links['AKE'], $links['Allies'], $links['CAFCOD'], $links['CFC'], $links['CFITES'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['KA'], $links['KMS'], $links['LCCS'], $links['SOMNIA'], $links['SUPPORT'], $links['TED'], $links['TERM']);
 	
 	$user=elgg_get_logged_in_user_entity();
 	if($user){
