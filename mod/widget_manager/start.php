@@ -205,8 +205,8 @@
 						"type_subtype_pairs" => array(),
 						"relationship_guid" => $userGuid,
 						"relationship" => 'friend',
+						"wheres" => array("rv.action_type != 'friend'")
 				);
-
 				$friend_activity = elgg_list_river($river_options_friends);
 
 				echo $friend_activity;
@@ -216,8 +216,8 @@
 					"pagination" => false,
 					"limit" => 10,
 					"type_subtype_pairs" => array(),
+					"wheres" => array("rv.action_type != 'friend'")
 				);
-
 				$friend_activity = elgg_list_river($river_options_friends);
 
 				echo $friend_activity;
@@ -230,7 +230,7 @@
 					"joins" => array("JOIN {$db_prefix}metadata md on rv.object_guid = md.entity_guid",
 									"JOIN {$db_prefix}metastrings msv ON md.value_id = msv.id"
 					),
-					"wheres" => array("msv.string LIKE 'learn%' OR msv.string LIKE 'appren%'")
+					"wheres" => array("rv.action_type != 'friend'", "msv.string LIKE 'learn%' OR msv.string LIKE 'appren%'")
 				);
 
 				$learner_activity = elgg_list_river($river_options_learners);
@@ -245,7 +245,7 @@
 					"joins" => array("JOIN {$db_prefix}metadata md on rv.object_guid = md.entity_guid",
 									"JOIN {$db_prefix}metastrings msv ON md.value_id = msv.id"
 					),
-					"wheres" => array("msv.string LIKE 'develop%' OR msv.string LIKE 'concepteur%'")
+					"wheres" => array( "rv.action_type != 'friend'","msv.string LIKE 'develop%' OR msv.string LIKE 'concepteur%'")
 				);
 
 				$learner_activity = elgg_list_river($river_options_learners);
@@ -260,7 +260,7 @@
 					"joins" => array("JOIN {$db_prefix}metadata md on rv.object_guid = md.entity_guid",
 									"JOIN {$db_prefix}metastrings msv ON md.value_id = msv.id"
 					),
-					"wheres" => array("msv.string LIKE 'instruct%'")
+					"wheres" => array("msv.string LIKE 'instruct%'", "rv.action_type != 'friend'"),
 				);
 
 				$learner_activity = elgg_list_river($river_options_learners);
