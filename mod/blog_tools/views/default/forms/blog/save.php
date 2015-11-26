@@ -37,15 +37,6 @@ if ($vars['guid']) {
 	));
 }
 
-// published blogs do not get the preview button
-if (!$vars['guid'] || ($blog && $blog->status != 'published')) {
-	$preview_button = elgg_view('input/submit', array(
-		'value' => elgg_echo('preview'),
-		'name' => 'preview',
-		'class' => 'mls',
-	));
-}
-
 $save_button = elgg_view('input/submit', array(
 	'value' => elgg_echo('save'),
 	'name' => 'save',
