@@ -24,6 +24,33 @@ switch ($vars['page']) {
 		break;
 }
 
+$content.= "<ol id='joyRideTipContent'>
+      <li data-class='elgg-heading-main' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:right;tipAnimation:fade'>
+        <h2>".elgg_echo('members:pageinfo:tooltipTitle')."</h2>
+        <p>".elgg_echo('members:pageinfo:tooltip')."</p>
+      </li>
+      <li data-class='elgg-tabs' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:right;tipAnimation:fade'>
+        <h2>".elgg_echo('members:newest:tooltipTitle')."</h2>
+        <p>".elgg_echo('members:newest:tooltip')."</p>
+      </li>
+      <li data-class='elgg-tabs' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:right;tipAnimation:fade'>
+        <h2>".elgg_echo('members:popular:tooltipTitle')."</h2>
+        <p>".elgg_echo('members:popular:tooltip')."</p>
+      </li>
+      <li data-class='elgg-tabs' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:right;tipAnimation:fade'>
+        <h2>".elgg_echo('members:online:tooltipTitle')."</h2>
+        <p>".elgg_echo('members:online:tooltip')."</p>
+      </li>
+      <li data-class='elgg-form-members-tag-search' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:right;tipAnimation:fade'>
+        <h2>".elgg_echo('members:searchtag:tooltipTitle')."</h2>
+        <p>".elgg_echo('members:searchtag:tooltip')."</p>
+      </li>
+       <li data-class='elgg-form-members-name-search' data-text='".elgg_echo('widget_manager:widgets:close')."' data-options='tipLocation:right;tipAnimation:fade'>
+        <h2>".elgg_echo('members:searchname:tooltipTitle')."</h2>
+        <p>".elgg_echo('members:searchname:tooltip')."</p>
+      </li>
+    </ol>";
+
 $params = array(
 	'content' => $content,
 	'sidebar' => elgg_view('members/sidebar'),
