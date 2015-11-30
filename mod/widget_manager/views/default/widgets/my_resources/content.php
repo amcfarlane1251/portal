@@ -6,8 +6,8 @@
 */
 	$links['AKE']['internet']['en']="<a href='http://s7.ongarde.net/alsc/'>AKE (VPN)</a>";
 	$links['AKE']['internet']['fr']="<a href='http://s7.ongarde.net/alsc/'>ECA (VPN)</a>";
-	$links['ISAT']['internet']['en']="<a href='http://s3.ongarde.net/isat/portal/index.php'>ISAT (VPN)</a>";
-	$links['ISAT']['internet']['fr']="<a href='http://s3.ongarde.net/isat/portal/index.php'>ASIF (VPN)</a>";
+	$links['ISAT']['internet']['en']="<a href='http://s16.ongarde.net/en/'>ISAT (VPN)</a>";
+	$links['ISAT']['internet']['fr']="<a href='http://s16.ongarde.net/en/'>ASIF (VPN)</a>";
 	$links['DNDLearn']['internet']['en']="<a href='https://lp-pa.forces.gc.ca/portal/pages/view/138983/dln-rad'>DLN LMS</a>";
 	$links['DNDLearn']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/pages/view/138983/dln-rad'>RAD</a>";
 	$links['DFIT']['internet']['en']="<a href='http://dfit.ca/'>DFIT</a>";
