@@ -87,6 +87,28 @@ foreach ($hashes as $hash) {
 	$messages[] = $tmp_entities[0];
 }
 
+//check if message thread has unready messages
+$tmpArr = array();
+foreach($messages as $key => $message) {
+	$count_unread = elgg_get_entities_from_metadata(array(
+		'types' => 'object',
+		'subtypes' => 'messages',
+		'owner_guid' => $message->owner_guid,
+		'metadata_name_value_pairs' => array(
+			array('name' => 'msgHash', 'value' => $message->msgHash),
+			array('name' => 'readYet', 'value' => 1, 'operand' => '!=')
+		),
+		'count' => true
+	));
+	
+	//if already read push to bottom
+	if($count_unread <= 0) {
+		$tmpArr[] = $message;
+		unset($messages[$key]);
+	}
+}
+$messages = array_merge($messages, $tmpArr);
+
 elgg_push_context('inbox-table');
 echo elgg_view_entity_list($messages, array(
 	'list_class' => 'inbox-messages-table',
