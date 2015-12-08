@@ -57,8 +57,7 @@ $query = "SELECT DISTINCT md.value_id
 				AND md2.value_id = {$map[$message_type]}
 				AND e.owner_guid = $user->guid
 				AND $access
-			ORDER BY e.time_created DESC
-			LIMIT $offset, $limit";
+			ORDER BY e.time_created DESC";
 $hashes = get_data($query);
 
 
@@ -108,6 +107,7 @@ foreach($messages as $key => $message) {
 	}
 }
 $messages = array_merge($messages, $tmpArr);
+$messages = array_slice($messages, $offset, $limit);
 
 elgg_push_context('inbox-table');
 echo elgg_view_entity_list($messages, array(
