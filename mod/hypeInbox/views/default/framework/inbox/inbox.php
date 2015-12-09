@@ -85,7 +85,10 @@ foreach ($hashes as $hash) {
 	$tmp_entities = elgg_get_entities($tmp_options);
 	$messages[] = $tmp_entities[0];
 }
-
+usort($messages, function($a, $b)
+{
+    return -1 * strcmp($a->time_created, $b->time_created);
+});
 //check if message thread has unready messages
 $tmpArr = array();
 foreach($messages as $key => $message) {
@@ -106,6 +109,7 @@ foreach($messages as $key => $message) {
 		unset($messages[$key]);
 	}
 }
+
 $messages = array_merge($messages, $tmpArr);
 $messages = array_slice($messages, $offset, $limit);
 
@@ -119,5 +123,3 @@ echo elgg_view_entity_list($messages, array(
 	'offset' => $offset
 ));
 elgg_pop_context();
-
-
