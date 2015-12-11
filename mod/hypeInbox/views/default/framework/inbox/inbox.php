@@ -122,4 +122,8 @@ echo elgg_view_entity_list($messages, array(
 	'limit' => $limit,
 	'offset' => $offset
 ));
+echo "<div class='float-alt'>
+		<a id='messages-delete' href='javascript:void(0);'>".elgg_echo('hj:inbox:delete:all')."</a> |
+		<a id='messages-mark-unread' href='javascript:void(0);'>".elgg_echo('hj:inbox:markunread:all')."</a>
+	 </div>";
 elgg_pop_context();

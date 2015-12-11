@@ -150,6 +150,7 @@ if (elgg_in_context('inbox-table') || elgg_in_context('inbox-sent')) {
 	<div class="inbox-message-title">$title$tags</div>
 	<div class="inbox-message-attachments">$attachments_summary</div>
 	<div class="inbox-message-menu">$menu</div>
+	<div class="inbox-message-checkbox float-alt"><input type="checkbox" name="messages[]" value="{$entity->guid}"></div>
 __MSG;
 } else {
 
