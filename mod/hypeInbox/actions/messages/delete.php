@@ -56,12 +56,21 @@ if ($guids) {
 $count = $success + $error + $notfound + $persistent;
 
 $msg[] = elgg_echo('hj:inbox:delete:success', array($success, $count));
-if ($notfound > 0)
+$status = "success";
+if ($notfound > 0) {
 	$msg[] = elgg_echo('hj:approve:error:notfound', array($notfound));
-if ($persistent > 0)
+	$status = "fail";
+}
+if ($persistent > 0) {
 	$msg[] = elgg_echo('hj:approve:error:canedit', array($persistent));
-if ($error > 0)
+	$status = "fail";
+}
+if ($error > 0) {
 	$msg[] = elgg_echo('hj:approve:error:unknown', array($error));
-
+	$status = "error";
+}
 
 system_message(implode('<br />', $msg));
+if(elgg_is_xhr()) {
+	echo json_encode(array('status'=>$status,'data'=>array('msg'=>$msg[0])));
+}

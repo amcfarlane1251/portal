@@ -71,8 +71,10 @@ $english = array(
 	'hj:inbox:load:after' => 'Load next %s messages',
 
 	'hj:inbox:delete' => 'Delete',
+	'hj:inbox:delete:all' => 'Delete Selected',
 	'hj:inbox:markread' => 'Mark as read',
 	'hj:inbox:markunread' => 'Mark as unread',
+	'hj:inbox:markunread:all' => 'Mark Selected as unread',
 	
 	'hj:inbox:delete:success' => '%s of %s messages were successfully deleted',
 	'hj:inbox:markread:success' => '%s of %s messages were marked as read',
@@ -82,6 +84,8 @@ $english = array(
 	'hj:inbox:error:unknown' => '%s messages could not be deleted because of an unknown error',
 	'hj:inbox:delete:thread:confirm' => 'Are you sure you want to delete all messages in this thread?',
 	'hj:inbox:delete:message:confirm' => 'Are you sure you want to delete this message?',
+	
+	'inbox:noMessagesSelected' => 'You need to select atleast one message',
 	
 );
 
