@@ -81,7 +81,12 @@ function init() {
 	elgg_register_entity_url_handler('object', HYPECATEGORIES_SUBTYPE, __NAMESPACE__ . '\\category_url_handler');
 
 	elgg_register_plugin_hook_handler('entity:icon:url', 'object', __NAMESPACE__ . '\\category_icon_url');
-
+	
+	/**
+	 * Widget
+	 */
+	elgg_register_widget_type('hypeCategories', elgg_echo('categories'), elgg_echo('categories:group_module'), "groups");
+	
 	/**
 	 * Menus
 	 */

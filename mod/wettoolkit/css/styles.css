@@ -277,8 +277,11 @@
     #wb-main-in .elgg-module-widget .elgg-head {
       height: auto; }
     #wb-main-in .elgg-module-widget > .elgg-head h3 {
-      background-color: #0a3e88;
-      color: antiquewhite; }
+      background: #243850;
+      background: rgba(36, 56, 80, 0.9);
+      color: #FFF; }
+      #wb-main-in .elgg-module-widget > .elgg-head h3 + ul li a {
+        color: #FFF; }
     #wb-main-in .elgg-module-widget > .elgg-body {
       overflow: visible;
       -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -334,6 +337,8 @@
       #wb-main-in .elgg-widget-instance-index_groups ul li a {
         font-weight: normal;
         font-size: inherit; }
+  #wb-main-in .elgg-widget-instance-hypeCategories li {
+    list-style: none; }
   #wb-main-in .elgg-widget-content {
     position: relative;
     box-shadow: none; }
@@ -1007,6 +1012,10 @@ a.tooltip.bottom:hover:before {
   #wb-main-in #elgg-widget-col-2 {
     width: 61%;
     clear: none; }
+  #wb-main-in .groups-profile ~ div#elgg-widget-col-3 {
+    display: none; }
+  #wb-main-in .groups-profile ~ div#elgg-widget-col-1, #wb-main-in .groups-profile ~ div#elgg-widget-col-2 {
+    width: 50%; }
   #wb-main-in .index-search-submit {
     width: 19% !important; }
   #wb-main-in .my-profile .edit-profile a {
