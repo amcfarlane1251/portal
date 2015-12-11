@@ -27,7 +27,7 @@
 
 							//remove overlay
 							if(index == (len-1)) {
-								//overlay.remove();
+								overlay.remove();
 							}
 							
 							if(parsed.output.status == 'success') {
@@ -42,6 +42,9 @@
 							overlay.remove();
 					});
 				});
+			}
+			else{
+				alert("<?php echo elgg_echo('inbox:noMessagesSelected');?>");
 			}
 		});
 	});

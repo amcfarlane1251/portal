@@ -85,6 +85,8 @@ $english = array(
 	'hj:inbox:delete:thread:confirm' => 'Are you sure you want to delete all messages in this thread?',
 	'hj:inbox:delete:message:confirm' => 'Are you sure you want to delete this message?',
 	
+	'inbox:noMessagesSelected' => 'You need to select atleast one message',
+	
 );
 
 

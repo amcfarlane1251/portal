@@ -13,8 +13,10 @@ Overlay.prototype.setProperties = function(message) {
 	var top = (document.documentElement && document.documentElement.scrollTop) || 
               document.body.scrollTop;
 	top = $(window).scrollTop();
-	console.log(top);
-	this.content = '<div id="'+this.id+'" style="position:absolute;top:'+top+'px;left:0;background:#111;opacity:.8;z-index:99999;display:table;width:60%;height:40%;padding: 30% 20%;">'
+	var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
+	var height = (isIE ? 40 : 100);
+
+	this.content = '<div id="'+this.id+'" style="position:absolute;top:'+top+'px;left:0;background:#111;opacity:.8;z-index:99999;display:table;width:60%;height:'+height+'%;padding:20%;">'
 						+'<div style="display:table-cell;vertical-align:middle;">'
 							+'<div style="text-align:center;"><h2 style="color:#f5f5f5;">'+this.message+'</h2></div>'
 						+'</div>'
