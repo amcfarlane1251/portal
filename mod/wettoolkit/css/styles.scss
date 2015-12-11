@@ -412,8 +412,14 @@ $link-color:#335075;
 		}
 		> .elgg-head{
 			h3{
-				background-color: rgb(10, 62, 136);
-    			color: antiquewhite;
+				background: #243850;
+                background: rgba(36,56,80,.9);
+    			color: #FFF;
+                & + ul{
+                    li a{
+                        color:#FFF;
+                    }
+                }
 			}
 		}
 
@@ -504,6 +510,13 @@ $link-color:#335075;
 			}
 		}
 	}
+    
+    //categories widget
+    .elgg-widget-instance-hypeCategories{
+        li{
+            list-style:none;
+        }
+    }
 
 	.elgg-widget-content{
 		position:relative;
@@ -1413,6 +1426,13 @@ a.tooltip.bottom:hover:before { top: 20px; }
 			width:61%;
 			clear:none;
 		}
+                
+        .groups-profile ~ div#elgg-widget-col-3{
+            display:none;
+        }
+        .groups-profile ~ div#elgg-widget-col-1, .groups-profile ~ div#elgg-widget-col-2{
+            width:50%;
+        }
 
 		.index-search-submit{
 			width:19% !important;
