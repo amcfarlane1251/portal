@@ -55,16 +55,18 @@
 	$links['TED']['internet']['fr']="<a href='https://www.ted.com/talks'>TED Talks</a>";
 	$links['ITETOOLS']['internet']['en']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/653593/ite-tools'>IT&E Tools</a>";
 	$links['ITETOOLS']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/653593/ite-tools'>outils II&E</a>";
+	$links['TEJAR']['internet']['en']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/1154/training-and-education-job-aid-repository-tejar'>TEJAR</a>";
+	$links['TEJAR']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/1154/training-and-education-job-aid-repository-tejar'>TEJAR</a>";
 
 
 
 
 
-	$trainingmgr=array($links['DNDLearn'], $links['Conferencing'], $links['ISAT'], $links['TERM'], $links['CAFCOD'], $links['SUPPORT']);
-	$instructor=array($links['Allies'], $links['AKE'], $links['ISAT'], $links['DNDLearn'], $links['Conferencing'], $links['KMS'], $links['TERM'],   $links['SUPPORT']);
-	$developer=array($links['ISAT'], $links['DNDLearn'], $links['AKE'], $links['KMS'], $links['TERM'],  $links['SUPPORT']);
+	$trainingmgr=array($links['DNDLearn'], $links['Conferencing'], $links['ISAT'], $links['TEJAR'], $links['TERM'], $links['CAFCOD'], $links['SUPPORT']);
+	$instructor=array($links['Allies'], $links['AKE'], $links['ISAT'], $links['DNDLearn'], $links['Conferencing'], $links['KMS'], $links['TEJAR'], $links['TERM'],   $links['SUPPORT']);
+	$developer=array($links['ISAT'], $links['DNDLearn'], $links['AKE'], $links['KMS'], $links['TEJAR'], $links['TERM'],  $links['SUPPORT']);
 	$learner=array($links['Allies'], $links['DNDLearn'], $links['EILP'], $links['CFC'], $links['LCCS'], $links['AKE'], $links['KA'], $links['Conferencing'], $links['TERM'],   $links['SUPPORT']);
-	$all=array($links['AKE'], $links['Allies'], $links['CAFCOD'], $links['CFC'], $links['CFITES'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['ITETOOLS'], $links['KA'], $links['KMS'], $links['LCCS'], $links['SOMNIA'], $links['SUPPORT'], $links['TED'], $links['TERM']);
+	$all=array($links['AKE'], $links['Allies'], $links['CAFCOD'], $links['CFC'], $links['CFITES'], $links['Conferencing'], $links['DFIT'], $links['DNDLearn'], $links['EILP'], $links['ISAT'], $links['ITETOOLS'], $links['KA'], $links['KMS'], $links['LCCS'], $links['SOMNIA'], $links['SUPPORT'], $links['TED'], $links['TEJAR'], $links['TERM']);
 	
 	$user=elgg_get_logged_in_user_entity();
 	if($user){
