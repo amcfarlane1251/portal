@@ -1,9 +1,51 @@
 <?php if (FALSE) : ?>
 	<script type="text/javascript">
 <?php endif; ?>
-
 	elgg.provide('framework.inbox');
 
+    $(function(){
+		$('#messages-delete').click(function(e){
+			var checkboxes = $('input[type="checkbox"][name="messages[]"]:checked');
+			var len = checkboxes.length;
+			var error = false;
+			
+			if(len >= 1) {
+				var overlay = new Overlay('Deleting Message(s)...');
+				
+				checkboxes.each(function(index, elem){
+					if(error) {
+						return false;
+					}
+					var id = $(this).val();
+					var url = $(this).parent().siblings('.inbox-message-menu').find('.elgg-menu-item-delete a').attr('href');
+
+					$.ajax({
+						url:url,
+						type:'GET',
+					}).done(function(data){
+							var parsed = JSON.parse(data);
+
+							//remove overlay
+							if(index == (len-1)) {
+								//overlay.remove();
+							}
+							
+							if(parsed.output.status == 'success') {
+								$('#elgg-object-'+id).css('background-color', '#D32F2F').fadeOut(500, function(){
+									$(this).remove();
+								});
+							}
+							else if(parsed.output.status == 'fail' || parsed.output.status == 'error') {
+								error = true;
+							}
+					}).fail(function(){
+							overlay.remove();
+					});
+				});
+			}
+		});
+	});
+	
 	framework.inbox.user = function() {
 		$('.inbox-thread-message-summary')
 				.live('click', function(e) {

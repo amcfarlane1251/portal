@@ -239,6 +239,7 @@ if(elgg_is_logged_in() && 1==5){
 <script src="<?php echo $wettoolkit_url.'/dist/js/jquery.joyride-2.1.min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/responsiveslides.min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/wetMessages.min.js';?>"></script>
+<script src="<?php echo $wettoolkit_url.'/dist/js/classes/Overlay.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/script.min.js';?>"></script>
 
 <?php

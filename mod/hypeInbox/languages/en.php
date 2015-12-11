@@ -71,8 +71,10 @@ $english = array(
 	'hj:inbox:load:after' => 'Load next %s messages',
 
 	'hj:inbox:delete' => 'Delete',
+	'hj:inbox:delete:all' => 'Delete Selected',
 	'hj:inbox:markread' => 'Mark as read',
 	'hj:inbox:markunread' => 'Mark as unread',
+	'hj:inbox:markunread:all' => 'Mark Selected as unread',
 	
 	'hj:inbox:delete:success' => '%s of %s messages were successfully deleted',
 	'hj:inbox:markread:success' => '%s of %s messages were marked as read',
