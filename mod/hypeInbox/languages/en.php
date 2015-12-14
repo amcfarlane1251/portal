@@ -74,7 +74,6 @@ $english = array(
 	'hj:inbox:delete:all' => 'Delete Selected',
 	'hj:inbox:markread' => 'Mark as read',
 	'hj:inbox:markunread' => 'Mark as unread',
-	'hj:inbox:markunread:all' => 'Mark Selected as unread',
 	
 	'hj:inbox:delete:success' => '%s of %s messages were successfully deleted',
 	'hj:inbox:markread:success' => '%s of %s messages were marked as read',
@@ -86,6 +85,7 @@ $english = array(
 	'hj:inbox:delete:message:confirm' => 'Are you sure you want to delete this message?',
 	
 	'inbox:noMessagesSelected' => 'You need to select atleast one message',
+	'hj:inbox:select:all' => 'Select All',
 	
 );
 

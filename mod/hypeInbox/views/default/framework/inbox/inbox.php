@@ -114,6 +114,10 @@ $messages = array_merge($messages, $tmpArr);
 $messages = array_slice($messages, $offset, $limit);
 
 elgg_push_context('inbox-table');
+echo "<div class='float-alt'>
+		<div class='more-menu-options' style='display:none;'><a id='messages-delete' class='glyphicon delete-button' title='".elgg_echo('hj:inbox:delete:all')."' href='javascript:void(0);'></a></div>
+		<a id='messages-select-all' href='javascript:void(0);'>".elgg_echo('hj:inbox:select:all')."</a>
+	 </div>";
 echo elgg_view_entity_list($messages, array(
 	'list_class' => 'inbox-messages-table',
 	'full_view' => false,
@@ -122,8 +126,5 @@ echo elgg_view_entity_list($messages, array(
 	'limit' => $limit,
 	'offset' => $offset
 ));
-echo "<div class='float-alt'>
-		<a id='messages-delete' href='javascript:void(0);'>".elgg_echo('hj:inbox:delete:all')."</a> |
-		<a id='messages-mark-unread' href='javascript:void(0);'>".elgg_echo('hj:inbox:markunread:all')."</a>
-	 </div>";
+
 elgg_pop_context();

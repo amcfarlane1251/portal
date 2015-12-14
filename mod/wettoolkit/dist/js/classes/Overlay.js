@@ -1,13 +1,12 @@
 var Overlay = function(message){
 	this.setProperties(message);
-
 	//bind to jQuery
 	$(this.init);
 }
 
 Overlay.prototype.setProperties = function(message) {
 	this.container = $("#wb-body");
-	this.id = "overlay-widget"
+	this.id = "overlay-widget";
 	this.message = message;
 	
 	var top = (document.documentElement && document.documentElement.scrollTop) || 
