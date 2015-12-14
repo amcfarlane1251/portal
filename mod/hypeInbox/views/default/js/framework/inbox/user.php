@@ -4,13 +4,40 @@
 	elgg.provide('framework.inbox');
 
     $(function(){
+		var allBoxes = $('input[type="checkbox"][name="messages[]"]');
+		allBoxes.each(function(i, elem){
+			$(elem).bind('change',function() {
+				var checked = false;
+				allBoxes.each(function(i, elem){
+					if(elem.checked) {
+						checked = true;
+					}
+				 });
+				 
+				 if(checked) {
+					 $('.more-menu-options').css('display', 'inline-block');
+				 }
+				 else{
+					 $('.more-menu-options').css('display', 'none');
+				 }
+			});
+		});
+		
+		$('#messages-select-all').click(function(){
+			allBoxes.each(function(i, elem){
+				$(elem).prop('checked',true).change();
+			});
+		});
+		
 		$('#messages-delete').click(function(e){
 			var checkboxes = $('input[type="checkbox"][name="messages[]"]:checked');
 			var len = checkboxes.length;
-			var error = false;
 			
 			if(len >= 1) {
 				var overlay = new Overlay('Deleting Message(s)...');
+				var deferred = $.Deferred();
+				var error = false;
+				var wHeight = $(window).scrollTop();
 				
 				checkboxes.each(function(index, elem){
 					if(error) {
@@ -23,24 +50,23 @@
 						url:url,
 						type:'GET',
 					}).done(function(data){
-							var parsed = JSON.parse(data);
+						var parsed = JSON.parse(data);
 
-							//remove overlay
-							if(index == (len-1)) {
-								overlay.remove();
-							}
-							
-							if(parsed.output.status == 'success') {
-								$('#elgg-object-'+id).css('background-color', '#D32F2F').fadeOut(500, function(){
-									$(this).remove();
-								});
-							}
-							else if(parsed.output.status == 'fail' || parsed.output.status == 'error') {
-								error = true;
-							}
+						if(parsed.output.status == 'fail' || parsed.output.status == 'error') {
+							error = true;
+						}
+
+						//remove overlay
+						if(index == (len-1)) {
+							deferred.resolve();
+						}
 					}).fail(function(){
-							overlay.remove();
+						overlay.remove();
 					});
+				});
+				deferred.done(function(value){
+					location.reload();
+					//overlay.remove();
 				});
 			}
 			else{
