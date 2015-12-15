@@ -328,6 +328,7 @@
     #wb-main-in .elgg-widget-instance-index_activity .elgg-widget-content ul#activity-filter a:hover, #wb-main-in .elgg-widget-instance-index_activity .elgg-widget-content ul#activity-filter a:active, #wb-main-in .elgg-widget-instance-index_activity .elgg-widget-content ul#activity-filter a:focus {
       text-decoration: none; }
     #wb-main-in .elgg-widget-instance-index_activity .elgg-widget-content .elgg-list-river {
+      max-width: 683px;
       background: whitesmoke;
       border-top: none;
       margin: 0;
