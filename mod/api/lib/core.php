@@ -4,28 +4,47 @@ function apiPageHandler($page){
 	$method = $_SERVER['REQUEST_METHOD'];
 	switch($page[0]) {
 		case 'session':
-			$session = new Session();
-			//get request payload
-			$username = get_input('username');
-			$password = get_input('password');
+			$session = new Session($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+			
 			//check HTTP method
 			switch($method) {
 				case 'GET':
 					exit;
 					break;
 				case 'POST':
-					if($session->authenticate($username, $password)){
-						$user = get_user_by_username($username);
-						foreach($user as $index => $attribute) {
-							$data[$index] = $attribute;
+					if( $session->validate() ) {
+						//passed model validation
+						if( $session->authenticate() ) {
+							$user = get_user_by_username($session->getUsername());
+							
+							//did not pass authentication, return 200
+							header("HTTP/1.1 200 OK");
+							$status = 'success';
+							$data['id'] = $user->guid;
+							$data['name'] = $user->name;
+							$data['username'] = $user->username;
+							$data['email'] = $user->email;
+						}
+						else{
+							//did not pass authentication, return 401
+							header('X-PHP-Response-Code: 401', true, 401);
+							$status = 'fail';
+							$data = $session->errors;
 						}
 					}
-					echo json_encode(array('status'=>'success', 'data'=>$data));
+					else{
+						//validation has failed
+						header('X-PHP-Response-Code: 400', true, 400);
+						$status = 'fail';
+						$data = $session->errors;
+					}
+					
+					//set the content type
+					header('Content-type: application/json');
+					echo json_encode(array('status'=>$status, 'data'=>$data));
 					exit;
 					break;
 			}
-			$result = array('status' => 'success', 'data' => array('message'=>'test', 'message2'=>'test2'));
-			echo json_encode($result);
 			exit;
 			break;
 		default:
