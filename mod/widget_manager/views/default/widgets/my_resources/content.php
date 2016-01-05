@@ -53,8 +53,8 @@
 	$links['SOMNIA']['internet']['fr']="<a href='http://www.cfc.forces.gc.ca/254-fra.html'>SOMNIA</a>";
 	$links['TED']['internet']['en']="<a href='https://www.ted.com/talks'>TED Talks</a>";
 	$links['TED']['internet']['fr']="<a href='https://www.ted.com/talks'>TED Talks</a>";
-	$links['ITETOOLS']['internet']['en']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/653593/ite-tools'>IT&E Tools</a>";
-	$links['ITETOOLS']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/653593/ite-tools'>outils II&E</a>";
+	$links['ITETOOLS']['internet']['en']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/653593/ite-tools'>LT Tools</a>";
+	$links['ITETOOLS']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/653593/ite-tools'>Outils TA</a>";
 	$links['TEJAR']['internet']['en']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/1154/training-and-education-job-aid-repository-tejar'>TEJAR</a>";
 	$links['TEJAR']['internet']['fr']="<a href='https://lp-pa.forces.gc.ca/portal/groups/profile/1154/training-and-education-job-aid-repository-tejar'>TEJAR</a>";
 	$links['CMJ']['internet']['en']="<a href='http://www.journal.forces.gc.ca/'>Canadian Military Journal</a>";
