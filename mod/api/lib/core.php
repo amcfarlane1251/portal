@@ -17,7 +17,7 @@ function apiPageHandler($page){
 						if( $session->authenticate() ) {
 							$user = get_user_by_username($session->getUsername());
 							
-							//did not pass authentication, return 200
+							//passed authentication, return 200
 							header("HTTP/1.1 200 OK");
 							$status = 'success';
 							$data['id'] = $user->guid;
@@ -26,14 +26,14 @@ function apiPageHandler($page){
 							$data['email'] = $user->email;
 						}
 						else{
-							//did not pass authentication, return 401
+							//did not pass authentication, return 401 - unauthorized
 							header('X-PHP-Response-Code: 401', true, 401);
 							$status = 'fail';
 							$data = $session->errors;
 						}
 					}
 					else{
-						//validation has failed
+						//validation has failed - client error
 						header('X-PHP-Response-Code: 400', true, 400);
 						$status = 'fail';
 						$data = $session->errors;
