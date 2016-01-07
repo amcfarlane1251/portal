@@ -1450,7 +1450,7 @@ a.tooltip.bottom:hover:before { top: 20px; }
 		}
                 
         .groups-profile ~ div#elgg-widget-col-3{
-            display:none;
+            width:100%
         }
         .groups-profile ~ div#elgg-widget-col-1, .groups-profile ~ div#elgg-widget-col-2{
             width:50%;

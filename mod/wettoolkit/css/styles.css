@@ -1028,7 +1028,7 @@ a.tooltip.bottom:hover:before {
     width: 61%;
     clear: none; }
   #wb-main-in .groups-profile ~ div#elgg-widget-col-3 {
-    display: none; }
+    width: 100%; }
   #wb-main-in .groups-profile ~ div#elgg-widget-col-1, #wb-main-in .groups-profile ~ div#elgg-widget-col-2 {
     width: 50%; }
   #wb-main-in .index-search-submit {
