@@ -21,9 +21,8 @@ function apiPageHandler($page){
 							header("HTTP/1.1 200 OK");
 							$status = 'success';
 							$data['id'] = $user->guid;
-							$data['name'] = $user->name;
-							$data['username'] = $user->username;
-							$data['email'] = $user->email;
+							$data['key'] = $user->guid.$user->salt;
+							
 						}
 						else{
 							//did not pass authentication, return 401 - unauthorized
