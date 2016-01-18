@@ -49,7 +49,7 @@ $CONFIG->dbpass = '';
  *
  * @global string $CONFIG->dbname
  */
-$CONFIG->dbname = 'gpnet';
+$CONFIG->dbname = 'portal';
 
 /**
  * The database host.
