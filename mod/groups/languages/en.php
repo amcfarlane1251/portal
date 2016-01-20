@@ -299,6 +299,47 @@ or click below to view the group's join requests:
 	'groups:ecml:discussion' => 'Group Discussions',
 	'groups:ecml:groupprofile' => 'Group profiles',
 
+	/*
+	 Joyride Tooltip context
+	 */
+	 //Group Menu Buttons tooltips
+	'groups:menu:edit:tooltipTitle' => "Edit Group",
+	'groups:menu:edit:tooltip' => "Here to edit or add any information about the group, also enable and disable features from the group.",
+	'groups:menu:invite:tooltipTitle' => "Invite Users",
+	'groups:menu:invite:tooltip' => "You will be able to invite other members to this group.",
+	'groups:menu:copy:tooltipTitle' => "Copy Group",
+	'groups:menu:copy:tooltip' => "Create the new copy of the group based off your choice. Copying a group will not delete the old group.",
+	'groups:menu:join:tooltipTitle' => "Join The Group",
+	'groups:menu:join:tooltip' => "If you are interested in being a member of this group, click here to join directly.",
+	'groups:menu:joinrequest:tooltipTitle' => "Request to Join the Group",
+	'groups:menu:joinrequest:tooltip' => "This is a closed group. You have to send a request to the group owner. When approved, you will be a member of the group.",
+	'groups:menu:leave:tooltipTitle' => "Leave The Current Group",
+	'groups:menu:leave:tooltip' => "If you want to leave this group, click here to quit. You can still join the group later if you changed your mind.",
+	'groups:menu:subgroup:tooltipTitle' => "Create a Sub-Group",
+	'groups:menu:subgroup:tooltip' => "You can choose to make sub-groups for their group. Doing so will take the user to a create group page with the same options as when they created the main group.",
+	//Group Icons
+	'groups:icon:addbookmark:tooltipTitle' => "Bookmark this page",
+	'groups:icon:addbookmark:tooltip' => "Bookmarks are similar to using 'favourites' in a web browser. You can put this group in your bookmarks, so that you can easily visit the page of the group later.",
+	'groups:icon:rss:tooltipTitle' => "RSS feed for this page",
+	'groups:icon:rss:tooltip' => "This is a feed of frequently changing content on this page. You can subscribe to this feed to receive updates when this content changes.",
+	//Group Description
+	'groups:profile:description:tooltipTitle' => "Group Description",
+	'groups:profile:description:tooltip' => "Find out more details about the group.",
+	//Group Sidebar
+	'groups:menu:sidebar:tooltipTitle' => "Group Sidebar",
+	'groups:menu:sidebar:tooltip' => "The group sidebar acts as a navigation panel for viewing and navigating the group’s resources.",
+	//Sub-Groups List
+	'groups:module:subgroup:tooltipTitle' => "Sub-Groups",
+	'groups:module:subgroup:tooltip' => "In the sidebar the user can see all of the sub-groups of their group. This section will display a few featured sub-groups and to view the rest the user can select to ‘view all sub-groups’ below.",
+	//Group Search Box
+	'groups:form:search:tooltipTitle' => "Search Box",
+	'groups:form:search:tooltip' => "Searching will look for everything done in the group that relates to the input provided. This includes forum posts, videos, files, etc…",
+	//Group Members List
+	'groups:gallery:users:tooltipTitle' => "Group Members",
+	'groups:gallery:users:tooltip' => "The group member’s panel will feature some of the most recent people to join the group. The user can view all of the members of the group by clicking ‘view all members’ located below the featured members.",
+	//Group Plug-ins
+	'groups:tools:tooltipTitle' => "Group Main Page",
+	'groups:tools:tooltip' => "The group main page allows users to view all of the resources posted under that group. All of the content that has been posted is categorized and displayed on the main page.",
 );
 
 add_translation("en", $english);

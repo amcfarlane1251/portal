@@ -225,6 +225,48 @@ ou cliquez le lien ci-dessous pour confirmer son adhésion :
 
 			'groups:invitekilled' => "L'invitation a été supprimée.",
 			'groups:joinrequestkilled' => "La demande d'adhésion a été supprimée.",
+
+			/*
+			 Joyride Tooltip context
+			 */
+			 //Group Menu Buttons tooltips
+			'groups:menu:edit:tooltipTitle' => "Modifier le groupe",
+			'groups:menu:edit:tooltip' => "Modifier ou ajouter des informations sur le groupe, également activer ou désactiver des fonctionnalités pour le groupe.",
+			'groups:menu:invite:tooltipTitle' => "Inviter des utilisateurs",
+			'groups:menu:invite:tooltip' => "La page d’invitation s’ouvre et l’utilisateur peut inviter d’autres membres à joindre le groupe.",
+			'groups:menu:copy:tooltipTitle' => "Copier le groupe",
+			'groups:menu:copy:tooltip' => "En choisissant Copy (Copier), l’utilisateur crée une nouvelle copie du groupe selon les options de configuration sélectionnées. Copier un groupe ne supprime pas l’ancien groupe.",
+			'groups:menu:join:tooltipTitle' => "Rejoindre le groupe",
+			'groups:menu:join:tooltip' => "If you are interested in being a member of this group, click here to join directly.",
+			'groups:menu:joinrequest:tooltipTitle' => "Demander à joindre le groupe",
+			'groups:menu:joinrequest:tooltip' => "This is a closed group. You have to send a request to the group owner. When approved, you will be a member of the group.",
+			'groups:menu:leave:tooltipTitle' => "Laissez le groupe actuel",
+			'groups:menu:leave:tooltip' => "If you want to leave this group, click here to quit. You can still join the group later if you changed your mind.",
+			'groups:menu:subgroup:tooltipTitle' => "Créer un sous-groupe",
+			'groups:menu:subgroup:tooltip' => "L’utilisateur peut décider de créer un sous-groupe pour son groupe. Une page de création de groupe s’affiche avec les mêmes options que lors de la création du groupe principal.",
+			//Group Icons
+			'groups:icon:addbookmark:tooltipTitle' => "Marquer cette page",
+			'groups:icon:addbookmark:tooltip' => "Le fonctionnement des signets est semblable à celui des favoris d’un navigateur Web.",
+			'groups:icon:rss:tooltipTitle' => "Flux RSS pour cette page",
+			'groups:icon:rss:tooltip' => "",
+			//Group Description
+			'groups:profile:description:tooltipTitle' => "Description du groupe",
+			'groups:profile:description:tooltip' => "Découvrez plus de détails sur le groupe.",
+			//Group Sidebar
+			'groups:menu:sidebar:tooltipTitle' => "Menu latéral pour les groupes",
+			'groups:menu:sidebar:tooltip' => "Ce menu sert de panneau de navigation et permet de visualiser et d’explorer les ressources de chaque groupe.",
+			//Sub-Groups List
+			'groups:module:subgroup:tooltipTitle' => "Sous-groupes",
+			'groups:module:subgroup:tooltip' => "Dans le menu latéral, l’utilisateur peut voir tous les sous-groupes de son groupe. Cette section affiche quelques-uns des sous-groupes en vedette. Pour voir l’ensemble des sous-groupes, l’utilisateur peut choisir de visualiser tous les sous-groupes (View all sub-groups).",
+			//Group Search Box
+			'groups:form:search:tooltipTitle' => "Barre de recherche",
+			'groups:form:search:tooltip' => "La recherche ciblera toutes les tâches réalisées dans le groupe associées aux données fournies par l’utilisateur, entre autres des publications de forum, des vidéos et des fichiers.",
+			//Group Members List
+			'groups:gallery:users:tooltipTitle' => "Membres du groupe",
+			'groups:gallery:users:tooltip' => "Le panneau d’affichage des membres du groupe indiquera certaines des plus récentes personnes qui se sont jointes au groupe. L’utilisateur peut voir tous les membres du groupe en cliquant sur le bouton « View all members » (Voir tous les membres) situé sous le nom des membres affichés.",
+			//Group Plug-ins
+			'groups:tools:tooltipTitle' => "Page principale du groupe",
+			'groups:tools:tooltip' => "La page principale du groupe permet aux utilisateurs de visionner toutes les ressources affichées sous ce groupe. Tout le contenu publié est inscrit dans une catégorie et affiché sur la page principale.",
 	);
 
 	add_translation("fr",$french);

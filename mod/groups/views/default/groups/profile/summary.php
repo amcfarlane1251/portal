@@ -51,6 +51,9 @@ $owner = $group->getOwnerEntity();
 <!-- Section For Joyride - Group Summary -->
 <?php
 echo "<ol id='joyRideTipContent'>";
+/*
+ *	Top Buttons
+ */
 //if the user is admin or group owner, show tooltip for Edit, Invite and Copy buttons
 if ($group->canEdit()) {
 	echo "
@@ -69,14 +72,6 @@ if ($group->canEdit()) {
 	        <h2>".elgg_echo('groups:menu:copy:tooltipTitle')."</h2>
 	        <p>".elgg_echo('groups:menu:copy:tooltip')."</p>
 	    </li>";
-	//if subgroups are allowed by settings, show tooltip for Subgroup
-	if ($group->subgroups_enable == "yes") {
-		echo "
-    	<li data-class='elgg-menu-item-add-subgroup' data-text='".elgg_echo('widget_manager:widgets:next')."' data-prev-text='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:bottom;tipAnimation:fade'>
-        	<h2>".elgg_echo('groups:menu:subgroup:tooltipTitle')."</h2>
-        	<p>".elgg_echo('groups:menu:subgroup:tooltip')."</p>
-    	</li>";
-	}
 }
 //if the user is the member of the current group
 if ($group->isMember(elgg_get_logged_in_user_entity())) {
@@ -107,13 +102,17 @@ if ($group->isMember(elgg_get_logged_in_user_entity())) {
     		}
 	    }
 	}
-	//if the group allows subgroups and allows any member to create subgroups
-	if ($group->subgroups_enable == "yes" && $group->subgroups_members_create_enable == 'yes') {
-		echo "
-    	<li data-class='elgg-menu-item-add-subgroup' data-text='".elgg_echo('widget_manager:widgets:next')."' data-prev-text='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:bottom;tipAnimation:fade'>
-        	<h2>".elgg_echo('groups:menu:subgroup:tooltipTitle')."</h2>
-        	<p>".elgg_echo('groups:menu:subgroup:tooltip')."</p>
-    	</li>";
+	//if subgroups are allowed by settings
+	if ($group->subgroups_enable == "yes") {
+		//if the user is admin or group owner,
+		//or the group allows subgroups and allows any member to create subgroups, show tooltip for Subgroup
+		if ($group->canEdit() || $group->subgroups_members_create_enable == 'yes') {
+			echo "
+	    	<li data-class='elgg-menu-item-add-subgroup' data-text='".elgg_echo('widget_manager:widgets:next')."' data-prev-text='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:bottom;tipAnimation:fade'>
+	        	<h2>".elgg_echo('groups:menu:subgroup:tooltipTitle')."</h2>
+	        	<p>".elgg_echo('groups:menu:subgroup:tooltip')."</p>
+	    	</li>";
+		}
 	}
 }
 //else if the user is not in the group and logged in
@@ -135,6 +134,81 @@ elseif (elgg_is_logged_in()) {
 	    </li>";
 	}
 }
+
+/*
+ *	Description
+ */
+echo "
+<!-- Tooltip for Group Description -->
+<li data-class='groups-profile-fields' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:bottom;tipAnimation:fade'>
+    <h2>".elgg_echo('groups:profile:description:tooltipTitle')."</h2>
+    <p>".elgg_echo('groups:profile:description:tooltip')."</p>
+</li>";
+
+/*
+ *	Listing of enabled group plug-ins
+ */
+echo "
+<!-- Tooltip for Group Plug-ins -->
+<li data-id='groups-tools' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:right;tipAnimation:fade'>
+    <h2>".elgg_echo('groups:tools:tooltipTitle')."</h2>
+    <p>".elgg_echo('groups:tools:tooltip')."</p>
+</li>";
+
+/*
+ *	Icons
+ */
+echo "
+<!-- Tooltip for Bookmark icon -->
+<li data-class='elgg-menu-item-bookmark' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+    <h2>".elgg_echo('groups:icon:addbookmark:tooltipTitle')."</h2>
+    <p>".elgg_echo('groups:icon:addbookmark:tooltip')."</p>
+</li>
+<!-- Tooltip for RSS icon -->
+<li data-class='elgg-menu-item-rss' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:right;tipAnimation:fade'>
+    <h2>".elgg_echo('groups:icon:rss:tooltipTitle')."</h2>
+    <p>".elgg_echo('groups:icon:rss:tooltip')."</p>
+</li>";
+
+/*
+ *	Sidebar
+ */
+echo "
+<!-- Tooltip for Sidebar -->
+<li data-class='elgg-menu-owner-block' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+    <h2>".elgg_echo('groups:menu:sidebar:tooltipTitle')."</h2>
+    <p>".elgg_echo('groups:menu:sidebar:tooltip')."</p>
+</li>";
+
+/*
+ *	Sub-group List
+ */
+echo "
+<!-- Tooltip for Sub-group List -->
+<li data-class='elgg-module-aside' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+    <h2>".elgg_echo('groups:module:subgroup:tooltipTitle')."</h2>
+    <p>".elgg_echo('groups:module:subgroup:tooltip')."</p>
+</li>";
+
+/*
+ *	Search Box
+ */
+echo "
+<!-- Tooltip for Search Box -->
+<li data-class='elgg-form-groups-search' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+    <h2>".elgg_echo('groups:form:search:tooltipTitle')."</h2>
+    <p>".elgg_echo('groups:form:search:tooltip')."</p>
+</li>";
+
+/*
+ *	Members List
+ */
+echo "
+<!-- Tooltip for Members List -->
+<li data-class='elgg-gallery-users' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+    <h2>".elgg_echo('groups:gallery:users:tooltipTitle')."</h2>
+    <p>".elgg_echo('groups:gallery:users:tooltip')."</p>
+</li>";
 
 echo "
 </ol>";
