@@ -163,12 +163,12 @@ if ($group->isMember(elgg_get_logged_in_user_entity()) || $group->canEdit()) {
  */
 echo "
 <!-- Tooltip for Bookmark icon -->
-<li data-class='elgg-menu-item-bookmark' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+<li data-class='elgg-menu-item-bookmark' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAdjustmentY:-25;tipAnimation:fade'>
     <h2>".elgg_echo('groups:icon:addbookmark:tooltipTitle')."</h2>
     <p>".elgg_echo('groups:icon:addbookmark:tooltip')."</p>
 </li>
 <!-- Tooltip for RSS icon -->
-<li data-class='elgg-menu-item-rss' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:right;tipAnimation:fade'>
+<li data-class='elgg-menu-item-rss' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:right;tipAdjustmentY:-25;tipAnimation:fade'>
     <h2>".elgg_echo('groups:icon:rss:tooltipTitle')."</h2>
     <p>".elgg_echo('groups:icon:rss:tooltip')."</p>
 </li>";
@@ -198,13 +198,15 @@ else {
 /*
  *	Sub-group List
  */
-	echo "
-	<!-- Tooltip for Sub-group List -->
-	<li data-class='elgg-module-aside' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-	    <h2>".elgg_echo('groups:module:subgroup:tooltipTitle')."</h2>
-	    <p>".elgg_echo('groups:module:subgroup:tooltip')."</p>
-	</li>";
-
+	//if subgroups are allowed by settings
+	if ($group->subgroups_enable == "yes") {
+		echo "
+		<!-- Tooltip for Sub-group List -->
+		<li data-class='elgg-module-aside' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+		    <h2>".elgg_echo('groups:module:subgroup:tooltipTitle')."</h2>
+		    <p>".elgg_echo('groups:module:subgroup:tooltip')."</p>
+		</li>";
+	}
 /*
  *	Search Box
  */
