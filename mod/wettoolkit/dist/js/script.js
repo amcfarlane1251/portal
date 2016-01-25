@@ -189,6 +189,8 @@ $(function(){
 		});
 	}
 
+	/*
+	 * FOR TIME BEING: REMOVING THIS 
 	//feature tour for the front page
 	elgg.get('feature/hasSeen/landingFeature', {
 		success: function(resultText, success, xhr){
@@ -211,6 +213,7 @@ $(function(){
 		    }
 		}
 	});
+	*/
 
 	$('#add-bookmark').click(function(e){
 		e.preventDefault();
@@ -309,6 +312,8 @@ $(function(){
 
 	/* Autcomplete User Tagging for comments/questions
 	******************************/
+   /*
+	* FOR TIME BEING: REMOVING THIS
 	var users;
 	function getUsers(){
 		var arr = new Array();
@@ -321,7 +326,7 @@ $(function(){
 		});
 	}
 	getUsers();
-
+	*/
 	function split(val) {
 	    return val.split(/@\s*/);
 	}
@@ -332,99 +337,8 @@ $(function(){
 	var callouts = ["input[name='generic_comment']", "input[name='questiontitle']"];
 	var names = [];
 
+
 	
-	$('.elgg-page-body').delegate("input[name='generic_comment'], textarea[name='generic_comment'], textarea[id='thewire-textarea'], input[name='questiontitle'], form#form-edit-object-hjforumpost textarea[name='description']", 'keydown', function(event) {
-	    if (event.keyCode === $.ui.keyCode.TAB && $(this).data("autocomplete").menu.active) {
-	        event.preventDefault();
-	    }
-
-	   	for(var key in names){
-			if($(this).val().indexOf(names[key].username) >= 0){
-				names[key].termIndex = $(this).val().indexOf("@"+names[key].username);
-			}
-		}
-
-	    textarea = this;
-	    $(this).autocomplete({
-		    minLength: 0,
-		    source: function(request, response) {
-		 		if(names){
-			    	for(var key in names){
-				    	if($(textarea).val().indexOf(names[key].username) == -1){
-				    		pos = parseInt(key) + 1;
-				    		var placeholder = $(textarea).val();
-				    		firstHalf = placeholder.substring(0,names[key].termIndex);
-				    		secondHalf = placeholder.substring(names[key].termIndex + (names[key].username.length));
-				    		$(textarea).val(firstHalf + secondHalf);
-				    		$("input[name='user-callout-id[]'][value="+names[key].id+"]").remove();
-				    		names.splice(key, 1);
-				    	}
-				    }
-			    }
-		        var term = request.term;
-		        var results = [];
-		        /* If the user typed an "@": */
-		        if (term.indexOf("@") >= 0) {
-		            term = extractLast(request.term);
-		            /* If they've typed anything after the "@": */
-		            if (term.length > 0) {
-		            	//filter the results
-		            	for(var index in users){
-		            		if(users[index]['name'].toLowerCase().indexOf(term.toLowerCase()) == 0){
-		            			results.push(users[index]);	
-		            		}
-		            	}
-		            /* Otherwise, tell them to start typing! */
-		            } else {
-		                results = ['Start typing...'];
-		            }
-		            response($.map(results, function(item){
-			        	if(item['id']){
-				        	return {
-				        		label:item['name'],
-				        		value:item['name'],
-				        		id: item['id'],
-				        		username: item['username']
-				        	}
-				        }
-				        else{
-				        	return results;
-			        	}
-		        }));
-		        }
-		        if($(textarea).val().indexOf("@") <= -1){
-		        	response(results);
-		        }
-		        /* Call the callback with the results: */
-		        
-		    },
-		    focus: function() {
-		        // prevent value inserted on focus
-		        return false;
-		    },
-		    select: function(event, ui) {
-		        var terms = this.value.split("@");
-		        // remove the current input
-		        terms.pop();
-		        for(var key in terms){
-		        	for(var ind in names){
-		        		if(terms[key].indexOf(names[ind].username) >= 0){
-		        			terms[key] = "@"+terms[key];
-		        		}
-		        	}
-		        }
-		        // add the selected item
-		        terms.push("@"+ui.item.username);
-		        // add placeholder to get the comma-and-space at the end
-		        terms.push("");
-		        this.value = terms.join("");
-		        //create hidden input field to hold user id for form submission
-		        $("<input type='hidden' name='user-callout-id[]' value='"+ui.item.id+"'/> ").insertBefore($(textarea));
-		        names.unshift(ui.item);
-		        return false;
-		    }
-		});
-	});
 
 	var welcomeWidget = new WelcomeWidget();
 	var actvityWidget = new IndexWidget();
