@@ -15,6 +15,14 @@ if (!isset($vars['entity']) || !$vars['entity']) {
 $group = $vars['entity'];
 $owner = $group->getOwnerEntity();
 
+//Get the settings of other group options
+$prefix = "group_tools:cleanup:";
+$owner_block = $group->getPrivateSetting($prefix . "owner_block");	//Limit the owner block  (yes/no)
+$actions = $group->getPrivateSetting($prefix . "actions");	//Hide the Join group/Request membership button
+$menu = $group->getPrivateSetting($prefix . "menu");	//Hide side menu items
+$members = $group->getPrivateSetting($prefix . "members");	//Hide the group members
+$search = $group->getPrivateSetting($prefix . "search");	//Hide the search in group
+
 ?>
 <div class="groups-profile clearfix elgg-image-block">
 	<div class="elgg-image">
@@ -103,17 +111,17 @@ if ($group->isMember(elgg_get_logged_in_user_entity())) {
 }
 //else if the user is not in the group and logged in
 elseif (elgg_is_logged_in()) {
-	//if this is an OPEN group, show the tooltip for JOIN button
-	if ($group->isPublicMembership()) {
+	//if this is an OPEN group && Hide the Join group/Request membership button is Disabled, show the tooltip for JOIN button
+	if ($group->isPublicMembership() && $actions == "no") {
 	    echo "
 	    <li data-class='elgg-menu-item-groups-join' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
 	        <h2>".elgg_echo('groups:menu:join:tooltipTitle')."</h2>
 	        <p>".elgg_echo('groups:menu:join:tooltip')."</p>
 	    </li>";
 	}
-	//if this is a ClOSED group, show the tooltip for REQUEST button
+	//if this is a ClOSED group && Hide the Join group/Request membership button is Disabled, show the tooltip for REQUEST button
 	else {
-		if (!$group->canEdit()) {
+		if (!$group->canEdit() && $actions == "no") {
 			echo "
 		    <li data-class='elgg-menu-item-groups-joinrequest' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
 		        <h2>".elgg_echo('groups:menu:joinrequest:tooltipTitle')."</h2>
@@ -149,7 +157,7 @@ echo "
  *	Listing of enabled group plug-ins
  */
 //If user is in the group, or user is admin, show the tooltip for group plug-ins
-if ($group->isMember(elgg_get_logged_in_user_entity()) || $group->canEdit()) {
+if ($group->isMember(elgg_get_logged_in_user_entity()) || $group->canEdit() || $group->isPublicMembership()) {
 	echo "
 	<!-- Tooltip for Group Plug-ins -->
 	<li data-id='groups-tools' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:right;tipAnimation:fade'>
@@ -161,40 +169,51 @@ if ($group->isMember(elgg_get_logged_in_user_entity()) || $group->canEdit()) {
 /*
  *	Icons
  */
-echo "
-<!-- Tooltip for Bookmark icon -->
-<li data-class='elgg-menu-item-bookmark' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAdjustmentY:-25;tipAnimation:fade'>
-    <h2>".elgg_echo('groups:icon:addbookmark:tooltipTitle')."</h2>
-    <p>".elgg_echo('groups:icon:addbookmark:tooltip')."</p>
-</li>
-<!-- Tooltip for RSS icon -->
-<li data-class='elgg-menu-item-rss' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:right;tipAdjustmentY:-25;tipAnimation:fade'>
-    <h2>".elgg_echo('groups:icon:rss:tooltipTitle')."</h2>
-    <p>".elgg_echo('groups:icon:rss:tooltip')."</p>
-</li>";
+//If Limit the owner block is disabled, show tooltips for icons
+if ($owner_block == "no") {
+	echo "
+	<!-- Tooltip for Bookmark icon -->
+	<li data-class='elgg-menu-item-bookmark' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAdjustmentY:-25;tipAnimation:fade'>
+	    <h2>".elgg_echo('groups:icon:addbookmark:tooltipTitle')."</h2>
+	    <p>".elgg_echo('groups:icon:addbookmark:tooltip')."</p>
+	</li>
+	<!-- Tooltip for RSS icon -->
+	<li data-class='elgg-menu-item-rss' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:right;tipAdjustmentY:-25;tipAnimation:fade'>
+	    <h2>".elgg_echo('groups:icon:rss:tooltipTitle')."</h2>
+	    <p>".elgg_echo('groups:icon:rss:tooltip')."</p>
+	</li>";
+}
 
-//If user is not in the group, nor user is admin, show the tooltips for Sub-group List, Search Box & Members List
-if (!$group->isMember(elgg_get_logged_in_user_entity()) && !$group->canEdit()) {
+//If it is a ClOSED group, show tooltip for sidebar only
+if (!$group->isMember(elgg_get_logged_in_user_entity()) && !$group->canEdit() && !$group->isPublicMembership()) {
 /*
  *	Sidebar
  */
-	echo "
-	<!-- Tooltip for Sidebar -->
-	<li data-class='elgg-menu-owner-block' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-	    <h2>".elgg_echo('groups:menu:sidebar:tooltipTitle')."</h2>
-	    <p>".elgg_echo('groups:menu:sidebar:tooltip')."</p>
-	</li>";
+	//If Hide side menu items is Disabled
+	if ($menu == "no") {
+		echo "
+		<!-- Tooltip for Sidebar -->
+		<li data-class='elgg-menu-owner-block' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+		    <h2>".elgg_echo('groups:menu:sidebar:tooltipTitle')."</h2>
+		    <p>".elgg_echo('groups:menu:sidebar:tooltip')."</p>
+		</li>";
+	}
 }
+//If it is an OPEN group, show the tooltips for Sidebar, Sub-group List, Search Box & Members List
 else {
 /*
  *	Sidebar
  */
-	echo "
-	<!-- Tooltip for Sidebar -->
-	<li data-class='elgg-menu-owner-block' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-	    <h2>".elgg_echo('groups:menu:sidebar:tooltipTitle')."</h2>
-	    <p>".elgg_echo('groups:menu:sidebar:tooltip')."</p>
-	</li>";
+	//If Hide side menu items is Disabled
+	if ($menu == "no" || $group->canEdit()) {
+		echo "
+		<!-- Tooltip for Sidebar -->
+		<li data-class='elgg-menu-owner-block' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+		    <h2>".elgg_echo('groups:menu:sidebar:tooltipTitle')."</h2>
+		    <p>".elgg_echo('groups:menu:sidebar:tooltip')."</p>
+		</li>";		
+	}
+
 /*
  *	Sub-group List
  */
@@ -210,22 +229,29 @@ else {
 /*
  *	Search Box
  */
-	echo "
-	<!-- Tooltip for Search Box -->
-	<li data-class='elgg-form-groups-search' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-	    <h2>".elgg_echo('groups:form:search:tooltipTitle')."</h2>
-	    <p>".elgg_echo('groups:form:search:tooltip')."</p>
-	</li>";
+	//If Hide the search in group is disabled, show tooltip for search box
+	if ($search == "no" || $group->canEdit()) {
+		echo "
+		<!-- Tooltip for Search Box -->
+		<li data-class='elgg-form-groups-search' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+		    <h2>".elgg_echo('groups:form:search:tooltipTitle')."</h2>
+		    <p>".elgg_echo('groups:form:search:tooltip')."</p>
+		</li>";
+	}
 
 /*
  *	Members List
  */
-	echo "
-	<!-- Tooltip for Members List -->
-	<li data-class='elgg-gallery-users' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-	    <h2>".elgg_echo('groups:gallery:users:tooltipTitle')."</h2>
-	    <p>".elgg_echo('groups:gallery:users:tooltip')."</p>
-	</li>";	
+	// If Hide the group members is disabled, show tooltip for member list
+	if ($members == "no" || $group->canEdit()) {
+		echo "
+		<!-- Tooltip for Members List -->
+		<li data-class='elgg-gallery-users' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+		    <h2>".elgg_echo('groups:gallery:users:tooltipTitle')."</h2>
+		    <p>".elgg_echo('groups:gallery:users:tooltip')."</p>
+		</li>";			
+	}
+
 }
 
 echo "
