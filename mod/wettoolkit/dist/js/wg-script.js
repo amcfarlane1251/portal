@@ -36,11 +36,7 @@ $(function(){
 		}
 	});
 
-	//disable form submit once form has been submit
-	$('form').submit(function(){
-		$(this).find('input[type=submit]').attr('disabled', 'disabled');
-	});
-
+	$('form').preventDoubleSubmission();
 
 	$('.elgg-page-body').wetMessages();
 
