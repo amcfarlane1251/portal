@@ -2,27 +2,32 @@
 function apiPageHandler($page){
 	//common vars for all resources
 	$method = $_SERVER['REQUEST_METHOD'];
+	$apiKey = get_input('api_key');
+	
 	switch($page[0]) {
+		case 'user':
+			$userId = get_input('userId');
+			$signature = get_input('signature');
+			$session = Session::retrieve($userId, $signature);
+			//$session->
 		case 'session':
-			$session = new Session($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
-			
+			$session = new Session($_POST['username'], $_POST['password'], $apiKey);
 			//check HTTP method
 			switch($method) {
 				case 'GET':
 					exit;
 					break;
 				case 'POST':
+					//create a session
 					if( $session->validate() ) {
 						//passed model validation
 						if( $session->authenticate() ) {
-							$user = get_user_by_username($session->getUsername());
+							//passed authentication, get auth token return 200 response code
+							$session->getAuthToken();
 							
-							//passed authentication, return 200
-							header("HTTP/1.1 200 OK");
+							$session->setHeader(200);
 							$status = 'success';
-							$data['id'] = $user->guid;
-							$data['key'] = $user->guid.$user->salt;
-							
+							$data['authToken'] = $session->getAuthToken();
 						}
 						else{
 							//did not pass authentication, return 401 - unauthorized
@@ -32,14 +37,12 @@ function apiPageHandler($page){
 						}
 					}
 					else{
-						//validation has failed - client error
+						//model validation has failed - client error
 						header('X-PHP-Response-Code: 400', true, 400);
 						$status = 'fail';
 						$data = $session->errors;
 					}
-					
 					//set the content type
-					header('Content-type: application/json');
 					echo json_encode(array('status'=>$status, 'data'=>$data));
 					exit;
 					break;

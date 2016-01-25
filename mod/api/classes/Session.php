@@ -19,6 +19,21 @@ class Session {
 	 * @var string
 	 */
 	protected $password;
+	
+	/**
+	 * The public key for the session.
+	 * @access protected
+	 * @var string
+	 */
+	protected $apiKey;
+	
+	/**
+	 * The list of approved api keys.
+	 * @access protected
+	 * @var array
+	 */
+	protected $validKeys = array();
+	
 	/**
 	 * Holds the error string for the session object.
 	 * @var array 
@@ -30,11 +45,24 @@ class Session {
 	 * @param string $username
 	 * @param string $password
 	 */
-	public function __construct($username, $password)
+	public function __construct($username, $password, $apiKey)
 	{
 		$this->username = $username;
 		$this->password = $password;
+		$this->apiKey = $apiKey;
+		$this->validKeys = ['abcdefgh12345'];
 
+	}
+	
+	public function validateKey()
+	{
+		if(in_array($this->apiKey, $this->validKeys)) {
+			return true;
+		}
+		else{
+			$this->errors = 'Unable to authenticate';
+			return false;
+		}
 	}
 	
 	/**
@@ -74,8 +102,22 @@ class Session {
 		}
 	}
 	
+	public function getAuthToken()
+	{
+		$user = get_user_by_username($this->getUsername());
+		return hash_hmac("sha256",$user->guid,$this->apiKey);
+	}
+	
 	public function getUsername()
 	{
 		return $this->username;
+	}
+	
+	public function setHeader($responseCode)
+	{
+		header('Content-type: application/json');
+		if($responseCode == 200) {
+			header("HTTP/1.1 200 OK");
+		}
 	}
 }
