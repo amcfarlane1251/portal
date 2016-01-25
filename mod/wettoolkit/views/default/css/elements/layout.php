@@ -83,7 +83,8 @@ right: 20px;
 
 /*-------- Removes 1px of white bg not required --------*/
 .elgg-page-body {
-background: none !important;
+	background: none !important;
+	max-width:1200px;
 }
 
 /*------ Index Widgets ----------*/
