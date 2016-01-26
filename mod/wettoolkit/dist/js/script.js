@@ -170,6 +170,7 @@ $(function(){
 	}
 
 	IndexWidget.prototype.getRiver = function(filter, oldFeed, newFeed){
+		
 		oldFeed.fadeOut(400, function(){
 			$(this).empty('li');
 			$(this).append("<div class='ajax-spinner'><img src='"+activity_widget.ajaxLoader+"' alt='Loading Content...' /></div>").fadeIn(100);
@@ -342,7 +343,9 @@ $(function(){
 
 	var welcomeWidget = new WelcomeWidget();
 	var actvityWidget = new IndexWidget();
-	actvityWidget.getRiver('#all', $('div#activity-feed > ul'), $('div#activity-feed > ul'));
+	if($('#activity-feed').length) {
+		actvityWidget.getRiver('#all', $('div#activity-feed > ul'), $('div#activity-feed > ul'));
+	}
 	
 	//var messageBox = new MessageBox();
 });
