@@ -106,3 +106,58 @@ echo elgg_view('input/submit', array('value' => $submit_label));
 
 ?>
 </div>
+
+<?php 
+//error_log(print_R(elgg_extract("upload_type", $vars), true));
+/*
+ * Section For Joyride - Single File Upload
+ */
+echo "
+<ol id='joyRideTipContent'>";
+echo "
+	<!--tooltip for File Browser-->
+	<li data-class='elgg-input-file' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:left;tipAnimation:fade'>
+    	<h2>".elgg_echo('file:input:browser:tooltipTitle')."</h2>
+        <p>".elgg_echo('file:input:browser:tooltip')."</p>
+	</li>
+	<!--tooltip for File Title-->
+	<li data-class='elgg-input-text' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+        <h2>".elgg_echo('file:input:title:tooltipTitle')."</h2>
+        <p>".elgg_echo('file:input:title:tooltip')."</p>
+    </li>
+    <!--tooltip for File Description-->
+	<li data-class='mceLayout' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+        <h2>".elgg_echo('file:input:description:tooltipTitle')."</h2>
+        <p>".elgg_echo('file:input:description:tooltip')."</p>
+    </li>
+    <!--tooltip for File Tags-->
+	<li data-class='elgg-input-tags' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+        <h2>".elgg_echo('file:input:tags:tooltipTitle')."</h2>
+        <p>".elgg_echo('file:input:tags:tooltip')."</p>
+    </li>";
+    if(file_tools_use_folder_structure()){
+    	echo "
+	    <!--tooltip for File Parent Folder-->
+		<li data-class='elgg-input-dropdown' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('file:input:parentfolder:tooltipTitle')."</h2>
+	        <p>".elgg_echo('file:input:parentfolder:tooltip')."</p>
+	    </li>";
+	}
+	if ($categories) {
+		echo "
+	    <!--tooltip for File Category-->
+		<li data-class='categories-input' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('file:input:category:tooltipTitle')."</h2>
+	        <p>".elgg_echo('file:input:category:tooltip')."</p>
+	    </li>";
+	}
+	echo "
+    <!--tooltip for File Access-->
+	<li data-class='elgg-input-access' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+        <h2>".elgg_echo('file:input:access:tooltipTitle')."</h2>
+        <p>".elgg_echo('file:input:access:tooltip')."</p>
+    </li>
+";
+echo "
+</ol>";
+?>

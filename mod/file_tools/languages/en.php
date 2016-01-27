@@ -173,6 +173,22 @@
 		
 		// index_file
 		'widgets:index_file:description' => "Show the latest files on your community",
+
+		//Joyride for upload single file
+		'file:input:browser:tooltipTitle' => "File Upload",
+		'file:input:browser:tooltip' => "Click on Browse to select a single file to upload",
+		'file:input:title:tooltipTitle' => "Title",
+		'file:input:title:tooltip' => "You can optionally give the file a title. If no title is chosen, the title will default to the name of the file.",
+		'file:input:description:tooltipTitle' => "Description",
+		'file:input:description:tooltip' => "You can optionally give the file a description to help others know it better.",
+		'file:input:tags:tooltipTitle' => "Tags",
+		'file:input:tags:tooltip' => "Users can optionally ‘tag’ their image with keywords to make it easier for other members to find their upload.",
+		'file:input:parentfolder:tooltipTitle' => "Select a Parent Folder",
+		'file:input:parentfolder:tooltip' => "This is a dropdown menu where you must choose a folder to save your file under. By default, the file will be saved under the users ‘Main Folder’.",
+		'file:input:category:tooltipTitle' => "Select Category",
+		'file:input:category:tooltip' => "Using the checkboxes, you can place your upload into the following categories. You can check all of the boxes that apply to your upload which will place your file upload under the selected categories.",
+		'file:input:access:tooltipTitle' => "Access",
+		'file:input:access:tooltip' => "Using the dropdown, you can decide who can see your file upload. You have the option of allowing everyone to see it, only your colleagues and private, so only they can see your upload.",
 	
 	);
 	
