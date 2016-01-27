@@ -100,5 +100,21 @@ $language = array (
   'widgets:file_tools:more_files' => 'Plus de fichiers',
   'widgets:group_files:description' => 'Voir les fichiers de groupe les plus récents',
   'widgets:index_file:description' => 'Voir les fichiers les plus récents de votre communauté',
+
+  //Joyride for upload single file
+  'file:input:browser:tooltipTitle' => "Téléchargement de fichiers",
+  'file:input:browser:tooltip' => "Cliquez sur Browse (Parcourir) pour sélectionner un seul fichier à télécharger.",
+  'file:input:title:tooltipTitle' => "Le titre",
+  'file:input:title:tooltip' => "Tu peux entrer un titre pour le fichier à télécharger. S’il ne choisit aucun titre, le titre par défaut correspondra au nom du fichier.",
+  'file:input:description:tooltipTitle' => "La description",
+  'file:input:description:tooltip' => "Vous pouvez éventuellement donner au fichier une description pour aider les autres le savent mieux.",
+  'file:input:tags:tooltipTitle' => "Étiquette",
+  'file:input:tags:tooltip' => "L’utilisateur peut joindre des « étiquettes » à son image à l’aide de mots  clés afin de simplifier la recherche de son téléchargement pour les autres membres.",
+  'file:input:parentfolder:tooltipTitle' => "Sélectionnez un dossier parent",
+  'file:input:parentfolder:tooltip' => "Ceci est un menu déroulant où l’utilisateur peut choisir un dossier dans lequel enregistrer le fichier. Par défaut, le fichier est enregistré dans « Main folder » (Dossier principal) de l’utilisateur",
+  'file:input:category:tooltipTitle' => "Sélectionnez la catégorie",
+  'file:input:category:tooltip' => "À l’aide des cases à cocher, l’utilisateur peut inclure son téléchargement dans les catégories suivantes. Il peut cocher toutes les cases qui s’appliquent à leur téléchargement pour inclure son fichier téléchargé dans les catégories sélectionnées.",
+  'file:input:access:tooltipTitle' => "Les accès",
+  'file:input:access:tooltip' => "À l’aide du menu déroulant, l’utilisateur peut choisir les personnes autorisées à voir le fichier téléchargé. Il peut permettre à tous de le voir ou limiter la consultation à ses collègues ou à lui  même.",
 );
 add_translation("fr", $language);
