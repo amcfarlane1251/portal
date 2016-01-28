@@ -2,55 +2,98 @@
 function apiPageHandler($page){
 	//common vars for all resources
 	$method = $_SERVER['REQUEST_METHOD'];
-	$apiKey = get_input('api_key');
+	$publicKey = get_input('public_key');
 	
 	switch($page[0]) {
-		case 'user':
-			$userId = get_input('userId');
-			$signature = get_input('signature');
-			$session = Session::retrieve($userId, $signature);
-			//$session->
-		case 'session':
-			$session = new Session($_POST['username'], $_POST['password'], $apiKey);
-			//check HTTP method
+		case 'authenticate':
 			switch($method) {
-				case 'GET':
-					exit;
-					break;
 				case 'POST':
-					//create a session
-					if( $session->validate() ) {
-						//passed model validation
-						if( $session->authenticate() ) {
-							//passed authentication, get auth token return 200 response code
-							$session->getAuthToken();
+					$authenticate = new Authenticate($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+					
+					if($authenticate->validate()) {
+						if($authenticate->login()) {
+							header("HTTP/1.1 200 OK");
 							
-							$session->setHeader(200);
+							$responseInfo = $authenticate->getResponseInfo();
+							
+							$data['publicKey'] = $responseInfo['publicKey'];
+							$data['privateKey'] = $responseInfo['privateKey'];
 							$status = 'success';
-							$data['authToken'] = $session->getAuthToken();
 						}
 						else{
-							//did not pass authentication, return 401 - unauthorized
+							//unauthorized
 							header('X-PHP-Response-Code: 401', true, 401);
+							
+							$data = $authenticate->errors;
 							$status = 'fail';
-							$data = $session->errors;
 						}
 					}
 					else{
 						//model validation has failed - client error
 						header('X-PHP-Response-Code: 400', true, 400);
+						
 						$status = 'fail';
-						$data = $session->errors;
+						$data = $authenticate->errors;
 					}
-					//set the content type
+					
 					echo json_encode(array('status'=>$status, 'data'=>$data));
+					
+					exit;
+					break;
+			}
+			exit;
+			break;
+			
+		case 'users':
+			$signature = get_input('signature');
+			switch($method) {
+				case 'PUT':
+					$userId = $page[1];
+					$payload = array();
+					
+					//sanitize input
+					foreach($_POST as $key => $value) {
+						if($key!='signature') {
+							$payload[$key] = get_input($key);
+						}
+					}
+					
+					$session = new Session($publicKey, $signature, $payload);
+					
+					if($session->verifySignature()) {
+						$user = new User();
+						
+						foreach($payload as $key => $value) {
+							$user->$key = $value;
+						}
+						
+						if($user->validate()) {
+							if($user->update()) {
+								//return 200
+								$session->setheader(200);
+							}
+							else{
+								//return 
+							}
+						}
+						else{
+							//return 400 - client error
+							$session->setheader(200);
+						}
+					}
+					else{
+						//return 401 - unauthorized
+						$session->setheader(401);
+					}
+					
 					exit;
 					break;
 			}
 			exit;
 			break;
 		default:
-			return false;
+			exit;
+			break;
 	}
 	return true;
 }

@@ -8,31 +8,19 @@
  */
 class Session {
 	/**
-	 * The username for the session.
+	 * The signature for the session.
 	 * @access protected
 	 * @var string
 	 */
-	protected $username;
-	/**
-	 * The password for the session.
-	 * @access protected
-	 * @var string
-	 */
-	protected $password;
+	protected $signature;
 	
 	/**
 	 * The public key for the session.
 	 * @access protected
 	 * @var string
 	 */
-	protected $apiKey;
+	protected $publicKey;
 	
-	/**
-	 * The list of approved api keys.
-	 * @access protected
-	 * @var array
-	 */
-	protected $validKeys = array();
 	
 	/**
 	 * Holds the error string for the session object.
@@ -41,76 +29,49 @@ class Session {
 	public $errors = array();
 	
 	/**
+	 * 
+	 */
+	
+	/**
 	 * Constructor sets up {@link $username} and {@link $password}
 	 * @param string $username
 	 * @param string $password
 	 */
-	public function __construct($username, $password, $apiKey)
+	public function __construct($publicKey, $signature, $request)
 	{
-		$this->username = $username;
-		$this->password = $password;
-		$this->apiKey = $apiKey;
-		$this->validKeys = ['abcdefgh12345'];
-
+		$this->publicKey = $publicKey;
+		$this->signature = $signature;
+		$this->request = $request;
 	}
 	
-	public function validateKey()
+	public function verifySignature()
 	{
-		if(in_array($this->apiKey, $this->validKeys)) {
-			return true;
-		}
-		else{
-			$this->errors = 'Unable to authenticate';
+		if($this->createSignature() != $this->signature) {
 			return false;
 		}
+		else{
+			return true;
+		}
 	}
 	
-	/**
-	 * Returns true if no validation errors.
-	 * @return boolean
-	 */
-	public function validate()
+	private function createSignature()
 	{
-		if( !isset($this->username) || empty($this->username) ) {
-			$this->errors['username'] = 'Username is required';
-		}
-		if( !isset($this->password) || empty($this->password) ) {
-			$this->errors['password'] = 'Password is required';
-		}
+		$privateKey = sha1($this->publicKey);
+		$requestString = $this->getRequestString();
+		return hash_hmac("sha256", sha1($requestString), $privateKey);
+	}
+	
+	private function getRequestString()
+	{
+		$request = array();
+		$request = $this->request;
+		ksort($request);
 		
-		if(empty($this->errors)) {
-			return true;
+		$string = '';
+		foreach($request as $key => $value) {
+			$string .= $value;
 		}
-		else{
-			return false;
-		}
-	}
-	
-	/**
-	 * Returns true if users credentials are valid.
-	 * @return boolean
-	 */
-	public function authenticate()
-	{	
-		$result = elgg_authenticate($this->username, $this->password);
-		if($result === true) {
-			return true;
-		}
-		else{
-			$this->errors['authenticate'] = $result;
-			return false;
-		}
-	}
-	
-	public function getAuthToken()
-	{
-		$user = get_user_by_username($this->getUsername());
-		return hash_hmac("sha256",$user->guid,$this->apiKey);
-	}
-	
-	public function getUsername()
-	{
-		return $this->username;
+		return $string;
 	}
 	
 	public function setHeader($responseCode)
@@ -118,6 +79,9 @@ class Session {
 		header('Content-type: application/json');
 		if($responseCode == 200) {
 			header("HTTP/1.1 200 OK");
+		}
+		elseif($responseCode == 401) {
+			header("HTTP/1.1 401 Unauthorized");
 		}
 	}
 }
