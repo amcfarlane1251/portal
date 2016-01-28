@@ -300,7 +300,7 @@ or click below to view the group's join requests:
 	'groups:ecml:groupprofile' => 'Group profiles',
 
 	/*
-	 Joyride Tooltip context
+	 Joyride Tooltip context - Group Summary Page
 	 */
 	 //Group Menu Buttons tooltips
 	'groups:menu:edit:tooltipTitle' => "Edit Group",
@@ -340,6 +340,36 @@ or click below to view the group's join requests:
 	//Group Plug-ins
 	'groups:tools:tooltipTitle' => "Group Main Page",
 	'groups:tools:tooltip' => "The group main page allows users to view all of the resources posted under that group. All of the content that has been posted is categorized and displayed on the main page.",
+
+	/*
+	 Joyride Tooltip context - Groups List Page
+	 */
+	 //Create Group Button
+	'groups:button:create:tooltipTitle' => "Create Group",
+	'groups:button:create:tooltip' => "The ‘Create Group’ button that allows you to create your own group that will allow you to create, manage and administrate your own group.",
+	//Group Tabs
+	'groups:tab:newest:tooltipTitle' => "Newest",
+	'groups:tab:newest:tooltip' => "Displays the newest groups on the Learning Portal.",
+	'groups:tab:yours:tooltipTitle' => "My groups",
+	'groups:tab:yours:tooltip' => "Displays groups that you own or are a part of.",
+	'groups:tab:popular:tooltipTitle' => "Popular",
+	'groups:tab:popular:tooltip' => "Displays the most popular groups on the Learning Portal.",
+	'groups:tab:discussion:tooltipTitle' => "Latest discussion",
+	'groups:tab:discussion:tooltip' => "Displays the groups with a recent discussion.",
+	'groups:tab:open:tooltipTitle' => "Open groups",
+	'groups:tab:open:tooltip' => "Open displays groups that are open to join.",
+	'groups:tab:closed:tooltipTitle' => "Closed groups",
+	'groups:tab:closed:tooltip' => "Closed displays groups that cannot be joined.",
+	'groups:tab:alpha:tooltipTitle' => "Alphabetical",
+	'groups:tab:alpha:tooltip' => "Displays the groups in alphabetical order.",
+	'groups:tab:suggested:tooltipTitle' => "Suggested",
+	'groups:tab:suggested:tooltip' => "Displays groups that you may be interested in.",
+	//Groups Side Nav
+	'groups:nav:sidebar:tooltipTitle' => "Sidebar",
+	'groups:nav:sidebar:tooltip' => "A filter that allows you to filter what is displayed on the main page. You can choose from displaying all groups which is displayed above, only showing your groups your apart of, displaying groups you own and displaying group invitations you have received.",
+	//Groups Search
+	'groups:search:groups:tooltipTitle' => "Search for groups",
+	'groups:search:groups:tooltip' => "You can search for groups using the search box as shown.",
 );
 
 add_translation("en", $english);
