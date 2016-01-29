@@ -8,17 +8,20 @@
  */
 class Session {
 	/**
-	 * The username for the session.
+	 * The signature for the session.
 	 * @access protected
 	 * @var string
 	 */
-	protected $username;
+	protected $signature;
+	
 	/**
-	 * The password for the session.
+	 * The public key for the session.
 	 * @access protected
 	 * @var string
 	 */
-	protected $password;
+	protected $publicKey;
+	
+	
 	/**
 	 * Holds the error string for the session object.
 	 * @var array 
@@ -26,56 +29,55 @@ class Session {
 	public $errors = array();
 	
 	/**
+	 * 
+	 */
+	
+	/**
 	 * Constructor sets up {@link $username} and {@link $password}
 	 * @param string $username
 	 * @param string $password
 	 */
-	public function __construct($username, $password)
+	public function __construct($publicKey, $signature, $request)
 	{
-		$this->username = $username;
-		$this->password = $password;
+		$this->publicKey = $publicKey;
+		$this->signature = $signature;
+		$this->request = $request;
+	}
+	
+	public function verifySignature()
+	{
+		if($this->createSignature() != $this->signature) {
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
+	private function createSignature()
+	{
+		$privateKey = sha1($this->publicKey);
+		$requestString = $this->getRequestString();
+		return hash_hmac("sha256", sha1($requestString), $privateKey);
+	}
+	
+	private function getRequestString()
+	{
+		$request = array();
+		$request = json_decode($this->request);
+		ksort($request);
 
+		return json_decode($request);
 	}
 	
-	/**
-	 * Returns true if no validation errors.
-	 * @return boolean
-	 */
-	public function validate()
+	public function setHeader($responseCode)
 	{
-		if( !isset($this->username) || empty($this->username) ) {
-			$this->errors['username'] = 'Username is required';
+		header('Content-type: application/json');
+		if($responseCode == 200) {
+			header("HTTP/1.1 200 OK");
 		}
-		if( !isset($this->password) || empty($this->password) ) {
-			$this->errors['password'] = 'Password is required';
+		elseif($responseCode == 401) {
+			header("HTTP/1.1 401 Unauthorized");
 		}
-		
-		if(empty($this->errors)) {
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
-	/**
-	 * Returns true if users credentials are valid.
-	 * @return boolean
-	 */
-	public function authenticate()
-	{	
-		$result = elgg_authenticate($this->username, $this->password);
-		if($result === true) {
-			return true;
-		}
-		else{
-			$this->errors['authenticate'] = $result;
-			return false;
-		}
-	}
-	
-	public function getUsername()
-	{
-		return $this->username;
 	}
 }
