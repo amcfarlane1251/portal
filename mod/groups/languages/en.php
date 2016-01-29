@@ -370,6 +370,28 @@ or click below to view the group's join requests:
 	//Groups Search
 	'groups:search:groups:tooltipTitle' => "Search for groups",
 	'groups:search:groups:tooltip' => "You can search for groups using the search box as shown.",
+
+	/*
+	 Joyride Tooltip context - Create/Edit Group Page
+	 */
+	 //Edit Group Icon
+	'groups:edit:icon:tooltipTitle' => "Group Icon",
+	'groups:edit:icon:tooltip' => "You will be able to optionally upload a picture to be used as your group icon.",
+	//Edit Group Title
+	'groups:edit:title:tooltipTitle' => "Group Name",
+	'groups:edit:title:tooltip' => "You will be required to give a name to your group.",
+	//Edit Group Description
+	'groups:edit:description:tooltipTitle' => "Group Description",
+	'groups:edit:description:tooltip' => "You will be able to optionally give a description to your group to let others know your group better.",
+	//Edit Group permissions
+	'groups:edit:permission:tooltipTitle' => "Group membership permissions",
+	'groups:edit:permission:tooltip' => "In the dropdown list you can choose who can join the group. You have the option of allowing anyone to join the group or by invite only.",
+	//Edit Who can see this group
+	'groups:edit:access:tooltipTitle' => "Who can see this group?",
+	'groups:edit:access:tooltip' => "You have the option of only allowing group members to see the group, logged in users, or everyone on the Learning Portal.",
+	//Enable/Disable Group Features
+	'groups:edit:features:tooltipTitle' => "Enable/Disable Group Features",
+	'groups:edit:features:tooltip' => "You have the ability of enabling or disabling features from your group. This allows you to create groups to fit your needs by enabling features they need, or disabling features you don’t.",
 );
 
 add_translation("en", $english);

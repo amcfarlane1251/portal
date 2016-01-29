@@ -297,6 +297,28 @@ ou cliquez le lien ci-dessous pour confirmer son adhésion :
 			//Groups Search
 			'groups:search:groups:tooltipTitle' => "Rechercher des groupes par des mots-clé",
 			'groups:search:groups:tooltip' => "L’utilisateur peut chercher des groupes à l’aide de l’outil de recherche (voir image).",
+	
+			/*
+			 Joyride Tooltip context - Create/Edit Group Page
+			 */
+			 //Edit Group Icon
+			'groups:edit:icon:tooltipTitle' => "Icone du groupe",
+			'groups:edit:icon:tooltip' => "Lors de la configuration du groupe, l’utilisateur a la possibilité de télécharger une image afin de l’utiliser comme icône pour le groupe (facultatif).",
+			//Edit Group Title
+			'groups:edit:title:tooltipTitle' => "Nom du groupe",
+			'groups:edit:title:tooltip' => "Vous serez tenu de donner un nom à votre groupe.",
+			//Edit Group Description
+			'groups:edit:description:tooltipTitle' => "Description",
+			'groups:edit:description:tooltip' => "Vous serez en mesure de donner une description de votre groupe de laisser les autres savent mieux votre groupe (facultatif).",
+			//Edit Group permissions
+			'groups:edit:permission:tooltipTitle' => "Permissions d'accès au groupe",
+			'groups:edit:permission:tooltip' => "Dans la première liste déroulante, l’utilisateur choisit qui peut joindre le groupe. L’utilisateur a la possibilité de permettre à tout le monde de joindre le groupe ou de procéder par invitation.",
+			//Edit Who can see this group
+			'groups:edit:access:tooltipTitle' => "Qui peut voir ce groupe?",
+			'groups:edit:access:tooltip' => "Il peut le rendre visible aux membres du groupe seulement, aux utilisateurs ayant ouvert une session ou à tous ceux qui accèdent au Portail d’apprentissage.",
+			//Enable/Disable Group Features
+			'groups:edit:features:tooltipTitle' => "Activer/Désactiver les fonctionnalités de groupe",
+			'groups:edit:features:tooltip' => "L’utilisateur peut activer ou désactiver des fonctionnalités pour son groupe. Ainsi, il peut créer des groupes qui correspondent à ses besoins, en activant ou en désactivant des fonctionnalités.",
 	);
 
 	add_translation("fr",$french);
