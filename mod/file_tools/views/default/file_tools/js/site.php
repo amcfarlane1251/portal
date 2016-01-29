@@ -307,6 +307,17 @@ elgg.file_tools.upload_tab_click = function(event) {
 	var id = $(this).attr("id").replace("-link", "");
 	$('#file-tools-upload-wrapper form').hide();
 	$('#' + id).show();
+
+	/*To control the joyride loaded only for Single File Upload, and disabled for Multi File and Zip Upload */
+	//get the current active tab anchor id
+	var active_tab_id = $('#file-tools-upload-tabs li.elgg-state-selected a').attr('id');
+	//if the active tab is not Single File Upload
+	if (active_tab_id != 'file-tools-single-form-link') {
+		$('#joyRideTipContent').attr('id', 'joyRideInactive');
+	}
+	else {
+		$('#joyRideInactive').attr('id', 'joyRideTipContent');
+	}
 }
 
 elgg.file_tools.init = function(){

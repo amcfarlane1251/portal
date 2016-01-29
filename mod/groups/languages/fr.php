@@ -227,7 +227,7 @@ ou cliquez le lien ci-dessous pour confirmer son adhésion :
 			'groups:joinrequestkilled' => "La demande d'adhésion a été supprimée.",
 
 			/*
-			 Joyride Tooltip context
+			 Joyride Tooltip context - Group Summary Page
 			 */
 			 //Group Menu Buttons tooltips
 			'groups:menu:edit:tooltipTitle' => "Modifier le groupe",
@@ -267,6 +267,58 @@ ou cliquez le lien ci-dessous pour confirmer son adhésion :
 			//Group Plug-ins
 			'groups:tools:tooltipTitle' => "Page principale du groupe",
 			'groups:tools:tooltip' => "La page principale du groupe permet aux utilisateurs de visionner toutes les ressources affichées sous ce groupe. Tout le contenu publié est inscrit dans une catégorie et affiché sur la page principale.",
+			
+			/*
+			 Joyride Tooltip context - Groups List Page
+			 */
+			 //Create Group Button
+			'groups:button:create:tooltipTitle' => "Créer un groupe",
+			'groups:button:create:tooltip' => "Le bouton « Create Group » (Créer un groupe) permet à l’utilisateur de créer son propre groupe, de le gérer et de l’administrer.",
+			//Group Tabs
+			'groups:tab:newest:tooltipTitle' => "Plus récents",
+			'groups:tab:newest:tooltip' => "Affiche les groupes les plus récents.",
+			'groups:tab:yours:tooltipTitle' => "Mes groupes",
+			'groups:tab:yours:tooltip' => "Affiche les groupes dont vous êtes responsables ou dont vous faites partie.",
+			'groups:tab:popular:tooltipTitle' => "Populaires",
+			'groups:tab:popular:tooltip' => "Affiche les groupes les plus populaires sur le Portail d’apprentissage.",
+			'groups:tab:discussion:tooltipTitle' => "Dernière discussion",
+			'groups:tab:discussion:tooltip' => "Affiche les groupes où il y a récemment eu une discussion.",
+			'groups:tab:open:tooltipTitle' => "Groupe ouverts",
+			'groups:tab:open:tooltip' => "Open (Ouverts) affiche les groupes qu’on peut joindre.",
+			'groups:tab:closed:tooltipTitle' => "Groupe fermé",
+			'groups:tab:closed:tooltip' => "Closed (Fermés) affiche les autres.",
+			'groups:tab:alpha:tooltipTitle' => "Ordre alphabétique",
+			'groups:tab:alpha:tooltip' => "Affiche les groupes en ordre alphabétique.",
+			'groups:tab:suggested:tooltipTitle' => "Groupes suggérés",
+			'groups:tab:suggested:tooltip' => "Affiche les groupes qui pourraient vous intéresser.",
+			//Groups Side Nav
+			'groups:nav:sidebar:tooltipTitle' => "Menu latéral",
+			'groups:nav:sidebar:tooltip' => "À la droite de la page principale des groupes, un filtre permet à l’utilisateur de choisir ce qui s’affiche sur la page. Il peut choisir d’afficher tous les groupes (comme indiqué ci-dessus), seulement les groupes dont il fait partie, les groupes dont il est responsable ou les invitations à joindre des groupes qu’il a reçues.",
+			//Groups Search
+			'groups:search:groups:tooltipTitle' => "Rechercher des groupes par des mots-clé",
+			'groups:search:groups:tooltip' => "L’utilisateur peut chercher des groupes à l’aide de l’outil de recherche (voir image).",
+	
+			/*
+			 Joyride Tooltip context - Create/Edit Group Page
+			 */
+			 //Edit Group Icon
+			'groups:edit:icon:tooltipTitle' => "Icone du groupe",
+			'groups:edit:icon:tooltip' => "Lors de la configuration du groupe, l’utilisateur a la possibilité de télécharger une image afin de l’utiliser comme icône pour le groupe (facultatif).",
+			//Edit Group Title
+			'groups:edit:title:tooltipTitle' => "Nom du groupe",
+			'groups:edit:title:tooltip' => "Vous serez tenu de donner un nom à votre groupe.",
+			//Edit Group Description
+			'groups:edit:description:tooltipTitle' => "Description",
+			'groups:edit:description:tooltip' => "Vous serez en mesure de donner une description de votre groupe de laisser les autres savent mieux votre groupe (facultatif).",
+			//Edit Group permissions
+			'groups:edit:permission:tooltipTitle' => "Permissions d'accès au groupe",
+			'groups:edit:permission:tooltip' => "Dans la première liste déroulante, l’utilisateur choisit qui peut joindre le groupe. L’utilisateur a la possibilité de permettre à tout le monde de joindre le groupe ou de procéder par invitation.",
+			//Edit Who can see this group
+			'groups:edit:access:tooltipTitle' => "Qui peut voir ce groupe?",
+			'groups:edit:access:tooltip' => "Il peut le rendre visible aux membres du groupe seulement, aux utilisateurs ayant ouvert une session ou à tous ceux qui accèdent au Portail d’apprentissage.",
+			//Enable/Disable Group Features
+			'groups:edit:features:tooltipTitle' => "Activer/Désactiver les fonctionnalités de groupe",
+			'groups:edit:features:tooltip' => "L’utilisateur peut activer ou désactiver des fonctionnalités pour son groupe. Ainsi, il peut créer des groupes qui correspondent à ses besoins, en activant ou en désactivant des fonctionnalités.",
 	);
 
 	add_translation("fr",$french);
