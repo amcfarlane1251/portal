@@ -1,6 +1,7 @@
 <?php
 function apiPageHandler($page){
 	//common vars for all resources
+	$headers = apache_request_headers();
 	$method = $_SERVER['REQUEST_METHOD'];
 	$publicKey = get_input('public_key');
 	
@@ -45,18 +46,22 @@ function apiPageHandler($page){
 			break;
 			
 		case 'users':
-			$signature = get_input('signature');
+			$signature = $headers['signature'];
 			switch($method) {
 				case 'PUT':
+					
 					$userId = $page[1];
 					$payload = array();
 					
 					//sanitize input
-					foreach($_POST as $key => $value) {
+					$putVars = array();
+					$putVars = json_decode(file_get_contents("php://input"), true);
+					$payload = json_encode($putVars);
+					/*foreach($putVars as $key => $value) {
 						if($key!='signature') {
-							$payload[$key] = get_input($key);
+							$payload[$key] = $value;
 						}
-					}
+					}*/
 					
 					$session = new Session($publicKey, $signature, $payload);
 					
@@ -78,7 +83,7 @@ function apiPageHandler($page){
 						}
 						else{
 							//return 400 - client error
-							$session->setheader(200);
+							$session->setheader(400);
 						}
 					}
 					else{

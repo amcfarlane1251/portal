@@ -64,14 +64,10 @@ class Session {
 	private function getRequestString()
 	{
 		$request = array();
-		$request = $this->request;
+		$request = json_decode($this->request);
 		ksort($request);
-		
-		$string = '';
-		foreach($request as $key => $value) {
-			$string .= $value;
-		}
-		return $string;
+
+		return json_decode($request);
 	}
 	
 	public function setHeader($responseCode)
