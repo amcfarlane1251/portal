@@ -147,5 +147,46 @@ if (isset($vars['entity'])) {
 		'class' => 'elgg-button elgg-button-delete float-alt',
 	));
 }
+
+/*
+ * Section For Joyride - Create/Edit Groups Page 
+ */
+echo "
+<ol id='joyRideTipContent'>";
+echo "
+	<!--tooltip for Edit Group Icon-->
+	<li data-class='elgg-input-file' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:left;tipAnimation:fade'>
+    	<h2>".elgg_echo('groups:edit:icon:tooltipTitle')."</h2>
+        <p>".elgg_echo('groups:edit:icon:tooltip')."</p>
+	</li>
+	<!--tooltip for Edit Group Title-->
+	<li data-class='elgg-input-text' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+        <h2>".elgg_echo('groups:edit:title:tooltipTitle')."</h2>
+        <p>".elgg_echo('groups:edit:title:tooltip')."</p>
+    </li>
+    <!--tooltip for Edit Group Description-->
+    <li data-class='mceEditor' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+        <h2>".elgg_echo('groups:edit:description:tooltipTitle')."</h2>
+        <p>".elgg_echo('groups:edit:description:tooltip')."</p>
+    </li>
+    <!--tooltip for Edit Group permissions-->
+    <li data-class='elgg-input-dropdown' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+        <h2>".elgg_echo('groups:edit:permission:tooltipTitle')."</h2>
+        <p>".elgg_echo('groups:edit:permission:tooltip')."</p>
+    </li>
+    <!--tooltip for Edit Who can see this group-->
+    <li data-class='elgg-input-access' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+        <h2>".elgg_echo('groups:edit:access:tooltipTitle')."</h2>
+        <p>".elgg_echo('groups:edit:access:tooltip')."</p>
+    </li>
+    <!--tooltip for Enable/Disable Group Features-->
+	<li data-class='elgg-vertical' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+        <h2>".elgg_echo('groups:edit:features:tooltipTitle')."</h2>
+        <p>".elgg_echo('groups:edit:features:tooltip')."</p>
+    </li>";
+echo 
+"</ol>";
+
 ?>
 </div>
+
