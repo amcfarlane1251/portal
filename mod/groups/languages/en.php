@@ -392,6 +392,33 @@ or click below to view the group's join requests:
 	//Enable/Disable Group Features
 	'groups:edit:features:tooltipTitle' => "Enable/Disable Group Features",
 	'groups:edit:features:tooltip' => "You have the ability of enabling or disabling features from your group. This allows you to create groups to fit your needs by enabling features they need, or disabling features you don’t.",
+	//Delete Group Button
+	'groups:button:delete:tooltipTitle' => "Delete Group",
+	'groups:button:delete:tooltip' => "Once selected, you will get a confirmation box for the removal of your group. If you selects ‘OK’ the group will be PERMANENTLY deleted and cannot be undone.",
+	//Group notifications
+	'groups:edit:tools:notifications:tooltipTitle' => "Group Notifications",
+	'groups:edit:tools:notifications:tooltip' => "Allows the user to disable the group notifications for everyone in the group.",
+	//Show group profile widgets to non members
+	'groups:edit:tools:widgets:tooltipTitle' => "Show group profile widgets to non-members",
+	'groups:edit:tools:widgets:tooltip' => "This option will allow the user to enable or disable the ability to see group widgets for people who are not part of the group.",
+	//Transfer the ownership of this group
+	'groups:edit:tools:ownership:tooltipTitle' => "Transfer of Ownership",
+	'groups:edit:tools:ownership:tooltip' => "Allows the user to give ownership of the group to another member.",
+	//Group sidebar cleanup
+	'groups:edit:tools:sidebar:tooltipTitle' => "Group sidebar cleanup",
+	'groups:edit:tools:sidebar:tooltip' => "From here the user will be able to choose whether or not they want to display certain content in the group sidebar (i.e. Group member’s widget, group search, etc…).",
+	//Group members can invite
+	'groups:edit:tools:memberinvite:tooltipTitle' => "Group members can invite",
+	'groups:edit:tools:memberinvite:tooltip' => "Enable or disable group member’s ability to invite others to the group.",
+	//Default folder sorting options
+	'groups:edit:tools:sorting:tooltipTitle' => "Default Sorting",
+	'groups:edit:tools:sorting:tooltip' => "This option allows the user to configure how the folders inside the group sort the content inside them. The user can change the sorting based on the time it was created, by title, description or by file type. Second the user can change whether it is sorted ascending or descending.",
+	//Group welcome message
+	'groups:edit:tools:welcomemsg:tooltipTitle' => "Group welcome message",
+	'groups:edit:tools:welcomemsg:tooltip' => "This setting allows the user to setup a welcome message for users that have just joined the group. (Setting up a welcome message is optional)",
+	//Make this group a subgroup of another group
+	'groups:edit:tools:subgroup:tooltipTitle' => "Make this group a subgroup of another group",
+	'groups:edit:tools:subgroup:tooltip' => "In order for the user to their group a subgroup of another group the user must have permissions to edit that group. The user can search for a particular group using the search box on the left side. The default groups displayed are popular groups on the Portal.",
 );
 
 add_translation("en", $english);
