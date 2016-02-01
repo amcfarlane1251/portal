@@ -3,7 +3,6 @@ function apiPageHandler($page){
 	//common vars for all resources
 	$headers = apache_request_headers();
 	$method = $_SERVER['REQUEST_METHOD'];
-	$publicKey = get_input('public_key');
 	
 	switch($page[0]) {
 		case 'authenticate':
@@ -49,14 +48,61 @@ function apiPageHandler($page){
 			$signature = $headers['signature'];
 			switch($method) {
 				case 'PUT':
-					
+					$publicKey = 25121;
 					$userId = $page[1];
 					$payload = array();
 					
 					//sanitize input
-					$putVars = array();
-					$putVars = json_decode(file_get_contents("php://input"), true);
-					$payload = json_encode($putVars);
+					$payload = json_decode(file_get_contents("php://input"), true);
+					//$payload = json_encode($putVars);
+					/*foreach($putVars as $key => $value) {
+						if($key!='signature') {
+							$payload[$key] = $value;
+						}
+					}*/
+					
+					$session = new Session($publicKey, $signature, $payload);
+					
+					if($session->verifySignature()) {
+						$user = new User();
+						
+						foreach($payload as $key => $value) {
+							$user->$key = $value;
+						}
+						
+						if($user->validate()) {
+							if($user->update()) {
+								//return 200
+								$session->setheader(200);
+							}
+							else{
+								//return 
+							}
+						}
+						else{
+							//return 400 - client error
+							$session->setheader(400);
+						}
+					}
+					else{
+						//return 401 - unauthorized
+						$session->setheader(401);
+					}
+					
+					exit;
+					break;
+			}
+		case 'project':
+			$signature = $headers['signature'];
+			switch($method) {
+				case 'PUT':
+					$publicKey = 25121;
+					$userId = $page[1];
+					$payload = array();
+					
+					//sanitize input
+					$payload = json_decode(file_get_contents("php://input"), true);
+					//$payload = json_encode($putVars);
 					/*foreach($putVars as $key => $value) {
 						if($key!='signature') {
 							$payload[$key] = $value;
