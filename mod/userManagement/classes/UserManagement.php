@@ -78,7 +78,8 @@ class UserManagement extends ElggObject
 				'type' => 'user',
 				'limit' => 0,
 				'joins' => array("join elgg_users_entity u on e.guid = u.guid"),
-				'wheres' => array("u.last_action < {$sixtyDaysAgo}")
+				'wheres' => array("u.last_action < {$sixtyDaysAgo}"),
+				'wheres' => array("u.last_action > 0")
 		));
 
 		$this->users = $users;
