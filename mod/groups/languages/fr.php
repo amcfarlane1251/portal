@@ -319,6 +319,33 @@ ou cliquez le lien ci-dessous pour confirmer son adhésion :
 			//Enable/Disable Group Features
 			'groups:edit:features:tooltipTitle' => "Activer/Désactiver les fonctionnalités de groupe",
 			'groups:edit:features:tooltip' => "L’utilisateur peut activer ou désactiver des fonctionnalités pour son groupe. Ainsi, il peut créer des groupes qui correspondent à ses besoins, en activant ou en désactivant des fonctionnalités.",
+			//Delete Group Button
+			'groups:button:delete:tooltipTitle' => "Supprimer le groupe",
+			'groups:button:delete:tooltip' => "Après avoir cliqué sur ce bouton, une boîte de dialogue s’affiche pour que l’utilisateur puisse supprimer le groupe. Si l’utilisateur choisit « OK », le groupe sera effacé DE MANIÈRE PERMANENTE sans possibilité de récupération.",
+			//Group notifications
+			'groups:edit:tools:notifications:tooltipTitle' => "Notifications du groupe",
+			'groups:edit:tools:notifications:tooltip' => "Permet à l’utilisateur de désactiver les notifications du groupe pour tous les membres du groupe.",
+			//Show group profile widgets to non members
+			'groups:edit:tools:widgets:tooltipTitle' => "Afficher les widgets de profil du groupe pour les non-membres",
+			'groups:edit:tools:widgets:tooltip' => "Permet à l’utilisateur d’activer ou de désactiver la capacité de voir les widgets du groupe pour les personnes qui ne font pas partie du groupe.",
+			//Transfer the ownership of this group
+			'groups:edit:tools:ownership:tooltipTitle' => "Transfert de responsabilité",
+			'groups:edit:tools:ownership:tooltip' => "Permet à l’utilisateur de donner la responsabilité du groupe à un autre membre.",
+			//Group sidebar cleanup
+			'groups:edit:tools:sidebar:tooltipTitle' => "Nettoyage du menu latéral pour le groupe",
+			'groups:edit:tools:sidebar:tooltip' => "À cet endroit, l’utilisateur peut choisir d’afficher ou non certains contenus dans le menu latéral du groupe (comme le widget pour les membres du groupe, l’outil de recherche pour le groupe, etc.).",
+			//Group members can invite
+			'groups:edit:tools:memberinvite:tooltipTitle' => "Invitation par les membres du groupe",
+			'groups:edit:tools:memberinvite:tooltip' => "Permet d’activer ou de désactiver la possibilité pour les membres du groupe d’inviter d’autres personnes à joindre le groupe.",
+			//Default folder sorting options
+			'groups:edit:tools:sorting:tooltipTitle' => "Tri par défaut",
+			'groups:edit:tools:sorting:tooltip' => "Cette option permet à l’utilisateur de configurer la manière dont le contenu est trié dans les dossiers du groupe. L’utilisateur peut choisir de trier le contenu selon le moment de la création, le titre, la description ou le type de fichier. Il peut ensuite choisir de trier de manière ascendante ou descendante.",
+			//Group welcome message
+			'groups:edit:tools:welcomemsg:tooltipTitle' => "Message d’accueil du groupe",
+			'groups:edit:tools:welcomemsg:tooltip' => "Permet à l’utilisateur de configurer un message d’accueil pour les utilisateurs qui viennent de joindre le groupe (la configuration d’un message d’accueil est facultative).",
+			//Make this group a subgroup of another group
+			'groups:edit:tools:subgroup:tooltipTitle' => "Faire du groupe un sous-groupe d’un autre groupe",
+			'groups:edit:tools:subgroup:tooltip' => "Pour pouvoir effectuer ce changement, l’utilisateur doit avoir la permission de modifier le groupe concerné. L’utilisateur peut chercher un groupe en particulier à l’aide l’outil de recherche situé à gauche. Par défaut, les groupes populaires sont affichés sur le Portail.",
 	);
 
 	add_translation("fr",$french);
