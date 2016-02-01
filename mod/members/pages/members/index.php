@@ -29,15 +29,15 @@ $content.= "<ol id='joyRideTipContent'>
         <h2>".elgg_echo('members:pageinfo:tooltipTitle')."</h2>
         <p>".elgg_echo('members:pageinfo:tooltip')."</p>
       </li>
-      <li data-class='elgg-tabs' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:right;tipAnimation:fade'>
+      <li data-class='elgg-tabs' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:bottom;tipAnimation:fade'>
         <h2>".elgg_echo('members:newest:tooltipTitle')."</h2>
         <p>".elgg_echo('members:newest:tooltip')."</p>
       </li>
-      <li data-class='elgg-tabs' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:right;tipAnimation:fade'>
+      <li data-class='elgg-tabs' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:bottom;tipAdjustmentX:100px;tipAnimation:fade'>
         <h2>".elgg_echo('members:popular:tooltipTitle')."</h2>
         <p>".elgg_echo('members:popular:tooltip')."</p>
       </li>
-      <li data-class='elgg-tabs' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:right;tipAnimation:fade'>
+      <li data-class='elgg-tabs' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:bottom;tipAdjustmentX:200px;tipAnimation:fade'>
         <h2>".elgg_echo('members:online:tooltipTitle')."</h2>
         <p>".elgg_echo('members:online:tooltip')."</p>
       </li>

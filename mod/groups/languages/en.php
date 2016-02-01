@@ -299,6 +299,99 @@ or click below to view the group's join requests:
 	'groups:ecml:discussion' => 'Group Discussions',
 	'groups:ecml:groupprofile' => 'Group profiles',
 
+	/*
+	 Joyride Tooltip context - Group Summary Page
+	 */
+	 //Group Menu Buttons tooltips
+	'groups:menu:edit:tooltipTitle' => "Edit Group",
+	'groups:menu:edit:tooltip' => "Here to edit or add any information about the group, also enable and disable features from the group.",
+	'groups:menu:invite:tooltipTitle' => "Invite Users",
+	'groups:menu:invite:tooltip' => "You will be able to invite other members to this group.",
+	'groups:menu:copy:tooltipTitle' => "Copy Group",
+	'groups:menu:copy:tooltip' => "Create the new copy of the group based off your choice. Copying a group will not delete the old group.",
+	'groups:menu:join:tooltipTitle' => "Join The Group",
+	'groups:menu:join:tooltip' => "If you are interested in being a member of this group, click here to join directly.",
+	'groups:menu:joinrequest:tooltipTitle' => "Request to Join the Group",
+	'groups:menu:joinrequest:tooltip' => "This is a closed group. To join this group, you must send a request to the group owner. When approved, you will be a member of the group.",
+	'groups:menu:leave:tooltipTitle' => "Leave The Current Group",
+	'groups:menu:leave:tooltip' => "If you want to leave this group, click here to quit. You will still be able to join the group later if you changed your mind.",
+	'groups:menu:subgroup:tooltipTitle' => "Create a Sub-Group",
+	'groups:menu:subgroup:tooltip' => "You can choose to make sub-groups for their group. Doing so will take the user to a create group page with the same options as when they created the main group.",
+	//Group Icons
+	'groups:icon:addbookmark:tooltipTitle' => "Bookmark this page",
+	'groups:icon:addbookmark:tooltip' => "Bookmarks are similar to using 'favourites' in a web browser. You can add this group into your bookmarks, so that you can easily visit the page of the group later.",
+	'groups:icon:rss:tooltipTitle' => "RSS feed for this page",
+	'groups:icon:rss:tooltip' => "This is an activity feed of frequently changing content on this page. You can subscribe to this activity feed to receive updates when the content changes.",
+	//Group Description
+	'groups:profile:description:tooltipTitle' => "Group Description",
+	'groups:profile:description:tooltip' => "Find out more details about the group.",
+	//Group Sidebar
+	'groups:menu:sidebar:tooltipTitle' => "Group Sidebar",
+	'groups:menu:sidebar:tooltip' => "The group sidebar acts as a navigation panel for viewing and navigating the group’s resources.",
+	//Sub-Groups List
+	'groups:module:subgroup:tooltipTitle' => "Sub-Groups",
+	'groups:module:subgroup:tooltip' => "In the sidebar the user can see all of the sub-groups of their group. This section will display a few featured sub-groups and to view the rest the user can select to ‘view all sub-groups’ below.",
+	//Group Search Box
+	'groups:form:search:tooltipTitle' => "Search Box",
+	'groups:form:search:tooltip' => "Searching will look for everything done in the group that relates to the input provided. This includes forum posts, videos, files, etc…",
+	//Group Members List
+	'groups:gallery:users:tooltipTitle' => "Group Members",
+	'groups:gallery:users:tooltip' => "The group member’s panel will feature some of the most recent people to join the group. The user can view all of the members of the group by clicking ‘view all members’ located below the featured members.",
+	//Group Plug-ins
+	'groups:tools:tooltipTitle' => "Group Main Page",
+	'groups:tools:tooltip' => "The group main page allows users to view all of the resources posted under that group. All of the content that has been posted is categorized and displayed on the main page.",
+
+	/*
+	 Joyride Tooltip context - Groups List Page
+	 */
+	 //Create Group Button
+	'groups:button:create:tooltipTitle' => "Create Group",
+	'groups:button:create:tooltip' => "The ‘Create Group’ button that allows you to create your own group that will allow you to create, manage and administrate your own group.",
+	//Group Tabs
+	'groups:tab:newest:tooltipTitle' => "Newest",
+	'groups:tab:newest:tooltip' => "Displays the newest groups on the Learning Portal.",
+	'groups:tab:yours:tooltipTitle' => "My groups",
+	'groups:tab:yours:tooltip' => "Displays groups that you own or are a part of.",
+	'groups:tab:popular:tooltipTitle' => "Popular",
+	'groups:tab:popular:tooltip' => "Displays the most popular groups on the Learning Portal.",
+	'groups:tab:discussion:tooltipTitle' => "Latest discussion",
+	'groups:tab:discussion:tooltip' => "Displays the groups with a recent discussion.",
+	'groups:tab:open:tooltipTitle' => "Open groups",
+	'groups:tab:open:tooltip' => "Open displays groups that are open to join.",
+	'groups:tab:closed:tooltipTitle' => "Closed groups",
+	'groups:tab:closed:tooltip' => "Closed displays groups that cannot be joined.",
+	'groups:tab:alpha:tooltipTitle' => "Alphabetical",
+	'groups:tab:alpha:tooltip' => "Displays the groups in alphabetical order.",
+	'groups:tab:suggested:tooltipTitle' => "Suggested",
+	'groups:tab:suggested:tooltip' => "Displays groups that you may be interested in.",
+	//Groups Side Nav
+	'groups:nav:sidebar:tooltipTitle' => "Sidebar",
+	'groups:nav:sidebar:tooltip' => "A filter that allows you to filter what is displayed on the main page. You can choose from displaying all groups which is displayed above, only showing your groups your apart of, displaying groups you own and displaying group invitations you have received.",
+	//Groups Search
+	'groups:search:groups:tooltipTitle' => "Search for groups",
+	'groups:search:groups:tooltip' => "You can search for groups using the search box as shown.",
+
+	/*
+	 Joyride Tooltip context - Create/Edit Group Page
+	 */
+	 //Edit Group Icon
+	'groups:edit:icon:tooltipTitle' => "Group Icon",
+	'groups:edit:icon:tooltip' => "You will be able to optionally upload a picture to be used as your group icon.",
+	//Edit Group Title
+	'groups:edit:title:tooltipTitle' => "Group Name",
+	'groups:edit:title:tooltip' => "You will be required to give a name to your group.",
+	//Edit Group Description
+	'groups:edit:description:tooltipTitle' => "Group Description",
+	'groups:edit:description:tooltip' => "You will be able to optionally give a description to your group to let others know your group better.",
+	//Edit Group permissions
+	'groups:edit:permission:tooltipTitle' => "Group membership permissions",
+	'groups:edit:permission:tooltip' => "In the dropdown list you can choose who can join the group. You have the option of allowing anyone to join the group or by invite only.",
+	//Edit Who can see this group
+	'groups:edit:access:tooltipTitle' => "Who can see this group?",
+	'groups:edit:access:tooltip' => "You have the option of only allowing group members to see the group, logged in users, or everyone on the Learning Portal.",
+	//Enable/Disable Group Features
+	'groups:edit:features:tooltipTitle' => "Enable/Disable Group Features",
+	'groups:edit:features:tooltip' => "You have the ability of enabling or disabling features from your group. This allows you to create groups to fit your needs by enabling features they need, or disabling features you don’t.",
 );
 
 add_translation("en", $english);

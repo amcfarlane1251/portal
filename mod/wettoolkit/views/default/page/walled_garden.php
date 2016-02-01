@@ -224,7 +224,7 @@ elgg.register_hook_handler('init', 'system', function() {
 <script src="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/js/theme-min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/jquery.validate.min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/wetMessages.min.js';?>"></script>
-<script src="node_modules/crypto-js/crypto-js.js"></script>
+<script src="<?php echo $wettoolkit_url.'/js/stopSubmit.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/wg-script.min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/validation-script.js';?>"></script>
 <!--<script src="<?php echo $wettoolkit_url.'/dist/js/jquerymobile/jquery.mobile.min.js';?>"></script>-->

@@ -39,7 +39,7 @@ class UserManagement extends ElggObject
 		parent::initializeAttributes();
 		$this->siteDomain = get_site_domain($CONFIG->site_guid);
 		$this->site = elgg_get_site_entity();
-		$this->approvedDomains = ['forces.gc.ca', 'test.gc.ca'];
+		$this->approvedDomains[] = 'forces.gc.ca';
 	}
 
 	public function setUser($user)
@@ -78,7 +78,7 @@ class UserManagement extends ElggObject
 				'type' => 'user',
 				'limit' => 0,
 				'joins' => array("join elgg_users_entity u on e.guid = u.guid"),
-				'wheres' => array("u.last_action < {$sixtyDaysAgo}")
+				'wheres' => array("u.last_action < {$sixtyDaysAgo} AND u.last_login > 0")
 		));
 
 		$this->users = $users;
