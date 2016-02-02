@@ -64,9 +64,14 @@ class Session {
 	
 	private function getRequestString()
 	{
-		$request = array();
-		$request = $this->request;
-		ksort($request);
+		if(empty($this->request)) {
+			$request = json_decode("{}");
+		}
+		else{
+			$request = array();
+			$request = $this->request;
+			ksort($request);
+		}
 
 		return sha1(json_encode($request));
 	}

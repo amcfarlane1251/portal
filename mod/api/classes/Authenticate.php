@@ -69,7 +69,7 @@ class Authenticate {
 	{
 		$user = $this->getUser();
 
-		return array('publicKey' => $user->guid, 'privateKey' => sha1($user->guid));
+		return array('userId'=>$user->guid,'publicKey' => $user->guid, 'privateKey' => sha1($user->guid));
 	}
 	
 	private function getUser()
