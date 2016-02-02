@@ -46,7 +46,8 @@ class Session {
 	
 	public function verifySignature()
 	{
-		if($this->createSignature() != $this->signature) {
+		$sig = $this->createSignature();
+		if($sig != $this->signature) {
 			return false;
 		}
 		else{
@@ -58,16 +59,21 @@ class Session {
 	{
 		$privateKey = sha1($this->publicKey);
 		$requestString = $this->getRequestString();
-		return hash_hmac("sha256", sha1($requestString), $privateKey);
+		return base64_encode(hash_hmac("sha256", $requestString, $privateKey, true));
 	}
 	
 	private function getRequestString()
 	{
-		$request = array();
-		$request = json_decode($this->request);
-		ksort($request);
+		if(empty($this->request)) {
+			$request = json_decode("{}");
+		}
+		else{
+			$request = array();
+			$request = $this->request;
+			ksort($request);
+		}
 
-		return json_decode($request);
+		return sha1(json_encode($request));
 	}
 	
 	public function setHeader($responseCode)
