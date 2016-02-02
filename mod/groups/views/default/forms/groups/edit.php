@@ -151,41 +151,142 @@ if (isset($vars['entity'])) {
 /*
  * Section For Joyride - Create/Edit Groups Page 
  */
-echo "
-<ol id='joyRideTipContent'>";
-echo "
-	<!--tooltip for Edit Group Icon-->
-	<li data-class='elgg-input-file' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:left;tipAnimation:fade'>
-    	<h2>".elgg_echo('groups:edit:icon:tooltipTitle')."</h2>
-        <p>".elgg_echo('groups:edit:icon:tooltip')."</p>
-	</li>
-	<!--tooltip for Edit Group Title-->
-	<li data-class='elgg-input-text' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-        <h2>".elgg_echo('groups:edit:title:tooltipTitle')."</h2>
-        <p>".elgg_echo('groups:edit:title:tooltip')."</p>
-    </li>
-    <!--tooltip for Edit Group Description-->
-    <li data-class='mceEditor' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-        <h2>".elgg_echo('groups:edit:description:tooltipTitle')."</h2>
-        <p>".elgg_echo('groups:edit:description:tooltip')."</p>
-    </li>
-    <!--tooltip for Edit Group permissions-->
-    <li data-class='elgg-input-dropdown' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-        <h2>".elgg_echo('groups:edit:permission:tooltipTitle')."</h2>
-        <p>".elgg_echo('groups:edit:permission:tooltip')."</p>
-    </li>
-    <!--tooltip for Edit Who can see this group-->
-    <li data-class='elgg-input-access' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-        <h2>".elgg_echo('groups:edit:access:tooltipTitle')."</h2>
-        <p>".elgg_echo('groups:edit:access:tooltip')."</p>
-    </li>
-    <!--tooltip for Enable/Disable Group Features-->
-	<li data-class='elgg-vertical' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
-        <h2>".elgg_echo('groups:edit:features:tooltipTitle')."</h2>
-        <p>".elgg_echo('groups:edit:features:tooltip')."</p>
-    </li>";
-echo 
-"</ol>";
+//if there is NOT a group entity (meaning we are creating the new group), show tooltips for Create new Group
+if (!isset($vars['entity'])) {
+	echo "
+	<ol id='joyRideTipContent'>";
+	echo "
+		<!--tooltip for Edit Group Icon-->
+		<li data-class='elgg-input-file' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:left;tipAnimation:fade'>
+	    	<h2>".elgg_echo('groups:edit:icon:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:icon:tooltip')."</p>
+		</li>
+		<!--tooltip for Edit Group Title-->
+		<li data-class='elgg-input-text' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:title:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:title:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Edit Group Description-->
+	    <li data-class='mceLayout' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:description:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:description:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Edit Group permissions-->
+	    <li data-class='elgg-input-dropdown' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:permission:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:permission:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Edit Who can see this group-->
+	    <li data-class='elgg-input-access' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:access:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:access:tooltip')."</p>
+	    </li>
+		<!--tooltip for Enable/Disable Group Features-->
+		<li data-class='elgg-vertical' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:features:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:features:tooltip')."</p>
+	    </li>";
+	echo 
+	"</ol>";
+}
+//there is a group entity (meaning we are editting the current group), show tooltips for Edit Group
+else {
+	echo "<div id='joyRideContainer'>";
+	//Section for Joyride Tooltips - Edit Group - Group profile/tools
+	echo "
+	<ol id='joyRideTipContent'>";
+	echo "
+		<!--tooltip for Edit Group Icon-->
+		<li data-class='elgg-input-file' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:left;tipAnimation:fade'>
+	    	<h2>".elgg_echo('groups:edit:icon:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:icon:tooltip')."</p>
+		</li>
+		<!--tooltip for Edit Group Title-->
+		<li data-class='elgg-input-text' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:title:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:title:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Edit Group Description-->
+	    <li data-class='mceLayout' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:description:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:description:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Edit Group permissions-->
+	    <li data-class='elgg-input-dropdown' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:permission:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:permission:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Edit Who can see this group-->
+	    <li data-class='elgg-input-access' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:access:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:access:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Enable/Disable Group Features-->
+		<li data-class='elgg-vertical' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:access:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:access:tooltip')."</p>
+	    </li>
+		<!--tooltip for Delete Group Button-->
+		<li data-class='elgg-button-delete' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:button:delete:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:button:delete:tooltip')."</p>
+	    </li>";
+	echo 
+	"</ol>";
+
+	//Section for Joyride Tooltips - Edit Group - Other Options
+	echo "
+	<ol id='joyRideOthers' style='display:none;'>";
+	echo "
+		<!--tooltip for Group notifications-->
+		<li data-class='elgg-module-info' data-text='".elgg_echo('widget_manager:widgets:next')."' data-options='tipLocation:left;tipAnimation:fade'>
+	    	<h2>".elgg_echo('groups:edit:tools:notifications:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:tools:notifications:tooltip')."</p>
+		</li>";
+	//if the group has a closed membership
+	if (!$vars["entity"]->isPublicMembership()) {
+		echo "
+		<!--tooltip for Show group profile widgets to non members-->
+		<li data-class='elgg-form' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:tools:widgets:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:tools:widgets:tooltip')."</p>
+	    </li>";
+	}
+	echo "
+	    <!--tooltip for Transfer the ownership of this group-->
+		<li data-id='group_tools_admin_transfer_form' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:tools:ownership:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:tools:ownership:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Group sidebar cleanup-->
+		<li data-class='elgg-form' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:right;tipAdjustmentY:350;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:tools:sidebar:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:tools:sidebar:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Group members can invite-->
+		<li data-class='elgg-form' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAdjustmentY:880;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:tools:memberinvite:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:tools:memberinvite:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Default folder sorting options-->
+		<li data-class='elgg-form' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:right;tipAdjustmentY:1050;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:tools:sorting:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:tools:sorting:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Group welcome message-->
+		<li data-class='mceLayout' data-button='".elgg_echo('widget_manager:widgets:next')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:tools:welcomemsg:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:tools:welcomemsg:tooltip')."</p>
+	    </li>
+	    <!--tooltip for Make this group a subgroup of another group-->
+		<li data-class='elgg-form-au-subgroups-transfer' data-button='".elgg_echo('widget_manager:widgets:close')."' data-prev-button='".elgg_echo('widget_manager:widgets:prev')."' data-options='tipLocation:left;tipAnimation:fade'>
+	        <h2>".elgg_echo('groups:edit:tools:subgroup:tooltipTitle')."</h2>
+	        <p>".elgg_echo('groups:edit:tools:subgroup:tooltip')."</p>
+	    </li>";
+	echo 
+	"</ol>
+	 </div>";
+}
 
 ?>
 </div>
