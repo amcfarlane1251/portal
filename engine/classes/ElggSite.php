@@ -456,6 +456,7 @@ class ElggSite extends ElggEntity {
 			'action/resetPassword',
 			'api/authenticate',
 			'api/user/*.*',
+			'api/projects/*.*',
 		);
 
 		// include a hook for plugin authors to include public pages
