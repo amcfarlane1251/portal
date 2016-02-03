@@ -46,7 +46,7 @@ function apiPageHandler($page){
 			break;
 			
 		case 'users':
-			$signature = $headers['signature'];
+			$signature = $headers['Signature'];
 			switch($method) {
 				case 'PUT':
 					$publicKey = 25121;
@@ -94,7 +94,7 @@ function apiPageHandler($page){
 					break;
 			}
 		case 'projects':
-			$signature = $headers['signature'];
+			$signature = $headers['Signature'];
 			
 			switch($method) {
 				case 'GET':
