@@ -50,6 +50,7 @@ $wettoolkit_url = elgg_get_site_url()."mod/wettoolkit";
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/js/css/joyride-2.1.min.css';?>" />
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/dist/theme-gcwu-fegc/css/theme-min.css';?>" />
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/base.min.css';?>"/>
+<link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/bootstrap.css';?>"/>
 <link rel="stylesheet" href="<?php echo $wettoolkit_url.'/css/styles.min.css';?>"/>
 
 <?php 
@@ -240,10 +241,11 @@ if(elgg_is_logged_in() && 1==5){
 <script src="<?php echo $wettoolkit_url.'/dist/js/responsiveslides.min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/wetMessages.min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/classes/Overlay.js';?>"></script>
-<script src="node_modules/crypto-js/crypto-js.js"></script>
-<script src="node_modules/angular/angular.min.js"></script>
+<script src="/portal/node_modules/crypto-js/crypto-js.js"></script>
+<script src="/portal/node_modules/angular/angular.min.js"></script>
 <script src="<?php echo $wettoolkit_url.'/js/stopSubmit.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/js/app.js';?>"></script>
+<script src="<?php echo $wettoolkit_url.'/js/controllers/ProjectController.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/script.min.js';?>"></script>
 
 <?php

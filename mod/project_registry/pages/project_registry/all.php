@@ -10,18 +10,17 @@ elgg_register_title_button();
 
 $limit = get_input("limit", 15);
 
-$title = elgg_echo('projects:all');
+$title = elgg_echo('projects');
 
-$content = elgg_list_entities(array(
-	'types' => 'object',
-	'subtypes' => 'project_registry',
-	'limit' => $limit,
-	'full_view' => FALSE
-));
-if (!$content) {
-	$content = elgg_echo('projects:none');
-}
-
+$content = 
+	"<section ng-app='portalApp' ng-controller='ProjectController'>
+		<div ng-repeat='project in projects' class='project col-md-6'>
+			<div class='project-header'>
+				<h3>{{project.title}}</h3>
+				<h5>Submitted by {{project.owner}} on {{project.time_created}}</h5>
+			</div>
+		</div>
+	</section>";
 $sidebar = elgg_view('project_registry/sidebar/filter');
 $sidebar .= elgg_view('project_registry/sidebar/find');
 
