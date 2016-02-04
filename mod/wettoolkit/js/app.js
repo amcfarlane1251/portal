@@ -1,1 +1,8 @@
-var portalApp =  angular.module('portalApp', []);
+(function(){
+	'use strict';
+	
+	angular
+		.module('portal', [
+			'ngResource',
+		]);
+})();

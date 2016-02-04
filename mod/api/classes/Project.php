@@ -19,6 +19,7 @@ class Project {
 	
 	private $collection = array();
 	
+	public $id;
 	public $title;
 	public $description;
 	public $scope;
@@ -31,9 +32,10 @@ class Project {
 	public $priority;
 	public $is_sme_avail;
 	public $is_limitation;
-	public $update_existing_prod;
+	public $update_existing_product;
 	public $life_expectancy;
 	public $access_id;
+	public $time_created;
 	
 	public function __construct($params) 
 	{
@@ -77,6 +79,7 @@ class Project {
 			"subtype" => "project_registry",
 			"limit" => false,
 			"full_view" => false,
+			"order_by" => "time_created ASC",
 			"metadata_name_value_pairs" => array()
 		);
 		
@@ -131,6 +134,7 @@ class Project {
 	private function fillWithRows($rows)
 	{
 		foreach($rows as $row) {
+			$params['id'] = $row->guid;
 			$params['title'] = $row->title;
 			$params['description'] = $row->description;
 			$params['scope'] = $row->scope;
@@ -143,9 +147,10 @@ class Project {
 			$params['priority'] = $row->priority;
 			$params['is_sme_avail'] = $row->is_sme_avail;
 			$params['is_limitation'] = $row->is_limitation;
-			$params['update_existing_prod'] = $row->update_existing_prod;
+			$params['update_existing_product'] = $row->update_existing_product;
 			$params['life_expectancy'] = $row->life_expectancy;
 			$params['access_id'] = $row->access_id;
+			$params['time_created'] = gmdate("Y-m-d", $row->time_created);
 			
 			$this->addToCollection(new Project($params));
 		}
