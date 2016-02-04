@@ -142,6 +142,8 @@ function apiPageHandler($page){
 					$payload = array();
 					$payload['title'] = $_POST['title'];
 					$payload['description'] = $_POST['description'];
+					$payload['req_num'] = (int)$_POST['req_num'];
+					$payload['status'] = $_POST['status'];
 					$payload['scope'] = $_POST['scope'];
 					$payload['course'] = $_POST['course'];
 					$payload['org'] = $_POST['org'];

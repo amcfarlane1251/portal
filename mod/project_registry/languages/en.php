@@ -30,6 +30,14 @@ $english = array(
 	 * Sidebar
 	 */
 	'search:go' => "Go",
+	
+	/**
+	 * Project Fields
+	 */
+	'projects:status' => 'Status',
+	'projects:submittedBy' => 'Submitted By',
+	'projects:on' => 'on',
+	'projects:reqNum' => 'Request #',
 );
 
 add_translation("en", $english);
