@@ -17,7 +17,7 @@ function project_registry_init() {
 	elgg_register_entity_type('object', 'project_registry');
 
 	// Set up the menu
-	$item = new ElggMenuItem('project_registry', elgg_echo('projects'), 'projects/all');
+	$item = new ElggMenuItem('project_registry', elgg_echo('projects'), 'projects');
 	elgg_register_menu_item('site', $item);
 
 	// register a project handler, so we can have nice URLs
@@ -56,7 +56,7 @@ function projects_page_handler($project) {
 		$project[0] = 'all';
 	}
 
-	elgg_push_breadcrumb(elgg_echo('projects'), 'projects/all');
+	elgg_push_breadcrumb(elgg_echo('projects'), 'projects');
 
 	$base_dir = elgg_get_plugins_path() . 'project_registry/pages/project_registry';
 
