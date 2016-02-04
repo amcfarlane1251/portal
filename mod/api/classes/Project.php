@@ -22,6 +22,8 @@ class Project {
 	public $id;
 	public $title;
 	public $description;
+	public $req_num;
+	public $status;
 	public $scope;
 	public $course;
 	public $org;
@@ -151,6 +153,8 @@ class Project {
 			$params['life_expectancy'] = $row->life_expectancy;
 			$params['access_id'] = $row->access_id;
 			$params['time_created'] = gmdate("Y-m-d", $row->time_created);
+			$params['req_num'] = $row->req_num;
+			$params['status'] = $row->status;
 			
 			$this->addToCollection(new Project($params));
 		}
