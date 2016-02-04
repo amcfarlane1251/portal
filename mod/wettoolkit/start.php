@@ -1,110 +1,92 @@
 <?php
 
-	/**
-	 * Elgg file browser
-	 * 
-	 * @package ElggFile
-	 * @author Canadian Defence Academy - Canadian Advanced Distributed Learning Lab
-	 * @copyright Government of Canada 2013
-	 * @link http://www.forces.gc.ca/en/training-prof-dev/canadian-defence-academy.page
-	 */
-	
-	
-	// Initialization of the plugin.
-	// We clear out all previously included CSS views that other plugins have put in (using elgg_extend_view)
-	function wet_theme_init() {
-		//Remove topbar elgg logo
-		elgg_unregister_menu_item('topbar', 'elgg_logo');
-		elgg_extend_view('css/elgg', 'search/css');
-
-/*----------Custom Menu Items---------------*/
-
-elgg_register_menu_item ('site', array (
-	'name' => 'Home',
-	'text' => elgg_echo('wet:home'),
-	'href' => '/'
-));
-
-elgg_unregister_menu_item('site', 'groups');
-
-elgg_register_menu_item('site', array (
-	'name' => 'Groups',
-	'text' => elgg_echo('wet:groups'),
-	'href' => 'groups/all?filter=newest'
-));
-
-elgg_register_menu_item('site', array (
-	'name' => 'MobileApps',
-	'text' => elgg_echo('wet:mobileapp'),
-	'href' => 'http://www.canada.ca/en/mobile/'
-));
-
-/*elgg_register_menu_item('site', array (
-	'name' => 'HowToVideos',
-	'text' => elgg_echo('wet:howtovideos'),
-	'href' => 'http://s3.ongarde.net/portal/groups/profile/1705/learning-portal-how-to-videos'
-));
+/**
+ * 
+ * @author Canadian Defence Academy - Canadian Advanced Distributed Learning Lab
+ * @copyright Government of Canada 2013
+ * @link http://www.forces.gc.ca/en/training-prof-dev/canadian-defence-academy.page
+ */
 
 
-elgg_register_menu_item('site', array (
-        'name' => 'LPR',
-        'text' => elgg_echo('wet:lpr'),
-        'href' => 'http://s3.ongarde.net/portal/projects/all'
-));*/
+// Initialization of the plugin.
+// We clear out all previously included CSS views that other plugins have put in (using elgg_extend_view)
 
-if (elgg_is_logged_in()) {
-	$user_guid = elgg_get_logged_in_user_guid();
-	$address = urlencode(current_page_url());
-	elgg_unregister_menu_item('extras', 'bookmark');
-	elgg_register_menu_item('extras', array(
-		'name' => 'bookmark',
-		'text' => elgg_view_icon('add-bookmark'),
-		'href' => "bookmarks/add/$user_guid?address=$address",
-		'title' => elgg_echo('bookmarks:this'),
-		'rel' => 'nofollow',
-		'id' => 'add-bookmark'
+function wet_theme_init() {
+	//Remove topbar elgg logo
+	elgg_unregister_menu_item('topbar', 'elgg_logo');
+	elgg_extend_view('css/elgg', 'search/css');
+
+	/*----------Custom Menu Items---------------*/
+
+	elgg_register_menu_item ('site', array (
+		'name' => 'Home',
+		'text' => elgg_echo('wet:home'),
+		'href' => '/'
 	));
-}
 
-//register "Configure your tool" and "Account statistics" menu items for admins only
-elgg_register_event_handler('pagesetup', 'system', 'userSettingsSetup');
+	elgg_unregister_menu_item('site', 'groups');
 
-//overide default river delete action
-elgg_unregister_action('river/delete');
-elgg_register_action('river/delete', elgg_get_plugins_path()."wettoolkit/actions/river/delete.php");
+	elgg_register_menu_item('site', array (
+		'name' => 'Groups',
+		'text' => elgg_echo('wet:groups'),
+		'href' => 'groups/all?filter=newest'
+	));
 
-//overide default add comments action
-elgg_unregister_action('comments/add');
-elgg_register_action('comments/add', elgg_get_plugins_path()."wettoolkit/actions/comments/add.php");
+	elgg_register_menu_item('site', array (
+		'name' => 'MobileApps',
+		'text' => elgg_echo('wet:mobileapp'),
+		'href' => 'http://www.canada.ca/en/mobile/'
+	));
 
-//overide default register action
-elgg_unregister_action('register');
-elgg_register_action('register', elgg_get_plugins_path()."wettoolkit/actions/register.php", "public");
+	/*elgg_register_menu_item('site', array (
+		'name' => 'HowToVideos',
+		'text' => elgg_echo('wet:howtovideos'),
+		'href' => 'http://s3.ongarde.net/portal/groups/profile/1705/learning-portal-how-to-videos'
+	));
 
-//add river menu item to delete activity item that belong to the user
-elgg_register_plugin_hook_handler('register', 'menu:river', 'custom_river_menu_setup');
 
-/*---------------INACTIVE commented out-----------*/
-/*                elgg_unregister_menu_item('site', 'blog');
-		elgg_unregister_menu_item('site', 'activity');
-		elgg_unregister_menu_item('site', 'file');
-		elgg_unregister_menu_item('site', 'members');
-		elgg_unregister_menu_item('site', 'pages');
-		elgg_unregister_menu_item('site', 'thewire');
-		elgg_unregister_menu_item('site', 'bookmarks');
-		elgg_unregister_menu_item('site', elgg_echo('tasks'));
-                elgg_unregister_menu_item('site', 'answers');
-		elgg_unregister_menu_item('site', 'groups');
-		elgg_unregister_menu_item('site', 'photos');
-		elgg_unregister_menu_item('site', 'translation_editor');	
-*/
-	
-/*--------replace with new menu items---------*/
+	elgg_register_menu_item('site', array (
+			'name' => 'LPR',
+			'text' => elgg_echo('wet:lpr'),
+			'href' => 'http://s3.ongarde.net/portal/projects/all'
+	));*/
 
-//register page handler
-elgg_register_page_handler("feature", "feature_page_handler");
-elgg_register_page_handler("users", "users_page_handler");
-elgg_register_page_handler("register", "alternate_register_page_handler");
+	if (elgg_is_logged_in()) {
+		$user_guid = elgg_get_logged_in_user_guid();
+		$address = urlencode(current_page_url());
+		elgg_unregister_menu_item('extras', 'bookmark');
+		elgg_register_menu_item('extras', array(
+			'name' => 'bookmark',
+			'text' => elgg_view_icon('add-bookmark'),
+			'href' => "bookmarks/add/$user_guid?address=$address",
+			'title' => elgg_echo('bookmarks:this'),
+			'rel' => 'nofollow',
+			'id' => 'add-bookmark'
+		));
+	}
+
+	//register "Configure your tool" and "Account statistics" menu items for admins only
+	elgg_register_event_handler('pagesetup', 'system', 'userSettingsSetup');
+
+	//overide default river delete action
+	elgg_unregister_action('river/delete');
+	elgg_register_action('river/delete', elgg_get_plugins_path()."wettoolkit/actions/river/delete.php");
+
+	//overide default add comments action
+	elgg_unregister_action('comments/add');
+	elgg_register_action('comments/add', elgg_get_plugins_path()."wettoolkit/actions/comments/add.php");
+
+	//overide default register action
+	elgg_unregister_action('register');
+	elgg_register_action('register', elgg_get_plugins_path()."wettoolkit/actions/register.php", "public");
+
+	//add river menu item to delete activity item that belong to the user
+	elgg_register_plugin_hook_handler('register', 'menu:river', 'custom_river_menu_setup');
+
+	//register page handler
+	elgg_register_page_handler("feature", "feature_page_handler");
+	elgg_register_page_handler("users", "users_page_handler");
+	elgg_register_page_handler("register", "alternate_register_page_handler");
 
 }
 
