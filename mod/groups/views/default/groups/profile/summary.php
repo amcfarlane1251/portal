@@ -50,7 +50,6 @@ $search = $group->getPrivateSetting($prefix . "search");	//Hide the search in gr
 
 	<div class="groups-profile-fields elgg-body">
 		<?php
-			elgg_load_css('bootstrap-css');
 			echo elgg_view('groups/profile/fields', $vars);
 		?>
 	</div>
