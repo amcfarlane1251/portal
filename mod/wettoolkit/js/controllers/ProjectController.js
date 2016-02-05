@@ -5,7 +5,7 @@
 		.module('portal')
 		.controller('Projects', Projects);
 
-		function Projects(project) {
+		function Projects(project, $location) {
 			var vm = this;
 			
 			vm.projects = [];
@@ -24,6 +24,23 @@
 			}, function(error){
 				console.log(error);
 			});
+			
+			//create a project
+			vm.createProject = function () {
+				project.create({
+					'course':vm.course,
+					'is_priority':vm.isPriority,
+					'org':vm.org,
+					'project_type':vm.type,
+					'title':vm.title,
+				}).then(function(success) {
+					console.log(success);
+					project.getProjects(publicKey, signature);
+					$location.path('projects');
+				}, function(error){
+					console.log(error);
+				});
+			}
 		}
 	
 	angular
@@ -36,10 +53,10 @@
 				// ngResource call - TODO: use $httpInterceptor to modify an existing resource object
 										//would rather create the resource outside of the scope of each function
 				var Project = $resource('api/projects/:id', 
-					{id: "@id"}, 
+					{}, 
 					{
 						"query": {
-							'params':{'public_key':publicKey}, 
+							'params':{'public_key':publicKey},
 							'headers':{'Signature':signature}
 						}
 					}
@@ -52,8 +69,36 @@
 				});
 			}
 			
+			function create(data) {
+				data.user_id = localStorage.getItem('publicKey');
+				//stringify JSON 
+				var queryString = JSON.stringify(data);
+				//create signature
+				var publicKey = localStorage.getItem('publicKey');
+				var hash = CryptoJS.HmacSHA256(CryptoJS.SHA1(queryString).toString(),CryptoJS.SHA1(publicKey).toString());
+				var signature = CryptoJS.enc.Base64.stringify(hash);
+				
+				var Project = $resource('api/projects/:id', 
+					{}, 
+					{
+						"save": {
+							method:'POST',
+							'params':{'public_key':publicKey},
+							'headers':{'Signature':signature}
+						}
+					}
+				);
+
+				return Project.save(data).$promise.then(function(success) {
+					console.log(success);
+				}, function(error) {
+					console.log(error);
+				});
+			}
+			
 			return {
 				getProjects: getProjects,
+				create : create
 			}
 		}
 })();
