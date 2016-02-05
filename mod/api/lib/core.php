@@ -139,22 +139,8 @@ function apiPageHandler($page){
 					break;
 				case 'POST':
 					$publicKey = get_input('public_key');
-					$payload = array();
-					$payload['title'] = $_POST['title'];
-					$payload['description'] = $_POST['description'];
-					$payload['req_num'] = (int)$_POST['req_num'];
-					$payload['status'] = $_POST['status'];
-					$payload['scope'] = $_POST['scope'];
-					$payload['course'] = $_POST['course'];
-					$payload['org'] = $_POST['org'];
-					$payload['user_id'] = (int)$_POST['user_id'];
-					$payload['project_type'] = $_POST['project_type'];
-					$payload['is_priority'] = $_POST['is_priority'] == "true" ? true : false;
-					$payload['priority'] = $_POST['priority'];
-					$payload['is_sme_avail'] = $_POST['is_sme_avail'] == "true" ? true : false;
-					$payload['is_limitation'] = $_POST['is_limitation'] == "true" ? true : false;
-					$payload['update_existing_product'] = $_POST['update_existing_product'];
-					$payload['life_expectancy'] = $_POST['life_expectancy'] == "true" ? true : false;
+					$postdata = file_get_contents("php://input");
+					$payload = json_decode(file_get_contents("php://input"), true);
 					
 					$session = new Session($publicKey, $signature, $payload);
 					
@@ -164,6 +150,7 @@ function apiPageHandler($page){
 						if($project->validate()) {
 							if($project->create()) {
 								$session->setHeader(200);
+								$status = 'success';
 							}
 							else{
 								$session->setHeader(500);
@@ -177,6 +164,8 @@ function apiPageHandler($page){
 						$session->setHeader(401);
 					}
 					
+					header('Content-type: application/json');
+					echo json_encode(array('status'=>$status, 'data'=>$data), 32);
 					
 					exit;
 					break;

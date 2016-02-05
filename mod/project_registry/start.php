@@ -59,12 +59,18 @@ function projects_page_handler($project) {
 	elgg_push_breadcrumb(elgg_echo('projects'), 'projects');
 
 	$base_dir = elgg_get_plugins_path() . 'project_registry/pages/project_registry';
+	$angular_dir = elgg_get_plugins_path() . 'project_registry/js/views';
 
 	switch ($project[0]) {
 		case 'all':
 			include "$base_dir/all.php";
 			break;
-
+		case 'list':
+			include "$angular_dir/list.php";
+			break;
+		case 'add':
+			include "$angular_dir/add.php";
+			break;
 		default:
 			return false;
 	}
