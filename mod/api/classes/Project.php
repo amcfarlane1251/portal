@@ -128,6 +128,18 @@ class Project {
 		}
 	}
 	
+	public static function delete($project) 
+	{
+		elgg_set_ignore_access();
+
+		if ($project->delete()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	private function fill($row)
 	{
 		
