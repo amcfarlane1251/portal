@@ -213,7 +213,7 @@ class Project {
 			$params['scope'] = $row->scope;
 			$params['course'] = $row->course;
 			$params['org'] = $row->org;
-			$params['owner_guid'] = $row->owner_guid;
+			$params['owner'] = get_entity($row->owner_guid)->name;
 			$params['container_guid'] = $row->container_guid;
 			$params['project_type'] = $row->project_type;
 			$params['opi'] = $row->opi;
@@ -225,7 +225,7 @@ class Project {
 			$params['life_expectancy'] = $row->life_expectancy;
 			$params['access_id'] = $row->access_id;
 			$params['time_created'] = gmdate("Y-m-d", $row->time_created);
-			$params['req_num'] = $row->req_num;
+			$params['req_num'] = $row->guid;
 			$params['status'] = $row->status;
 			
 			$this->addToCollection(new Project($params));
