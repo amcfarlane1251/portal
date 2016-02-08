@@ -5,10 +5,11 @@
 		.module('portal')
 		.controller('Projects', Projects);
 
-		function Projects(project, $location) {
+		function Projects(project, $location, Upload) {
 			var vm = this;
 			
 			vm.projects = [];
+			vm.opis = [];
 			
 			//turn request params into JSON object
 			var paramObject = new Object();
@@ -19,24 +20,43 @@
 			var signature = CryptoJS.enc.Base64.stringify(hash);
 			
 			project.getProjects(publicKey, signature).then(function(results){
-				console.log(results);
 				vm.projects = results.data;
 			}, function(error){
 				console.log(error);
 			});
 			
+			//add opi to vm
+			vm.addContact = function() {
+				vm.opis.push({});
+			}
+			
+			vm.removeContact = function(index) {
+				vm.opis.splice(index, 1);
+			}
+			
 			//create a project
 			vm.createProject = function () {
 				project.create({
 					'course':vm.course,
+					'description': vm.description,
 					'is_priority':vm.isPriority,
+					'opi': vm.opis,
 					'org':vm.org,
 					'project_type':vm.type,
+					'scope' : vm.scope,
+					'status': 'Submitted',
 					'title':vm.title,
 				}).then(function(success) {
-					console.log(success);
-					project.getProjects(publicKey, signature);
-					$location.path('projects');
+					Upload.upload({
+						url: 'api/projects',
+						data: {files:vm.files, 'projectId':success.data.id, 'accessId':success.data.accessId,'action':'attachFile'}
+					}).then(function(success){
+						project.getProjects(publicKey, signature).then(function(results){
+							$location.path('projects');
+						});
+					}, function(error){
+						console.log(error);
+					});
 				}, function(error){
 					console.log(error);
 				});
@@ -70,7 +90,7 @@
 			}
 			
 			function create(data) {
-				data.user_id = localStorage.getItem('publicKey');
+				data.user_id = parseInt(localStorage.getItem('publicKey'));
 				//stringify JSON 
 				var queryString = JSON.stringify(data);
 				//create signature
@@ -90,7 +110,7 @@
 				);
 
 				return Project.save(data).$promise.then(function(success) {
-					console.log(success);
+					return success;
 				}, function(error) {
 					console.log(error);
 				});

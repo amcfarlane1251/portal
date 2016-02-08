@@ -138,35 +138,48 @@ function apiPageHandler($page){
 					exit;
 					break;
 				case 'POST':
-					$publicKey = get_input('public_key');
-					$postdata = file_get_contents("php://input");
-					$payload = json_decode(file_get_contents("php://input"), true);
-					
-					$session = new Session($publicKey, $signature, $payload);
-					
-					if($session->verifySignature()) {
-						$project = new Project($payload);
-						
-						if($project->validate()) {
-							if($project->create()) {
-								$session->setHeader(200);
-								$status = 'success';
-							}
-							else{
-								$session->setHeader(500);
-							}
+					if(get_input('action') == 'attachFile'){
+						$session =  new Session(null, null, null);
+						if(Project::saveAttachments($_FILES['files'], $_POST['projectId'], $_POST['accessId'])) {
+							$session->setHeader(200);
+							
+							$status = 'success';
 						}
 						else{
 							$session->setHeader(400);
+							$status = 'error';
 						}
 					}
 					else{
-						$session->setHeader(401);
+						$publicKey = get_input('public_key');
+						$postdata = file_get_contents("php://input");
+						$payload = json_decode(file_get_contents("php://input"), true);
+						$payload['user_id'] = (int) $payload['user_id'];
+						$session = new Session($publicKey, $signature, $payload);
+
+						if($session->verifySignature()) {
+							$project = new Project($payload);
+
+							if($project->validate()) {
+								if($project->create()) {
+									$session->setHeader(200);
+									$status = 'success';
+									$data = array('id'=>$project->id, 'accessId'=>$project->access_id);
+								}
+								else{
+									$session->setHeader(500);
+								}
+							}
+							else{
+								$session->setHeader(400);
+							}
+						}
+						else{
+							$session->setHeader(401);
+						}
 					}
-					
 					header('Content-type: application/json');
 					echo json_encode(array('status'=>$status, 'data'=>$data), 32);
-					
 					exit;
 					break;
 				case 'PUT':

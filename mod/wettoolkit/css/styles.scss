@@ -1167,6 +1167,14 @@ a.tooltip.bottom:hover:before { top: 20px; }
 #wb-main-in {
     .template-header{
         margin-bottom:1rem;
+        h2{
+            display:inline-block;
+            font-size:2.25rem;
+            font-weight:400;
+        }
+        a{
+            float:right;
+        }
     }
     .form-row{
         margin-bottom:1rem;
@@ -1181,12 +1189,12 @@ a.tooltip.bottom:hover:before { top: 20px; }
         }
         h3{
             margin-bottom:.667rem;
-            font-size:2.25rem;
+            font-size:1.5rem;
             line-height:1.3;
         }
         h5{
             margin-bottom:.667rem;
-            font-size:1.5rem;
+            font-size:1rem;
             line-height:1.3;
             span{
                 color:#D32F2F;
@@ -1198,6 +1206,10 @@ a.tooltip.bottom:hover:before { top: 20px; }
     }
     .project-form{
         margin:3.375rem 0;
+    }
+    
+    .form-btn{
+        margin-bottom:1rem !important;
     }
 }
 

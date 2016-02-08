@@ -4,12 +4,6 @@
  *
  */
 
-elgg_push_breadcrumb(elgg_echo('projects'));
-
-//elgg_register_title_button();
-
-$limit = get_input("limit", 15);
-
 $title = elgg_echo('projects');
 
 $content = 
@@ -39,7 +33,7 @@ switch ($vars['page']) {
 		break;
 }
 
-$body = elgg_view_layout('content', array(
+$body = elgg_view_layout('one_sidebar', array(
 	'content' => $content,
 	'title' => null,
 	'sidebar' => $sidebar,
