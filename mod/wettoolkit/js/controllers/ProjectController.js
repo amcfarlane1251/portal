@@ -20,7 +20,6 @@
 			var signature = CryptoJS.enc.Base64.stringify(hash);
 			
 			project.getProjects(publicKey, signature).then(function(results){
-				console.log(results);
 				vm.projects = results.data;
 			}, function(error){
 				console.log(error);
@@ -45,20 +44,19 @@
 					'org':vm.org,
 					'project_type':vm.type,
 					'scope' : vm.scope,
+					'status': 'Submitted',
 					'title':vm.title,
 				}).then(function(success) {
-					console.log(success);
 					Upload.upload({
 						url: 'api/projects',
 						data: {files:vm.files, 'projectId':success.data.id, 'accessId':success.data.accessId,'action':'attachFile'}
 					}).then(function(success){
-						console.log(success);
-						project.getProjects(publicKey, signature);
-						$location.path('projects');
+						project.getProjects(publicKey, signature).then(function(results){
+							$location.path('projects');
+						});
 					}, function(error){
 						console.log(error);
 					});
-					console.log(success);
 				}, function(error){
 					console.log(error);
 				});
