@@ -894,6 +894,8 @@ a.tooltip.bottom:hover:before {
     font-size: 1rem; }
 #wb-main-in .project-form {
   margin: 3.375rem 0; }
+#wb-main-in .form-btn {
+  margin-bottom: 1rem !important; }
 
 /** MOBILE STYLES **/
 @media screen and (max-width: 1200px) {

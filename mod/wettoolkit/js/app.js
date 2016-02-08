@@ -5,6 +5,7 @@
 		.module('portal', [
 			'ngResource',
 			'ngRoute',
+			'ngFileUpload'
 		]);
 		
 	angular

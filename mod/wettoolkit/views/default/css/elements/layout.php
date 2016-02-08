@@ -824,7 +824,6 @@ p#language{
 	border-color:#143c5f !important;
 	color: #fff !important;
 	display: inline-block !important;
-	margin-bottom: 0 !important;
 	font-weight:500 !important;
 	touch-action: manipulation;
 	cursor: pointer;

@@ -72,7 +72,7 @@ class Session {
 			$request = $this->request;
 			ksort($request);
 		}
-
+		$val = json_encode($request); 
 		return sha1(json_encode($request));
 	}
 	
