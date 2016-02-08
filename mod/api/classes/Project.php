@@ -130,6 +130,18 @@ class Project {
 		}
 	}
 	
+	public static function delete($project) 
+	{
+		elgg_set_ignore_access();
+
+		if ($project->delete()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	public static function saveAttachments($attachments, $id, $accessId)
 	{
 		elgg_set_ignore_access();
