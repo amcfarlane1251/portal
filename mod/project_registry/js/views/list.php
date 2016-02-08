@@ -1,7 +1,10 @@
 <?php
 
 echo "
-	<div class='template-header'><a href='#/projects/create' class='elgg-button elgg-button-action'>Request Project</a></div>
+	<div class='template-header'>
+		<h2>".elgg_echo('projects:all')."</h2>
+		<a href='#/projects/create' class='elgg-button elgg-button-action'>Request Project</a>
+	</div>
 	<div class='row'>
 		<div ng-repeat='project in vm.projects' class='project col-sm-6'>
 			<div class='project-header'>

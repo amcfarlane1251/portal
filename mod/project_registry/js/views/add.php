@@ -1,7 +1,10 @@
 <?php
 
 echo "
-	<div class='template-header'><a href='#/projects' class='elgg-button elgg-button-action ang-button'>List All Projects</a></div>
+	<div class='template-header'>
+		<h2>".elgg_echo('projects:add')."</h2>
+		<a href='#/projects' class='elgg-button elgg-button-action'>List All Projects</a>
+	</div>
 	<div class='project-form project'>
 		<form>
 			<div class='row form-row'>

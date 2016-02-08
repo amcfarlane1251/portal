@@ -13,7 +13,7 @@ $english = array(
 	'projects' => "Projects",
 	'projects:all' => "All projects",
 	'projects:none' => "No projects",
-	'projects:add' => "Request Project",
+	'projects:add' => "Request A Project",
 	'projects:searchname' => "Search for projects by name",
 	'projects:search:name' => "project name",
 
