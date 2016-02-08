@@ -27,6 +27,7 @@ class Project {
 	public $scope;
 	public $course;
 	public $org;
+	public $opi = array();
 	public $owner_guid;
 	public $container_guid;
 	public $project_type;
@@ -121,11 +122,81 @@ class Project {
 		}
 		
 		if($project->save()) {
+			$this->id = $project->guid;
 			return true;
 		}
 		else{
 			return false;
 		}
+	}
+	
+	public static function saveAttachments($attachments, $id, $accessId)
+	{
+		elgg_set_ignore_access();
+		$result = true;
+		$count = count($attachments['name']);
+		for ($i = 0; $i < $count; $i++) {
+			if ($attachments['error'][$i] || !$attachments['name'][$i]) {
+				continue;
+			}
+
+			$name = $attachments['name'][$i];
+
+			$file = new ElggFile();
+			$file->container_guid = $id;
+			$file->title = $name;
+			$file->access_id = (int) $accessId;
+
+			$prefix = "file/";
+			$filestorename = elgg_strtolower(time() . $name);
+			$file->setFilename($prefix . $filestorename);
+
+
+			$file->open("write");
+			$file->close();
+			move_uploaded_file($attachments['tmp_name'][$i], $file->getFilenameOnFilestore());
+
+			$saved = $file->save();
+
+			if ($saved) {
+				$mime_type = ElggFile::detectMimeType($attachments['tmp_name'][$i], $attachments['type'][$i]);
+				$info = pathinfo($name);
+				$office_formats = array('docx', 'xlsx', 'pptx');
+				if ($mime_type == "application/zip" && in_array($info['extension'], $office_formats)) {
+					switch ($info['extension']) {
+						case 'docx':
+							$mime_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+							break;
+						case 'xlsx':
+							$mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+							break;
+						case 'pptx':
+							$mime_type = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+							break;
+					}
+				}
+
+				// check for bad ppt detection
+				if ($mime_type == "application/vnd.ms-office" && $info['extension'] == "ppt") {
+					$mime_type = "application/vnd.ms-powerpoint";
+				}
+
+				$file->setMimeType($mime_type);
+				$file->originalfilename = $name;
+				if (elgg_is_active_plugin('file')) {
+					$file->simpletype = file_get_simple_type($mime_type);
+				}
+				$saved = $file->save();
+				if($saved){
+					$file->addRelationship($id, 'attachment');
+					$result = true;
+				}
+			}
+			else{
+				$result = false;
+			}
+		}
+		return $result;
 	}
 	
 	private function fill($row)
@@ -145,6 +216,7 @@ class Project {
 			$params['owner_guid'] = $row->owner_guid;
 			$params['container_guid'] = $row->container_guid;
 			$params['project_type'] = $row->project_type;
+			$params['opi'] = $row->opi;
 			$params['is_priority'] = $row->is_priority;
 			$params['priority'] = $row->priority;
 			$params['is_sme_avail'] = $row->is_sme_avail;
