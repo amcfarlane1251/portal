@@ -73,6 +73,9 @@ function projects_page_handler($project) {
 		case 'add':
 			include "$angular_dir/add.php";
 			break;
+		case 'view':
+			include "$angular_dir/view.php";
+			break;
 		default:
 			return false;
 	}

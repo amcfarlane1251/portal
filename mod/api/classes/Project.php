@@ -201,7 +201,26 @@ class Project {
 	
 	private function fill($row)
 	{
-		
+		$this->id = $row->guid;
+		$this->title = $row->title;
+		$this->description = $row->description;
+		$this->scope = $row->scope;
+		$this->course = $row->course;
+		$this->org = $row->org;
+		$this->owner = get_entity($row->owner_guid)->name;
+		$this->container_guid = $row->container_guid;
+		$this->project_type = $row->project_type;
+		$this->opi = $row->opi;
+		$this->is_priority = $row->is_priority;
+		$this->priority = $row->priority;
+		$this->is_sme_avail = $row->is_sme_avail;
+		$this->is_limitation = $row->is_limitation;
+		$this->update_existing_product = $row->update_existing_product;
+		$this->life_expectancy = $row->life_expectancy;
+		$this->access_id = $row->access_id;
+		$this->time_created = gmdate("Y-m-d", $row->time_created);
+		$this->req_num = $row->guid;
+		$this->status = $row->status;
 	}
 	
 	private function fillWithRows($rows)
