@@ -130,6 +130,21 @@ class Project {
 		}
 	}
 	
+	public function update($payload)
+	{	
+		elgg_set_ignore_access();
+		
+		$project = get_entity($this->id);
+		$project->$payload['field'] = $payload['value'];
+		if($project->save()) {
+			$this->id = $project->guid;
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	public static function delete($project) 
 	{
 		elgg_set_ignore_access();
@@ -222,7 +237,8 @@ class Project {
 		$this->owner = get_entity($row->owner_guid)->name;
 		$this->container_guid = $row->container_guid;
 		$this->project_type = $row->project_type;
-		$this->opi = $row->opi;
+		$this->opi[] = $row->opi;
+		error_log(print_R($row->opi, true));
 		$this->is_priority = $row->is_priority;
 		$this->priority = $row->priority;
 		$this->is_sme_avail = $row->is_sme_avail;

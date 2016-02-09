@@ -74,6 +74,7 @@ $english = array(
 	'projects:yes'		=> 'Yes',
 	'projects:no'		=> 'No',
 	'projects:submit'	=> 'Create Project',
+	'projects:save'		=> 'Save Project',
 );
 
 add_translation("en", $english);
