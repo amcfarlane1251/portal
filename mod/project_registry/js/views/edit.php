@@ -2,7 +2,7 @@
 
 echo "
 	<div class='template-header'>
-		<h2>".elgg_echo('projects:add')."</h2>
+		<h2>Edit Project - {{vm.project.title}}</h2>
 		<a href='#/projects' class='elgg-button elgg-button-action'>List All Projects</a>
 	</div>
 	<div class='project-form project'>
@@ -12,7 +12,7 @@ echo "
 					<label>". elgg_echo('projects:title') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<input type='text' class='' name='title' ng-model='vm.title'/>
+					<input type='text' class='' name='title' ng-model='vm.title' value='{{vm.project.title}}'/>
 				</div>
 			</div>
 			<div class='row form-row'>
@@ -20,7 +20,7 @@ echo "
 					<label>". elgg_echo('projects:course') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<input type='text' class='' ng-model='vm.course'/>
+					<input type='text' class='' ng-model='vm.course' value='{{vm.project.course}}'/>
 				</div>
 			</div>
 			<div class='row form-row'>
@@ -28,7 +28,7 @@ echo "
 					<label>". elgg_echo('projects:org') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<input type='text' class='' ng-model='vm.org'/>
+					<input type='text' class='' ng-model='vm.org' value='{{vm.project.org}}'/>
 				</div>
 			</div>
 			<div class='row form-row'>
@@ -37,7 +37,7 @@ echo "
 				</div>
 				<div class='col-md-6'>
 					<select ng-model=vm.type>
-						<option ng-selected='true' value='Courseware' selected='selected'>Courseware</option>
+						<option value='Courseware' selected='selected'>Courseware</option>
 						<option value='Instructor Support'>Instructor Support</option>
 						<option value='Learning Application'>Learning Application</option>
 						<option value='Learning Technologies'>Learning Technologies</option>
@@ -54,7 +54,7 @@ echo "
 					<label>". elgg_echo('projects:description') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<textarea ng-model='vm.description'></textarea>
+					<textarea ng-model='vm.description' value='{{vm.project.description}}'></textarea>
 				</div>
 			</div>
 			<div class='row form-row'>
@@ -62,7 +62,7 @@ echo "
 					<label>". elgg_echo('projects:scope') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<textarea ng-model='vm.scope'></textarea>
+					<textarea ng-model='vm.scope' value='{{vm.project.scope}}'></textarea>
 				</div>
 			</div>
 			<div class='row form-row'>
@@ -255,8 +255,7 @@ echo "
 				</div>
 			</div>
 			
-			<button class='elgg-button elgg-button-action' ng-click='vm.createProject()'>".elgg_echo('projects:submit')."</button>
+			<button class='elgg-button elgg-button-action' ng-click='vm.createProject()'>".elgg_echo('projects:save')."</button>
 		</form>
 	</div>
 ";
-

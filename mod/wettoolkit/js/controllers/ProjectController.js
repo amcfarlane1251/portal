@@ -9,6 +9,8 @@
 			var vm = this;
 
 			vm.projects = [];
+			vm.statuses = [{name:'Submitted', id: 'Submitted'},{name:'Under Review', id: 'Under Review'}];
+			vm.opis = [];
 			
 			//sign request
 			var paramObject = new Object();
@@ -27,13 +29,25 @@
 			if($routeParams.project_id) {
 				project.getProject(publicKey, signature, $routeParams.project_id).then(function(results){
 					vm.project = results.data;
+					vm.opis = vm.project.opi;
+				}, function(error){
+					console.log(error);
+				});
+			}
+			
+			vm.updateStatus = function(index) {
+				$('#statusSelect'+index).prop('disabled', 'disabled');
+				project.update({
+					'field':'status',
+					'value':vm.projects[index].status
+				}, vm.projects[index].id).then(function(success){
+					$('#statusSelect'+index).prop('disabled', false);
 				}, function(error){
 					console.log(error);
 				});
 			}
 			
 			//create a project
-			vm.opis = [];
 			//add opi to vm
 			vm.addContact = function() {
 				vm.opis.push({});
@@ -129,7 +143,6 @@
 				data.user_id = parseInt(localStorage.getItem('publicKey'));
 				//stringify JSON 
 				var queryString = angular.toJson(data);
-				console.log(queryString);
 				//create signature
 				var publicKey = localStorage.getItem('publicKey');
 				var hash = CryptoJS.HmacSHA256(CryptoJS.SHA1(queryString).toString(),CryptoJS.SHA1(publicKey).toString());
@@ -153,10 +166,37 @@
 				});
 			}
 			
+			function update(data, id) {
+				//stringify JSON 
+				var queryString = angular.toJson(data);
+				//create signature
+				var publicKey = localStorage.getItem('publicKey');
+				var hash = CryptoJS.HmacSHA256(CryptoJS.SHA1(queryString).toString(),CryptoJS.SHA1(publicKey).toString());
+				var signature = CryptoJS.enc.Base64.stringify(hash);
+				
+				var Project = $resource('api/projects/:id', 
+					{id: "@id"}, 
+					{
+						"update": {
+							method:'PUT',
+							'params':{'public_key':publicKey},
+							'headers':{'Signature':signature}
+						}
+					}
+				);
+		
+				return Project.update({'id': id},data).$promise.then(function(success){
+					return success;
+				}, function(error){
+					console.log(error);
+				});
+			}
+			
 			return {
 				getProject: getProject,
 				getProjects: getProjects,
-				create : create
+				create : create,
+				update : update
 			}
 		}
 })();

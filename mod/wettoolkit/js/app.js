@@ -23,6 +23,10 @@
 				templateUrl: function(params){return 'projects/view/'+params.project_id;},
 				controller: 'Projects as vm'
 			}).
+			when('/projects/edit/:project_id',{
+				templateUrl: function(params){return 'projects/edit/'+params.project_id;},
+				controller: 'Projects as vm'
+			}).
 			otherwise({
 				redirectTo: '/projects'
 			});
