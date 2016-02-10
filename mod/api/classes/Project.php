@@ -155,7 +155,9 @@ class Project {
 	{
 		elgg_set_ignore_access();
 
-		if ($project->delete()) {
+		$project_entity = get_entity($project->id);
+
+		if ($project_entity->delete()) {
 			return true;
 		}
 		else {
