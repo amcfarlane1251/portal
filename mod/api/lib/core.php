@@ -209,34 +209,33 @@ function apiPageHandler($page){
 					break;
 				case 'DELETE':
 					$publicKey = get_input('public_key');
-					$deletedata = json_decode(file_get_contents("php://input"), true);
-					$guid = $deletedata['guid'];					
-					$project = get_entity($guid);
-
-					$session = new Session($publicKey, $signature, $params);
 					
-					if($session->verifySignature()) {
-						if($project) {							
-							$result = Project::delete($project);
+					if($page[1]) {
+						$session = new Session($publicKey, $signature, $params);
+						if($session->verifySignature()) {
+							$project = Project::withID($page[1]);
+							if($project) {						
+								$result = Project::delete($project);
 
-							if ($result) {
-								$session->setHeader(200);
-								$status = 'success';
-								$data = null;
+								if ($result) {
+									$session->setHeader(200);
+									$status = 'success';
+									$data = null;
+								}
+								else{
+									$session->setHeader(500);
+									$status = 'fail';
+								}
 							}
-							else{
-								$session->setHeader(500);
-								$status = 'fail';
+							else {
+								$session->setHeader(404);
+								$status = 'error';
 							}
 						}
 						else {
-							$session->setHeader(404);
+							$session->setHeader(401);
 							$status = 'error';
-						}
-					}
-					else {
-						$session->setHeader(401);
-						$status = 'error';
+						}						
 					}
 					
 					header('Content-type: application/json');
