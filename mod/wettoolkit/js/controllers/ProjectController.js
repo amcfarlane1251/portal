@@ -92,6 +92,17 @@
 					console.log(error);
 				});
 			}
+
+			vm.deleteProject = function($id) {
+				project.remove({}, $id).then(function(success){
+					project.getProjects(publicKey, signature).then(function(results){
+						vm.projects = results.data;
+						$location.path('projects');
+					});
+				}, function(error){
+					console.log(error);
+				});
+			}
 		}
 	
 	angular
@@ -191,12 +202,39 @@
 					console.log(error);
 				});
 			}
+
+			function remove(data, id) {
+				//stringify JSON 
+				var queryString = angular.toJson(data);
+				//create signature
+				var publicKey = localStorage.getItem('publicKey');
+				var hash = CryptoJS.HmacSHA256(CryptoJS.SHA1(queryString).toString(),CryptoJS.SHA1(publicKey).toString());
+				var signature = CryptoJS.enc.Base64.stringify(hash);
+
+				var Project = $resource('api/projects/:id', 
+					{id: "@id"}, 
+					{
+						"remove": {
+							method:'DELETE',
+							'params':{'public_key':publicKey},
+							'headers':{'Signature':signature}
+						}
+					}
+				);
+
+				return Project.remove({'id': id}, data).$promise.then(function(success){
+					return success;
+				}, function(error){
+					console.log(error);
+				});
+			}
 			
 			return {
 				getProject: getProject,
 				getProjects: getProjects,
 				create : create,
-				update : update
+				update : update,
+				remove : remove
 			}
 		}
 })();
