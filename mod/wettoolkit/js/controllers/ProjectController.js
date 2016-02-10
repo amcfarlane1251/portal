@@ -9,8 +9,13 @@
 			var vm = this;
 
 			vm.projects = [];
-			vm.statuses = [{name:'Submitted', id: 'Submitted'},{name:'Under Review', id: 'Under Review'}];
 			vm.opis = [];
+			
+			vm.statuses = [{name:'Submitted', id: 'Submitted'},{name:'Under Review', id: 'Under Review'}];
+			vm.booleanOptions = {"values":["No","Yes"]};
+			vm.isPriority = vm.booleanOptions.values[0];
+			vm.isSme = vm.booleanOptions.values[0];
+			vm.isLimitation = vm.booleanOptions.values[0];
 			
 			//sign request
 			var paramObject = new Object();
@@ -29,7 +34,15 @@
 			if($routeParams.project_id) {
 				project.getProject(publicKey, signature, $routeParams.project_id).then(function(results){
 					vm.project = results.data;
-					vm.opis = vm.project.opi;
+					if(vm.project.sme) {
+						vm.project.sme = JSON.parse(vm.project.sme);
+					}
+					if(vm.project.opi.length > 0) {
+						vm.opis = JSON.parse(vm.project.opi);
+					}
+					if(vm.project.usa) {
+						vm.project.usa = JSON.parse(vm.project.usa);
+					}
 				}, function(error){
 					console.log(error);
 				});
@@ -76,21 +89,32 @@
 					'status': 'Submitted',
 					'title':vm.title,
 					'update_existing_product': vm.updateExistingProduct,
+					'usa':vm.usa
 				}).then(function(success) {
 					Upload.upload({
 						url: 'api/projects',
 						data: {files:vm.files, 'projectId':success.data.id, 'accessId':success.data.accessId,'action':'attachFile'}
 					}).then(function(success){
-						project.getProjects(publicKey, signature).then(function(results){
-							vm.projects = results.data;
-							$location.path('projects');
-						});
+						
 					}, function(error){
 						console.log(error);
+					});
+					project.getProjects(publicKey, signature).then(function(results){
+						vm.projects = results.data;
+						$location.path('projects');
 					});
 				}, function(error){
 					console.log(error);
 				});
+			}
+			
+			vm.toggleContainer = function(toggle, container) {
+				if(toggle=='Yes'){
+					$('#'+container).show();
+				}
+				else if(toggle=='No'){
+					$('#'+container).hide();
+				}
 			}
 		}
 	
@@ -112,7 +136,6 @@
 				);
 		
 				return Project.get({}, {'id': id}).$promise.then(function(results) {
-					console.log(results);
 					return results;
 				}, function(error){
 					console.log(error);
