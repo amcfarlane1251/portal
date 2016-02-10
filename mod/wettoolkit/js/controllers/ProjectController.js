@@ -115,7 +115,8 @@
 				else if(toggle=='No'){
 					$('#'+container).hide();
 				}
-
+			}
+			
 			vm.deleteProject = function($id) {
 				project.remove({}, $id).then(function(success){
 					project.getProjects(publicKey, signature).then(function(results){
