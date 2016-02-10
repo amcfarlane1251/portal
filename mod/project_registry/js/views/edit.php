@@ -36,16 +36,7 @@ echo "
 					<label>". elgg_echo('projects:type') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<select ng-model=vm.project.project_type>
-						<option value='Courseware' selected='selected'>Courseware</option>
-						<option value='Instructor Support'>Instructor Support</option>
-						<option value='Learning Application'>Learning Application</option>
-						<option value='Learning Technologies'>Learning Technologies</option>
-						<option value='Mobile'>Mobile</option>
-						<option value='Modelling and Simulation'>Modelling and Simulation</option>
-						<option value='R and D'>R and D</option>
-						<option value='Serious Gaming'>Serious Gaming</option>
-						<option value='Support'>Support</option>
+					<select ng-model=vm.project.project_type ng-options='type for type in vm.projectTypes.values'>
 					</select>
 				</div>
 			</div>
