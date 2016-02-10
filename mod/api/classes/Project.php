@@ -116,7 +116,13 @@ class Project {
 		
 		$project = new ElggObject();
 		foreach($this as $key => $val) {
-			if($key!='options' || $key!='required'){
+			if($key == 'opi' || $key == 'sme' ||$key == 'usa') {
+				$project->$key = json_encode($val);
+			}
+			else if($key=='options' || $key=='required'){
+				//
+			}
+			else{
 				$project->$key = $val;
 			}
 		}
@@ -240,7 +246,6 @@ class Project {
 		$this->container_guid = $row->container_guid;
 		$this->project_type = $row->project_type;
 		$this->opi[] = $row->opi;
-		error_log(print_R($row->opi, true));
 		$this->is_priority = $row->is_priority;
 		$this->priority = $row->priority;
 		$this->is_sme_avail = $row->is_sme_avail;
@@ -251,33 +256,18 @@ class Project {
 		$this->time_created = gmdate("Y-m-d", $row->time_created);
 		$this->req_num = $row->guid;
 		$this->status = $row->status;
+		$this->sme = $row->sme;
+		$this->usa = $row->usa;
+		$this->comments = $row->comments;
 	}
 	
 	private function fillWithRows($rows)
 	{
 		foreach($rows as $row) {
-			$params['id'] = $row->guid;
-			$params['title'] = $row->title;
-			$params['description'] = $row->description;
-			$params['scope'] = $row->scope;
-			$params['course'] = $row->course;
-			$params['org'] = $row->org;
-			$params['owner'] = get_entity($row->owner_guid)->name;
-			$params['container_guid'] = $row->container_guid;
-			$params['project_type'] = $row->project_type;
-			$params['opi'] = $row->opi;
-			$params['is_priority'] = $row->is_priority;
-			$params['priority'] = $row->priority;
-			$params['is_sme_avail'] = $row->is_sme_avail;
-			$params['is_limitation'] = $row->is_limitation;
-			$params['update_existing_product'] = $row->update_existing_product;
-			$params['life_expectancy'] = $row->life_expectancy;
-			$params['access_id'] = $row->access_id;
-			$params['time_created'] = gmdate("Y-m-d", $row->time_created);
-			$params['req_num'] = $row->guid;
-			$params['status'] = $row->status;
+			$project = new Project(null);
+			$project->fill($row);
 			
-			$this->addToCollection(new Project($params));
+			$this->addToCollection($project);
 		}
 	}
 	

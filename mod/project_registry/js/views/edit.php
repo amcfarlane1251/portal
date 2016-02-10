@@ -36,7 +36,7 @@ echo "
 					<label>". elgg_echo('projects:type') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<select ng-model=vm.type>
+					<select ng-model=vm.project.project_type>
 						<option value='Courseware' selected='selected'>Courseware</option>
 						<option value='Instructor Support'>Instructor Support</option>
 						<option value='Learning Application'>Learning Application</option>
@@ -113,18 +113,15 @@ echo "
 					<label>". elgg_echo('projects:isPriority') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<select ng-model='vm.isPriority'>
-						<option value=true>".elgg_echo('projects:yes')."</option>
-						<option value=false>".elgg_echo('projects:no')."</option>
-					</select>
+					<select ng-model='vm.project.is_priority' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.project.isPriority,'briefExplain')></select>
 				</div>
 			</div>
-			<div class='row form-row'>
+			<div class='row form-row' id='briefExplaiin'>
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:briefExplain') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<textarea ng-model='vm.priority'></textarea>
+					<textarea ng-model='vm.priority' value='vm.project.briefExplain'></textarea>
 				</div>
 			</div>
 			<div class='row form-row'>
@@ -132,13 +129,10 @@ echo "
 					<label>". elgg_echo('projects:isSme') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<select ng-model='vm.isSme'>
-						<option value=true>".elgg_echo('projects:yes')."</option>
-						<option value=false>".elgg_echo('projects:no')."</option>
-					</select>
+					<select ng-model='vm.project.is_sme_avail' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.project.isSme,'sme')></select>
 				</div>
 			</div>
-			<div class='row form-row'>
+			<div class='row form-row' id='sme'>
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:sme') ."</label>
 				</div>
@@ -147,25 +141,25 @@ echo "
 						<label>".elgg_echo('projects:rank').":</label>
 					</div>
 					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.sme.rank'/>
+						<input type='text' class='' ng-model='vm.sme.rank' value='vm.project.sme.rank'/>
 					</div>
 					<div class='col-md-3'>
 						<label>".elgg_echo('projects:name').":</label>
 					</div>
 					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.sme.name'/>
+						<input type='text' class='' ng-model='vm.sme.name' value='vm.project.sme.name'/>
 					</div>
 					<div class='col-md-3'>
 						<label>".elgg_echo('projects:phone').":</label>
 					</div>
 					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.sme.phone'/>
+						<input type='text' class='' ng-model='vm.sme.phone' value='vm.project.sme.phone'/>
 					</div>
 					<div class='col-md-3'>
 						<label>".elgg_echo('projects:email').":</label>
 					</div>
 					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.sme.email'/>
+						<input type='text' class='' ng-model='vm.sme.email' value='vm.project.sme.email'/>
 					</div>
 				</div>
 			</div>
@@ -175,10 +169,7 @@ echo "
 					<label>". elgg_echo('projects:isLimitation') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<select ng-model='vm.isLimitation'>
-						<option value=true>".elgg_echo('projects:yes')."</option>
-						<option value=false>".elgg_echo('projects:no')."</option>
-					</select>
+					<select ng-model='vm.project.is_limitation' ng-options='option for option in vm.booleanOptions.values'></select>
 				</div>
 			</div>
 			
@@ -200,7 +191,7 @@ echo "
 					<label>". elgg_echo('projects:lifeExpectancy') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<input type='text' name='lifeExpectancy' ng-model='vm.lifeExpectancy'/>
+					<input type='text' name='lifeExpectancy' ng-model='vm.lifeExpectancy' value='vm.project.lifeExpectancy'/>
 				</div>
 			</div>
 			
@@ -241,7 +232,7 @@ echo "
 					<label>". elgg_echo('projects:comments') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<textarea ng-model='vm.comments'></textarea>
+					<textarea ng-model='vm.comments' value='vm.project.comments'></textarea>
 				</div>
 			</div>
 			
