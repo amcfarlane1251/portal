@@ -21,7 +21,10 @@ echo "
 				}
 echo			"<p>".elgg_echo('projects:reqNum')." {{project.req_num}}</p>
 				<p>". elgg_echo('projects:submittedBy') ." {{project.owner}} ". elgg_echo('projects:on') ." {{project.time_created}}</p>
-				<button class='elgg-button elgg-button-action float-alt' ng-click='vm.deleteProject(project.id)' ng-confirmation-needed='Are you sure you want to delete this project? There is no undo!'>".elgg_echo('projects:delete')."</button>
+                <div class='project-footer'>
+                    <a href='#/projects/edit/{{project.id}}' class='elgg-button elgg-button-action'>".elgg_echo('projects:edit')."</a>
+                    <button class='elgg-button elgg-button-action float-alt' ng-click='vm.deleteProject(project.id)' ng-confirmation-needed='Are you sure you want to delete this project? There is no undo!'>".elgg_echo('projects:delete')."</button>    
+                </div>
 				</div>
 			</div>
 		</div>
