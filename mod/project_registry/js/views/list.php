@@ -9,8 +9,7 @@ echo "
 		<div ng-repeat='(key,project) in vm.projects' class='col-sm-6'>
 			<div class='col-lg-10 col-lg-offset-1 project'>
 				<div class='project-header'>
-					<h3><a href='#/projects/view/{{project.id}}'>{{project.title}}</a><button class='elgg-button elgg-button-action float-alt' ng-click='vm.deleteProject(project.id)'>".elgg_echo('projects:delete')."</button></h3>
-
+					<h3><a href='#/projects/view/{{project.id}}'>{{project.title}}</a></h3>
 				</div>
 				<h5>".elgg_echo('projects:status');
 				if(elgg_is_admin_logged_in()) {
@@ -22,6 +21,7 @@ echo "
 				}
 echo			"<p>".elgg_echo('projects:reqNum')." {{project.req_num}}</p>
 				<p>". elgg_echo('projects:submittedBy') ." {{project.owner}} ". elgg_echo('projects:on') ." {{project.time_created}}</p>
+				<button class='elgg-button elgg-button-action float-alt' ng-click='vm.deleteProject(project.id)' ng-confirmation-needed='Are you sure you want to delete this project? There is no undo!'>".elgg_echo('projects:delete')."</button>
 				</div>
 			</div>
 		</div>
