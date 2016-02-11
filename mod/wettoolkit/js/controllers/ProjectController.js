@@ -12,10 +12,15 @@
 			vm.opis = [];
 			
 			vm.statuses = [{name:'Submitted', id: 'Submitted'},{name:'Under Review', id: 'Under Review'}];
+			vm.projectTypes = {"values":["Courseware","Instructor Support","Learning Application","Learning Technologies",
+								"Mobile","Modelling and Simulation", "R and D", "Serious Gaming", "Support"]};
 			vm.booleanOptions = {"values":["No","Yes"]};
+			vm.multiOptions = {"values":["No","Update","Change"]};
 			vm.isPriority = vm.booleanOptions.values[0];
+			vm.type = vm.projectTypes.values[0];
 			vm.isSme = vm.booleanOptions.values[0];
 			vm.isLimitation = vm.booleanOptions.values[0];
+			vm.updateExistingProduct = vm.multiOptions.values[0];
 			
 			//sign request
 			var paramObject = new Object();
