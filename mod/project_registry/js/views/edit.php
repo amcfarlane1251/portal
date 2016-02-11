@@ -253,7 +253,7 @@ echo "
 				</div>
 			</div>
 			
-			<button class='elgg-button elgg-button-action' ng-click='vm.createProject()'>".elgg_echo('projects:save')."</button>
+			<button class='elgg-button elgg-button-action' ng-click='vm.editProject()'>".elgg_echo('projects:save')."</button>
 		</form>
 	</div>
 ";

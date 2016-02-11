@@ -136,6 +136,31 @@ class Project {
 		}
 	}
 	
+	public function edit($payload)
+	{	
+		elgg_set_ignore_access();
+		
+		$project = get_entity($this->id);
+		foreach($payload as $key => $val) {
+			if($key == 'opi' || $key == 'sme' ||$key == 'usa') {
+				$project->$key = json_encode($val);
+			}
+			else if($key=='options' || $key=='required' || $key=='id'){
+				//
+			}
+			else{
+				$project->$key = $val;
+			}
+		}
+		
+		if($project->save()) {
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	public function update($payload)
 	{	
 		elgg_set_ignore_access();

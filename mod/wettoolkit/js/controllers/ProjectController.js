@@ -105,6 +105,34 @@
 				});
 			}
 			
+			vm.editProject = function() {
+				project.edit({
+					'comments':vm.comments,
+					'course':vm.course,
+					'description': vm.description,
+					'is_limitation': vm.isLimitation,
+					'is_priority':vm.isPriority,
+					'is_sme_avail': vm.isSme,
+					'life_expectancy': vm.lifeExpectancy,
+					'opi': vm.opis,
+					'org':vm.org,
+					'priority':vm.priority,
+					'project_type':vm.type,
+					'scope' : vm.scope,
+					'sme' : vm.sme,
+					'title':vm.title,
+					'update_existing_product': vm.updateExistingProduct,
+					'usa':vm.usa
+				}, vm.project.id).then(function(success) {
+					project.getProjects(publicKey, signature).then(function(results){
+						vm.projects = results.data;
+						$location.path('projects');
+					});
+				}, function(error){
+					console.log(error);
+				});
+			}
+			
 			vm.deleteProject = function($id) {
 				project.remove({}, $id).then(function(success){
 					project.getProjects(publicKey, signature).then(function(results){
@@ -206,6 +234,32 @@
 				});
 			}
 			
+			function edit(data, id) {
+				data.user_id = parseInt(localStorage.getItem('publicKey'));
+				//stringify JSON 
+				var queryString = angular.toJson(data);
+				var publicKey = localStorage.getItem('publicKey');
+				
+				var signature = helper.createSignature(queryString,publicKey);
+				
+				var Project = $resource('api/projects/:id',
+					{id: "@id"},
+					{
+						"save": {
+							method:'POST',
+							'params':{'public_key':publicKey},
+							'headers':{'Signature':signature}
+						}
+					}
+				);
+		
+				return Project.save({'id':id},data).$promise.then(function(success){
+					return success;
+				}, function(error){
+					console.log(error);
+				});
+			}
+			
 			function update(data, id) {
 				//stringify JSON 
 				var queryString = angular.toJson(data);
@@ -260,6 +314,7 @@
 				getProject: getProject,
 				getProjects: getProjects,
 				create : create,
+				edit : edit,
 				update : update,
 				remove : remove
 			}
