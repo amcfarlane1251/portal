@@ -75,7 +75,7 @@ $english = array(
 	'projects:no'		=> 'No',
 	'projects:submit'	=> 'Create Project',
 	'projects:save'		=> 'Save Project',
-    'projects:delete'   => 'Delete Project',
+    'projects:delete'   => 'Delete',
     'projects:edit'     => 'Edit',
 );
 
