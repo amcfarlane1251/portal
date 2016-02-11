@@ -60,40 +60,48 @@ echo "
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:opi') ."</label>
 				</div>
-				<div class='col-md-6 row'>
-					<div class='col-lg-12 row'>
+				<div class='col-md-6 row sub-row'>
+					<div class='col-lg-12'>
 						<div ng-repeat='(key, opi) in vm.opis'>
-							<div class='col-lg-12'>
+							<div class='col-lg-12 row'>
 								<h5>".elgg_echo('projects:opi:title')." {{key+1}}</h5>
 								<button class='elgg-button elgg-button-action form-btn' ng-click='vm.removeContact(key)'>".elgg_echo('projects:removeContact')."</button>
 							</div>
 							
-							<div class='col-md-3'>
-								<label>".elgg_echo('projects:rank').":</label>
+							<div class='row'>
+								<div class='col-md-3'>
+									<label>".elgg_echo('projects:rank').":</label>
+								</div>
+								<div class='col-md-9'>
+									<input type='text' class='' ng-model='opi.rank' />
+								</div>
 							</div>
-							<div class='col-md-9'>
-								<input type='text' class='' ng-model='opi.rank' />
+							<div class='row'>
+								<div class='col-md-3'>
+									<label>".elgg_echo('projects:name').":</label>
+								</div>
+								<div class='col-md-9'>
+									<input type='text' class='' ng-model='opi.name'/>
+								</div>
 							</div>
-							<div class='col-md-3'>
-								<label>".elgg_echo('projects:name').":</label>
+							<div class='row'>
+								<div class='col-md-3'>
+									<label>".elgg_echo('projects:phone').":</label>
+								</div>
+								<div class='col-md-9'>
+									<input type='text' class='' ng-model='opi.phone'/>
+								</div>
 							</div>
-							<div class='col-md-9'>
-								<input type='text' class='' ng-model='opi.name'/>
-							</div>
-							<div class='col-md-3'>
-								<label>".elgg_echo('projects:phone').":</label>
-							</div>
-							<div class='col-md-9'>
-								<input type='text' class='' ng-model='opi.phone'/>
-							</div>
-							<div class='col-md-3'>
-								<label>".elgg_echo('projects:email').":</label>
-							</div>
-							<div class='col-md-9'>
-								<input type='text' class='' ng-model='opi.email'/>
+							<div class='row'>
+								<div class='col-md-3'>
+									<label>".elgg_echo('projects:email').":</label>
+								</div>
+								<div class='col-md-9'>
+									<input type='text' class='' ng-model='opi.email'/>
+								</div>
 							</div>
 						</div>
-						<div class='col-lg-12'>
+						<div class='col-lg-12 row'>
 							<button class='elgg-button elgg-button-action' ng-click='vm.addContact()'>".elgg_echo('projects:addContact')."</button>
 						</div>
 					</div>
@@ -127,30 +135,38 @@ echo "
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:sme') ."</label>
 				</div>
-				<div class='col-md-6 row'>
-					<div class='col-md-3'>
-						<label>".elgg_echo('projects:rank').":</label>
+				<div class='col-md-6 sub-row'>
+					<div class='row'>
+						<div class='col-md-3'>
+							<label>".elgg_echo('projects:rank').":</label>
+						</div>
+						<div class='col-md-9'>
+							<input type='text' class='' ng-model='vm.sme.rank' value='vm.project.sme.rank'/>
+						</div>
 					</div>
-					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.sme.rank' value='vm.project.sme.rank'/>
+					<div class='row'>
+						<div class='col-md-3'>
+							<label>".elgg_echo('projects:name').":</label>
+						</div>
+						<div class='col-md-9'>
+							<input type='text' class='' ng-model='vm.sme.name' value='vm.project.sme.name'/>
+						</div>
 					</div>
-					<div class='col-md-3'>
-						<label>".elgg_echo('projects:name').":</label>
+					<div class='row'>
+						<div class='col-md-3'>
+							<label>".elgg_echo('projects:phone').":</label>
+						</div>
+						<div class='col-md-9'>
+							<input type='text' class='' ng-model='vm.sme.phone' value='vm.project.sme.phone'/>
+						</div>
 					</div>
-					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.sme.name' value='vm.project.sme.name'/>
-					</div>
-					<div class='col-md-3'>
-						<label>".elgg_echo('projects:phone').":</label>
-					</div>
-					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.sme.phone' value='vm.project.sme.phone'/>
-					</div>
-					<div class='col-md-3'>
-						<label>".elgg_echo('projects:email').":</label>
-					</div>
-					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.sme.email' value='vm.project.sme.email'/>
+					<div class='row'>
+						<div class='col-md-3'>
+							<label>".elgg_echo('projects:email').":</label>
+						</div>
+						<div class='col-md-9'>
+							<input type='text' class='' ng-model='vm.sme.email' value='vm.project.sme.email'/>
+						</div>
 					</div>
 				</div>
 			</div>
