@@ -158,20 +158,40 @@ function apiPageHandler($page){
 						$session = new Session($publicKey, $signature, $payload);
 
 						if($session->verifySignature()) {
-							$project = new Project($payload);
-
-							if($project->validate()) {
-								if($project->create()) {
-									$session->setHeader(200);
-									$status = 'success';
-									$data = array('id'=>$project->id, 'accessId'=>$project->access_id);
+							//check if edit or creation
+							if($page[1]){
+								$project = Project::withID($page[1]);
+								
+								if($project){
+									if($project->edit($payload)) {
+										$data = $project;
+										$session->setHeader(200);
+									}
+									else{
+										$session->setHeader(500);
+									}
 								}
-								else{
-									$session->setHeader(500);
+								else {
+									$session->setHeader(404);
+									$status = 'error';
 								}
 							}
 							else{
-								$session->setHeader(400);
+								$project = new Project($payload);
+
+								if($project->validate()) {
+									if($project->create()) {
+										$session->setHeader(201);
+										$status = 'success';
+										$data = array('id'=>$project->id, 'accessId'=>$project->access_id);
+									}
+									else{
+										$session->setHeader(500);
+									}
+								}
+								else{
+									$session->setHeader(400);
+								}
 							}
 						}
 						else{
@@ -205,6 +225,9 @@ function apiPageHandler($page){
 						$session->setheader(401);
 					}
 					
+					header('Content-type: application/json');
+					echo json_encode(array('status'=>$status, 'data'=>$data), 32);
+					
 					exit;
 					break;
 				case 'DELETE':
@@ -214,7 +237,7 @@ function apiPageHandler($page){
 						$session = new Session($publicKey, $signature, $params);
 						if($session->verifySignature()) {
 							$project = Project::withID($page[1]);
-							if($project) {						
+							if($project) {
 								$result = Project::delete($project);
 
 								if ($result) {

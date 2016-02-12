@@ -5,7 +5,7 @@
 		.module('portal')
 		.controller('Projects', Projects);
 
-		function Projects(project, $location, Upload, $routeParams) {
+		function Projects(project, $location, Upload, $routeParams, helper) {
 			var vm = this;
 
 			vm.projects = [];
@@ -26,9 +26,10 @@
 			var paramObject = new Object();
 			var queryString = JSON.stringify(paramObject);
 			var publicKey = localStorage.getItem('publicKey');
-			var hash = CryptoJS.HmacSHA256(CryptoJS.SHA1(queryString).toString(),CryptoJS.SHA1(publicKey).toString());
-			var signature = CryptoJS.enc.Base64.stringify(hash);
 			
+			var signature = helper.createSignature(queryString,publicKey);
+			
+			//get all projects
 			project.getProjects(publicKey, signature).then(function(results){
 				vm.projects = results.data;
 			}, function(error){
@@ -48,11 +49,13 @@
 					if(vm.project.usa) {
 						vm.project.usa = JSON.parse(vm.project.usa);
 					}
+					console.log(vm.project);
 				}, function(error){
 					console.log(error);
 				});
 			}
 			
+			//partial update - status
 			vm.updateStatus = function(index) {
 				$('#statusSelect'+index).prop('disabled', 'disabled');
 				project.update({
@@ -63,16 +66,6 @@
 				}, function(error){
 					console.log(error);
 				});
-			}
-			
-			//create a project
-			//add opi to vm
-			vm.addContact = function() {
-				vm.opis.push({});
-			}
-			
-			vm.removeContact = function(index) {
-				vm.opis.splice(index, 1);
 			}
 			
 			//create a project
@@ -117,13 +110,32 @@
 				});
 			}
 			
-			vm.toggleContainer = function(toggle, container) {
-				if(toggle=='Yes'){
-					$('#'+container).show();
-				}
-				else if(toggle=='No'){
-					$('#'+container).hide();
-				}
+			vm.editProject = function() {
+				project.edit({
+					'comments':vm.comments,
+					'course':vm.course,
+					'description': vm.description,
+					'is_limitation': vm.isLimitation,
+					'is_priority':vm.isPriority,
+					'is_sme_avail': vm.isSme,
+					'life_expectancy': vm.lifeExpectancy,
+					'opi': vm.opis,
+					'org':vm.org,
+					'priority':vm.priority,
+					'project_type':vm.type,
+					'scope' : vm.scope,
+					'sme' : vm.sme,
+					'title':vm.title,
+					'update_existing_product': vm.updateExistingProduct,
+					'usa':vm.usa
+				}, vm.project.id).then(function(success) {
+					project.getProjects(publicKey, signature).then(function(results){
+						vm.projects = results.data;
+						$location.path('projects');
+					});
+				}, function(error){
+					console.log(error);
+				});
 			}
 			
 			vm.deleteProject = function($id) {
@@ -136,13 +148,32 @@
 					console.log(error);
 				});
 			}
+			
+			//helper methods
+			vm.toggleContainer = function(toggle, container) {
+				if(toggle=='Yes'){
+					$('#'+container).show();
+				}
+				else if(toggle=='No'){
+					$('#'+container).hide();
+				}
+			}
+			
+			//add opi to vm
+			vm.addContact = function() {
+				vm.opis.push({});
+			}
+			
+			vm.removeContact = function(index) {
+				vm.opis.splice(index, 1);
+			}
 		}
 	
 	angular
 		.module('portal')
 		.factory('project', project);
 
-		function project($resource) {
+		function project($resource, helper) {
 			
 			function getProject(publicKey, signature, id) {
 				var Project = $resource('api/projects/:id', 
@@ -186,10 +217,9 @@
 				data.user_id = parseInt(localStorage.getItem('publicKey'));
 				//stringify JSON 
 				var queryString = angular.toJson(data);
-				//create signature
 				var publicKey = localStorage.getItem('publicKey');
-				var hash = CryptoJS.HmacSHA256(CryptoJS.SHA1(queryString).toString(),CryptoJS.SHA1(publicKey).toString());
-				var signature = CryptoJS.enc.Base64.stringify(hash);
+				
+				var signature = helper.createSignature(queryString,publicKey);
 				
 				var Project = $resource('api/projects/:id', 
 					{}, 
@@ -209,13 +239,38 @@
 				});
 			}
 			
+			function edit(data, id) {
+				data.user_id = parseInt(localStorage.getItem('publicKey'));
+				//stringify JSON 
+				var queryString = angular.toJson(data);
+				var publicKey = localStorage.getItem('publicKey');
+				
+				var signature = helper.createSignature(queryString,publicKey);
+				
+				var Project = $resource('api/projects/:id',
+					{id: "@id"},
+					{
+						"save": {
+							method:'POST',
+							'params':{'public_key':publicKey},
+							'headers':{'Signature':signature}
+						}
+					}
+				);
+		
+				return Project.save({'id':id},data).$promise.then(function(success){
+					return success;
+				}, function(error){
+					console.log(error);
+				});
+			}
+			
 			function update(data, id) {
 				//stringify JSON 
 				var queryString = angular.toJson(data);
 				//create signature
 				var publicKey = localStorage.getItem('publicKey');
-				var hash = CryptoJS.HmacSHA256(CryptoJS.SHA1(queryString).toString(),CryptoJS.SHA1(publicKey).toString());
-				var signature = CryptoJS.enc.Base64.stringify(hash);
+				var signature = helper.createSignature(queryString,publicKey);
 				
 				var Project = $resource('api/projects/:id', 
 					{id: "@id"}, 
@@ -240,8 +295,7 @@
 				var queryString = angular.toJson(data);
 				//create signature
 				var publicKey = localStorage.getItem('publicKey');
-				var hash = CryptoJS.HmacSHA256(CryptoJS.SHA1(queryString).toString(),CryptoJS.SHA1(publicKey).toString());
-				var signature = CryptoJS.enc.Base64.stringify(hash);
+				var signature = helper.createSignature(queryString,publicKey);
 
 				var Project = $resource('api/projects/:id', 
 					{id: "@id"}, 
@@ -265,10 +319,30 @@
 				getProject: getProject,
 				getProjects: getProjects,
 				create : create,
+				edit : edit,
 				update : update,
 				remove : remove
 			}
 		}
+		
+	angular
+		.module('portal')
+		.service('helper', helper);
+
+		function helper() {
+			function createSignature(queryString,publicKey){
+				var hashedQS = CryptoJS.SHA1(queryString).toString();
+				var privateKey = CryptoJS.SHA1(publicKey).toString();
+
+				var hash = CryptoJS.HmacSHA256(hashedQS,privateKey);
+
+				return CryptoJS.enc.Base64.stringify(hash);
+			}
+			
+			return {
+				createSignature : createSignature
+			}
+		};
         
     angular
 		.module('portal')
