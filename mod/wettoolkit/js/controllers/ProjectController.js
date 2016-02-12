@@ -43,7 +43,7 @@
 					if(vm.project.sme) {
 						vm.project.sme = JSON.parse(vm.project.sme);
 					}
-					if(vm.project.opi.length > 0) {
+					if(vm.project.opi.length) {
 						vm.opis = JSON.parse(vm.project.opi);
 					}
 					if(vm.project.usa) {
@@ -111,18 +111,18 @@
 					'comments':vm.comments,
 					'course':vm.course,
 					'description': vm.description,
-					'is_limitation': vm.isLimitation,
-					'is_priority':vm.isPriority,
-					'is_sme_avail': vm.isSme,
+					'is_limitation': vm.project.is_limitation,
+					'is_priority':vm.project.is_priority,
+					'is_sme_avail': vm.project.is_sme_avail,
 					'life_expectancy': vm.lifeExpectancy,
 					'opi': vm.opis,
 					'org':vm.org,
 					'priority':vm.priority,
-					'project_type':vm.type,
+					'project_type':vm.project.project_type,
 					'scope' : vm.scope,
 					'sme' : vm.sme,
 					'title':vm.title,
-					'update_existing_product': vm.updateExistingProduct,
+					'update_existing_product': vm.project.update_existing_product,
 					'usa':vm.usa
 				}, vm.project.id).then(function(success) {
 					project.getProjects(publicKey, signature).then(function(results){
