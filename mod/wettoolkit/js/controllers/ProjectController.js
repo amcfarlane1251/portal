@@ -107,6 +107,10 @@
 					project.getProjects(publicKey, signature).then(function(results){
 						vm.projects = results.data;
 						$location.path('projects');
+					}).then(function(success){
+						$(window).scrollTop(0);
+					}, function(error){
+						console.log(error);
 					});
 				}, function(error){
 					console.log(error);
