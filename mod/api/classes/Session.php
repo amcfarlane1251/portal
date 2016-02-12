@@ -82,8 +82,14 @@ class Session {
 		if($responseCode == 200) {
 			header("HTTP/1.1 200 OK");
 		}
+		elseif($responseCode == 201){
+			header("HTTP/1.1 201 Created");
+		}
 		elseif($responseCode == 401) {
 			header("HTTP/1.1 401 Unauthorized");
+		}
+		elseif($responseCode == 500){
+			
 		}
 	}
 }

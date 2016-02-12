@@ -7,7 +7,7 @@
 $title = elgg_echo('projects');
 
 $content = 
-	"<section ng-app='portal' ng-controller='Projects as vm'>
+	"<section ng-app='portal'>
 		<div ng-view></div>
 	</section>";
 $sidebar = elgg_view('project_registry/sidebar/filter');

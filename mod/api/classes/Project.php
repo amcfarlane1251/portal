@@ -116,7 +116,13 @@ class Project {
 		
 		$project = new ElggObject();
 		foreach($this as $key => $val) {
-			if($key!='options' || $key!='required'){
+			if($key == 'opi' || $key == 'sme' ||$key == 'usa') {
+				$project->$key = json_encode($val);
+			}
+			else if($key=='options' || $key=='required'){
+				//
+			}
+			else{
 				$project->$key = $val;
 			}
 		}
@@ -130,6 +136,60 @@ class Project {
 		}
 	}
 	
+	public function edit($payload)
+	{	
+		elgg_set_ignore_access();
+		
+		$project = get_entity($this->id);
+		foreach($payload as $key => $val) {
+			if($key == 'opi' || $key == 'sme' ||$key == 'usa') {
+				$project->$key = json_encode($val);
+			}
+			else if($key=='options' || $key=='required' || $key=='id'){
+				//
+			}
+			else{
+				$project->$key = $val;
+			}
+		}
+		
+		if($project->save()) {
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public function update($payload)
+	{	
+		elgg_set_ignore_access();
+		
+		$project = get_entity($this->id);
+		$project->$payload['field'] = $payload['value'];
+		if($project->save()) {
+			$this->id = $project->guid;
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public static function delete($project) 
+	{
+		elgg_set_ignore_access();
+
+		$project_entity = get_entity($project->id);
+
+		if ($project_entity->delete()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	public static function saveAttachments($attachments, $id, $accessId)
 	{
 		elgg_set_ignore_access();
@@ -201,34 +261,38 @@ class Project {
 	
 	private function fill($row)
 	{
-		
+		$this->id = $row->guid;
+		$this->title = $row->title;
+		$this->description = $row->description;
+		$this->scope = $row->scope;
+		$this->course = $row->course;
+		$this->org = $row->org;
+		$this->owner = get_entity($row->owner_guid)->name;
+		$this->container_guid = $row->container_guid;
+		$this->project_type = $row->project_type;
+		$this->opi[] = $row->opi;
+		$this->is_priority = $row->is_priority;
+		$this->priority = $row->priority;
+		$this->is_sme_avail = $row->is_sme_avail;
+		$this->is_limitation = $row->is_limitation;
+		$this->update_existing_product = $row->update_existing_product;
+		$this->life_expectancy = $row->life_expectancy;
+		$this->access_id = $row->access_id;
+		$this->time_created = gmdate("Y-m-d", $row->time_created);
+		$this->req_num = $row->guid;
+		$this->status = $row->status;
+		$this->sme = $row->sme;
+		$this->usa = $row->usa;
+		$this->comments = $row->comments;
 	}
 	
 	private function fillWithRows($rows)
 	{
 		foreach($rows as $row) {
-			$params['id'] = $row->guid;
-			$params['title'] = $row->title;
-			$params['description'] = $row->description;
-			$params['scope'] = $row->scope;
-			$params['course'] = $row->course;
-			$params['org'] = $row->org;
-			$params['owner'] = get_entity($row->owner_guid)->name;
-			$params['container_guid'] = $row->container_guid;
-			$params['project_type'] = $row->project_type;
-			$params['opi'] = $row->opi;
-			$params['is_priority'] = $row->is_priority;
-			$params['priority'] = $row->priority;
-			$params['is_sme_avail'] = $row->is_sme_avail;
-			$params['is_limitation'] = $row->is_limitation;
-			$params['update_existing_product'] = $row->update_existing_product;
-			$params['life_expectancy'] = $row->life_expectancy;
-			$params['access_id'] = $row->access_id;
-			$params['time_created'] = gmdate("Y-m-d", $row->time_created);
-			$params['req_num'] = $row->guid;
-			$params['status'] = $row->status;
+			$project = new Project(null);
+			$project->fill($row);
 			
-			$this->addToCollection(new Project($params));
+			$this->addToCollection($project);
 		}
 	}
 	
