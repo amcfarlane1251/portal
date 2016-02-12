@@ -120,7 +120,7 @@ echo "
 					<label>". elgg_echo('projects:briefExplain') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<textarea ng-model='vm.priority' value='vm.project.briefExplain'></textarea>
+					<textarea ng-model='vm.priority' value='vm.project.priority'></textarea>
 				</div>
 			</div>
 			<div class='row form-row'>
@@ -128,7 +128,7 @@ echo "
 					<label>". elgg_echo('projects:isSme') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<select ng-model='vm.project.is_sme_avail' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.project.isSme,'sme')></select>
+					<select ng-model='vm.project.is_sme_avail' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.project.is_sme_avail,'sme')></select>
 				</div>
 			</div>
 			<div class='row form-row' id='sme'>
@@ -185,11 +185,7 @@ echo "
 					<label>". elgg_echo('projects:updateExistingProduct') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<select ng-model='vm.updateExistingProduct'>
-						<option value=false>".elgg_echo('projects:no')."</option>
-						<option value=true>".elgg_echo('projects:update')."</option>
-						<option value=true>".elgg_echo('projects:change')."</option>
-					</select>
+					<select ng-model='vm.project.update_existing_product' ng-options='option for option in vm.multiOptions.values'></select>
 				</div>
 			</div>
 			
@@ -198,7 +194,7 @@ echo "
 					<label>". elgg_echo('projects:lifeExpectancy') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<input type='text' name='lifeExpectancy' ng-model='vm.lifeExpectancy' value='vm.project.lifeExpectancy'/>
+					<input type='text' name='lifeExpectancy' ng-model='vm.lifeExpectancy' value='vm.project.life_expectancy'/>
 				</div>
 			</div>
 			

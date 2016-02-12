@@ -49,6 +49,7 @@
 					if(vm.project.usa) {
 						vm.project.usa = JSON.parse(vm.project.usa);
 					}
+					console.log(vm.project);
 				}, function(error){
 					console.log(error);
 				});
