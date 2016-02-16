@@ -159,18 +159,13 @@
 				}
 			}
 
+			//decide the boolean value of selected option box
 			vm.boolOption = function(optionVal) {
 				if (optionVal == 'Yes') {
 					return true;
 				}
 				else {
 					return false;
-				}
-			}
-
-			vm.init = function(variable, value) {
-				variable = function(value) {
-					return value;
 				}
 			}
 			
