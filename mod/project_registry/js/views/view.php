@@ -111,7 +111,7 @@ echo "
 					<p>{{vm.project.is_priority}}</p>
 				</div>
 			</div>
-			<div class='row form-row' id='briefExplaiin'>
+			<div class='row form-row' id='briefExplain' ng-show=vm.boolOption(vm.project.is_priority)>
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:briefExplain') ."</label>
 				</div>
@@ -128,7 +128,7 @@ echo "
 				</div>
 			</div>
 			
-			<div class='row form-row' id='sme'>
+			<div class='row form-row' id='sme' ng-show=vm.boolOption(vm.project.is_sme_avail)>
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:sme') ."</label>
 				</div>

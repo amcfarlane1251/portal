@@ -40,6 +40,9 @@
 			if($routeParams.project_id) {
 				project.getProject(publicKey, signature, $routeParams.project_id).then(function(results){
 					vm.project = results.data;
+					//set default value for existing project from saved json data
+					vm.isPriority = vm.project.is_priority;
+					vm.isSme = vm.project.is_sme_avail;
 					if(vm.project.sme) {
 						vm.project.sme = JSON.parse(vm.project.sme);
 					}
@@ -156,6 +159,21 @@
 				}
 				else if(toggle=='No'){
 					$('#'+container).hide();
+				}
+			}
+
+			vm.boolOption = function(optionVal) {
+				if (optionVal == 'Yes') {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+
+			vm.init = function(variable, value) {
+				variable = function(value) {
+					return value;
 				}
 			}
 			
