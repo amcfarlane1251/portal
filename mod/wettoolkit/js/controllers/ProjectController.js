@@ -53,6 +53,7 @@
 						vm.project.usa = JSON.parse(vm.project.usa);
 					}
 					console.log(vm.project);
+					$(window).scrollTop(0);
 				}, function(error){
 					console.log(error);
 				});
