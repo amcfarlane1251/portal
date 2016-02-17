@@ -228,7 +228,6 @@
 			
 			function getProjects(publicKey, signature, filter) {
 				var params = {'public_key':publicKey};
-				console.log(signature);
 				
 				filter = (typeof filter === 'undefined') ? null : filter;
 				if(filter) {
