@@ -8,10 +8,10 @@
 			<a class="list-group-item" href="" ng-click='vm.filterProjects($event)' id="Submitted">Submitted</a>
 		</li>
 		<li>
-			<a class="list-group-item" href="" ng-click='vm.filterProjects($event)' id="Submitted">Under Review</a>
+			<a class="list-group-item" href="" ng-click='vm.filterProjects($event)' id="Under Review">Under Review</a>
 		</li>
 		<li>
-			<a class="list-group-item" href="" ng-click='vm.filterProjects($event)' id="Submitted">In Progress</a>
+			<a class="list-group-item" href="" ng-click='vm.filterProjects($event)' id="In Progress">In Progress</a>
 		</li>
 	</ul>
 </nav>

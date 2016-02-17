@@ -49,7 +49,6 @@
 					if(vm.project.usa) {
 						vm.project.usa = JSON.parse(vm.project.usa);
 					}
-					console.log(vm.project);
 				}, function(error){
 					console.log(error);
 				});
@@ -169,6 +168,20 @@
 				$(event.target).addClass('active');
 				var status = $(event.target).attr('id');
 				
+				//create the signature
+				var paramObject = new Object();
+				paramObject.status = status;
+				paramObject.createdAt
+				var queryString = JSON.stringify(paramObject);
+			
+				var signature = helper.createSignature(queryString,publicKey);
+				
+				//get all projects
+				project.getProjects(publicKey, signature, paramObject).then(function(results){
+					vm.projects = results.data;
+				}, function(error){
+					console.log(error);
+				});
 			}
 		}
 	
@@ -197,15 +210,21 @@
 			}
 			
 			function getProjects(publicKey, signature, filter) {
+				var params = {'public_key':publicKey};
+				
 				filter = (typeof filter === 'undefined') ? null : filter;
 				if(filter) {
-					var headers = {'Signature':signature};
+					for (var key in filter) {
+						if (filter.hasOwnProperty(key)) {
+							params[key] = filter[key];
+						}
+					}
 				}
 				var Project = $resource('api/projects/:id', 
 					{}, 
 					{
 						"query": {
-							'params':{'public_key':publicKey},
+							'params':params,
 							'headers':{'Signature':signature}
 						}
 					}

@@ -117,7 +117,7 @@ function apiPageHandler($page){
 						//retreive all resources with optional filters
 						$status = get_input('status', null);
 						$createdAt = get_input('created_at', null);
-						
+
 						$status ? $params['status'] = $status : '';
 						$createdAt ? $params['created_at'] = $createdAt : '';
 						
