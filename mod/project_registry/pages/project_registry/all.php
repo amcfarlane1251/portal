@@ -8,6 +8,7 @@ $title = elgg_echo('projects');
 
 $content = 
 	"<section ng-app='portal'>
+		<link rel='stylesheet' href='mod/project_registry/css/styles.css'/>
 		<div ng-view></div>
 	</section>";
 $sidebar = elgg_view('project_registry/sidebar/filter');

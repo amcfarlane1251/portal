@@ -179,15 +179,18 @@
 			}
 			
 			vm.filterProjects = function(event) {
+				$('.list-group-item.active').removeClass('active');
 				$(event.target).addClass('active');
 				var status = $(event.target).attr('id');
 				
 				//create the signature
 				var paramObject = new Object();
-				paramObject.status = status;
-				paramObject.createdAt
+				if(status != 'All') {
+					paramObject.status = status;
+					paramObject.createdAt
+				}
+				
 				var queryString = JSON.stringify(paramObject);
-			
 				var signature = helper.createSignature(queryString,publicKey);
 				
 				//get all projects
@@ -225,6 +228,7 @@
 			
 			function getProjects(publicKey, signature, filter) {
 				var params = {'public_key':publicKey};
+				console.log(signature);
 				
 				filter = (typeof filter === 'undefined') ? null : filter;
 				if(filter) {
@@ -234,6 +238,7 @@
 						}
 					}
 				}
+				
 				var Project = $resource('api/projects/:id', 
 					{}, 
 					{

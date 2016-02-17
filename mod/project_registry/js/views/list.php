@@ -1,7 +1,6 @@
 <?php
 
 echo "
-	<link rel='stylesheet' href='mod/project_registry/css/styles.css'/>
 	<div class='template-header'>
 		<h2>".elgg_echo('projects:all')."</h2>
 		<a href='#/projects/create' class='elgg-button elgg-button-action'>Request Project</a>
@@ -18,7 +17,7 @@ echo "
 				<h5>".elgg_echo('projects:status');
 				if(elgg_is_admin_logged_in()) {
 					echo 
-					": <select id='statusSelect{{key}}' ng-model='project.status' ng-options='status.name as status.name for status in vm.statuses' ng-change='vm.updateStatus(key)'></select>";
+					": <select id='statusSelect{{key}}' ng-model='project.status' ng-options='status.name as status.name for status in vm.statuses' ng-change='vm.updateStatus(key)'></select></h5>";
 				}
 				else{
 					echo " - <span>{{project.status}}</span></h5>";

@@ -6,7 +6,7 @@
     font-size: 2.25rem;
     font-weight: 400; }
   #wb-main-in .template-header a {
-    float: right !important; }
+    float: right; }
 #wb-main-in .form-row {
   margin-bottom: 1.5rem; }
 #wb-main-in .projects .project {
@@ -39,6 +39,8 @@
     font-weight: 700; }
   #wb-main-in .project p, #wb-main-in .project label {
     font-size: 1rem; }
+  #wb-main-in .project .project-footer .elgg-button-action {
+    background: grey; }
 #wb-main-in .project-form {
   margin: 3.375rem 0; }
 #wb-main-in .form-btn {
@@ -71,5 +73,10 @@
     background: gray;
     color: #fff !important;
     text-decoration: none; }
+  .list-group-item:active, .list-group-item:focus {
+    text-decoration: none; }
+  .list-group-item.active {
+    background: gray;
+    color: #fff !important; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -30,6 +30,7 @@ $english = array(
 	 * Sidebar
 	 */
 	'search:go' => "Go",
+	'projects:filter' => "Filter",
 	
 	/**
 	 * Project Fields

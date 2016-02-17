@@ -55,6 +55,11 @@
         p, label{
             font-size:1rem;
         }
+        .project-footer{
+            .elgg-button-action{
+                background:grey;
+            }
+        }
     }
     .project-form{
         margin:3.375rem 0;
@@ -97,5 +102,12 @@
         background: gray;
         color: #fff !important;
         text-decoration: none;
+    }
+    &:active, &:focus{
+        text-decoration: none;
+    }
+    &.active{
+        background:gray;
+        color:#fff !important;
     }
 }
