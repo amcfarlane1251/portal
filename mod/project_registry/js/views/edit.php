@@ -112,10 +112,10 @@ echo "
 					<label>". elgg_echo('projects:isPriority') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<select ng-model='vm.project.is_priority' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.project.isPriority,'briefExplain')></select>
+					<select ng-model='vm.isPriority' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.isPriority,'briefExplain')></select>
 				</div>
 			</div>
-			<div class='row form-row' id='briefExplaiin'>
+			<div class='row form-row' id='briefExplain' ng-hide='vm.isPriority==vm.booleanOptions.values[0]'>
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:briefExplain') ."</label>
 				</div>
@@ -128,10 +128,10 @@ echo "
 					<label>". elgg_echo('projects:isSme') ."</label>
 				</div>
 				<div class='col-md-6'>
-					<select ng-model='vm.project.is_sme_avail' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.project.is_sme_avail,'sme')></select>
+					<select ng-model='vm.isSme' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.isSme,'sme')></select>
 				</div>
 			</div>
-			<div class='row form-row' id='sme'>
+			<div class='row form-row' id='sme' ng-hide='vm.isSme==vm.booleanOptions.values[0]'>
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:sme') ."</label>
 				</div>

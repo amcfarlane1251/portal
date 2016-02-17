@@ -40,6 +40,9 @@
 			if($routeParams.project_id) {
 				project.getProject(publicKey, signature, $routeParams.project_id).then(function(results){
 					vm.project = results.data;
+					//set default value for existing project from saved json data
+					vm.isPriority = vm.project.is_priority;
+					vm.isSme = vm.project.is_sme_avail;
 					if(vm.project.sme) {
 						vm.project.sme = JSON.parse(vm.project.sme);
 					}
@@ -49,6 +52,7 @@
 					if(vm.project.usa) {
 						vm.project.usa = JSON.parse(vm.project.usa);
 					}
+					$(window).scrollTop(0);
 				}, function(error){
 					console.log(error);
 				});
@@ -152,6 +156,16 @@
 				}
 				else if(toggle=='No'){
 					$('#'+container).hide();
+				}
+			}
+
+			//decide the boolean value of selected option box
+			vm.boolOption = function(optionVal) {
+				if (optionVal == 'Yes') {
+					return true;
+				}
+				else {
+					return false;
 				}
 			}
 			
