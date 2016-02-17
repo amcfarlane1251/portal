@@ -164,6 +164,12 @@
 			vm.removeContact = function(index) {
 				vm.opis.splice(index, 1);
 			}
+			
+			vm.filterProjects = function(event) {
+				$(event.target).addClass('active');
+				var status = $(event.target).attr('id');
+				
+			}
 		}
 	
 	angular
@@ -190,9 +196,11 @@
 				});
 			}
 			
-			function getProjects(publicKey, signature) {
-				// ngResource call - TODO: use $httpInterceptor to modify an existing resource object
-										//would rather create the resource outside of the scope of each function
+			function getProjects(publicKey, signature, filter) {
+				filter = (typeof filter === 'undefined') ? null : filter;
+				if(filter) {
+					var headers = {'Signature':signature};
+				}
 				var Project = $resource('api/projects/:id', 
 					{}, 
 					{

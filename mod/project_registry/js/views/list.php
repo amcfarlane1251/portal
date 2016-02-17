@@ -1,13 +1,17 @@
 <?php
 
 echo "
+	<link rel='stylesheet' href='mod/project_registry/css/styles.css'/>
 	<div class='template-header'>
 		<h2>".elgg_echo('projects:all')."</h2>
 		<a href='#/projects/create' class='elgg-button elgg-button-action'>Request Project</a>
 	</div>
-	<div class='row projects'>
+	<section class='row col-md-3'>
+		<div ng-include=\"'projects/sidebar'\"</div>
+	</section>
+	<section class='row col-md-9 projects'>
 		<div ng-repeat='(key,project) in vm.projects' class='col-sm-6'>
-			<div class='col-lg-10 col-lg-offset-1 project'>
+			<div class='col-sm-12 project'>
 				<div class='project-header'>
 					<h3><a href='#/projects/view/{{project.id}}'>{{project.title}}</a></h3>
 				</div>
@@ -28,5 +32,5 @@ echo			"<p>".elgg_echo('projects:reqNum')." {{project.req_num}}</p>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 ";

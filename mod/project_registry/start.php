@@ -79,6 +79,9 @@ function projects_page_handler($project) {
 		case 'edit':
 			include "$angular_dir/edit.php";
 			break;
+		case 'sidebar':
+			include "$angular_dir/sidebar.php";
+			break;
 		default:
 			return false;
 	}
