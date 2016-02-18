@@ -328,9 +328,6 @@ class Project {
 				$link = "{$site_url}projects#/projects/view/{$this->id}";
 				$message = elgg_echo('email:project:submit:body', array($owner->name, $link, $site->name, $site_url));
 
-				error_log($to);
-				error_log($link);
-				error_log($message);	
 				if(elgg_send_email($from, $to, $subject, $message))
 				{
 					return true;
