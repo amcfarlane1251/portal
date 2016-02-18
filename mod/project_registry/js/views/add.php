@@ -201,6 +201,7 @@ echo "
 			<div class='row form-row'>
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:usa') ."</label>
+					<p>(An email will be sent to you after your submission)</p>
 				</div>
 				<div class='col-md-6 row'>
 					<div class='col-md-3'>

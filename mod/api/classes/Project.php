@@ -305,4 +305,41 @@ class Project {
 	{
 		return $this->collection;
 	}
+
+	public function sendEmail($action)
+	{
+		$email = sanitise_string($this->usa['email']);
+		$project = get_entity($this->id);
+		$owner = get_entity($this->container_guid);
+		$site = elgg_get_site_entity();
+		$site_url = elgg_get_site_entity()->url;
+		switch($action){
+			case 'submit':
+				if(!$project)
+				{
+					register_error(elgg_echo('email:project:submit:projectNotFound'));
+					return false;
+				}
+
+				//construct the email
+				$from = "no-reply@lp-pa.forces.gc.ca";
+				$to = $email;
+				$subject = elgg_echo('email:project:submit:heading');
+				$link = "{$site_url}projects#/projects/view/{$this->id}";
+				$message = elgg_echo('email:project:submit:body', array($owner->name, $link, $site->name, $site_url));
+
+				error_log($to);
+				error_log($link);
+				error_log($message);	
+				if(elgg_send_email($from, $to, $subject, $message))
+				{
+					return true;
+				}
+				else {
+					register_error(elgg_echo('email:project:submit:error'));
+					return false;
+				}			
+				break;
+		}
+	}
 }
