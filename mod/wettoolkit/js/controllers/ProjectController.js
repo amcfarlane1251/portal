@@ -53,7 +53,6 @@
 					if(vm.project.usa) {
 						vm.project.usa = JSON.parse(vm.project.usa);
 					}
-					console.log(vm.project);				
 				}, function(error){
 					console.log(error);
 				});
@@ -178,6 +177,29 @@
 			vm.removeContact = function(index) {
 				vm.opis.splice(index, 1);
 			}
+			
+			vm.filterProjects = function(event) {
+				$('.list-group-item.active').removeClass('active');
+				$(event.target).addClass('active');
+				var status = $(event.target).attr('id');
+				
+				//create the signature
+				var paramObject = new Object();
+				if(status != 'All') {
+					paramObject.status = status;
+					paramObject.createdAt
+				}
+				
+				var queryString = JSON.stringify(paramObject);
+				var signature = helper.createSignature(queryString,publicKey);
+				
+				//get all projects
+				project.getProjects(publicKey, signature, paramObject).then(function(results){
+					vm.projects = results.data;
+				}, function(error){
+					console.log(error);
+				});
+			}
 		}
 	
 	angular
@@ -204,14 +226,23 @@
 				});
 			}
 			
-			function getProjects(publicKey, signature) {
-				// ngResource call - TODO: use $httpInterceptor to modify an existing resource object
-										//would rather create the resource outside of the scope of each function
+			function getProjects(publicKey, signature, filter) {
+				var params = {'public_key':publicKey};
+				
+				filter = (typeof filter === 'undefined') ? null : filter;
+				if(filter) {
+					for (var key in filter) {
+						if (filter.hasOwnProperty(key)) {
+							params[key] = filter[key];
+						}
+					}
+				}
+				
 				var Project = $resource('api/projects/:id', 
 					{}, 
 					{
 						"query": {
-							'params':{'public_key':publicKey},
+							'params':params,
 							'headers':{'Signature':signature}
 						}
 					}

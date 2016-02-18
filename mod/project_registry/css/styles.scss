@@ -1,0 +1,113 @@
+/** Projects **/
+#wb-main-in {
+    .template-header{
+        margin-bottom:1rem;
+        h2{
+            display:inline-block;
+            font-size:2.25rem;
+            font-weight:400;
+        }
+        a{
+            float:right;
+        }
+    }
+    .form-row{
+        margin-bottom:1.5rem;
+    }
+    .projects .project{
+        border:4px solid #193d53;
+    }
+    .project{
+        font-family:'Open Sans', sans-serif;
+        margin-bottom:3.375rem;
+        padding:1rem;
+        
+        .project-header{
+            background:#193d53;
+            margin:-1rem -1rem 1rem -1rem;
+            padding: .3rem 0 .667rem 0;
+            text-align: center;
+            h3 a{
+              color:white;  
+            }
+        }
+        
+        h3, h5, p, label{
+            color:#1d1d1d;
+            font-family:'Open Sans', sans-serif !important;
+            font-weight:400;
+        }
+        h3{
+            font-size:1.5rem;
+            line-height:1.3;
+        }
+        h5{
+            margin-bottom:.667rem;
+            font-size:1rem;
+            line-height:1.3;
+            span{
+                color:#D32F2F;
+            }
+        }
+        label{
+            font-weight:700;
+        }
+        p, label{
+            font-size:1rem;
+        }
+        .project-footer{
+            .elgg-button-action{
+                background:grey;
+            }
+        }
+    }
+    .project-form{
+        margin:3.375rem 0;
+    }
+    
+    .form-btn{
+        margin-bottom:1rem !important;
+    }
+    
+    .sub-row .row{
+        margin-bottom:1rem;
+    }
+}
+
+#sidebar{
+    h3{
+        background: #193d53;
+        color:#fff;
+        box-sizing:border-box;
+        border: 1px solid #ddd;
+        border-bottom: 3px solid #666;
+        font-size: 1rem;
+        margin: 0;
+        padding: 15px;
+    }
+}
+
+.list-group-item{
+    background: #fff;
+    border-radius: 0;
+    color: #555 !important;
+    margin-top: -1px;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    font-size:1rem;
+    text-decoration: none;
+    &:hover{
+        background: gray;
+        color: #fff !important;
+        text-decoration: none;
+    }
+    &:active, &:focus{
+        text-decoration: none;
+    }
+    &.active{
+        background:gray;
+        color:#fff !important;
+    }
+}

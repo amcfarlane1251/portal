@@ -1,0 +1,82 @@
+/** Projects **/
+#wb-main-in .template-header {
+  margin-bottom: 1rem; }
+  #wb-main-in .template-header h2 {
+    display: inline-block;
+    font-size: 2.25rem;
+    font-weight: 400; }
+  #wb-main-in .template-header a {
+    float: right; }
+#wb-main-in .form-row {
+  margin-bottom: 1.5rem; }
+#wb-main-in .projects .project {
+  border: 4px solid #193d53; }
+#wb-main-in .project {
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 3.375rem;
+  padding: 1rem; }
+  #wb-main-in .project .project-header {
+    background: #193d53;
+    margin: -1rem -1rem 1rem -1rem;
+    padding: .3rem 0 .667rem 0;
+    text-align: center; }
+    #wb-main-in .project .project-header h3 a {
+      color: white; }
+  #wb-main-in .project h3, #wb-main-in .project h5, #wb-main-in .project p, #wb-main-in .project label {
+    color: #1d1d1d;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 400; }
+  #wb-main-in .project h3 {
+    font-size: 1.5rem;
+    line-height: 1.3; }
+  #wb-main-in .project h5 {
+    margin-bottom: .667rem;
+    font-size: 1rem;
+    line-height: 1.3; }
+    #wb-main-in .project h5 span {
+      color: #D32F2F; }
+  #wb-main-in .project label {
+    font-weight: 700; }
+  #wb-main-in .project p, #wb-main-in .project label {
+    font-size: 1rem; }
+  #wb-main-in .project .project-footer .elgg-button-action {
+    background: grey; }
+#wb-main-in .project-form {
+  margin: 3.375rem 0; }
+#wb-main-in .form-btn {
+  margin-bottom: 1rem !important; }
+#wb-main-in .sub-row .row {
+  margin-bottom: 1rem; }
+
+#sidebar h3 {
+  background: #193d53;
+  color: #fff;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-bottom: 3px solid #666;
+  font-size: 1rem;
+  margin: 0;
+  padding: 15px; }
+
+.list-group-item {
+  background: #fff;
+  border-radius: 0;
+  color: #555 !important;
+  margin-top: -1px;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  text-decoration: none; }
+  .list-group-item:hover {
+    background: gray;
+    color: #fff !important;
+    text-decoration: none; }
+  .list-group-item:active, .list-group-item:focus {
+    text-decoration: none; }
+  .list-group-item.active {
+    background: gray;
+    color: #fff !important; }
+
+/*# sourceMappingURL=styles.css.map */

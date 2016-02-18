@@ -8,6 +8,7 @@ $title = elgg_echo('projects');
 
 $content = 
 	"<section ng-app='portal'>
+		<link rel='stylesheet' href='mod/project_registry/css/styles.css'/>
 		<div ng-view></div>
 	</section>";
 $sidebar = elgg_view('project_registry/sidebar/filter');
@@ -33,10 +34,10 @@ switch ($vars['page']) {
 		break;
 }
 
-$body = elgg_view_layout('one_sidebar', array(
+$body = elgg_view_layout('one_column', array(
 	'content' => $content,
 	'title' => null,
-	'sidebar' => $sidebar,
+	'sidebar' => null,
 	'filter_override' => elgg_view('project_registry/nav', array('selected' => $vars['page'])),
 ));
 
