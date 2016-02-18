@@ -5,7 +5,8 @@
 		.module('portal', [
 			'ngResource',
 			'ngRoute',
-			'ngFileUpload'
+			'ngFileUpload',
+			'ngMessages'
 		]);
 		
 	angular

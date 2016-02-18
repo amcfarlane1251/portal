@@ -82,6 +82,9 @@ function projects_page_handler($project) {
 		case 'sidebar':
 			include "$angular_dir/sidebar.php";
 			break;
+		case 'messages':
+			include "$angular_dir/messages.php";
+			break;
 		default:
 			return false;
 	}

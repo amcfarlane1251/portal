@@ -7,7 +7,13 @@
 $title = elgg_echo('projects');
 
 $content = 
-	"<section ng-app='portal'>
+"<script src='/portal/node_modules/angular/angular.min.js'></script>
+<script src='/portal/node_modules/angular-resource/angular-resource.min.js'></script>
+<script src='/portal/node_modules/angular-route/angular-route.min.js'></script>
+<script src='/portal/node_modules/angular-messages/angular-messages.min.js'></script>
+<script src='/portal/node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'></script>
+<script src='/portal/node_modules/ng-file-upload/dist/ng-file-upload.min.js'></script>
+	<section ng-app='portal'>
 		<link rel='stylesheet' href='mod/project_registry/css/styles.css'/>
 		<div ng-view></div>
 	</section>";

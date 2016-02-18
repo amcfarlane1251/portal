@@ -72,42 +72,44 @@
 			}
 			
 			//create a project
-			vm.createProject = function () {
-				project.create({
-					'comments':vm.comments,
-					'course':vm.course,
-					'description': vm.description,
-					'is_limitation': vm.isLimitation,
-					'is_priority':vm.isPriority,
-					'is_sme_avail': vm.isSme,
-					'life_expectancy': vm.lifeExpectancy,
-					'opi': vm.opis,
-					'org':vm.org,
-					'priority':vm.priority,
-					'project_type':vm.type,
-					'scope' : vm.scope,
-					'sme' : vm.sme,
-					'status': 'Submitted',
-					'title':vm.title,
-					'update_existing_product': vm.updateExistingProduct,
-					'usa':vm.usa
-				}).then(function(success) {
-					Upload.upload({
-						url: 'api/projects',
-						data: {files:vm.files, 'projectId':success.data.id, 'accessId':success.data.accessId,'action':'attachFile'}
-					}).then(function(success){
-						
+			vm.createProject = function (isValid) {
+				if(isValid) {
+					project.create({
+						'comments':vm.comments,
+						'course':vm.course,
+						'description': vm.description,
+						'is_limitation': vm.isLimitation,
+						'is_priority':vm.isPriority,
+						'is_sme_avail': vm.isSme,
+						'life_expectancy': vm.lifeExpectancy,
+						'opi': vm.opis,
+						'org':vm.org,
+						'priority':vm.priority,
+						'project_type':vm.type,
+						'scope' : vm.scope,
+						'sme' : vm.sme,
+						'status': 'Submitted',
+						'title':vm.title,
+						'update_existing_product': vm.updateExistingProduct,
+						'usa':vm.usa
+					}).then(function(success) {
+						Upload.upload({
+							url: 'api/projects',
+							data: {files:vm.files, 'projectId':success.data.id, 'accessId':success.data.accessId,'action':'attachFile'}
+						}).then(function(success){
+
+						}, function(error){
+							console.log(error);
+						});
+						project.getProjects(publicKey, signature).then(function(results){
+							vm.projects = results.data;
+							$location.path('projects');
+							$(window).scrollTop(0);
+						});
 					}, function(error){
 						console.log(error);
 					});
-					project.getProjects(publicKey, signature).then(function(results){
-						vm.projects = results.data;
-						$location.path('projects');
-						$(window).scrollTop(0);
-					});
-				}, function(error){
-					console.log(error);
-				});
+				}
 			}
 			
 			vm.editProject = function() {
