@@ -32,10 +32,13 @@ $english = array(
 
 	//Project Operation Email Notification
 	'email:project:submit:projectNotFound' => "The project is not in the system",
-	'email:project:submit:heading' => "Your project request has been successfully submitted",
+	'email:project:submit:heading' => "A project request has been successfully submitted",
 	'email:project:submit:body' => "Good Day %s,
 
-Please have a look at the project you submitted by clicking on the link below:
+A project request has been submitted by %s. 
+Project title: %s
+
+To review it, click on the link below:
 
 %s
 

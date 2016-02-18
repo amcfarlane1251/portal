@@ -225,7 +225,7 @@
 			<div class='row form-row'>
 				<div class='col-md-3'>
 					<label><?php echo elgg_echo('projects:usa'); ?></label>
-					<p>(An email will be sent to you after your submission)</p>
+					<p>(An email notification will be sent to this individual after your submission)</p>
 				</div>
 				<div class='col-md-6 row'>
 					<div class='col-md-3'>
