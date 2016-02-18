@@ -184,6 +184,7 @@ function apiPageHandler($page){
 										$session->setHeader(201);
 										$status = 'success';
 										$data = array('id'=>$project->id, 'accessId'=>$project->access_id);
+										$project->sendEmail('submit');
 									}
 									else{
 										$session->setHeader(500);

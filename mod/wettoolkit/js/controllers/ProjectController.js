@@ -38,6 +38,7 @@
 			
 			//get single project
 			if($routeParams.project_id) {
+				$(window).scrollTop(0);
 				project.getProject(publicKey, signature, $routeParams.project_id).then(function(results){
 					vm.project = results.data;
 					//set default value for existing project from saved json data
@@ -52,8 +53,7 @@
 					if(vm.project.usa) {
 						vm.project.usa = JSON.parse(vm.project.usa);
 					}
-					console.log(vm.project);
-					$(window).scrollTop(0);
+					console.log(vm.project);				
 				}, function(error){
 					console.log(error);
 				});
