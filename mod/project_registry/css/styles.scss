@@ -32,7 +32,7 @@
             }
         }
         
-        h3, h5, p, label{
+        h3, h5, label{
             color:#1d1d1d;
             font-family:'Open Sans', sans-serif !important;
             font-weight:400;
@@ -110,4 +110,9 @@
         background:gray;
         color:#fff !important;
     }
+}
+
+.error{
+    color:red;
+    margin-bottom:.667rem !important;
 }

@@ -22,7 +22,7 @@
     text-align: center; }
     #wb-main-in .project .project-header h3 a {
       color: white; }
-  #wb-main-in .project h3, #wb-main-in .project h5, #wb-main-in .project p, #wb-main-in .project label {
+  #wb-main-in .project h3, #wb-main-in .project h5, #wb-main-in .project label {
     color: #1d1d1d;
     font-family: 'Open Sans', sans-serif !important;
     font-weight: 400; }
@@ -78,5 +78,9 @@
   .list-group-item.active {
     background: gray;
     color: #fff !important; }
+
+.error {
+  color: red;
+  margin-bottom: .667rem !important; }
 
 /*# sourceMappingURL=styles.css.map */

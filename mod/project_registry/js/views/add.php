@@ -6,7 +6,7 @@
 		<a href='#/projects' class='elgg-button elgg-button-action'>List All Projects</a>
 	</div>
 	<div class='project-form project'>
-		<form name='projectForm' ng-submit="vm.createProject(projectForm.$valid)" novalidate>
+		<form name='projectForm' ng-submit="vm.createProject(projectForm.$valid)" ng-focus-error="" novalidate>
 			<div class='row form-row'>
 				<div class='col-md-3'>
 					<label><?php echo elgg_echo('projects:title'); ?></label>
