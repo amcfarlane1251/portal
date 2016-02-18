@@ -29,6 +29,21 @@ $english = array(
 	
 	//A resolution to json convertion error (for river)
 	'river:update:user:default' => ' updated their profile ',
+
+	//Project Operation Email Notification
+	'email:project:submit:projectNotFound' => "The project is not in the system",
+	'email:project:submit:heading' => "Your project request has been successfully submitted",
+	'email:project:submit:body' => "Good Day %s,
+
+Please have a look at the project you submitted by clicking on the link below:
+
+%s
+
+If you cannot click on the link, copy and paste it into your browser manually.
+
+%s
+%s",
+	'email:project:submit:error' => "There was an error sending your project submission email",
 );
 				
 add_translation("en", $english);
