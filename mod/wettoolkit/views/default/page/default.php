@@ -242,11 +242,7 @@ if(elgg_is_logged_in() && 1==5){
 <script src="<?php echo $wettoolkit_url.'/dist/js/wetMessages.min.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/classes/Overlay.js';?>"></script>
 <script src="/portal/node_modules/crypto-js/crypto-js.js"></script>
-<script src="/portal/node_modules/angular/angular.min.js"></script>
-<script src="/portal/node_modules/angular-resource/angular-resource.min.js"></script>
-<script src="/portal/node_modules/angular-route/angular-route.min.js"></script>
-<script src="/portal/node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
-<script src="/portal/node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+
 <script src="<?php echo $wettoolkit_url.'/js/stopSubmit.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/js/app.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/js/controllers/ProjectController.js';?>"></script>
