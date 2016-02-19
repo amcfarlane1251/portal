@@ -18,6 +18,7 @@ class Project {
 	private $required = array('title', 'org');
 	
 	private $collection = array();
+	public $attachments = array();
 	
 	public $id;
 	public $title;
@@ -84,7 +85,9 @@ class Project {
 	protected function loadByID($id)
 	{
 		$row = get_entity($id);
+		
 		$this->fill($row);
+		$this->setAttachments();
 	}
 	
 	protected function loadAll($params)
@@ -107,6 +110,47 @@ class Project {
 		
 		$rows = elgg_get_entities_from_metadata($this->options);
 		$this->fillWithRows($rows);
+	}
+
+	private function fill($row)
+	{	
+		$this->id = $row->guid;
+		$this->title = $row->title;
+		$this->description = $row->description;
+		$this->scope = $row->scope;
+		$this->course = $row->course;
+		$this->org = $row->org;
+		$this->owner = get_entity($row->owner_guid)->name;
+		$this->container_guid = $row->container_guid;
+		$this->project_type = $row->project_type;
+		$this->opi[] = $row->opi;
+		$this->is_priority = $row->is_priority;
+		$this->priority = $row->priority;
+		$this->is_sme_avail = $row->is_sme_avail;
+		$this->is_limitation = $row->is_limitation;
+		$this->update_existing_product = $row->update_existing_product;
+		$this->life_expectancy = $row->life_expectancy;
+		$this->access_id = $row->access_id;
+		$this->time_created = gmdate("Y-m-d", $row->time_created);
+		$this->req_num = $row->guid;
+		$this->status = $row->status;
+		$this->sme = $row->sme;
+		$this->usa = $row->usa;
+		$this->comments = $row->comments;
+		
+		if( $this->session->getIsAdmin() || ($this->session->getPublicKey() == $row->owner_guid && $row->status=='Submitted') ) {
+			$this->can_edit = true;
+		}
+	}
+	
+	private function fillWithRows($rows)
+	{
+		foreach($rows as $row) {
+			$project = new Project($this->session);
+			$project->fill($row);
+			
+			$this->addToCollection($project);
+		}
 	}
 	
 	public function validate()
@@ -271,44 +315,23 @@ class Project {
 		return $result;
 	}
 	
-	private function fill($row)
+	private function setAttachments()
 	{
-		$this->id = $row->guid;
-		$this->title = $row->title;
-		$this->description = $row->description;
-		$this->scope = $row->scope;
-		$this->course = $row->course;
-		$this->org = $row->org;
-		$this->owner = get_entity($row->owner_guid)->name;
-		$this->container_guid = $row->container_guid;
-		$this->project_type = $row->project_type;
-		$this->opi[] = $row->opi;
-		$this->is_priority = $row->is_priority;
-		$this->priority = $row->priority;
-		$this->is_sme_avail = $row->is_sme_avail;
-		$this->is_limitation = $row->is_limitation;
-		$this->update_existing_product = $row->update_existing_product;
-		$this->life_expectancy = $row->life_expectancy;
-		$this->access_id = $row->access_id;
-		$this->time_created = gmdate("Y-m-d", $row->time_created);
-		$this->req_num = $row->guid;
-		$this->status = $row->status;
-		$this->sme = $row->sme;
-		$this->usa = $row->usa;
-		$this->comments = $row->comments;
-		if( $this->session->getIsAdmin() || ($this->session->getPublicKey() == $row->owner_guid && $row->status=='Submitted') ) {
-			$this->can_edit = true;
+		$attachments = elgg_get_entities_from_relationship(array(
+			"relationship" => "attachment",
+			"relationship_guid" => $this->id,
+			"inverse_relationship" => true
+		));
+		
+		foreach($attachments as $obj) {
+			$attachment = new Attachment($obj);
+			$this->attachments[] = $attachment;
 		}
 	}
 	
-	private function fillWithRows($rows)
+	private function getAttachments()
 	{
-		foreach($rows as $row) {
-			$project = new Project($this->session);
-			$project->fill($row);
-			
-			$this->addToCollection($project);
-		}
+		return $this->attachments;
 	}
 	
 	private function addToCollection($project)

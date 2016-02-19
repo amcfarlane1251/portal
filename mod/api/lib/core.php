@@ -106,6 +106,7 @@ function apiPageHandler($page){
 						if($session->verifySignature()) {
 							//load single resource
 							$project = Project::withID($page[1],$session);
+							error_log(print_R($project, true));
 							$data = $project;
 							$session->setHeader(200);
 						}
@@ -153,9 +154,10 @@ function apiPageHandler($page){
 					}
 					else{
 						$publicKey = get_input('public_key');
-						$postdata = file_get_contents("php://input");
+				
 						$payload = json_decode(file_get_contents("php://input"), true);
 						$payload['user_id'] = (int) $payload['user_id'];
+						
 						$session = new Session($publicKey, $signature, $payload);
 
 						if($session->verifySignature()) {

@@ -41,9 +41,11 @@
 				$(window).scrollTop(0);
 				project.getProject(publicKey, signature, $routeParams.project_id).then(function(results){
 					vm.project = results.data;
+
 					//set default value for existing project from saved json data
 					vm.isPriority = vm.project.is_priority;
 					vm.isSme = vm.project.is_sme_avail;
+					
 					if(vm.project.sme) {
 						vm.project.sme = JSON.parse(vm.project.sme);
 					}
