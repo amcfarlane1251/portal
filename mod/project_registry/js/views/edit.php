@@ -202,30 +202,38 @@ echo "
 				<div class='col-md-3'>
 					<label>". elgg_echo('projects:usa') ."</label>
 				</div>
-				<div class='col-md-6 row'>
-					<div class='col-md-3'>
-						<label>".elgg_echo('projects:rank').":</label>
+				<div class='col-md-6 sub-row'>
+					<div class='row'>
+						<div class='col-md-3'>
+							<label>".elgg_echo('projects:rank').":</label>
+						</div>
+						<div class='col-md-9'>
+							<p>{{vm.project.usa.rank}}</p>
+						</div>
 					</div>
-					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.usa.rank' value='{{vm.project.usa.rank}}'/>
+					<div class='row'>
+						<div class='col-md-3'>
+							<label>".elgg_echo('projects:name').":</label>
+						</div>
+						<div class='col-md-9'>
+							<p>{{vm.project.usa.name}}</p>
+						</div>
 					</div>
-					<div class='col-md-3'>
-						<label>".elgg_echo('projects:name').":</label>
+					<div class='row'>
+						<div class='col-md-3'>
+							<label>".elgg_echo('projects:position').":</label>
+						</div>
+						<div class='col-md-9'>
+							<p>{{vm.project.usa.position}}</p>
+						</div>
 					</div>
-					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.usa.name' value='{{vm.project.usa.name}}'/>
-					</div>
-					<div class='col-md-3'>
-						<label>".elgg_echo('projects:position').":</label>
-					</div>
-					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.usa.position' value='{{vm.project.usa.position}}'/>
-					</div>
-					<div class='col-md-3'>
-						<label>".elgg_echo('projects:email').":</label>
-					</div>
-					<div class='col-md-9'>
-						<input type='text' class='' ng-model='vm.usa.email' value='{{vm.project.usa.email}}'/>
+					<div class='row'>
+						<div class='col-md-3'>
+							<label>".elgg_echo('projects:email').":</label>
+						</div>
+						<div class='col-md-9'>
+							<p>{{vm.project.usa.email}}</p>
+						</div>
 					</div>
 				</div>
 			</div>

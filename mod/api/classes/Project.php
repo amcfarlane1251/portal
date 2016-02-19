@@ -154,7 +154,7 @@ class Project {
 
 		$project = get_entity($this->id);
 		foreach($payload as $key => $val) {
-			if($key == 'opi' || $key == 'sme' ||$key == 'usa') {
+			if($key == 'opi' || $key == 'sme') {
 				$project->$key = json_encode($val);
 			}
 			else if($key=='options' || $key=='required' || $key=='id'){
@@ -323,11 +323,13 @@ class Project {
 
 	public function sendEmail($action)
 	{
-		$email = sanitise_string($this->usa['email']);
+		$usa_email = sanitise_string($this->usa['email']);
+		$usa_name = $this->usa['name'];
 		$project = get_entity($this->id);
 		$owner = get_entity($this->container_guid);
 		$site = elgg_get_site_entity();
 		$site_url = elgg_get_site_entity()->url;
+
 		switch($action){
 			case 'submit':
 				if(!$project)
@@ -338,10 +340,10 @@ class Project {
 
 				//construct the email
 				$from = "no-reply@lp-pa.forces.gc.ca";
-				$to = $email;
+				$to = $usa_email;
 				$subject = elgg_echo('email:project:submit:heading');
 				$link = "{$site_url}projects#/projects/view/{$this->id}";
-				$message = elgg_echo('email:project:submit:body', array($owner->name, $link, $site->name, $site_url));
+				$message = elgg_echo('email:project:submit:body', array($usa_name, $owner->name, $this->title, $link, $site->name, $site_url));
 
 				if(elgg_send_email($from, $to, $subject, $message))
 				{
