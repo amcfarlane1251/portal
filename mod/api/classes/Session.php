@@ -21,6 +21,12 @@ class Session {
 	 */
 	protected $publicKey;
 	
+	/**
+	 * holds true if session user is an admin
+	 * @access protected
+	 * @var boolean
+	 */
+	protected $isAdmin;
 	
 	/**
 	 * Holds the error string for the session object.
@@ -42,6 +48,7 @@ class Session {
 		$this->publicKey = $publicKey;
 		$this->signature = $signature;
 		$this->request = $request;
+		$this->isAdmin = $this->isAdmin();
 	}
 	
 	public function verifySignature()
@@ -91,5 +98,25 @@ class Session {
 		elseif($responseCode == 500){
 			
 		}
+	}
+	
+	public function isAdmin()
+	{
+		if(elgg_is_admin_user($this->publicKey)) {
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public function getPublicKey()
+	{
+		return $this->publicKey;
+	}
+	
+	public function getIsAdmin()
+	{
+		return $this->isAdmin;
 	}
 }

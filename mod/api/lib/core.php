@@ -105,7 +105,7 @@ function apiPageHandler($page){
 						$session = new Session($publicKey, $signature, $params);
 						if($session->verifySignature()) {
 							//load single resource
-							$project = Project::withID($page[1]);
+							$project = Project::withID($page[1],$session);
 							$data = $project;
 							$session->setHeader(200);
 						}
@@ -123,7 +123,8 @@ function apiPageHandler($page){
 						
 						$session = new Session($publicKey, $signature, $params);
 						if($session->verifySignature()) {
-							$projects = Project::all($params);
+							$projects = Project::all($params, $session);
+
 							$data = $projects->getCollection();
 							$session->setHeader(200);
 						}
@@ -160,15 +161,24 @@ function apiPageHandler($page){
 						if($session->verifySignature()) {
 							//check if edit or creation
 							if($page[1]){
-								$project = Project::withID($page[1]);
+								$project = Project::withID($page[1], $session);
 								
 								if($project){
-									if($project->edit($payload)) {
-										$data = $project;
-										$session->setHeader(200);
+									if($project->can_edit) {
+										if($project->edit($payload)) {
+											$data = $project;
+											$session->setHeader(200);
+										}
+										else{
+											$session->setHeader(500);
+											$status = 'error';
+											$data = array('message' => 'There was an error saving the project resource');
+										}
 									}
 									else{
-										$session->setHeader(500);
+										$session->setHeader(401);
+										$status = 'fail';
+										$data = array('message' => 'Insufficient access privledges');
 									}
 								}
 								else {
@@ -177,7 +187,7 @@ function apiPageHandler($page){
 								}
 							}
 							else{
-								$project = new Project($payload);
+								$project = Project::withParams($payload);
 
 								if($project->validate()) {
 									if($project->create()) {
@@ -210,7 +220,7 @@ function apiPageHandler($page){
 					$session = new Session($publicKey, $signature, $payload);
 					
 					if($session->verifySignature()) {
-						$project = Project::withID($page[1]);
+						$project = Project::withID($page[1],$session);
 						if($project->update($payload)) {
 							$session->setHeader(200);
 							$status = 'success';
@@ -237,7 +247,7 @@ function apiPageHandler($page){
 					if($page[1]) {
 						$session = new Session($publicKey, $signature, $params);
 						if($session->verifySignature()) {
-							$project = Project::withID($page[1]);
+							$project = Project::withID($page[1], $session);
 							if($project) {
 								$result = Project::delete($project);
 
