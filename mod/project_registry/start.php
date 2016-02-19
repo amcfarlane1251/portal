@@ -17,10 +17,8 @@ function project_registry_init() {
 	elgg_register_entity_type('object', 'project_registry');
 
 	// Set up the menu
-	if(elgg_is_admin_logged_in()) {
-		$item = new ElggMenuItem('project_registry', elgg_echo('projects'), 'projects');
-		elgg_register_menu_item('site', $item);
-	}
+	$item = new ElggMenuItem('project_registry', elgg_echo('projects'), 'projects');
+	elgg_register_menu_item('site', $item);
 
 	// register a project handler, so we can have nice URLs
 	elgg_register_page_handler('projects', 'projects_page_handler');

@@ -40,32 +40,44 @@ class Project {
 	public $access_id;
 	public $time_created;
 	
-	public function __construct($params) 
+	private $session;
+	
+	public function __construct(Session $session)
 	{
-		foreach($params as $key => $param) {
-			if($key!="user_id") {
-				$this->$key = $param;
-			}
-		}
-		if($params['user_id']) {
-			$this->subtype = "project_registry";
-			$this->owner_guid = $params['user_id'];
-			$this->container_guid = $params['user_id'];
-			$this->access_id = ACCESS_PUBLIC;
-		}
+		$this->session = $session;
 	}
 	
-	public static function withID($id)
+	public static function withID($id, $session)
 	{
-		$instance = new self();
+		$instance = new self($session);
 		$instance->loadByID($id);
 		return $instance;
 	}
 	
-	public static function all($params)
+	public static function withParams($params)
 	{
-		$instance = new self();
+		$instance = new Self();
+		if($params) {
+			foreach($params as $key => $param) {
+				if($key!="user_id") {
+					$instance->$key = $param;
+				}
+			}
+			if($params['user_id']) {
+				$instance->subtype = "project_registry";
+				$instance->owner_guid = $params['user_id'];
+				$instance->container_guid = $params['user_id'];
+				$instance->access_id = ACCESS_PUBLIC;
+			}
+		}
+		return $instance;
+	}
+	
+	public static function all($params, $session)
+	{
+		$instance = new Self($session);
 		$instance->loadAll($params);
+		
 		return $instance;
 	}
 	
@@ -82,7 +94,7 @@ class Project {
 			"subtype" => "project_registry",
 			"limit" => false,
 			"full_view" => false,
-			"order_by" => "time_created ASC",
+			"order_by" => "time_created DESC",
 			"metadata_name_value_pairs" => array()
 		);
 		
@@ -139,7 +151,7 @@ class Project {
 	public function edit($payload)
 	{	
 		elgg_set_ignore_access();
-		
+
 		$project = get_entity($this->id);
 		foreach($payload as $key => $val) {
 			if($key == 'opi' || $key == 'sme') {
@@ -152,7 +164,7 @@ class Project {
 				$project->$key = $val;
 			}
 		}
-		
+
 		if($project->save()) {
 			return true;
 		}
@@ -284,12 +296,15 @@ class Project {
 		$this->sme = $row->sme;
 		$this->usa = $row->usa;
 		$this->comments = $row->comments;
+		if( $this->session->getIsAdmin() || ($this->session->getPublicKey() == $row->owner_guid && $row->status=='Submitted') ) {
+			$this->can_edit = true;
+		}
 	}
 	
 	private function fillWithRows($rows)
 	{
 		foreach($rows as $row) {
-			$project = new Project(null);
+			$project = new Project($this->session);
 			$project->fill($row);
 			
 			$this->addToCollection($project);
