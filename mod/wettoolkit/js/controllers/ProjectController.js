@@ -128,8 +128,7 @@
 					'scope' : vm.scope,
 					'sme' : vm.sme,
 					'title':vm.title,
-					'update_existing_product': vm.project.update_existing_product,
-					'usa':vm.usa
+					'update_existing_product': vm.project.update_existing_product
 				}, vm.project.id).then(function(success) {
 					project.getProjects(publicKey, signature).then(function(results){
 						vm.projects = results.data;
