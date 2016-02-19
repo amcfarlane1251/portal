@@ -142,7 +142,7 @@ class Project {
 		
 		$project = get_entity($this->id);
 		foreach($payload as $key => $val) {
-			if($key == 'opi' || $key == 'sme' ||$key == 'usa') {
+			if($key == 'opi' || $key == 'sme') {
 				$project->$key = json_encode($val);
 			}
 			else if($key=='options' || $key=='required' || $key=='id'){
