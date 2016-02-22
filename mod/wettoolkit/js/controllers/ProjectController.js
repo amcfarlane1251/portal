@@ -41,6 +41,7 @@
 				$(window).scrollTop(0);
 				project.getProject(publicKey, signature, $routeParams.project_id).then(function(results){
 					vm.project = results.data;
+
 					//set default value for existing project from saved json data
 					vm.comments = vm.project.comments;
 					vm.course = vm.project.course;
@@ -425,10 +426,7 @@
 					elem.on('submit', function () {
 
 						// find the first invalid element
-						console.log(elem.find('.ng-invalid:first'));
 						elem.find('.ng-invalid:first').focus();
-
-
 					});
                 }
             };            

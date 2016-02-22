@@ -284,8 +284,7 @@
 					<label><?php echo elgg_echo('projects:files');?></label>
 				</div>
 				<div class='col-md-6'>
-					<div class='elgg-button' ngf-select ng-model='vm.files' ngf-multiple='true'>Select</div>
-					Drop files: <div ngf-drop ng-model='files'>Drop</div>
+					<input type="file" ngf-select="" ng-model="vm.files" name="file" ngf-multiple="true">
 				</div>
 			</div>
 			

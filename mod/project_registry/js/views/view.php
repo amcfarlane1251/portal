@@ -249,7 +249,9 @@ echo "
 					<label>". elgg_echo('projects:files') ."</label>
 				</div>
 				<div class='col-md-6'>
-					
+					<div ng-repeat='attachment in vm.project.attachments'>
+						<a href='{{attachment.url}}' >{{attachment.title}}</a>
+					</div>
 				</div>
 			</div>
 	</div>
