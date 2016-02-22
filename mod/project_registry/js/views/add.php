@@ -51,7 +51,7 @@
 					<label><?php echo elgg_echo('projects:description');?></label>
 				</div>
 				<div class='col-md-6'>
-					<textarea name='description' ng-model='vm.description' ng-minlength='3' ng-maxlength='500' required></textarea>
+					<textarea name='description' ng-model='vm.description' required></textarea>
 					<div ng-messages="projectForm.description.$error" ng-if="(projectForm.description.$touched) || (projectForm.$submitted)">
 						<div ng-messages-include="projects/messages"></div>
 					</div>

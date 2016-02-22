@@ -57,7 +57,7 @@ class Project {
 	
 	public static function withParams($params)
 	{
-		$instance = new Self();
+		$instance = new self();
 		if($params) {
 			foreach($params as $key => $param) {
 				if($key!="user_id") {
@@ -76,7 +76,7 @@ class Project {
 	
 	public static function all($params, $session)
 	{
-		$instance = new Self($session);
+		$instance = new self($session);
 		$instance->loadAll($params);
 		
 		return $instance;
