@@ -1,39 +1,45 @@
 <?php
 
-echo "
+?>
 	<div class='template-header'>
-		<h2>Edit Project - {{vm.project.title}}</h2>
+		<h2>Edit Project - {{vm.title}}</h2>
 		<a href='#/projects' class='elgg-button elgg-button-action'>List All Projects</a>
 	</div>
 	<div class='project-form project'>
-		<form>
+		<form name='projectForm' ng-submit="vm.editProject(projectForm.$valid)" ng-focus-error="" novalidate>
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:title') ."</label>
+					<label><?php echo elgg_echo('projects:title'); ?></label>
 				</div>
 				<div class='col-md-6'>
-					<input type='text' class='' name='title' ng-model='vm.title' value='{{vm.project.title}}'/>
+					<input type='text' class='' name='title' ng-model='vm.title' required />
+					<div ng-messages="projectForm.title.$error" ng-if="(projectForm.title.$dirty) || (projectForm.$submitted)">
+						<div ng-messages-include="projects/messages"></div>
+					</div>
 				</div>
 			</div>
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:course') ."</label>
+					<label><?php echo elgg_echo('projects:course'); ?></label>
 				</div>
 				<div class='col-md-6'>
-					<input type='text' class='' ng-model='vm.course' value='{{vm.project.course}}'/>
+					<input type='text' class='' name='course' ng-model='vm.course' />
 				</div>
 			</div>
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:org') ."</label>
+					<label><?php echo elgg_echo('projects:org'); ?></label>
 				</div>
 				<div class='col-md-6'>
-					<input type='text' class='' ng-model='vm.org' value='{{vm.project.org}}'/>
+					<input type='text' class='' name='org' ng-model='vm.org' required />
+					<div ng-messages="projectForm.org.$error" ng-if="(projectForm.org.$dirty) || (projectForm.$submitted)">
+						<div ng-messages-include="projects/messages"></div>
+					</div>
 				</div>
 			</div>
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:type') ."</label>
+					<label><?php echo elgg_echo('projects:type'); ?></label>
 				</div>
 				<div class='col-md-6'>
 					<select ng-model=vm.project.project_type ng-options='type for type in vm.projectTypes.values'>
@@ -42,74 +48,92 @@ echo "
 			</div>
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:description') ."</label>
+					<label><?php echo elgg_echo('projects:description'); ?></label>
 				</div>
 				<div class='col-md-6'>
-					<textarea ng-model='vm.description' value='{{vm.project.description}}'></textarea>
+					<textarea name='description' ng-model='vm.description' ng-minlength='3' ng-maxlength='500' required></textarea>
+					<div ng-messages="projectForm.description.$error" ng-if="(projectForm.description.$dirty) || (projectForm.$submitted)">
+						<div ng-messages-include="projects/messages"></div>
+					</div>
 				</div>
 			</div>
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:scope') ."</label>
+					<label><?php echo elgg_echo('projects:scope'); ?></label>
 				</div>
 				<div class='col-md-6'>
-					<textarea ng-model='vm.scope' value='{{vm.project.scope}}'></textarea>
+					<textarea name='scope' ng-model='vm.scope' required></textarea>
+					<div ng-messages="projectForm.scope.$error" ng-if="(projectForm.scope.$dirty) || (projectForm.$submitted)">
+						<div ng-messages-include="projects/messages"></div>
+					</div>
 				</div>
 			</div>
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:opi') ."</label>
+					<label><?php echo elgg_echo('projects:opi'); ?></label>
 				</div>
 				<div class='col-md-6 row sub-row'>
 					<div class='col-lg-12'>
 						<div ng-repeat='(key, opi) in vm.opis'>
 							<div class='col-lg-12 row'>
-								<h5>".elgg_echo('projects:opi:title')." {{key+1}}</h5>
-								<button class='elgg-button elgg-button-action form-btn' ng-click='vm.removeContact(key)'>".elgg_echo('projects:removeContact')."</button>
+								<h5><?php echo elgg_echo('projects:opi:title'); ?> {{key+1}}</h5>
+								<button class='elgg-button elgg-button-action form-btn' ng-click='vm.removeContact(key)'><?php echo elgg_echo('projects:removeContact'); ?></button>
 							</div>
 							
 							<div class='row'>
 								<div class='col-md-3'>
-									<label>".elgg_echo('projects:rank').":</label>
+									<label><?php echo elgg_echo('projects:rank'); ?>:</label>
 								</div>
 								<div class='col-md-9'>
-									<input type='text' class='' ng-model='opi.rank' />
+									<input type='text' class='' name='opi_rank' ng-model='opi.rank' required />
+									<div ng-messages="projectForm.opi_rank.$error" ng-if="(projectForm.opi_rank.$dirty) || (projectForm.$submitted)">
+										<div ng-messages-include="projects/messages"></div>
+									</div>
 								</div>
 							</div>
 							<div class='row'>
 								<div class='col-md-3'>
-									<label>".elgg_echo('projects:name').":</label>
+									<label><?php echo elgg_echo('projects:name'); ?>:</label>
 								</div>
 								<div class='col-md-9'>
-									<input type='text' class='' ng-model='opi.name'/>
+									<input type='text' name='opi_name' class='' ng-model='opi.name' required />
+									<div ng-messages="projectForm.opi_name.$error" ng-if="(projectForm.opi_name.$dirty) || (projectForm.$submitted)">
+										<div ng-messages-include="projects/messages"></div>
+									</div>
 								</div>
 							</div>
 							<div class='row'>
 								<div class='col-md-3'>
-									<label>".elgg_echo('projects:phone').":</label>
+									<label><?php echo elgg_echo('projects:phone'); ?>:</label>
 								</div>
 								<div class='col-md-9'>
-									<input type='text' class='' ng-model='opi.phone'/>
+									<input type='text' name='opi_phone' class='' ng-model='opi.phone' required />
+									<div ng-messages="projectForm.opi_phone.$error" ng-if="(projectForm.opi_phone.$dirty) || (projectForm.$submitted)">
+										<div ng-messages-include="projects/messages"></div>
+									</div>
 								</div>
 							</div>
 							<div class='row'>
 								<div class='col-md-3'>
-									<label>".elgg_echo('projects:email').":</label>
+									<label><?php echo elgg_echo('projects:email'); ?>:</label>
 								</div>
 								<div class='col-md-9'>
-									<input type='text' class='' ng-model='opi.email'/>
+									<input type='email' name='opi_email' class='' ng-model='opi.email' required />
+									<div ng-messages="projectForm.opi_email.$error" ng-if="(projectForm.opi_email.$dirty) || (projectForm.$submitted)">
+										<div ng-messages-include="projects/messages"></div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class='col-lg-12 row'>
-							<button class='elgg-button elgg-button-action' ng-click='vm.addContact()'>".elgg_echo('projects:addContact')."</button>
+							<a class='elgg-button elgg-button-action' ng-click='vm.addContact()'><?php echo elgg_echo('projects:addContact'); ?></a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:isPriority') ."</label>
+					<label><?php echo elgg_echo('projects:isPriority'); ?></label>
 				</div>
 				<div class='col-md-6'>
 					<select ng-model='vm.isPriority' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.isPriority,'briefExplain')></select>
@@ -117,7 +141,7 @@ echo "
 			</div>
 			<div class='row form-row' id='briefExplain' ng-hide='vm.isPriority==vm.booleanOptions.values[0]'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:briefExplain') ."</label>
+					<label><?php echo elgg_echo('projects:briefExplain'); ?></label>
 				</div>
 				<div class='col-md-6'>
 					<textarea ng-model='vm.priority' value='{{vm.project.priority}}'></textarea>
@@ -125,7 +149,7 @@ echo "
 			</div>
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:isSme') ."</label>
+					<label><?php echo elgg_echo('projects:isSme'); ?></label>
 				</div>
 				<div class='col-md-6'>
 					<select ng-model='vm.isSme' ng-options='option for option in vm.booleanOptions.values' ng-change=vm.toggleContainer(vm.isSme,'sme')></select>
@@ -133,39 +157,42 @@ echo "
 			</div>
 			<div class='row form-row' id='sme' ng-hide='vm.isSme==vm.booleanOptions.values[0]'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:sme') ."</label>
+					<label><?php echo elgg_echo('projects:sme'); ?></label>
 				</div>
 				<div class='col-md-6 sub-row'>
 					<div class='row'>
 						<div class='col-md-3'>
-							<label>".elgg_echo('projects:rank').":</label>
+							<label><?php echo elgg_echo('projects:rank'); ?>:</label>
 						</div>
 						<div class='col-md-9'>
-							<input type='text' class='' ng-model='vm.sme.rank' value='{{vm.project.sme.rank}}'/>
+							<input type='text' class='' ng-model='vm.project.sme.rank' />
 						</div>
 					</div>
 					<div class='row'>
 						<div class='col-md-3'>
-							<label>".elgg_echo('projects:name').":</label>
+							<label><?php echo elgg_echo('projects:name'); ?>:</label>
 						</div>
 						<div class='col-md-9'>
-							<input type='text' class='' ng-model='vm.sme.name' value='{{vm.project.sme.name}}'/>
+							<input type='text' class='' ng-model='vm.project.sme.name' />
 						</div>
 					</div>
 					<div class='row'>
 						<div class='col-md-3'>
-							<label>".elgg_echo('projects:phone').":</label>
+							<label><?php echo elgg_echo('projects:phone'); ?>:</label>
 						</div>
 						<div class='col-md-9'>
-							<input type='text' class='' ng-model='vm.sme.phone' value='{{vm.project.sme.phone}}'/>
+							<input type='text' class='' ng-model='vm.project.sme.phone' />
 						</div>
 					</div>
 					<div class='row'>
 						<div class='col-md-3'>
-							<label>".elgg_echo('projects:email').":</label>
+							<label><?php echo elgg_echo('projects:email'); ?>:</label>
 						</div>
 						<div class='col-md-9'>
-							<input type='text' class='' ng-model='vm.sme.email' value='{{vm.project.sme.email}}'/>
+							<input type='email' name='sme_email' class='' ng-model='vm.project.sme.email' />
+							<div ng-messages="projectForm.sme_email.$error" ng-if="(projectForm.sme_email.$dirty) || (projectForm.$submitted)">
+								<div ng-messages-include="projects/messages"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -173,7 +200,7 @@ echo "
 			
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:isLimitation') ."</label>
+					<label><?php echo elgg_echo('projects:isLimitation'); ?></label>
 				</div>
 				<div class='col-md-6'>
 					<select ng-model='vm.project.is_limitation' ng-options='option for option in vm.booleanOptions.values'></select>
@@ -182,7 +209,7 @@ echo "
 			
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:updateExistingProduct') ."</label>
+					<label><?php echo elgg_echo('projects:updateExistingProduct'); ?></label>
 				</div>
 				<div class='col-md-6'>
 					<select ng-model='vm.project.update_existing_product' ng-options='option for option in vm.multiOptions.values'></select>
@@ -191,21 +218,21 @@ echo "
 			
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:lifeExpectancy') ."</label>
+					<label><?php echo elgg_echo('projects:lifeExpectancy'); ?></label>
 				</div>
 				<div class='col-md-6'>
-					<input type='text' name='lifeExpectancy' ng-model='vm.lifeExpectancy' value='{{vm.project.life_expectancy}}'/>
+					<input type='text' name='lifeExpectancy' ng-model='vm.lifeExpectancy' />
 				</div>
 			</div>
 			
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:usa') ."</label>
+					<label><?php echo elgg_echo('projects:usa'); ?></label>
 				</div>
 				<div class='col-md-6 sub-row'>
 					<div class='row'>
 						<div class='col-md-3'>
-							<label>".elgg_echo('projects:rank').":</label>
+							<label><?php echo elgg_echo('projects:rank'); ?>:</label>
 						</div>
 						<div class='col-md-9'>
 							<p>{{vm.project.usa.rank}}</p>
@@ -213,7 +240,7 @@ echo "
 					</div>
 					<div class='row'>
 						<div class='col-md-3'>
-							<label>".elgg_echo('projects:name').":</label>
+							<label><?php echo elgg_echo('projects:name'); ?>:</label>
 						</div>
 						<div class='col-md-9'>
 							<p>{{vm.project.usa.name}}</p>
@@ -221,7 +248,7 @@ echo "
 					</div>
 					<div class='row'>
 						<div class='col-md-3'>
-							<label>".elgg_echo('projects:position').":</label>
+							<label><?php echo elgg_echo('projects:position'); ?>:</label>
 						</div>
 						<div class='col-md-9'>
 							<p>{{vm.project.usa.position}}</p>
@@ -229,7 +256,7 @@ echo "
 					</div>
 					<div class='row'>
 						<div class='col-md-3'>
-							<label>".elgg_echo('projects:email').":</label>
+							<label><?php echo elgg_echo('projects:email'); ?>:</label>
 						</div>
 						<div class='col-md-9'>
 							<p>{{vm.project.usa.email}}</p>
@@ -240,16 +267,16 @@ echo "
 			
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:comments') ."</label>
+					<label><?php echo elgg_echo('projects:comments'); ?></label>
 				</div>
 				<div class='col-md-6'>
-					<textarea ng-model='vm.comments' value='{{vm.project.comments}}'></textarea>
+					<textarea ng-model='vm.comments'></textarea>
 				</div>
 			</div>
 			
 			<div class='row form-row'>
 				<div class='col-md-3'>
-					<label>". elgg_echo('projects:files') ."</label>
+					<label><?php echo elgg_echo('projects:files'); ?></label>
 				</div>
 				<div class='col-md-6'>
 					<div class='elgg-button' ngf-select ng-model='vm.files' ngf-multiple='true'>Select</div>
@@ -257,7 +284,6 @@ echo "
 				</div>
 			</div>
 			
-			<button class='elgg-button elgg-button-action' ng-click='vm.editProject()'>".elgg_echo('projects:save')."</button>
+			<button type='submit' class='elgg-button elgg-button-action'><?php echo elgg_echo('projects:save'); ?></button>
 		</form>
 	</div>
-";

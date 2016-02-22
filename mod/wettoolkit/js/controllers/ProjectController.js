@@ -42,8 +42,16 @@
 				project.getProject(publicKey, signature, $routeParams.project_id).then(function(results){
 					vm.project = results.data;
 					//set default value for existing project from saved json data
+					vm.comments = vm.project.comments;
+					vm.course = vm.project.course;
+					vm.description = vm.project.description;
 					vm.isPriority = vm.project.is_priority;
 					vm.isSme = vm.project.is_sme_avail;
+					vm.lifeExpectancy = vm.project.life_expectancy;
+					vm.org = vm.project.org;
+					vm.priority = vm.project.priority;
+					vm.scope = vm.project.scope;
+					vm.title = vm.project.title;
 					if(vm.project.sme) {
 						vm.project.sme = JSON.parse(vm.project.sme);
 					}
@@ -112,31 +120,33 @@
 				}
 			}
 			
-			vm.editProject = function() {
-				project.edit({
-					'comments':vm.comments,
-					'course':vm.course,
-					'description': vm.description,
-					'is_limitation': vm.project.is_limitation,
-					'is_priority':vm.project.is_priority,
-					'is_sme_avail': vm.project.is_sme_avail,
-					'life_expectancy': vm.lifeExpectancy,
-					'opi': vm.opis,
-					'org':vm.org,
-					'priority':vm.priority,
-					'project_type':vm.project.project_type,
-					'scope' : vm.scope,
-					'sme' : vm.sme,
-					'title':vm.title,
-					'update_existing_product': vm.project.update_existing_product
-				}, vm.project.id).then(function(success) {
-					project.getProjects(publicKey, signature).then(function(results){
-						vm.projects = results.data;
-						$location.path('projects');
-					});
-				}, function(error){
-					console.log(error);
-				});
+			vm.editProject = function(isValid) {
+				if(isValid) {
+					project.edit({
+						'comments':vm.comments,
+						'course':vm.course,
+						'description': vm.description,
+						'is_limitation': vm.project.is_limitation,
+						'is_priority':vm.isPriority,
+						'is_sme_avail': vm.isSme,
+						'life_expectancy': vm.lifeExpectancy,
+						'opi': vm.opis,
+						'org':vm.org,
+						'priority':vm.priority,
+						'project_type':vm.project.project_type,
+						'scope' : vm.scope,
+						'sme' : vm.project.sme,
+						'title':vm.title,
+						'update_existing_product': vm.project.update_existing_product
+					}, vm.project.id).then(function(success) {
+						project.getProjects(publicKey, signature).then(function(results){
+							vm.projects = results.data;
+							$location.path('projects');
+						});
+					}, function(error){
+						console.log(error);
+					});				
+				}
 			}
 			
 			vm.deleteProject = function($id) {
