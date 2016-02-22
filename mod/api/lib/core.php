@@ -112,6 +112,8 @@ function apiPageHandler($page){
 						}
 						else{
 							$session->setHeader(401);
+							$status = 'fail';
+							$data = array('message' => 'Insufficient access privledges');
 						}
 					}
 					else{
@@ -131,6 +133,8 @@ function apiPageHandler($page){
 						}
 						else{
 							$session->setHeader(401);
+							$status = 'fail';
+							$data = array('message' => 'Insufficient access privledges');
 						}
 					}
 					
