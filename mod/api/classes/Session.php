@@ -98,6 +98,9 @@ class Session {
 		elseif($responseCode == 500){
 			
 		}
+		elseif($responseCode == 400){
+			header("HTTP/1.1 400 Bad Request");
+		}
 	}
 	
 	public function isAdmin()
