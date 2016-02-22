@@ -97,7 +97,7 @@
 								</div>
 								<div class='col-md-9'>
 									<input type='text' class='' name='opi_name' ng-model='opi.name' required/>
-									<div ng-messages="projectForm.opi_name.$error" ng-if="(projectForm.opi_rank.$touched) || (projectForm.$submitted)">
+									<div ng-messages="projectForm.opi_name.$error" ng-if="(projectForm.opi_name.$touched) || (projectForm.$submitted)">
 										<div ng-messages-include="projects/messages"></div>
 									</div>
 								</div>
@@ -126,7 +126,7 @@
 							</div>
 						</div>
 						<div class='col-lg-12 row'>
-							<button class='elgg-button elgg-button-action' ng-click='vm.addContact()'><?php echo elgg_echo('projects:addContact');?></button>
+							<a class='elgg-button elgg-button-action' ng-click='vm.addContact()'><?php echo elgg_echo('projects:addContact');?></a>
 						</div>
 					</div>
 				</div>
@@ -189,7 +189,10 @@
 							<label><?php echo elgg_echo('projects:email'); ?>:</label>
 						</div>
 						<div class='col-md-9'>
-							<input type='text' class='' ng-model='vm.sme.email'/>
+							<input type='email' name='sme_email' class='' ng-model='vm.sme.email'/>
+							<div ng-messages="projectForm.sme_email.$error" ng-if="(projectForm.sme_email.$dirty) || (projectForm.$submitted)">
+								<div ng-messages-include="projects/messages"></div>
+							</div>
 						</div>
 					</div>
 				</div>
