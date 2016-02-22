@@ -12,13 +12,14 @@
  * @author McFarlane.a
  */
 class Project {
+
+	private $required = array('title', 'org', 'description', 'scope', 'opi', 'usa');
 	
-	private $options = array();
-	
-	private $required = array('title', 'org');
-	
-	private $collection = array();
 	public $attachments = array();
+	public $opi = array();
+	public $errors = array();
+	private $collection = array();
+	private $options = array();
 	
 	public $id;
 	public $title;
@@ -28,7 +29,6 @@ class Project {
 	public $scope;
 	public $course;
 	public $org;
-	public $opi = array();
 	public $owner_guid;
 	public $container_guid;
 	public $project_type;
@@ -40,7 +40,6 @@ class Project {
 	public $life_expectancy;
 	public $access_id;
 	public $time_created;
-	
 	private $session;
 	
 	public function __construct(Session $session)
@@ -57,7 +56,7 @@ class Project {
 	
 	public static function withParams($params)
 	{
-		$instance = new Self();
+		$instance = new self();
 		if($params) {
 			foreach($params as $key => $param) {
 				if($key!="user_id") {
@@ -76,7 +75,7 @@ class Project {
 	
 	public static function all($params, $session)
 	{
-		$instance = new Self($session);
+		$instance = new self($session);
 		$instance->loadAll($params);
 		
 		return $instance;
@@ -159,11 +158,14 @@ class Project {
 		foreach($this as $key => $val) {
 			if(in_array($key, $this->required)) {
 				if(empty($val)) {
-					$this->errors[$key] = $key." must not be empty";
+					$this->errors[$key] = $key." is a required field";
 				}
 			}
 		}
-		return true;
+		if(empty($this->errors)) {
+			return true;
+		}
+		return false;
 	}
 	
 	public function create()

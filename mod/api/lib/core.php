@@ -112,6 +112,8 @@ function apiPageHandler($page){
 						}
 						else{
 							$session->setHeader(401);
+							$status = 'fail';
+							$data = array('message' => 'Insufficient access privledges');
 						}
 					}
 					else{
@@ -131,6 +133,8 @@ function apiPageHandler($page){
 						}
 						else{
 							$session->setHeader(401);
+							$status = 'fail';
+							$data = array('message' => 'Insufficient access privledges');
 						}
 					}
 					
@@ -167,14 +171,21 @@ function apiPageHandler($page){
 								
 								if($project){
 									if($project->can_edit) {
-										if($project->edit($payload)) {
-											$data = $project;
-											$session->setHeader(200);
+										if($project->validate()) {
+											if($project->edit($payload)) {
+												$data = $project;
+												$session->setHeader(200);
+											}
+											else{
+												$session->setHeader(500);
+												$status = 'error';
+												$data = array('message' => 'There was an error saving the project resource');
+											}
 										}
 										else{
-											$session->setHeader(500);
-											$status = 'error';
-											$data = array('message' => 'There was an error saving the project resource');
+											$session->setHeader(400);
+											$status = 'fail';
+											$data = $project->errors;
 										}
 									}
 									else{
@@ -204,6 +215,7 @@ function apiPageHandler($page){
 								}
 								else{
 									$session->setHeader(400);
+									$data = $project->errors;
 								}
 							}
 						}

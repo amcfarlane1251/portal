@@ -222,7 +222,7 @@
 		.module('portal')
 		.factory('project', project);
 
-		function project($resource, helper) {
+		function project($resource, helper, $q) {
 			
 			function getProject(publicKey, signature, id) {
 				var Project = $resource('api/projects/:id', 
@@ -238,7 +238,7 @@
 				return Project.get({}, {'id': id}).$promise.then(function(results) {
 					return results;
 				}, function(error){
-					console.log(error);
+					return $q.reject(error);
 				});
 			}
 			
@@ -267,7 +267,7 @@
 				return Project.query().$promise.then(function(results) {
 					return results;
 				}, function(error){
-					console.log(error);
+					return $q.reject(error);
 				});
 			}
 			
@@ -293,7 +293,7 @@
 				return Project.save(data).$promise.then(function(success) {
 					return success;
 				}, function(error) {
-					console.log(error);
+					return $q.reject(error);
 				});
 			}
 			
@@ -319,7 +319,7 @@
 				return Project.save({'id':id},data).$promise.then(function(success){
 					return success;
 				}, function(error){
-					console.log(error);
+					return $q.reject(error);
 				});
 			}
 			
@@ -344,7 +344,7 @@
 				return Project.update({'id': id},data).$promise.then(function(success){
 					return success;
 				}, function(error){
-					console.log(error);
+					return $q.reject(error);
 				});
 			}
 
@@ -369,7 +369,7 @@
 				return Project.remove({'id': id}, data).$promise.then(function(success){
 					return success;
 				}, function(error){
-					console.log(error);
+					return $q.reject(error);
 				});
 			}
 			
@@ -428,7 +428,6 @@
                 link: function (scope, elem) {
                     // set up event handler on the form element
 					elem.on('submit', function () {
-
 						// find the first invalid element
 						elem.find('.ng-invalid:first').focus();
 					});
