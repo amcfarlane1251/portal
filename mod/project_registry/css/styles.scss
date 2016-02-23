@@ -116,3 +116,31 @@
     color:red;
     margin-bottom:.667rem !important;
 }
+
+/*
+ * ngAnimate css rules
+ **/
+.fade {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+.fade.ng-enter,
+.fade.ng-leave {
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+}
+.fade.ng-enter {
+    opacity: 0;
+}
+.fade.ng-enter-active {
+    opacity: 1;
+}
+.fade.ng-leave {
+    opacity: 1;
+}
+.fade.ng-leave-active {
+    opacity: 0;
+}
