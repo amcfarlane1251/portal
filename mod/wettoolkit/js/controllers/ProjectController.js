@@ -83,6 +83,8 @@
 			//create a project
 			vm.createProject = function (isValid) {
 				if(isValid) {
+					//prevent duplicate submission by disabling submit button after validation
+					$('button[type="submit"]').attr('disabled', true);					
 					project.create({
 						'comments':vm.comments,
 						'course':vm.course,
@@ -123,6 +125,8 @@
 			
 			vm.editProject = function(isValid) {
 				if(isValid) {
+					//prevent duplicate submission by disabling submit button after validation
+					$('button[type="submit"]').attr('disabled', true);
 					project.edit({
 						'comments':vm.comments,
 						'course':vm.course,
@@ -430,4 +434,5 @@
                 }
             };            
         });
+
 })();
