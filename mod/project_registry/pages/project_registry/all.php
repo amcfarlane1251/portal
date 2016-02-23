@@ -13,9 +13,11 @@ $content =
 <script src='/portal/node_modules/angular-messages/angular-messages.min.js'></script>
 <script src='/portal/node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'></script>
 <script src='/portal/node_modules/ng-file-upload/dist/ng-file-upload.min.js'></script>
-	<section ng-app='portal'>
+<script src='/portal/node_modules/angular-animate/angular-animate.min.js'></script>
+	<section ng-app='portal' style='position:relative;'>
 		<link rel='stylesheet' href='mod/project_registry/css/styles.css'/>
-		<div ng-view></div>
+		<div ng-view class='fade'>
+		</div>
 	</section>";
 $sidebar = elgg_view('project_registry/sidebar/filter');
 $sidebar .= elgg_view('project_registry/sidebar/find');

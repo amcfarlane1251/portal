@@ -6,7 +6,8 @@
 			'ngResource',
 			'ngRoute',
 			'ngFileUpload',
-			'ngMessages'
+			'ngMessages',
+			'ngAnimate'
 		]);
 		
 	angular
