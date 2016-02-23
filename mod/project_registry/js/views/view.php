@@ -1,6 +1,7 @@
 <?php
 
 echo "
+<div ng-show='vm.loaded'>
 	<div class='template-header'>
 		<h2>{{vm.project.title}}</h2>
 		<a href='#/projects' class='elgg-button elgg-button-action'>List All Projects</a>
@@ -255,4 +256,5 @@ echo "
 				</div>
 			</div>
 	</div>
+</div>
 ";
