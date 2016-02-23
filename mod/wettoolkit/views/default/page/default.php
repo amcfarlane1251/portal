@@ -246,7 +246,8 @@ if(elgg_is_logged_in() && 1==5){
 <script src="<?php echo $wettoolkit_url.'/js/stopSubmit.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/js/app.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/js/controllers/ProjectController.js';?>"></script>
-<script src="<?php echo $wettoolkit_url.'/js/services/project.js';?>"></script>
+<script src="<?php echo $wettoolkit_url.'/js/services/ProjectService.js';?>"></script>
+<script src="<?php echo $wettoolkit_url.'/js/directives/ProjectDirective.js';?>"></script>
 <script src="<?php echo $wettoolkit_url.'/dist/js/script.min.js';?>"></script>
 
 <?php
