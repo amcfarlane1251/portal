@@ -25,7 +25,7 @@
 				<p><?php echo elgg_echo('projects:submittedBy'); ?> {{project.owner}} <?php echo elgg_echo('projects:on'); ?> {{project.time_created}}</p>
                 <div ng-if="project.can_edit" class='project-footer'>
                     <a href='#/projects/edit/{{project.id}}' class='elgg-button elgg-button-action'><?php echo elgg_echo('projects:edit'); ?></a>
-                    <button class='elgg-button elgg-button-action float-alt' ng-click='vm.deleteProject(project.id)' ng-confirmation-needed='Are you sure you want to delete this project? There is no undo!'><?php echo elgg_echo('projects:delete'); ?></button>    
+                    <button class='elgg-button elgg-button-action float-alt' ng-click='vm.deleteProject(project.id)' ng-delete-once='Are you sure you want to delete this project? There is no undo!'><?php echo elgg_echo('projects:delete'); ?></button>    
                 </div>
 			</div>
 		</div>
