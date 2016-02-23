@@ -14,7 +14,7 @@ $content =
 <script src='/portal/node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'></script>
 <script src='/portal/node_modules/ng-file-upload/dist/ng-file-upload.min.js'></script>
 <script src='/portal/node_modules/angular-animate/angular-animate.min.js'></script>
-	<section ng-app='portal' style='position:relative;'>
+	<section ng-app='portal'>
 		<link rel='stylesheet' href='mod/project_registry/css/styles.css'/>
 		<div ng-view class='fade'>
 		</div>

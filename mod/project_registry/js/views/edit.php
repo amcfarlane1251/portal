@@ -1,6 +1,7 @@
 <?php
 
 ?>
+<div ng-show='vm.loaded'>
 	<div class='template-header'>
 		<h2>Edit Project - {{vm.title}}</h2>
 		<a href='#/projects' class='elgg-button elgg-button-action'>List All Projects</a>
@@ -287,3 +288,4 @@
 			<button type='submit' class='elgg-button elgg-button-action'><?php echo elgg_echo('projects:save'); ?></button>
 		</form>
 	</div>
+</div>

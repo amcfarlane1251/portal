@@ -87,10 +87,6 @@
  * ngAnimate css rules
  **/
 .fade {
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
   opacity: 1; }
 
 .fade.ng-enter,
@@ -99,7 +95,9 @@
   transition: all .4s ease; }
 
 .fade.ng-enter {
-  opacity: 0; }
+  opacity: 0;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease; }
 
 .fade.ng-enter-active {
   opacity: 1; }

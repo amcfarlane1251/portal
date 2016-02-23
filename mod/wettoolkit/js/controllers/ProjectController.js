@@ -39,6 +39,7 @@
 			//get single project
 			if($routeParams.project_id) {
 				$(window).scrollTop(0);
+				vm.loaded = false;
 				project.getProject(publicKey, signature, $routeParams.project_id).then(function(results){
 					vm.project = results.data;
 
@@ -62,6 +63,7 @@
 					if(vm.project.usa) {
 						vm.project.usa = JSON.parse(vm.project.usa);
 					}
+					vm.loaded = true;
 				}, function(error){
 					console.log(error);
 				});
