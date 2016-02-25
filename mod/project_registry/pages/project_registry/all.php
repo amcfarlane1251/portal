@@ -5,16 +5,19 @@
  */
 
 $title = elgg_echo('projects');
-
+$wettoolkit_url = elgg_get_site_url()."mod/wettoolkit";
 $content = 
-"<script src='/portal/node_modules/angular/angular.min.js'></script>
+"
+<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/t/dt/dt-1.10.11/datatables.min.css'/>
+<script type='text/javascript' src='https://cdn.datatables.net/t/dt/dt-1.10.11/datatables.min.js'></script>
+<script src='/portal/node_modules/angular/angular.min.js'></script>
 <script src='/portal/node_modules/angular-resource/angular-resource.min.js'></script>
 <script src='/portal/node_modules/angular-route/angular-route.min.js'></script>
 <script src='/portal/node_modules/angular-messages/angular-messages.min.js'></script>
 <script src='/portal/node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'></script>
 <script src='/portal/node_modules/ng-file-upload/dist/ng-file-upload.min.js'></script>
 <script src='/portal/node_modules/angular-animate/angular-animate.min.js'></script>
-	<section ng-app='portal'>
+	<section ng-app='portal' style='position:relative;'>
 		<link rel='stylesheet' href='mod/project_registry/css/styles.css'/>
 		<div ng-view class='fade'>
 		</div>
