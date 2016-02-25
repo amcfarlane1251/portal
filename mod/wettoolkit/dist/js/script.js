@@ -349,6 +349,8 @@ $(function(){
 	
 	//var messageBox = new MessageBox();
 	
-	$('.data-table').DataTable();
+	$('.data-table').DataTable({
+		"bSort" : false
+	});
 });
 
